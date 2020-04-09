@@ -31,7 +31,6 @@
 <body>
 	<div class="contentContainer">
 		<div class="well">
-			<%-- <c:if test="${login == null}"> --%>
 				<form id="loginForm" class="form-horizontal">
 					<div class="form-group">
 						<label for="userId" class="col-sm-2 control-label"> 아 이 디
@@ -58,13 +57,6 @@
 						</div>
 					</div>
 				</form>
-			<%-- </c:if> --%>
-		<%-- 	<c:if test="${login == '관리자'}">
-						<strong>[ ${login} ]님 반갑습니다 </strong>
-					<span id="memberMenu" class="tac"> <a
-						href="/admin/logout.do">로그아웃</a> 
-					</span>
-			</c:if> --%>
 		</div>
 	</div>
 </body>
