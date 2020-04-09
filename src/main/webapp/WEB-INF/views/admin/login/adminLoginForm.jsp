@@ -60,14 +60,10 @@
 				</form>
 			</c:if>
 			<c:if test="${login == '관리자'}">
-				<fieldset id="loginAfter">
-					<legend>
 						<strong>[ ${login} ]님 반갑습니다 </strong>
-					</legend>
 					<span id="memberMenu" class="tac"> <a
 						href="/admin/logout.do">로그아웃</a> 
 					</span>
-				</fieldset>
 			</c:if>
 		</div>
 	</div>

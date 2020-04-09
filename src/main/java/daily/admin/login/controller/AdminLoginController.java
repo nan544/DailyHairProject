@@ -41,7 +41,7 @@ public class AdminLoginController {
 		int result = loginService.adminLogin(lvo.getAd_id(),lvo.getAd_pwd());
 		if(result == 1) {
 			session.setAttribute("login", "관리자");
-			mav.setViewName("admin/login/adminLoginForm");
+			mav.setViewName("admin/main/adminMainpage");
 		}
 		
 		return mav;

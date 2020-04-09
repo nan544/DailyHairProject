@@ -18,5 +18,5 @@ public class AdminLoginVO {
 		this.ad_pwd = ad_pwd;
 	}
 	
-	
+
 }
