@@ -3,9 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<properties resource="db.properties" />
 	<typeAliases>
-		<typeAlias type="daily.admin.login.vo.HomeController" alias="#modelname"></typeAlias>
+		<typeAlias type="daily.admin.login.vo.AdminLoginVO" alias="adminlogin"></typeAlias>
 	</typeAliases>
 	
 	<!-- 필요시 추후 주석해제 합니다
