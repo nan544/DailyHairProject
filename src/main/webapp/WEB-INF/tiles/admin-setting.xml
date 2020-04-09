@@ -20,6 +20,11 @@
 			value="/WEB-INF/views/admin/main/{1}.jsp" />
 	</definition>
 	
+		<definition name="admin/faq/*" extends="basic">
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/faq/{1}.jsp" />
+	</definition>
+	
 	<!-- <definition name="admin/board/*" extends="basic">
 		<put-attribute name="main"
 			value="/WEB-INF/views/admin/board/{1}.jsp" />

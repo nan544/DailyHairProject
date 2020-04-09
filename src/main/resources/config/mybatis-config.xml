@@ -5,6 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="daily.admin.login.vo.AdminLoginVO" alias="adminlogin"></typeAlias>
+		<typeAlias type="daily.admin.faq.vo.FaqVO" alias="faq"></typeAlias>
 	</typeAliases>
 	
 	<!-- 필요시 추후 주석해제 합니다
