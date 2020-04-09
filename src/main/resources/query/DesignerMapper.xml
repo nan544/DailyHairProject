@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daily.admin.designer.dao.DesignerDao">
+
+	<select id="designerList" resultType="designer">
+		SELECT *
+		FROM designer
+	</select>
+	
+	<select id="designerDetail" parameterType="int" resultType="designer">
+		SELECT * 
+		FROM designer
+		where des_num = #{des_num}
+	</select>
+
+	<insert id="insertDesigner" parameterType="designer" >
+		<selectKey keyProperty="des_num" resultType="int" order="BEFORE">
+			select designer_seq.nextval from dual
+		</selectKey>
+		INSERT INTO designer(des_num, des_name, des_job, des_phone, des_holyday, des_file, des_memo)
+		VALUES(#{des_num},#{des_name},#{des_job},#{des_phone},#{des_holyday},#{des_file}, #{des_memo})
+	</insert>
+
+	<update id="updateDesigner" parameterType="designer">
+		UPDATE designer
+		SET des_job= #{des_job}, des_phone=#{des_phone}, des_holyday=#{des_holyday}, des_file=#{des_file}, des_memo=#{des_memo}
+		WHERE des_num = #{des_num}
+	</update>
+	
+	<!-- 메소드명은 deleteDesigner이지만 실제로는 비활성화 시키는것이므로 상태값을 업데이트 시킨다 --> 
+	<update id="deleteDesigner" parameterType="int">
+		UPDATE designer
+		SET des_state = 0
+		WHERE des_num = #{des_num}
+	</update>
+
+</mapper>

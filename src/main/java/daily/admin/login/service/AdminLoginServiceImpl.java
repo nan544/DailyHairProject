@@ -19,8 +19,6 @@ public class AdminLoginServiceImpl implements AdminLoginService {
 		AdminLoginVO vo = new AdminLoginVO();
 		vo.setAd_id(ad_id);
 		vo.setAd_pwd(ad_pwd);
-		System.out.println(vo.getAd_id());
-		System.out.println(vo.getAd_pwd());
 		int result = loginDao.adminLogin(vo);
 		
 		return result;

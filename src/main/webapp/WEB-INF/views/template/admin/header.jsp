@@ -10,7 +10,7 @@
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">DailyHair[관리자 페이지]</a>
+		<a class="navbar-brand" href="/admin/goMain.do">DailyHair[관리자 페이지]</a>
 		<c:if test="${login == '관리자'}">
 			<div id="logout">
 				<a href="/admin/logout.do">로그아웃</a>

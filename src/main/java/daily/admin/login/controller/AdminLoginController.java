@@ -55,4 +55,10 @@ public class AdminLoginController {
 		
 		return "redirect:/admin/adminLogin.do";
 	}
+	
+	//메인화면으로
+	@RequestMapping(value = "/goMain.do", method = RequestMethod.GET)
+	public String goMain() {
+		return "admin/main/adminMainpage";
+	}
 }
