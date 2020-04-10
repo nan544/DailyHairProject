@@ -24,9 +24,9 @@ public class AdminLoginController {
 	private AdminLoginService loginService;
 	
 	//로그인 폼 보여주기위한 메소드
-	@RequestMapping(value = "/adminLogin.do" ,method = RequestMethod.GET)
+	@RequestMapping(value = "/adminLoginForm.do" ,method = RequestMethod.GET)
 	public String adminLoginForm() {
-		log.info("adminLogin.do / get 방식 호출 성공");
+		log.info("adminLoginForm.do 호출 성공");
 		
 		return "admin/login/adminLoginForm";
 	}
@@ -34,7 +34,7 @@ public class AdminLoginController {
 	//로그인 처리 메소드
 	@RequestMapping(value = "/adminLogin.do",method = RequestMethod.POST)
 	public ModelAndView adminLogin(@ModelAttribute("AdminLoginVO")AdminLoginVO lvo, HttpSession session,HttpServletRequest request) {
-		log.info("adminLogin.do / post 방식 호출성공");
+		log.info("adminLogin.do 호출성공");
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -50,10 +50,13 @@ public class AdminLoginController {
 	//로그아웃 처리 메소드
 	@RequestMapping(value = "/logout.do")
 	public String logout(HttpSession session, HttpServletRequest request) {
-		session.invalidate();
-		session = request.getSession(true);
+		log.info("logout.do 호출 성공");
 		
-		return "redirect:/admin/adminLogin.do";
+		request.getSession().removeAttribute("login");
+		session.removeAttribute("login");
+		session.invalidate();
+		
+		return "redirect:/admin/adminLoginForm.do";
 	}
 	
 	//메인화면으로

@@ -13,7 +13,16 @@
 		<a class="navbar-brand" href="/admin/goMain.do">DailyHair[관리자 페이지]</a>
 		<c:if test="${login == '관리자'}">
 			<div id="logout">
-				<a href="/admin/logout.do">로그아웃</a>
+				<input type="button" id="logout" name="logout" value="로그아웃"/>
+				<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+				<script type="text/javascript">
+				$(function(){
+					$("#logout").click(function(){
+						alert("로그아웃이 되었습니다");
+						location.href="/admin/logout.do";
+					});
+				});
+				</script>
 			</div>
 		</c:if>
 	</div>

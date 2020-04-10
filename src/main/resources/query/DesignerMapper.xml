@@ -5,7 +5,8 @@
 <mapper namespace="daily.admin.designer.dao.DesignerDao">
 
 	<select id="designerList" resultType="designer">
-		SELECT *
+		SELECT to_char(des_regdate,'YYYY-MM-DD')as des_regdate, des_job,
+		des_name, des_phone, des_file
 		FROM designer
 	</select>
 	

@@ -19,11 +19,20 @@ public class DesignerVO {
 	private String des_job;
 	private String des_phone;
 	private String des_holyday;
-	private Date des_regdate;
+	private String des_regdate;
 	private String des_file;
 	private int des_state;
+	private String des_memo;
 
 	
+	public String getDes_memo() {
+		return des_memo;
+	}
+
+	public void setDes_memo(String des_memo) {
+		this.des_memo = des_memo;
+	}
+
 	public int getDes_num() {
 		return des_num;
 	}
@@ -64,11 +73,11 @@ public class DesignerVO {
 		this.des_holyday = des_holyday;
 	}
 
-	public Date getDes_regdate() {
+	public String getDes_regdate() {
 		return des_regdate;
 	}
 
-	public void setDes_regdate(Date des_regdate) {
+	public void setDes_regdate(String des_regdate) {
 		this.des_regdate = des_regdate;
 	}
 

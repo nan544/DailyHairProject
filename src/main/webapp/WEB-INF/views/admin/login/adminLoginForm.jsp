@@ -52,8 +52,7 @@
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-6">
 							<input type="button" value="로그인" id="loginBtn"
-								class="btn btn-default" /> <input type="button" value="회원가입"
-								id="joinBtn" class="btn btn-default" />
+								class="btn btn-default" />
 						</div>
 					</div>
 				</form>

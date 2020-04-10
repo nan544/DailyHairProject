@@ -7,6 +7,6 @@
 <title>실험</title>
 </head>
 <body>
-	<a href="/admin/adminLogin.do">관리자로그인</a>
+	<a href="/admin/adminLoginForm.do">관리자로그인</a>
 </body>
 </html>
