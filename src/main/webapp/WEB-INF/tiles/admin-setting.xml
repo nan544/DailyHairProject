@@ -23,11 +23,10 @@
 	<definition name="admin/designer/*" extends="basic">
 		<put-attribute name="main"
 			value="/WEB-INF/views/admin/designer/{1}.jsp" />
-			
+		</definition>
 		<definition name="admin/faq/*" extends="basic">
 			<put-attribute name="main"
 				value="/WEB-INF/views/admin/faq/{1}.jsp" />
 		</definition>
-
-
+		
 </tiles-definitions>
