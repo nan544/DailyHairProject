@@ -5,7 +5,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>footer</title>
+<title>ReserveLoginCheck</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -45,49 +45,62 @@
 	<script src="/resources/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
 
 	<!-- Template Main JS File -->
-	<script type="text/javascript" src="/resources/assets/js/main.js"></script>
+	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
+	
+	<style type="text/css">
+		.reserveTable { display: inline; padding: 10px;}
+		.reserveTablehead { display: inline; padding: 10px; font: 15pt bold; color: #670000;}
+	</style>
 </head>
 
 <body>
-	<!-- ======= Footer ======= -->
-	<footer id="footer">
-    <div class="container">
-		<h3>DailyHairShop</h3>
-		<div>
-			<a href="#">이용약관</a> | 
-			<a href="#">개인정보 제공 동의 약관</a> | 
-			<a href="#">자주하는 질문</a>
-		</div>
-		<!-- <div>
-			<i class="icofont-phone"></i> 문의 전화 02 001 0001(0002)
-			<i class="icofont-clock-time icofont-rotate-180"></i> 영업시간 10:00 AM - 19:00 PM
-		</div> -->
-		
-		<div>　</div>
-		<div>
-		
-		</div>
-		
-		<div>　</div>
-		<div class="copyright">
-		(주) DailyHairShop　|　 대표 김국영　|　사업자 등록번호 001 - 01 - 00001　|　본점 위치 서울특별시 성동구 무학로 2길 소혜빌딩 17층, 18층 (매장, 사무실)
-		&copy; Copyright <strong><span>DailyHairShop</span></strong>. All Rights Reserved　|　
-		Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>　|　
-		<a href="/admin/adminLogin.do">□</a>
-		</div>
-		
-		<!-- <div class="credits">
-        All the links in the footer should remain intact.
-        You can delete the links only if you purchased the pro version.
-        Licensing information: https://bootstrapmade.com/license/
-        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-		</div> -->
-	</div>
-	</footer><!-- End Footer -->
+	<!-- header 삽입 -->
+	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
 	
-	  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
+	<!-- ======= Reserve Section ======= -->
+	<section id="about" class="about">
+	<div class="container-fluid" >
+		<div class="row">
+			<!-- 최상단 구분 -->
+			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
+			</div>
+			
+			<!-- 상단 -->
+			<div style="margin: 0 auto; text-align: center; width: 100%;">
+				<h1 style="margin-bottom: 10px;">예약하기</h1>
+				<p style="margin-bottom: 10px;">로그인 정보 확인중...</p>
+			</div>
+			
+			<div style="width: 100%; margin: 0 auto;">
+				<hr style="border: 1 solid black; margin-bottom: 10px;" />
+			</div>
+			
+			<!-- 예약 정보 -->
+			<div style="margin: 0 auto;">
+				<div class="reserveTablehead">예약 정보　　</div>
+				<div class="reserveTable">(매장)입력 대기 중</div>
+				<div class="reserveTable">(시술 일시)입력 대기 중</div>
+				<div class="reserveTable">(디자이너)입력 대기 중</div>
+				<div class="reserveTable">(시술)입력 대기 중</div>
+				<div></div>
+				<div class="reserveTablehead" style="float: left;">결제 금액　　</div>
+				<div class="reserveTable" style="float: right;">(금액)입력 대기 중</div>
+			</div>
+			
+			<div style="width: 100%; margin: 0 auto;">
+				<hr style="border: 1 solid black; margin-top: 10px;" />
+			</div>
+			
+			<!-- 최하단 구분 -->
+			<div style="width: 100%; height: 550px; margin-top: 50px;">
+			</div>
+			
+		</div>
+	</div>
+	</section><!-- End Reserve Section -->
+	
+	<!-- footer 삽입 -->
+	<jsp:include page="/WEB-INF/views/client/main/footer.jsp"></jsp:include>
 </body>
 
 </html>
