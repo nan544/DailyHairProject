@@ -4,9 +4,8 @@
 <html>
 
 <head>
-<head>
 <meta charset="UTF-8">
-<title>header</title>
+<title>ReserveLoginCheck</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -46,55 +45,62 @@
 	<script src="/resources/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
 
 	<!-- Template Main JS File -->
-	<script type="text/javascript" src="/resources/assets/js/main.js"></script>
+	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
+	
+	<style type="text/css">
+		.reserveTable { display: inline; padding: 10px;}
+		.reserveTablehead { display: inline; padding: 10px; font: 15pt bold; color: #670000;}
+	</style>
 </head>
 
 <body>
-	<!-- ======= Top Bar ======= -->
-	<section id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
-	<div class="container text-right">
-		<i class="icofont-phone"></i> 문의 전화 02 001 0001 ~ 2
-		<i class="icofont-clock-time icofont-rotate-180"></i> 영업시간 10:00 AM - 19:00 PM
-	</div>
-	</section>
+	<!-- header 삽입 -->
+	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
 	
-	
-	<!-- ======= Header ======= -->
-	<header id="header" class="fixed-top d-flex align-items-center">
-		<!-- ======= MenuBar ======= -->
-		<div class="container d-flex align-items-center">
-			<div class="logo mr-auto" style="padding-right: 40px">
-				<h1 class="text-light"><a href="#"><span>DailyHairShop</span></a></h1>
-				<!-- Uncomment below if you prefer to use an image logo -->
-				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+	<!-- ======= Reserve Section ======= -->
+	<section id="about" class="about">
+	<div class="container-fluid" >
+		<div class="row">
+			<!-- 최상단 구분 -->
+			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
 			</div>
 			
-			<nav class="nav-menu d-none d-lg-block">
-				<ul>
-					<li><a href="#">Shop소개</a></li>
-					<li><a href="#">예약하기</a></li>
-					<li class="drop-down"><a href="#">고객센터</a>
-						<ul>
-							<li><a href="#">문의하기</a></li>
-							<li><a href="#">자주하는 질문</a></li>
-						</ul>
-					</li>
-					<li class="drop-down"><a href="#">Gallery</a>
-						<ul>
-							<li><a href="#">HairStyle</a></li>
-							<li><a href="#">HairGoods</a></li>
-						</ul>
-					</li>
-					<!-- 마우스 올리면 노란색이 아닌, 처음부터 노란색이 되는 클래스 지정 -->
-					<!-- <li class="active"><a href="#">로그인</a></li>
-					<li class="active"><a href="#">회원가입</a></li> -->
-					<!-- 둥근 노란색 테두리 메뉴 바 생성 클래스 지정 -->
-					<li class="book-a-table text-center"><a href="#">로그인</a></li>
-					<li class="book-a-table text-center"><a href="#">회원가입</a></li>
-				</ul>
-			</nav>
-		</div><!-- End MenuBar -->
-	</header><!-- End Header -->
+			<!-- 상단 -->
+			<div style="margin: 0 auto; text-align: center; width: 100%;">
+				<h1 style="margin-bottom: 10px;">예약하기</h1>
+				<p style="margin-bottom: 10px;">로그인 정보 확인중...</p>
+			</div>
+			
+			<div style="width: 100%; margin: 0 auto;">
+				<hr style="border: 1 solid black; margin-bottom: 10px;" />
+			</div>
+			
+			<!-- 예약 정보 -->
+			<div style="margin: 0 auto;">
+				<div class="reserveTablehead">예약 정보　　</div>
+				<div class="reserveTable">(매장)입력 대기 중</div>
+				<div class="reserveTable">(시술 일시)입력 대기 중</div>
+				<div class="reserveTable">(디자이너)입력 대기 중</div>
+				<div class="reserveTable">(시술)입력 대기 중</div>
+				<div></div>
+				<div class="reserveTablehead" style="float: left;">결제 금액　　</div>
+				<div class="reserveTable" style="float: right;">(금액)입력 대기 중</div>
+			</div>
+			
+			<div style="width: 100%; margin: 0 auto;">
+				<hr style="border: 1 solid black; margin-top: 10px;" />
+			</div>
+			
+			<!-- 최하단 구분 -->
+			<div style="width: 100%; height: 550px; margin-top: 50px;">
+			</div>
+			
+		</div>
+	</div>
+	</section><!-- End Reserve Section -->
+	
+	<!-- footer 삽입 -->
+	<jsp:include page="/WEB-INF/views/client/main/footer.jsp"></jsp:include>
 </body>
 
 </html>

@@ -56,12 +56,10 @@
 		<div>
 			<a href="#">이용약관</a> | 
 			<a href="#">개인정보 제공 동의 약관</a> | 
-			<a href="#">자주하는 질문</a>
-		</div>
-		<!-- <div>
+			<a href="#">자주하는 질문</a> | 
 			<i class="icofont-phone"></i> 문의 전화 02 001 0001(0002)
 			<i class="icofont-clock-time icofont-rotate-180"></i> 영업시간 10:00 AM - 19:00 PM
-		</div> -->
+		</div>
 		
 		<div>　</div>
 		<div>
@@ -71,8 +69,9 @@
 		<div>　</div>
 		<div class="copyright">
 		(주) DailyHairShop　|　 대표 김국영　|　사업자 등록번호 001 - 01 - 00001　|　본점 위치 서울특별시 성동구 무학로 2길 소혜빌딩 17층, 18층 (매장, 사무실)
-		&copy; Copyright <strong><span>DailyHairShop</span></strong>. All Rights Reserved　|　
-		Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>　|　
+		</div>
+		<div class="copyright">
+		&copy; Copyright <strong><span>DailyHairShop</span></strong>. All Rights Reserved　|　Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>　|　
 		<a href="/admin/adminLogin.do">□</a>
 		</div>
 		
