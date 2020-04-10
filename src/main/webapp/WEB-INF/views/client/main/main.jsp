@@ -5,7 +5,8 @@
 
 <head>
 <meta charset="UTF-8">
-<title>DailyHairShop MainPage</title>
+<title>DailyHairShop</title>
+
 </head>
 
 <body>

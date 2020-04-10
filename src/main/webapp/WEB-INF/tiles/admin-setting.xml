@@ -23,22 +23,11 @@
 	<definition name="admin/designer/*" extends="basic">
 		<put-attribute name="main"
 			value="/WEB-INF/views/admin/designer/{1}.jsp" />
-	</definition>
+			
+		<definition name="admin/faq/*" extends="basic">
+			<put-attribute name="main"
+				value="/WEB-INF/views/admin/faq/{1}.jsp" />
+		</definition>
 
-	<!-- <definition name="empty"
-		template="/WEB-INF/views/admin/designer/pop/designerJoin_pop.jsp">
-	</definition>
-
-	<definition name="admin/designer/pop/*" extends="empty">
-		<put-attribute name="main"
-			value="/WEB-INF/views/admin/designer/pop/{1}.jsp" />
-	</definition> -->
-
-
-	<!-- <definition name="admin/board/*" extends="basic"> <put-attribute name="main" 
-		value="/WEB-INF/views/admin/board/{1}.jsp" /> </definition> -->
-
-	<!-- <definition name="admin/member/*" extends="basic"> <put-attribute name="main" 
-		value="/WEB-INF/views/admin/member/{1}.jsp" /> </definition> -->
 
 </tiles-definitions>

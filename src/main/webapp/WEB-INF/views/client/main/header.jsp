@@ -51,12 +51,12 @@
 
 <body>
 	<!-- ======= Top Bar ======= -->
-	<section id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+	<!-- <section id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
 	<div class="container text-right">
 		<i class="icofont-phone"></i> 문의 전화 02 001 0001 ~ 2
 		<i class="icofont-clock-time icofont-rotate-180"></i> 영업시간 10:00 AM - 19:00 PM
 	</div>
-	</section>
+	</section> -->
 	
 	
 	<!-- ======= Header ======= -->
@@ -64,25 +64,26 @@
 		<!-- ======= MenuBar ======= -->
 		<div class="container d-flex align-items-center">
 			<div class="logo mr-auto" style="padding-right: 40px">
-				<h1 class="text-light"><a href="#"><span>DailyHairShop</span></a></h1>
+				<h1 class="text-light"><a href="/client/main.do"><span>DailyHairShop</span></a></h1>
 				<!-- Uncomment below if you prefer to use an image logo -->
 				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 			</div>
 			
-			<nav class="nav-menu d-none d-lg-block">
+			<nav class="nav-menu d-none d-lg-block" name="pageChange">
 				<ul>
-					<li><a href="#">Shop소개</a></li>
-					<li><a href="#">예약하기</a></li>
+					<li class="active"><a href="/client/main.do">Main</a></li>
+					<li><a href="/client/shopIntro.do">Shop소개</a></li>
+					<li><a href="/client/reservePage.do">예약하기</a></li>
 					<li class="drop-down"><a href="#">고객센터</a>
 						<ul>
 							<li><a href="#">문의하기</a></li>
 							<li><a href="#">자주하는 질문</a></li>
 						</ul>
 					</li>
-					<li class="drop-down"><a href="#">Gallery</a>
+					<li class="drop-down"><a href="/client/hairStyle.do">Gallery</a>
 						<ul>
-							<li><a href="#">HairStyle</a></li>
-							<li><a href="#">HairGoods</a></li>
+							<li><a href="/client/hairStyle.do">HairStyle</a></li>
+							<li><a href="/client/hairGoods.do">HairGoods</a></li>
 						</ul>
 					</li>
 					<!-- 마우스 올리면 노란색이 아닌, 처음부터 노란색이 되는 클래스 지정 -->

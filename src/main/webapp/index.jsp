@@ -2,11 +2,15 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
-<title>실험</title>
+<title>DailyHairShop MainPage</title>
 </head>
+
 <body>
-	<a href="/admin/adminLoginForm.do">관리자로그인</a>
+	<div id="wrap">
+		<jsp:include page="/WEB-INF/views/client/main/main.jsp"/>
+	</div>
 </body>
 </html>
