@@ -32,20 +32,20 @@ public class AdminFaqServiceImpl implements AdminFaqService {
 
 	@Override
 	public int faqDelete(int faqNum) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = FaqDao.faqDelete(faqNum);
+		return result;
 	}
 
 	@Override
 	public int faqInsert(FaqVO fvo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result= FaqDao.faqInsert(fvo);
+		return result;
 	}
 
 	@Override
-	public int faqUpdate(int faqNum) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int faqUpdate(FaqVO fvo) {
+		int updatedata=FaqDao.faqUpdate(fvo);
+		return updatedata;
 	}
 
 

@@ -9,5 +9,5 @@ public interface AdminFaqService {
 	public FaqVO faqDetail(FaqVO fvo); //상세보기
 	public int faqDelete(int faqNum);//게시글삭제
 	public int faqInsert(FaqVO fvo);//게시글작성
-	public int faqUpdate(int faqNum);//게시글수정
+	public int faqUpdate(FaqVO fvo);//게시글수정
 }

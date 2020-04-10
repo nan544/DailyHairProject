@@ -21,25 +21,22 @@ public class AdminFaqDaoImpl implements AdminFaqDao {
 
 	@Override
 	public FaqVO faqDetail(FaqVO fvo) {
-		return session.selectOne("faqDetail");
+		return (FaqVO)session.selectOne("faqDetail", fvo);
 	}
 
 	@Override
 	public int faqDelete(int faqNum) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.delete("faqDelete", faqNum);
 	}
 
 	@Override
 	public int faqInsert(FaqVO fvo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.insert("faqInsert", fvo);
 	}
 
 	@Override
-	public int faqUpdate(int faqNum) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int faqUpdate(FaqVO fvo) {
+		return session.update("faqUpdate", fvo);
 	}
 
 }
