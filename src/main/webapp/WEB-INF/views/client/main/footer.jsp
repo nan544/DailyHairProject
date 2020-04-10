@@ -72,7 +72,7 @@
 		</div>
 		<div class="copyright">
 		&copy; Copyright <strong><span>DailyHairShop</span></strong>. All Rights Reserved　|　Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>　|　
-		<a href="/admin/adminLogin.do">□</a>
+		<a href="/admin/adminLoginForm.do">□</a>
 		</div>
 		
 		<!-- <div class="credits">
