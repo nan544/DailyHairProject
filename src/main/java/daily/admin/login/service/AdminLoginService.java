@@ -1,7 +1,8 @@
 package daily.admin.login.service;
 
+import daily.admin.login.vo.AdminLoginVO;
 
 public interface AdminLoginService {
-	public int adminLogin(String ad_id, String ad_pwd);
+	public AdminLoginVO adminLogin(AdminLoginVO lvo);
 	
 }

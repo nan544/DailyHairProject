@@ -5,8 +5,8 @@
 <mapper namespace="daily.admin.login.dao.AdminLoginDao">
 
 	<!-- 로그인처리 -->
-	<select id="adminLogin" parameterType="adminlogin" resultType="int">
-		SELECT 1
+	<select id="adminLogin" parameterType="adminlogin" resultType="adminlogin">
+		SELECT *
 		FROM admin
 		WHERE ad_id = #{ad_id} and ad_pwd = #{ad_pwd}
 	</select>

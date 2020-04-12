@@ -4,7 +4,7 @@ public class FaqVO {
 	private int faq_num;
 	private String faq_question;
 	private String faq_answer;
-	
+
 	
 	public int getFaq_num() {
 		return faq_num;

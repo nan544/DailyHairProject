@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -67,14 +68,23 @@ public class DesignerController {
 	
 	//디자이너 정보 수정폼			
 	@RequestMapping(value = "/designer/designerUpdateForm.do",method = RequestMethod.GET)
-	public ModelAndView designerUpdateForm(@ModelAttribute DesignerVO dvo) {
-		log.info("designerupdateForm 호출 성공");
+	public ModelAndView designerUpdateForm(@ModelAttribute DesignerVO dvo){
+		log.info("designerupdateForm 호출 성공"+ dvo.getDes_num() );
 		
 		ModelAndView mav = new ModelAndView();
 		
+		
 		DesignerVO updateDesigner = new DesignerVO();
 		updateDesigner = designerService.designerDetail(dvo.getDes_num());
+		if(updateDesigner != null) {
+			mav.addObject("des",updateDesigner);
+			mav.setViewName("admin/designer/pop/designerModify_pop");
+			return mav;
+		}else {
+			mav.addObject("msg","에러에염");
+			mav.setViewName("admin/designer/designerList");
+			return mav;
+		}
 		
-		return mav;
 	}
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import daily.admin.designer.vo.DesignerVO;
 import daily.admin.login.dao.AdminLoginDao;
 import daily.admin.login.vo.AdminLoginVO;
 
@@ -15,13 +16,8 @@ public class AdminLoginServiceImpl implements AdminLoginService {
 	private AdminLoginDao loginDao;
 	
 	@Override
-	public int adminLogin(String ad_id, String ad_pwd) {
-		AdminLoginVO vo = new AdminLoginVO();
-		vo.setAd_id(ad_id);
-		vo.setAd_pwd(ad_pwd);
-		int result = loginDao.adminLogin(vo);
-		
-		return result;
+	public AdminLoginVO adminLogin(AdminLoginVO lvo) {
+		return loginDao.adminLogin(lvo);
 	}
 
 }

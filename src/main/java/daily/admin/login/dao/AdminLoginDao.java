@@ -4,5 +4,5 @@ import daily.admin.login.vo.AdminLoginVO;
 
 public interface AdminLoginDao {
 	
-	public int adminLogin(AdminLoginVO lvo);
+	public AdminLoginVO adminLogin(AdminLoginVO lvo);
 }

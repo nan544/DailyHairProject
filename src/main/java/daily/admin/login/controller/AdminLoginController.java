@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import daily.admin.designer.vo.DesignerVO;
 import daily.admin.login.service.AdminLoginService;
 import daily.admin.login.vo.AdminLoginVO;
 
@@ -38,13 +39,19 @@ public class AdminLoginController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		int result = loginService.adminLogin(lvo.getAd_id(),lvo.getAd_pwd());
-		if(result == 1) {
+		AdminLoginVO vo = loginService.adminLogin(lvo);
+		
+		if(vo != null) {
 			session.setAttribute("login", "관리자");
 			mav.setViewName("admin/main/adminMainpage");
+			return mav;
+		}else{
+			mav.addObject("msg","로그인에 실패하였습니다");
+			mav.setViewName("admin/login/adminLoginForm");
+			return mav;
 		}
 		
-		return mav;
+		
 	}
 	
 	//로그아웃 처리 메소드
@@ -56,7 +63,7 @@ public class AdminLoginController {
 		session.removeAttribute("login");
 		session.invalidate();
 		
-		return "redirect:/admin/adminLoginForm.do";
+		return "redirect:/";
 	}
 	
 	//메인화면으로

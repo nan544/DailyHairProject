@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import daily.admin.designer.vo.DesignerVO;
 import daily.admin.login.vo.AdminLoginVO;
 
 @Repository
@@ -15,8 +16,8 @@ public class AdminLoginDaoImpl implements AdminLoginDao {
 	
 	
 	@Override
-	public int adminLogin(AdminLoginVO lvo) {
-		return session.selectOne("adminLogin",lvo);
+	public AdminLoginVO adminLogin(AdminLoginVO lvo) {
+		return (AdminLoginVO)session.selectOne("adminLogin",lvo);
 	}
 
 }

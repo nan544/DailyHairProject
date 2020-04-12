@@ -18,11 +18,11 @@
 		});
 		
 		//수정버튼을 클릭시 디자이너 수정폼을 띄운다
-		$("#modify").click(function(){
+		$(".modify").click(function(){
 			var des_num = $(this).parents("tr").attr("data-num");
 			$("#des_num").val(des_num);
 			alert(des_num);
-			window.open("designerUpdateForm.do","pop","width=800, height=700, left=600, top=100");
+			window.open("designerUpdateForm.do?des_num="+des_num,"pop","width=800, height=700, left=600, top=100");
 		});
 	});
 </script>
@@ -71,7 +71,7 @@
 								<td>${des.des_name}</td>
 								<td>${des.des_phone}</td>
 								<td>${des.des_file}</td>
-								<td><input type="button" id="modify" name="modify" value="수정"/></td>
+								<td><input type="button" id="modify" name="modify" class="modify" value="수정"/></td>
 							</tr>
 						</c:forEach>
 					</c:when>
