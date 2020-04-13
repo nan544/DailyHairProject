@@ -11,6 +11,14 @@
 		ORDER BY des_num desc
 	</select>
 	
+	<select id="designerAjaxList" resultType="designer" parameterType="designer">
+		SELECT to_char(des_regdate,'YYYY-MM-DD')as des_regdate, des_job,
+		des_name, des_phone, des_file, des_num , des_state
+		FROM designer
+		WHERE des_state = #{des_state}
+		ORDER BY des_num desc
+	</select>
+	
 	<select id="designerDetail" parameterType="int" resultType="designer">
 		SELECT * 
 		FROM designer

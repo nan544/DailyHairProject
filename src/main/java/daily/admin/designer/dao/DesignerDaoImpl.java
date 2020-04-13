@@ -45,4 +45,9 @@ public class DesignerDaoImpl implements DesignerDao {
 		return session.update("openDesigner",des_num);
 	}
 
+	@Override
+	public List<DesignerVO> designerAjaxList(int des_state) {
+		return session.selectList("designerAjaxList", des_state);
+	}
+
 }

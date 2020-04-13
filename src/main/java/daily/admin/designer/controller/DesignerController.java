@@ -37,7 +37,17 @@ public class DesignerController {
 		mav.addObject("designerList", desList);
 		mav.setViewName("admin/designer/designerList");
 		return mav;
-
+	}
+	
+	//디자이너 리스트 출력(선택시 변경)
+	@RequestMapping(value = "/designer/desAjaxList.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<DesignerVO> designerAjaxList(int des_state){
+		
+		log.info("designerAjaxList 호출완료");
+		System.out.println(designerService.designerAjaxList(des_state));
+		return designerService.designerAjaxList(des_state);
+		
 	}
 
 	// 디자이너 등록폼

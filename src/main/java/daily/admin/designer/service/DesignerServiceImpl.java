@@ -46,4 +46,9 @@ public class DesignerServiceImpl implements DesignerService {
 		return designerdao.openDesigner(des_num);
 	}
 
+	@Override
+	public List<DesignerVO> designerAjaxList(int des_state) {
+		return designerdao.designerAjaxList(des_state);
+	}
+
 }

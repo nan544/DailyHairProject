@@ -17,4 +17,6 @@ public interface DesignerService {
 	public int deleteDesigner(int des_num);
 	
 	public int openDesigner(int des_num);
+	
+	public List<DesignerVO> designerAjaxList(int des_state);
 }
