@@ -40,4 +40,9 @@ public class DesignerDaoImpl implements DesignerDao {
 		return session.update("deleteDesigner",des_num);
 	}
 
+	@Override
+	public int openDesigner(int des_num) {
+		return session.update("openDesigner",des_num);
+	}
+
 }

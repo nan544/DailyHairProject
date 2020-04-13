@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daily.admin.style.dao.styleDao">
+
+
+	<select id="stylingList" parameterType="styling" resultType="styling">
+		SELECT *
+		FROM styling 
+		WHERE des_num = #{des_num}
+		<!-- SELECT a.styling_num as styling_num, 
+		FROM styling a inner join designer b
+		on a.des_num = b.des_num
+		where a.des_num = #{des_num} -->
+	</select>
+
+	 <insert id="insertStyling" parameterType="styling">
+	 <selectKey keyProperty="styling_num" resultType="int" order="BEFORE">
+	 	select styling_seq.nextval from dual
+	 </selectKey>
+		INSERT INTO styling(styling_num,des_num,styling_name,styling_price,styling_option)
+		VALUES(#{styling_num}, #{des_num}, #{styling_name},#{styling_price},#{styling_option})
+	</insert>
+	
+<!-- 
+	<update id="updateSomething" parameterType="styling">
+		UPDATE tablename1
+		SET
+		columnname1=#{param1}
+		WHERE
+		columnname2 = #{param2}
+	</update>
+
+	<delete id="deleteSomething" parameterType="int">
+		DELETE FROM tablename1 WHERE
+		columnname1 = #{param1}
+	</delete> -->
+
+</mapper>

@@ -273,7 +273,7 @@
                     });
                     
                     
-                    blocktitle.css(option.titlePosition, '-1px',);
+                    blocktitle.css(option.titlePosition, '-1px');
 
                     blocktitle.css({
                       'color' : option.titleColor,

@@ -16,4 +16,6 @@ public interface DesignerDao {
 
 	public int deleteDesigner(int des_num);
 
+	public int openDesigner(int des_num);
+
 }

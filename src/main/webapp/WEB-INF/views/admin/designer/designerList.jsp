@@ -24,6 +24,11 @@
 			alert(des_num);
 			window.open("designerUpdateForm.do?des_num="+des_num,"pop","width=800, height=700, left=600, top=100");
 		});
+		
+		//시술등록 버튼을 클릭시 시술등록 폼을 띄운다
+		$("#insertStyle").click(function(){
+			window.open("/admin/style/styleSetting.do","pop","width=800, height=700, left=600, top=100");
+		});
 	});
 </script>
 </head>
@@ -43,12 +48,13 @@
 			</form>
 			<table summary="디자이너 리스트">
 				<colgroup>
-					<col width="25%">
-					<col width="10%">
-					<col width="10%">
-					<col width="25%">
 					<col width="20%">
 					<col width="10%">
+					<col width="10%">
+					<col width="20%">
+					<col width="15%">
+					<col width="20%">
+					<col width="5%">
 				</colgroup>
 				<thead>
 					<tr>
@@ -56,6 +62,7 @@
 						<td align="center"><strong>직급</strong></td>
 						<td align="center"><strong>이름</strong></td>
 						<td align="center"><strong>연락처</strong></td>
+						<td align="center"><strong>디자이너상태</strong>
 						<td align="center"><strong>이력서(첨부파일)</strong></td>
 						<td align="center"></td>
 					</tr>
@@ -70,6 +77,12 @@
 								<td>${des.des_job}</td>
 								<td>${des.des_name}</td>
 								<td>${des.des_phone}</td>
+								<c:if test="${des.des_state == 0}">
+									<td>비활성화</td>
+								</c:if>
+								<c:if test="${des.des_state == 1}">
+									<td>활성화</td>
+								</c:if>
 								<td>${des.des_file}</td>
 								<td><input type="button" id="modify" name="modify" class="modify" value="수정"/></td>
 							</tr>

@@ -1,8 +1,6 @@
 package daily.admin.designer.vo;
 
-import java.util.Date;
 
-import org.springframework.web.multipart.MultipartFile;
 
 public class DesignerVO {
 
@@ -18,6 +16,7 @@ public class DesignerVO {
 	private String des_name;
 	private String des_job;
 	private String des_phone;
+	private String des_gender;
 	private String des_holyday;
 	private String des_regdate;
 	private String des_file;
@@ -25,6 +24,15 @@ public class DesignerVO {
 	private String des_memo;
 
 	
+	
+	public String getDes_gender() {
+		return des_gender;
+	}
+
+	public void setDes_gender(String des_gender) {
+		this.des_gender = des_gender;
+	}
+
 	public String getDes_memo() {
 		return des_memo;
 	}

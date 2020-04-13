@@ -41,4 +41,9 @@ public class DesignerServiceImpl implements DesignerService {
 		return designerdao.deleteDesigner(des_num);
 	}
 
+	@Override
+	public int openDesigner(int des_num) {
+		return designerdao.openDesigner(des_num);
+	}
+
 }
