@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import daily.admin.designer.dao.DesignerDao;
 import daily.admin.designer.vo.DesignerVO;
 
-@Service
+@Service("designerService")
 @Transactional
 public class DesignerServiceImpl implements DesignerService {
 	

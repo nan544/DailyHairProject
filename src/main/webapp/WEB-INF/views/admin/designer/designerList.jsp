@@ -46,11 +46,11 @@
 										+ '<td>' + data[i].des_phone + '</td>'
 										+ '<td class='+'holyshit'+'>'
 										+ data[i].des_state + '</td>'
-										+ '<td>' + data[i].des_file + '</td>'
+										+ '<td class='+'dam'+'>' + data[i].des_file + '</td>'
 										+ '<td>'+'<input type='+'button id='+'modify name='+'modify class='+'modify value='+'수정'+'>'+'</td>'
 										+'</tr>'
-										
 							} 	
+							
 							$(".deslist").append(html);
 							
 							if ($(".holyshit").html() == 1) {
@@ -58,6 +58,7 @@
 							} else {
 								$(".holyshit").html("비활성화");
 							}
+							
 						}
 					});
 				});
@@ -66,7 +67,7 @@
 		$("#insertStyle").click(
 				function() {
 					window.open("/admin/style/styleSetting.do", "pop",
-							"width=800, height=700, left=600, top=100");
+							"width=900, height=700, left=600, top=100");
 				});
 		
 	/* 	//수정버튼을 클릭시 디자이너 수정폼을 띄운다

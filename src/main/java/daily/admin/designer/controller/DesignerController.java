@@ -45,7 +45,6 @@ public class DesignerController {
 	public List<DesignerVO> designerAjaxList(int des_state){
 		
 		log.info("designerAjaxList 호출완료");
-		System.out.println(designerService.designerAjaxList(des_state));
 		return designerService.designerAjaxList(des_state);
 		
 	}

@@ -4,19 +4,22 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import daily.admin.designer.vo.DesignerVO;
 import daily.admin.style.dao.StyleDao;
 import daily.admin.style.vo.StyleVO;
 
 @Service
+@Transactional
 public class StyleServiceImpl implements StyleService {
 	
 	@Autowired
 	StyleDao styledao;
 	
 	@Override
-	public List<StyleVO> stylingList(int des_num) {
-		return styledao.stylingList(des_num);
+	public List<StyleVO> stylingList() {
+		return styledao.stylingList();
 	}
 
 	@Override
@@ -31,7 +34,13 @@ public class StyleServiceImpl implements StyleService {
 
 	@Override
 	public int insertStyling(StyleVO svo) {
-		return 0;
+		return styledao.insertStyling(svo);
 	}
+
+	@Override
+	public List<StyleVO> stylingAjaxList(int des_num) {
+		return styledao.stylingAjaxList(des_num);
+	}
+
 
 }

@@ -8,7 +8,16 @@ public class StyleVO {
 	private int styling_option;
 	private String styling_regdate;
 	
+	private String des_name;
 	
+	
+	
+	public String getDes_name() {
+		return des_name;
+	}
+	public void setDes_name(String des_name) {
+		this.des_name = des_name;
+	}
 	public int getStyling_num() {
 		return styling_num;
 	}
