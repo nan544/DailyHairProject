@@ -48,9 +48,20 @@
 	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
 	
 	<style type="text/css">
-		.reserveTable { display: inline; padding: 10px;}
+		.reserveTable { display: inline; padding: 10px; font-size: 12px;}
 		.reserveTablehead { display: inline; padding: 10px; font: 15pt bold; color: #670000;}
 	</style>
+	
+	<!-- 로그인 세션 확인 후 알람 -->
+	
+	<!-- 자동으로 매장 선택 페이지로 이동 -->
+	<script type="text/javascript">
+	setTimeout(function(){
+		alert("매장 선택 화면으로 이동합니다.");
+		location.replace("/reserve/reserveSelectPlace.do");
+	}, 500);
+	</script>
+	
 </head>
 
 <body>

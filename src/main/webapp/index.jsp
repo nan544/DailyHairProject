@@ -10,7 +10,7 @@
 
 <body>
 	<div id="wrap">
-		<jsp:include page="/WEB-INF/views/client/main/main.jsp"/>
+		<jsp:include page="/client/main.do"/>
 	</div>
 </body>
 </html>
