@@ -10,8 +10,9 @@ span {
 	color: red;
 }
 </style>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/designer.js"></script>
+<script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
 	$(function() {
 
@@ -21,19 +22,18 @@ span {
 		});
 
 		//등록하기버튼 클릭시 실행
-		$("#insertBtn").click(
-				function() {
-					//입력값 체크하기
-					//추가예정
-
-					$.ajax({
+		$("#insertBtn").click(function() {
+			//유효성 검사 후 등록하기 실행.
+			insertDes();
+				
+				/* 	$.ajax({
 						url : "/admin/designer/designerJoin.do",
 						type : "post",
 						data : "des_name=" + $("#des_name").val() + "&des_job="
 								+ $("#des_job").val() + "&des_phone="
 								+ $("#des_phone").val() + "&des_holyday="
 								+ $("#des_holyday").val() + "&des_gender="
-								+ $("input[name='des_gender']:checked")
+								+ $("input[name='des_gender']:checked").val()
 								+ "&des_memo=" + $("#des_memo").val()
 								+ "&des_file=" + $("#des_file").val(),
 						success : function(data) {
@@ -46,11 +46,9 @@ span {
 								loaction.reload(true);
 							}
 						}
-					});
-
-					/* 	$("#insertForm").attr("method","post");
-					$("#insertForm").attr("action","/admin/designer/designerJoin.do");
-					$("#insertForm").submit(); */
+						
+					}); */
+			
 				});
 	});
 </script>
@@ -72,7 +70,7 @@ span {
 				<tr>
 					<td><span>*&nbsp;</span>직급</td>
 					<td><select name="des_job" id="des_job">
-							<option>직급 선택</option>
+							<option value="">직급 선택</option>
 							<option value="원장">원 장</option>
 							<option value="실장">실 장</option>
 							<option value="디자이너">디자이너</option>
@@ -85,13 +83,21 @@ span {
 				</tr>
 				<tr>
 					<td><span>*&nbsp;</span>휴무일</td>
-					<td><input type="text" name="des_holyday" id="des_holyday"
-						placeholder="월요일" size="15" maxlength="3" /></td>
+					<td><select name="des_holyday" id="des_holyday">
+							<option value="">선택하세요</option>
+							<option value="월요일">월요일</option>
+							<option value="화요일">화요일</option>
+							<option value="수요일">수요일</option>
+							<option value="목요일">목요일</option>
+							<option value="금요일">금요일</option>
+							<option value="토요일">토요일</option>
+							<option value="일요일">일요일</option>
+						</select></td>
 				</tr>
 				<tr>
 					<td><span>*&nbsp;</span>성별</td>
 					<td><label for="des_gender1">남성</label><input type="radio"
-						name="des_gender" id="des_gender1" value="남성" /> <label
+						name="des_gender" id="des_gender1" value="남성" checked="checked"/> <label
 						for="des_gender2">여성</label><input type="radio" name="des_gender"
 						id="des_gender2" value="여성" /></td>
 				</tr>
