@@ -161,7 +161,7 @@
 
   $('.back-to-top').click(function() {
     $('html, body').animate({
-      scrollTop: 100
+      scrollTop: 0
     }, 1500, 'easeInOutExpo');
     return false;
   });

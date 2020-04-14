@@ -46,6 +46,17 @@
 
 	<!-- Template Main JS File -->
 	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
+	
+	<!-- 코로나 예방 팝업 -->
+	<script type="text/javascript">
+		function corona() {
+			var url = "/client/corona.do";
+			var name = "코로나 19 예방";
+			var option = "width=500px, height=800px, toolbars=no, scrollbars=no";
+			
+			window.open(url, name, option);
+		}
+	</script>
 </head>
 
 <body>
@@ -60,7 +71,8 @@
 		<div class="carousel-inner" role="listbox">
 		
 			<!-- Slide 1 -->
-			<div class="carousel-item active" style="background: url(/resources/assets/img/slide/ShopImage_002.jpg);">
+			<!-- <div class="carousel-item active" style="background: url(/resources/assets/img/slide/ShopImage_002.jpg);"> -->
+			<div class="carousel-item active" style="background: url(/resources/assets/img/slide/kimsoGIF19.gif);">
 				<div class="carousel-container">
 					<div class="carousel-content">
 						<h2 class="animated fadeInDown"><span>DailyHair</span>Shop</h2>
@@ -113,7 +125,7 @@
 						<p class="animated fadeInUp"></p>
 						<!-- 사진 가운데 링크걸려있는 둥근 노란 테두리 버튼 -->
 						<div>
-							<a href="#" class="btn-menu animated fadeIn">예방 수칙 보기</a>
+							<a href="javascript:corona()" class="btn-menu animated fadeIn">예방 수칙 보기</a>
 							<!-- <a href="#" class="btn-book animated fadeIn">입력</a> -->
 						</div>
 					</div>

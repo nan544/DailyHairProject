@@ -43,4 +43,21 @@ public class ClientMainController {
 		return "client/gallery/hairGoods";
 	}
 	
+	// 부가 서비스 - 코로나 예방정책으로 이동
+	@RequestMapping(value = "/corona.do")
+	public String clientCorona() {
+		return "client/main/corona";
+	}
+	
+	// 부가 서비스 - 코로나 예방정책으로 이동
+	@RequestMapping(value = "/clause1.do")
+	public String clientClause1() {
+		return "client/main/clause1";
+	}
+	
+	// 부가 서비스 - 코로나 예방정책으로 이동
+	@RequestMapping(value = "/clause2.do")
+	public String clientClause2() {
+		return "client/main/clause2";
+	}
 }
