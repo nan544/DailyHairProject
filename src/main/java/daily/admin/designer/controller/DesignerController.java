@@ -82,6 +82,7 @@ public class DesignerController {
 
 		DesignerVO updateDesigner = new DesignerVO();
 		updateDesigner = designerService.designerDetail(dvo.getDes_num());
+		
 		if (updateDesigner != null) {
 			mav.addObject("des", updateDesigner);
 			mav.setViewName("admin/designer/pop/designerModify_pop");

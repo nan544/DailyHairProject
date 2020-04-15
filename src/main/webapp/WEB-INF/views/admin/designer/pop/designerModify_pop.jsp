@@ -167,7 +167,7 @@ span {
 	<input type="button" name="openBtn" id="openBtn" value="활성화" /> <input
 			type="button" name="deleteBtn" id="deleteBtn" value="비활성화" />
 	<hr>
-	<form name="modifyForm" id="modifyForm">
+	<form name="modifyForm" id="modifyForm" enctype="multipart/form-data">
 		<input type="hidden" name="des_num" id="des_num"
 			value="${des.des_num}" />
 		<table>

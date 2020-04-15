@@ -99,7 +99,7 @@
 				<option value="1">활성화</option>
 				<option value="0">비활성화</option>
 			</select> <input type="button" id="insertStyle" name="intsetStyle"
-				value="시술등록" />
+				value="시술 관리" />
 		</div>
 		<div class="desList">
 			<form name="detailForm" id="detailForm">

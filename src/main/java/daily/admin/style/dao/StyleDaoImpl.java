@@ -21,13 +21,13 @@ public class StyleDaoImpl implements StyleDao {
 	}
 
 	@Override
-	public int updateStyling(int styling_num) {
-		return 0;
+	public int updateStyling(StyleVO svo) {
+		return sqlsession.update("updateStyling",svo);
 	}
 
 	@Override
 	public int deleteStyling(int styling_num) {
-		return 0;
+		return sqlsession.delete("deleteStyling",styling_num);
 	}
 
 	@Override
@@ -38,6 +38,11 @@ public class StyleDaoImpl implements StyleDao {
 	@Override
 	public List<StyleVO> stylingAjaxList(int des_num) {
 		return sqlsession.selectList("stylingAjaxList",des_num);
+	}
+
+	@Override
+	public StyleVO detailStyling(StyleVO svo) {
+		return sqlsession.selectOne("detailStyling" , svo);
 	}
 
 

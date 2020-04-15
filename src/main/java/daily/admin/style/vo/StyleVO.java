@@ -5,7 +5,7 @@ public class StyleVO {
 	private int des_num;
 	private String styling_name;
 	private int styling_price;
-	private int styling_option;
+	private String styling_option;
 	private String styling_regdate;
 	
 	private String des_name;
@@ -42,10 +42,10 @@ public class StyleVO {
 	public void setStyling_price(int styling_price) {
 		this.styling_price = styling_price;
 	}
-	public int getStyling_option() {
+	public String getStyling_option() {
 		return styling_option;
 	}
-	public void setStyling_option(int styling_option) {
+	public void setStyling_option(String styling_option) {
 		this.styling_option = styling_option;
 	}
 	public String getStyling_regdate() {

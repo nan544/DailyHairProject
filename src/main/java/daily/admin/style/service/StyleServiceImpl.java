@@ -22,14 +22,10 @@ public class StyleServiceImpl implements StyleService {
 		return styledao.stylingList();
 	}
 
-	@Override
-	public int updateStyling(int styling_num) {
-		return 0;
-	}
 
 	@Override
 	public int deleteStyling(int styling_num) {
-		return 0;
+		return styledao.deleteStyling(styling_num);
 	}
 
 	@Override
@@ -40,6 +36,18 @@ public class StyleServiceImpl implements StyleService {
 	@Override
 	public List<StyleVO> stylingAjaxList(int des_num) {
 		return styledao.stylingAjaxList(des_num);
+	}
+
+
+	@Override
+	public int updateStyling(StyleVO svo) {
+		return styledao.updateStyling(svo);
+	}
+
+
+	@Override
+	public StyleVO detailStyling(StyleVO svo) {
+		return styledao.detailStyling(svo);
 	}
 
 

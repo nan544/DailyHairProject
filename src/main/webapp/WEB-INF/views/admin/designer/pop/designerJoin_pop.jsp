@@ -60,7 +60,7 @@ span {
 		<hr align="left" width="650">
 	</div>
 	<div class="joinContainer">
-		<form name="insertForm" id="insertForm">
+		<form name="insertForm" id="insertForm" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td><span>*&nbsp;</span>이름</td>

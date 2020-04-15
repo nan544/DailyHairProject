@@ -31,6 +31,12 @@ function numberChk(input) {
 } 
 
 	$(function() {
+		
+		//닫기 버튼 클릭시 닫기
+		$("#closeBtn").click(function(){
+			window.close();	
+		});
+		
 		//등록버튼 클릭시 실행
 		$("#insertBtn").click(function() {
 
@@ -41,7 +47,10 @@ function numberChk(input) {
 
 			if (!chkSubmit($("#styling_name"), "시술명을")) {
 				return;
-			} else if (!chkSubmit($("#styling_price"), "시술가격을")) {
+			}else if($(".num").val()== '#'){ 
+				alert("디자이너를 선택하세요");
+				return;
+			}else if (!chkSubmit($("#styling_price"), "시술가격을")) {
 				return;
 			} else if (!numberChk($("#styling_price"))) {
 				return;
@@ -66,7 +75,7 @@ function numberChk(input) {
 								alert("시술 등록에 실패하였습니다.");
 							}
 						}
-					});// ajax종료														"
+					});// ajax종료												
 				}
 			}
 		});
@@ -92,32 +101,58 @@ function numberChk(input) {
 							for(let i =0; i<data.length; i++){
 								html += '<tr class='+'tac data-num='+data[i].styling_num+'>'
 								+'<td>' + '* 시술 구분'+ '</td>'
-								+'<td> <select id="styling_option1" name="styling_option">'+'<option value='+data[i].styling_option+'>'+data[i].styling_option+'</option>'
-								+'<option value="1">'+'기본시술' +'</option>'
-								+'<option value="2">'+'펌 시술'+'</option>' + '<option value="3">'+'기타1시술'+'</option>'
-								+'<option value="4">'+ '기타2시술' +'</option>'+'</td>'
+								+'<td> <input type='+'"text"'+'name="styling_option" value='+data[i].styling_option+' readonly size="10">'+'</td>'
 								+'<td>' + '* 시술명' + '</td>'
-								+'<td> <input type='+'"text"'+'name="styling_name" id="styling_name" value='+  data[i].styling_name +'>'+'</td>'
+								+'<td> <input type='+'"text"'+'name="styling_name" id="styling_name1" value='+  data[i].styling_name +' readonly>'+'</td>'
 								+'<td>' + '* 시술가격' + '</td>'
-								+'<td> <input type='+'"text"'+'name="styling_price" id="styling_price" value='+  data[i].styling_price +'>'+'</td>'
-								+'<td> <input type='+'"button"'+'name="updateBtn" id="updateBtn" value="수정">'+'</td>'
-								+'<td> <input type='+'"button"'+'name="deleteBtn" id="deleteBtn" value="삭제">'+'</td>'
+								+'<td> <input type='+'"text"'+'name="styling_price" id="styling_price1" value='+  data[i].styling_price +' readonly>'+'</td>'
+								+'<td> <input type='+'"button"'+'name="updateBtn" id="updateBtn" value="수정" class="updateBtn">'+'</td>'
+								+'<td> <input type='+'"button"'+'name="deleteBtn" id="deleteBtn" value="삭제" class="deleteBtn">'+'</td>'
 								+'</tr>'
 								} 
 							}
-							
 							$(".ajax").append(html);
-							
-							
 							}
 						}); //ajax 끝
-						
-				}); 
+				});
+		
+		//수정버튼 클릭시 팝업창띄움
+		$(document).on("click",".updateBtn",function(event){
+			var styling_num = $(this).parents("tr").attr("data-num");
+			alert(styling_num);
+			window.open("/admin/style/styleUpdateForm.do?styling_num="+styling_num,
+					"pop1", "width=850, height=350, left=700, top=200");
+		});
+		
+		//삭제 버튼 클릭시 실행 deleteBtn
+			$(document).on("click",".deleteBtn",function(event){
+			var styling_num = $(this).parents("tr").attr("data-num");
+			alert(styling_num);
+			
+			$.ajax({
+				url : "/admin/style/deleteStyling.do",
+				type : "post",
+				data : {
+					"styling_num" : styling_num
+				},
+				success : function(data){
+					if (data == 1) {
+						if(confirm("삭제하시겠습니까?")){
+							alert("시술 삭제에 성공하였습니다.");
+							location.reload(true);
+						}
+					} else {
+						alert("시술 삭제에 실패하였습니다.");
+					}
+				}
+			}); // ajax종료
+		});
+		
 	});
 </script>
 </head>
 <body>
-	<h1 align="center">시술등록</h1>
+	<h1 align="center">시술 관리</h1>
 	<div class="insertContainer">
 		<form id="insertStyle" name="insertStyle">
 			<fieldset>
@@ -142,10 +177,10 @@ function numberChk(input) {
 					<tr>
 						<td><span>&nbsp;*</span>시술 구분</td>
 						<td><select id="styling_option" name="styling_option">
-								<option value="1">기본시술</option>
-								<option value="2">펌 시술</option>
-								<option value="3">기타 1시술</option>
-								<option value="4">기타 2시술</option>
+								<option value="기본시술">기본시술</option>
+								<option value="펌시술">펌 시술</option>
+								<option value="기타1시술">기타 1시술</option>
+								<option value="기타2시술">기타 2시술</option>
 						</select></td>
 						<td><span>&nbsp;*</span>시술명</td>
 						<td><input type="text" name="styling_name" id="styling_name" /></td>
@@ -175,6 +210,9 @@ function numberChk(input) {
 				</table>
 			</fieldset>
 		</form>
+	</div>
+	<div class="btnContainer">
+		<input type="button" name="closeBtn" id="closeBtn" value="닫기"/>
 	</div>
 </body>
 </html>
