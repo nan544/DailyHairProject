@@ -7,7 +7,7 @@
             <li><a href="#">회원 관리</a></li>
             <li><a href="#">예약 관리</a></li>
             <li><a href="/admin/adminFaqList.do">고객센터 관리</a></li>
-            <li><a href="#">갤러리 관리</a></li>
+            <li><a href="/admin/board/HairGoodsList.do">갤러리 관리</a></li>
             <li><a href="/admin/designer/designerList.do">매장 관리</a></li>
             <li><a href="#">통계</a></li>
           </ul>

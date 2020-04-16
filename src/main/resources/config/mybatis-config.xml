@@ -8,6 +8,7 @@
 		<typeAlias type="daily.admin.designer.vo.DesignerVO" alias="designer"></typeAlias>
 		<typeAlias type="daily.admin.faq.vo.FaqVO" alias="faq"></typeAlias>
 		<typeAlias type="daily.admin.style.vo.StyleVO" alias="styling"></typeAlias>
+		<typeAlias type="daily.admin.board.vo.AdminHairGoodsVO" alias="hairgoods"></typeAlias>
 	</typeAliases>
 	
 	<!-- 필요시 추후 주석해제 합니다

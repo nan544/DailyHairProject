@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daily.admin.board.dao.HairGoodsDao">
+
+
+
+	<select id="allList" resultType="hairgoods">
+		SELECT hg_num, hg_title, hg_thumb, hg_img1, hg_img2, hg_img3,hg_img4,hg_content, to_char(hg_regdate,'YYYY-MM-DD hh:mm:ss') as hg_regdate FROM hairgoods order by
+		hg_num desc
+	</select>
+
+	<insert id="hgInsert" parameterType="hairgoods">
+		<!-- HairGoods 게시글 등록 -->
+		<selectKey keyProperty="hg_num" resultType="int"
+			order="BEFORE">
+			SELECT
+			hairgoods_seq.nextval
+			FROM
+			dual
+		</selectKey>
+		INSERT INTO
+		hairgoods(
+		hg_num,
+		hg_title,
+		hg_content,
+		hg_thumb,
+		)
+		VALUES(
+		#{hg_num},
+		#{hg_title},
+		#{hg_content},
+		#{hg_thumb},
+		)
+	</insert>
+	<update id="hgUpdate" parameterType="hairgoods">
+
+	update hairgoods
+	set	hg_title=#{hg_title},
+		hg_content=#{hg_content},
+		hg_thumb=#{hg_thumb}
+		where hg_num = #{hg_num}
+		
+		
+	</update>
+	<select id="hgDetail" resultType="hairgoods" parameterType="int">
+		select *
+		from hairgoods
+		where hg_num = #{hg_num}
+	</select>
+
+	<delete id="hgDelete" parameterType="int">
+		delete from hairgoods
+		where hg_num=#{hg_num}
+	</delete>
+</mapper>
