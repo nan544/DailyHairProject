@@ -16,6 +16,8 @@ import org.apache.commons.fileupload.FileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -192,6 +194,8 @@ public class DesignerController {
 	 System.out.println(downRoot); 
 	 
 	 byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(request.getSession().getServletContext().getRealPath("/uploadStorage/designer/")+downRoot));
+
+	 
 	 response.setContentType("application/octet-stream");
 	 response.setContentLength(fileByte.length);
 	 response.setHeader("Content-Disposition","attachment; fileName=\""+URLEncoder.encode(downRoot,"UTF-8")+"\";");

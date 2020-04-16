@@ -19,12 +19,13 @@
 	</style>
 <script type="text/javascript">
 
-function fn_fileDown(des_num){
+/* function fn_fileDown(des_num){
 	var formObj = $("#detailForm");
 	$("#des_num").attr("value",des_num);
 	formObj.attr("action","/admin/designer/download.do");
 	formObj.submit();
-}
+} */
+
 	$(function() {
 		//디자이너 등록 버튼 클릭시 팝업창을 띄운다
 		$("#insertDesigner").click(
@@ -58,10 +59,11 @@ function fn_fileDown(des_num){
 										+ '<td>' + data[i].des_phone + '</td>'
 										+ '<td class='+'holyshit'+'>'
 										+ data[i].des_state + '</td>'
-										+ '<td class="down">'+data[i].des_file+'</td>'
-										+ '<td>'+'<input type='+'button id='+'modify name='+'modify class='+'modify value='+'수정'+'>'+'</td>'
+										+ '<td>'+'<input type='+'button id='+'modify name='+'modify class='+'modify value='+'[상세보기/수정]'+'>'+'</td>'
 										+'</tr>'
-							} 				/* <td><a href="" onclick="fn_fileDown('${des.des_num}'); return false;">${des.des_file}</a></td> */
+										
+									
+							} 					
 							
 							$(".deslist").append(html);
 							
@@ -74,13 +76,6 @@ function fn_fileDown(des_num){
 						}
 					});
 				});
-		
-		//동적으로 생성된 리스트의 첨부파일 다운로드
-		$(document).on("click",".down",function(event){
-			var des_num = $(this).parents("tr").attr("data-num");
-			fn_fileDown(des_num);
-			
-		});
 		
 		//시술등록 버튼을 클릭시 시술등록 폼을 띄운다
 		$("#insertStyle").click(
@@ -119,8 +114,6 @@ function fn_fileDown(des_num){
 				<option value="0">비활성화</option>
 			</select> <input type="button" id="insertStyle" name="intsetStyle"
 				value="시술 관리" />
-				<hr>
-				<p><span>*</span>이력서 클릭시 다운로드</p>
 		</div>
 		<div class="desList">
 			<form name="detailForm" id="detailForm">
@@ -128,13 +121,12 @@ function fn_fileDown(des_num){
 			</form>
 			<table summary="디자이너 리스트">
 				<colgroup>
-					<col width="20%">
-					<col width="10%">
-					<col width="10%">
-					<col width="20%">
+					<col width="25%">
+					<col width="15%">
 					<col width="15%">
 					<col width="20%">
-					<col width="5%">
+					<col width="15%">
+					<col width="10%">
 				</colgroup>
 				<thead>
 					<tr>
@@ -143,7 +135,6 @@ function fn_fileDown(des_num){
 						<td align="center"><strong>이름</strong></td>
 						<td align="center"><strong>연락처</strong></td>
 						<td align="center"><strong>디자이너상태</strong>
-						<td align="center"><strong>이력서(첨부파일)</strong></td>
 						<td align="center"></td>
 					</tr>
 				</thead>
@@ -163,9 +154,8 @@ function fn_fileDown(des_num){
 									<c:if test="${des.des_state == 1}">
 										<td>활성화</td>
 									</c:if>
-									<td><a href="" onclick="fn_fileDown('${des.des_num}'); return false;">${des.des_file}</a></td>
 									<td><input type="button" id="modify" name="modify"
-										class="modify" value="수정" /></td>
+										class="modify" value="[상세보기 / 수정]" /></td>
 								</tr>
 							</c:forEach>
 						</c:when>
