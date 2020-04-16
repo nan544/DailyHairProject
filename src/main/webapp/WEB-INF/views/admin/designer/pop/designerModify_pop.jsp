@@ -170,6 +170,7 @@ span {
 	<form name="modifyForm" id="modifyForm" enctype="multipart/form-data">
 		<input type="hidden" name="des_num" id="des_num"
 			value="${des.des_num}" />
+			<input type="hidden" name="des_file" id="des_file" value="${des.des_file}"/>
 		<table>
 			<tr>
 				<td><span>*&nbsp;</span>이름</td>
@@ -218,7 +219,7 @@ span {
 			</tr>
 			<tr>
 				<td>이력서</td>
-				<td><input type="file" name="des_file" id="des_file"></td>
+				<td><input type="file" name="file" id="file"></td>
 			</tr>
 		</table>
 	</form>

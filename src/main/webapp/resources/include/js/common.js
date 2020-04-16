@@ -69,7 +69,6 @@ function inputVerify(index, data){
 	var data_regExp = new RegExp(pattern[index]);
 	var match = data_regExp.exec($(data).val());
 	if(match==null){
-		alert(match);
 		$(data).val("");
 		return false;
 	} else {
