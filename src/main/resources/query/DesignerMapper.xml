@@ -3,40 +3,46 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="daily.admin.designer.dao.DesignerDao">
-
+	
+	
+	<!-- 처음 디자이너리스트 불러오기 -->
 	<select id="designerList" resultType="designer">
 		SELECT to_char(des_regdate,'YYYY-MM-DD')as des_regdate, des_job,
-		des_name, des_phone, NVL(des_file,'-') as des_file , des_num , des_state
+		des_name, des_phone, des_file , des_num , des_state
 		FROM designer
 		ORDER BY des_num 
 	</select>
 	
-	<!-- 디자이너리스트에서 활성화/비활성화 선택시 선택한 값에 맞게 출력되는 쿼리문 -->
+	<!-- 디자이너리스트에서 활성화/비활성화 선택시 선택한 값에 맞게 출력되는 쿼리문 --> <!-- NVL(des_file,'-') as des_file -->
 	<select id="designerAjaxList" resultType="designer" parameterType="designer">
 		SELECT to_char(des_regdate,'YYYY-MM-DD')as des_regdate, des_job,
-		des_name, des_phone, NVL(des_file,'-') as des_file, des_num , des_state
+		des_name, des_phone, des_file , des_num , des_state
 		FROM designer
 		WHERE des_state = #{des_state}
 		ORDER BY des_num desc
 	</select>
 	
+	<!-- 디자이너 상세보기 -->
 	<select id="designerDetail" parameterType="int" resultType="designer">
 		SELECT * 
 		FROM designer
 		where des_num = #{des_num}
 	</select>
-
+	
+	
+	<!-- 디자이너 등록하기 -->
 	<insert id="insertDesigner" parameterType="designer" >
 		<selectKey keyProperty="des_num" resultType="int" order="BEFORE">
 			select designer_seq.nextval from dual
 		</selectKey>
 		INSERT INTO designer(des_num, des_name, des_job, des_phone, des_gender, des_holyday, des_file, des_memo)
-		VALUES(#{des_num},#{des_name},#{des_job},#{des_phone}, #{des_gender}, #{des_holyday},#{des_file}, #{des_memo})
+		VALUES(#{des_num},#{des_name},#{des_job},#{des_phone}, #{des_gender}, #{des_holyday},#{des_file,jdbcType=VARCHAR }, #{des_memo})
 	</insert>
-
+	
+	<!-- 디자이너 수정하기 -->
 	<update id="updateDesigner" parameterType="designer">
 		UPDATE designer
-		SET des_job= #{des_job}, des_phone=#{des_phone}, des_gender=#{des_gender}, des_holyday=#{des_holyday}, des_file=#{des_file}, des_memo=#{des_memo}
+		SET des_job= #{des_job}, des_phone=#{des_phone}, des_gender=#{des_gender}, des_holyday=#{des_holyday}, des_file=#{des_file,jdbcType=VARCHAR}, des_memo=#{des_memo}
 		WHERE des_num = #{des_num}
 	</update>
 	
@@ -53,5 +59,11 @@
 		SET des_state = 1
 		WHERE des_num = #{des_num}
 	</update>
-
+	
+	<!-- 첨부파일 다운받기 -->
+	<!-- <select id="downloadFile" parameterType="designer" resultType="designer">
+		SELECT des_file
+		FROM designer
+		WHERE des_num = #{des_num}
+	</select> -->
 </mapper>

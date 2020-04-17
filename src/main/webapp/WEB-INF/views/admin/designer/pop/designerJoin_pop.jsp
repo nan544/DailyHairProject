@@ -108,7 +108,7 @@ span {
 				</tr>
 				<tr>
 					<td>이력서</td>
-					<td><input type="file" name="des_file" id="des_file"></td>
+					<td><input type="file" name="file" id="file"></td>
 				</tr>
 			</table>
 		</form>

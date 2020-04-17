@@ -14,6 +14,8 @@ span {
 	src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
+
+
 	$(function(){
 		//닫기 버튼 클릭시 닫기
 		$("#closeBtn").click(function(){
@@ -52,7 +54,6 @@ span {
 						success : function(data) {
 							if (data == 1) {
 								alert("시술 수정에 성공하였습니다.");
-								opener.parent.location.reload();
 								window.close();
 							} else {
 								alert("시술 등록에 실패하였습니다.");

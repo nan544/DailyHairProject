@@ -8,11 +8,20 @@
 <title>디자이너 리스트</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="/resources/include/css/common.css" />
-<link rel="stylesheet" type="text/css"
-	href="/resources/include/css/board.css" />
+<style type="text/css">
+	span{
+	color: red;
+	}
+</style>
 <script type="text/javascript">
+
+/* function fn_fileDown(des_num){
+	var formObj = $("#detailForm");
+	$("#des_num").attr("value",des_num);
+	formObj.attr("action","/admin/designer/download.do");
+	formObj.submit();
+} */
+
 	$(function() {
 		//디자이너 등록 버튼 클릭시 팝업창을 띄운다
 		$("#insertDesigner").click(
@@ -22,7 +31,7 @@
 				});
 
 
-		//리스트 정렬방식 
+		//선택된 디자이너 상태에 따라서 동적으로 리스트가 변경
 		$(".order").change(
 				function() {
 
@@ -46,10 +55,11 @@
 										+ '<td>' + data[i].des_phone + '</td>'
 										+ '<td class='+'holyshit'+'>'
 										+ data[i].des_state + '</td>'
-										+ '<td class='+'dam'+'>' + data[i].des_file + '</td>'
-										+ '<td>'+'<input type='+'button id='+'modify name='+'modify class='+'modify value='+'수정'+'>'+'</td>'
+										+ '<td>'+'<input type='+'button id='+'modify name='+'modify class='+'modify value='+'[상세보기/수정]'+'>'+'</td>'
 										+'</tr>'
-							} 	
+										
+									
+							} 					
 							
 							$(".deslist").append(html);
 							
@@ -87,7 +97,7 @@
 			window.open("designerUpdateForm.do?des_num=" + des_num,
 					"pop", "width=800, height=700, left=600, top=100");
 		});
-
+				
 	});
 </script>
 </head>
@@ -107,13 +117,12 @@
 			</form>
 			<table summary="디자이너 리스트">
 				<colgroup>
-					<col width="20%">
-					<col width="10%">
-					<col width="10%">
-					<col width="20%">
+					<col width="25%">
+					<col width="15%">
 					<col width="15%">
 					<col width="20%">
-					<col width="5%">
+					<col width="15%">
+					<col width="10%">
 				</colgroup>
 				<thead>
 					<tr>
@@ -122,7 +131,6 @@
 						<td align="center"><strong>이름</strong></td>
 						<td align="center"><strong>연락처</strong></td>
 						<td align="center"><strong>디자이너상태</strong>
-						<td align="center"><strong>이력서(첨부파일)</strong></td>
 						<td align="center"></td>
 					</tr>
 				</thead>
@@ -142,9 +150,8 @@
 									<c:if test="${des.des_state == 1}">
 										<td>활성화</td>
 									</c:if>
-									<td>${des.des_file}</td>
 									<td><input type="button" id="modify" name="modify"
-										class="modify" value="수정" /></td>
+										class="modify" value="[상세보기 / 수정]" /></td>
 								</tr>
 							</c:forEach>
 						</c:when>

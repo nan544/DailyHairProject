@@ -90,8 +90,8 @@
 					<!-- <li class="active"><a href="#">로그인</a></li>
 					<li class="active"><a href="#">회원가입</a></li> -->
 					<!-- 둥근 노란색 테두리 메뉴 바 생성 클래스 지정 -->
-					<li class="book-a-table text-center"><a href="#">로그인</a></li>
-					<li class="book-a-table text-center"><a href="#">회원가입</a></li>
+					<li class="book-a-table text-center"><a href="/login/loginForm.do">로그인</a></li>
+					<li class="book-a-table text-center"><a href="/member/clause.do">회원가입</a></li>
 				</ul>
 			</nav>
 		</div><!-- End MenuBar -->
