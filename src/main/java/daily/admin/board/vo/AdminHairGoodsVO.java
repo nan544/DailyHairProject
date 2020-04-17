@@ -13,7 +13,7 @@ public class AdminHairGoodsVO {
 	private String hg_img3;		//이미지3
 	private String hg_img4;		//이미지4
 	private String hg_content;	//내용
-	private Date hg_regdate;	//작성일
+	private String hg_regdate;	//작성일
 	
 	//파일업로드를 위한 속성
 	private MultipartFile uploadFile; //첨부파일
@@ -66,10 +66,11 @@ public class AdminHairGoodsVO {
 	public void setHg_content(String hg_content) {
 		this.hg_content = hg_content;
 	}
-	public Date getHg_regdate() {
+
+	public String getHg_regdate() {
 		return hg_regdate;
 	}
-	public void setHg_regdate(Date hg_regdate) {
+	public void setHg_regdate(String hg_regdate) {
 		this.hg_regdate = hg_regdate;
 	}
 	public MultipartFile getUploadFile() {

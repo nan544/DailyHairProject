@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daily.admin.board.dao.HairStyleDAO">
+
+	<select id="hsList" resultType="hairstyle">
+		SELECT hs_num, hs_title,
+		hs_thumb, hs_img1, hs_img2, hs_img3,hs_img4,hs_content,
+		to_char(hs_regdate,'YYYY-MM-DD hh:mm:ss') as hs_regdate FROM hairStyle
+		order by
+		hs_num desc
+	</select>
+	
+	<insert id="hsInsert" parameterType="hairstyle">
+		<!-- HairGoods 게시글 등록 -->
+		<selectKey keyProperty="hs_num" resultType="int"
+			order="BEFORE">
+			SELECT
+			hairstyle_seq.nextval
+			FROM
+			dual
+		</selectKey>
+		INSERT INTO
+		hairstyle(
+		hs_num,
+		hs_title,
+		hs_content,
+		hs_thumb
+		)
+		VALUES(
+		#{hs_num},
+		#{hs_title},
+		#{hs_content},
+		#{hs_thumb}
+		)
+	</insert>
+	<update id="hsUpdate" parameterType="hairstyle">
+
+		update hairstyle
+		set hs_title=#{hs_title},
+		hs_content=#{hs_content},
+		hs_thumb=#{hs_thumb}
+		where hs_num = #{hs_num}
+
+
+	</update>
+	<select id="hsDetail" resultType="hairstyle" parameterType="int">
+		select *
+		from hairstyle
+		where hs_num = #{hs_num}
+	</select>
+
+	<delete id="hsDelete" parameterType="int">
+		delete from hairstyle
+		where
+		hs_num=#{hs_num}
+	</delete>
+	
+</mapper>

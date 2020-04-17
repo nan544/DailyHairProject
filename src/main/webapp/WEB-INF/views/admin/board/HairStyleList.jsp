@@ -11,16 +11,16 @@
 <script type="text/javascript">
 	$(function() {
 		$("#insertFormBtn").click(function() {
-			location.href = "/admin/board/HGInsertForm.do";
+			location.href = "/admin/board/HSInsertForm.do";
 		});
 		 $(".goDetail").click(function() {
-			var hg_num = $(this).parents("tr").attr("data-num");
-			$("#hg_num").val(hg_num);
-			console.log("글번호 : " + hg_num);
+			var hs_num = $(this).parents("tr").attr("data-num");
+			$("#hs_num").val(hs_num);
+			console.log("글번호 : " + hs_num);
 			//상세 페이지로 이동하기 위해 form추가 (id:detailForm)
 			$("#detailForm").attr({
 				"method" : "post",
-				"action" : "HGDetail.do"
+				"action" : "HSDetail.do"
 			});
 			$("#detailForm").submit();
 		});
@@ -28,13 +28,13 @@
 </script>
 </head>
 <body>
-	<p><h3>HairGoods 게시판 관리</h3>
+	<p><h3>HairStyle 게시판 관리</h3>
 	<input type="text" id="search" name="search" placeholder="제품이름(제목)">
 	<input type="button" id="searchBtn" name="searchBtn" value="검색"><p>
 
 <%--====================상세 페이지 이동을 위한 Form =============== --%>
 		<form name="detailForm" id="detailForm">
-			<input type="hidden" name="hg_num" id="hg_num">
+			<input type="hidden" name="hs_num" id="hs_num">
 		</form>
 <%--====================상세 페이지 이동을 위한 Form =============== --%>
 
@@ -52,7 +52,7 @@
 	</colgroup>
 	<tr>
 		<th>글번호</th>
-		<th>스타일명</th>
+		<th>제품이름</th>
 		<th>등록일</th>
 		<th>썸네일 이미지명</th>
 		<th>이미지1</th>
@@ -62,17 +62,17 @@
 	</tr>
 	<!-- 데이터 출력 시작-->
 	<c:choose>
-		<c:when test="${not empty hgList }">
-			<c:forEach var="hgList" items="${hgList}" varStatus="status">
-				<tr data-num="${hgList.hg_num}">
-					<td class="goDetail">${hgList.hg_num}</td>
-					<td class="goDetail">${hgList.hg_title}</td>
-					<td >${hgList.hg_regdate}</td>
-					<td >${hgList.hg_thumb}</td>
-					<td >${hgList.hg_img1}</td>
-					<td >${hgList.hg_img2}</td>
-					<td >${hgList.hg_img3}</td>
-					<td >${hgList.hg_img4}</td>
+		<c:when test="${not empty hsList }">
+			<c:forEach var="hsList" items="${hsList}" varStatus="status">
+				<tr data-num="${hsList.hs_num}">
+					<td class="goDetail">${hsList.hs_num}</td>
+					<td class="goDetail">${hsList.hs_title}</td>
+					<td >${hsList.hs_regdate}</td>
+					<td >${hsList.hs_thumb}</td>
+					<td >${hsList.hs_img1}</td>
+					<td >${hsList.hs_img2}</td>
+					<td >${hsList.hs_img3}</td>
+					<td >${hsList.hs_img4}</td>
 				</tr>
 			</c:forEach>
 		</c:when>

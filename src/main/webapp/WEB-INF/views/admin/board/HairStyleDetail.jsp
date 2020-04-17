@@ -37,34 +37,33 @@ input[type="file"] {
 }
 </style>
 <script type="text/javascript">
-	$(function() {
-		//목록으로 버튼 클릭 시
-		$("#ListBtn").click(function() {
-			location.href = "HairGoodsList.do";
-		});
 
-		//수정완료 버튼 클릭시
-		$("#UpdateBtn").click(function() {
-			if (confirm("게시글을 수정 하시겠습니까?")) {
-				$("#updateForm").attr("method", "post");
-				$("#updateForm").attr("action", "/admin/board/HGUpdate.do");
-				$("#updateForm").submit();
-				alert("수정이 완료되었습니다");
-			}
-		});
-		//삭제 버튼 클릭시
-		$("#DeleteBtn").click(function() {
-			if (confirm("게시글을 삭제 하시겠습니까?")) {
-				$("#updateForm").attr("method", "post");
-				$("#updateForm").attr("action", "/admin/board/HGDelete.do");
-				$("#updateForm").submit();
-				alert("삭제가 완료되었습니다.");
-			}
-		});
-		$("#uploadFile").on("change keyup paste", function() {
-			$("label[for='img']").hide();
-		});
+$(function() {
+	//목록으로 버튼 클릭 시
+	$("#ListBtn").click(function() {
+		location.href = "HairGoodsList.do";
 	});
+	//수정완료 버튼 클릭시
+	$("#UpdateBtn").click(function() {
+		if (confirm("게시글을 수정 하시겠습니까?")) {
+			$("#updateForm").attr("method", "post");
+			$("#updateForm").attr("action", "/admin/board/HSUpdate.do");
+			$("#updateForm").submit();
+			alert("수정이 완료되었습니다");
+		}
+	});
+
+	//삭제 버튼 클릭시
+	$("#DeleteBtn").click(function() {
+		if (confirm("게시글을 삭제 하시겠습니까?")) {
+			$("#updateForm").attr("method", "post");
+			$("#updateForm").attr("action", "/admin/board/HSDelete.do");
+			$("#updateForm").submit();
+			alert("삭제가 완료되었습니다.");
+		}
+	});
+});
+
 </script>
 <title>Insert title here</title>
 </head>
@@ -80,25 +79,23 @@ input[type="file"] {
 				</p>
 			</div>
 			<hr>
-			<!-- 수정 및 삭제를 위한 값 -->
-			<input type="hidden" id="hg_num" name="hg_num"
-				value="${detail.hg_num }">
+			<!-- 수정 및 삭제를 위한 PK값 -->
+			<input type="text" id="hs_num" name="hs_num" value="${detail.hs_num }">
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>제품명
-				</span> <input type="text" id="hg_title" name="hg_title"
-					value="${detail.hg_title}">
+				</span> <input type="text" id="hs_title" name="hs_title"
+					value="${detail.hs_title}">
 			</div>
 			<hr>
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>특징
-				</span> <input type="text" id="hg_content" name="hg_content" size="50"
-					placeholder="간략한 설명을 입력하세요." value="${detail.hg_content}">
+				</span> <input type="text" id="hs_content" name="hs_content" size="50"
+					placeholder="간략한 설명을 입력하세요." value="${detail.hs_content}">
 			</div>
 			<hr>
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>썸네일이미지
-				</span> <span class="imgBtn"><label for="img">${detail.hg_thumb}</label>
-					<input type="file" name="uploadFile" id="uploadFile"></span>
+				</span> <span class="imgBtn"> <input type="text" id="hs_thumb" name="hs_thumb" value="${detail.hs_thumb}"> </span>
 			</div>
 			<hr>
 			<!-- <div class="formLine">
@@ -138,9 +135,9 @@ input[type="file"] {
 		</form>
 	</div>
 	<!-- 수정 및 삭제 버튼  -->
-	<div id="btnMenu">
-		<input type="button" value="수정완료" class="but" id="UpdateBtn"> <input
-			type="button" value="게시글 삭제" class="but" id="DeleteBtn">
+	<div>
+		<input type="button" value="수정완료" class="but" id="UpdateBtn">
+		<input type="button" value="게시글 삭제" class="but" id="DeleteBtn">
 
 	</div>
 </body>

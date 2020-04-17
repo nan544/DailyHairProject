@@ -3,6 +3,7 @@ package daily.admin.board.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import daily.admin.board.service.AdminHairGoodsService;
 import daily.admin.board.vo.AdminHairGoodsVO;
@@ -91,9 +93,22 @@ public class AdminHairGoodsController {
 	}
 
 	@RequestMapping(value = "/board/HGUpdate.do")
-	public String update(@ModelAttribute AdminHairGoodsVO hgvo, Model model) {
+	public String update(@ModelAttribute AdminHairGoodsVO hgvo, Model model,HttpServletRequest request) throws IOException {
 		log.info("글수정 메소드 성공");
-
+		
+		
+		
+			String hg_thumb = FileUploadUtil.fileUpload(hgvo.getUploadFile(), request, "HairGoods");
+			hgvo.setHg_thumb(hg_thumb);
+			
+			if(hgvo.getHg_thumb() == null) {
+				hgvo.setHg_thumb("400");
+			}
+			
+		System.out.println(hgvo.getHg_thumb());
+		System.out.println(hgvo.getHg_title());
+		
+		
 		int result = HairGoodsService.hairGoodsupdate(hgvo);
 		String url = "";
 

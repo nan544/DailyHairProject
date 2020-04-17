@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,70 +37,69 @@ input[type="file"] {
 	float: right;
 }
 </style>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		//목록으로 버튼 클릭 시
-		$("#ListBtn").click(function() {
-			location.href = "HairGoodsList.do";
+		$("#hairGoodsInsertBtn").click(function() {
+			if (confirm("게시물을 등록 하시겠습니까?")) {
+				var form = $("form");
+				var formData = new FormData(form[0]);
+
+				$.ajax({
+					cache : false,
+					url : 'HSInsert.do',
+					processData : false,
+					contentType : false,
+					type : 'POST',
+					data : formData,
+					success : function(data) {
+						if (data == 1) {
+							alert("등록 완료");
+							location.href = "/admin/board/HairStyleList.do";
+						} else {
+							alert("등록 실패");
+
+						}
+					},
+					error : function() {
+						alert("서버 오류 ");
+					}
+				});
+
+			}
 		});
 
-		//수정완료 버튼 클릭시
-		$("#UpdateBtn").click(function() {
-			if (confirm("게시글을 수정 하시겠습니까?")) {
-				$("#updateForm").attr("method", "post");
-				$("#updateForm").attr("action", "/admin/board/HGUpdate.do");
-				$("#updateForm").submit();
-				alert("수정이 완료되었습니다");
-			}
-		});
-		//삭제 버튼 클릭시
-		$("#DeleteBtn").click(function() {
-			if (confirm("게시글을 삭제 하시겠습니까?")) {
-				$("#updateForm").attr("method", "post");
-				$("#updateForm").attr("action", "/admin/board/HGDelete.do");
-				$("#updateForm").submit();
-				alert("삭제가 완료되었습니다.");
-			}
-		});
-		$("#uploadFile").on("change keyup paste", function() {
-			$("label[for='img']").hide();
+		$("#cancel").click(function() {
+			location.href = "/admin/board/HairStyleList.do";
 		});
 	});
 </script>
-<title>Insert title here</title>
+<title>글 작성</title>
 </head>
 <body>
+
 	<div id="contents">
-		<form id="updateForm" enctype="multipart/form-data" method="POST">
+		<form id="insertForm" enctype="multipart/form-data" method="POST">
 			<h3>HairGoods 게시판 관리 - 등록</h3>
 			<p align="right">* 항목은 필수 입력 값입니다.</p>
-			<!-- 목록으로 버튼 -->
-			<div id="listMenu">
-				<p>
-					<input type="button" value="목록으로" class="but" id="ListBtn">
-				</p>
-			</div>
 			<hr>
-			<!-- 수정 및 삭제를 위한 값 -->
-			<input type="hidden" id="hg_num" name="hg_num"
-				value="${detail.hg_num }">
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>제품명
-				</span> <input type="text" id="hg_title" name="hg_title"
-					value="${detail.hg_title}">
+				</span> <input type="text" id="hs_title" name="hs_title">
 			</div>
 			<hr>
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>특징
-				</span> <input type="text" id="hg_content" name="hg_content" size="50"
-					placeholder="간략한 설명을 입력하세요." value="${detail.hg_content}">
+				</span> <input type="text" id="hs_content" name="hs_content" size="50"
+					placeholder="간략한 설명을 입력하세요.">
 			</div>
 			<hr>
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>썸네일이미지
-				</span> <span class="imgBtn"><label for="img">${detail.hg_thumb}</label>
-					<input type="file" name="uploadFile" id="uploadFile"></span>
+				</span><input type="file" id="uploadFile" name="uploadFile" value="이미지 등록">
 			</div>
+			<div></div>
 			<hr>
 			<!-- <div class="formLine">
 				<span class="item"> 이미지1 </span> <span class="imgBtn"> <input
@@ -137,11 +137,11 @@ input[type="file"] {
 			</div> -->
 		</form>
 	</div>
-	<!-- 수정 및 삭제 버튼  -->
-	<div id="btnMenu">
-		<input type="button" value="수정완료" class="but" id="UpdateBtn"> <input
-			type="button" value="게시글 삭제" class="but" id="DeleteBtn">
-
+	<!-- 글 등록 버튼 시작-->
+	<div id="bottomMenu">
+		<input type="button" value="등록완료" class="but" id="hairGoodsInsertBtn">
+		<input type="button" value="취 소" class="but" id="cancel">
 	</div>
+	<!-- 글 등록 버튼 끝-->
 </body>
 </html>

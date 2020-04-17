@@ -16,13 +16,12 @@ public class AdminHairGoodsDAOImpl implements AdminHairGoodsDAO {
 	
 	@Override
 	public List<AdminHairGoodsVO> hairGoodslist() {
-		List<AdminHairGoodsVO> list=session.selectList("allList");
+		List<AdminHairGoodsVO> list=session.selectList("hgList");
 		return list;
 	}
 
 	@Override
 	public AdminHairGoodsVO hairGoodsdetail(int hg_num) {
-		// TODO Auto-generated method stub
 		return session.selectOne("hgDetail",hg_num);
 	};
 

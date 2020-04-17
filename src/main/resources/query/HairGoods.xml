@@ -2,12 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="daily.admin.board.dao.HairGoodsDao">
+<mapper namespace="daily.admin.board.dao.HairGoodsDAO">
 
 
 
-	<select id="allList" resultType="hairgoods">
-		SELECT hg_num, hg_title, hg_thumb, hg_img1, hg_img2, hg_img3,hg_img4,hg_content, to_char(hg_regdate,'YYYY-MM-DD hh:mm:ss') as hg_regdate FROM hairgoods order by
+	<select id="hgList" resultType="hairgoods">
+		SELECT hg_num, hg_title,
+		hg_thumb, hg_img1, hg_img2, hg_img3,hg_img4,hg_content,
+		to_char(hg_regdate,'YYYY-MM-DD hh:mm:ss') as hg_regdate FROM hairgoods
+		order by
 		hg_num desc
 	</select>
 
@@ -25,24 +28,26 @@
 		hg_num,
 		hg_title,
 		hg_content,
-		hg_thumb,
+		hg_thumb
 		)
 		VALUES(
 		#{hg_num},
 		#{hg_title},
 		#{hg_content},
-		#{hg_thumb},
+		#{hg_thumb}
 		)
 	</insert>
 	<update id="hgUpdate" parameterType="hairgoods">
 
-	update hairgoods
-	set	hg_title=#{hg_title},
-		hg_content=#{hg_content},
-		hg_thumb=#{hg_thumb}
+		update hairgoods
+		set hg_title=#{hg_title},
+		hg_content=#{hg_content}
+		<if test="hg_thumb !='400'">
+		, hg_thumb = #{hg_thumb}
+		</if>
 		where hg_num = #{hg_num}
-		
-		
+
+
 	</update>
 	<select id="hgDetail" resultType="hairgoods" parameterType="int">
 		select *
@@ -52,6 +57,10 @@
 
 	<delete id="hgDelete" parameterType="int">
 		delete from hairgoods
-		where hg_num=#{hg_num}
+		where
+		hg_num=#{hg_num}
 	</delete>
+	
+	
 </mapper>
+
