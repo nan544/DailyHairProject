@@ -1,6 +1,5 @@
 package daily.client.member.vo;
 
-import java.sql.Date;
 
 public class MemberVO {
 
@@ -13,7 +12,16 @@ public class MemberVO {
 	private String m_email;
 	private String m_memo;
 	private int m_state;
-	private Date regDate;
+	private String m_date;
+
+	
+	public String getM_date() {
+		return m_date;
+	}
+
+	public void setM_date(String m_date) {
+		this.m_date = m_date;
+	}
 
 	public String getM_id() {
 		return m_id;
@@ -69,14 +77,6 @@ public class MemberVO {
 
 	public void setM_memo(String m_memo) {
 		this.m_memo = m_memo;
-	}
-
-	public Date getRegDate() {
-		return regDate;
-	}
-
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
 	}
 
 	public int getM_num() {

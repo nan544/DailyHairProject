@@ -30,6 +30,24 @@ function numberChk(input) {
 	}
 } 
 
+//자식팝업창이 닫히는지 1초마다검사하고 닫힐시 콜백함수 실행하는 메소드
+var openDialog = function(uri, name, options, closeCallback) {
+    var win = window.open(uri, name, options);
+    var interval = window.setInterval(function() {
+        try {
+            if (win == null || win.closed) {
+                window.clearInterval(interval);
+                closeCallback(win);
+            }
+        }
+        catch (e) {
+        }
+    }, 1000);
+    return win;
+};
+
+
+
 	$(function() {
 		
 		//닫기 버튼 클릭시 닫기
@@ -70,22 +88,9 @@ function numberChk(input) {
 								alert("시술 등록에 성공하였습니다.");
 								$("#styling_name").val("");
 								$("#styling_price").val("");
-								location.reload(true);
-							} else {
-								alert("시술 등록에 실패하였습니다.");
-							}
-						}
-					});// ajax종료												
-				}
-			}
-		});
-		
-		//디자이너 선택시마다 선택된 디자이너의 시술목록을 불러옴
-		$(".num").change(
-				function() {
-						var des_num = $(".num").val();
-						
-						$.ajax({
+							
+							//성공시 적용된 화면을 보여주기위해 비동기로 적용된 리스트 출력하기
+							$.ajax({
 							url : "/admin/style/styleAjax.do",
 							type : "post",
 							data : {
@@ -114,19 +119,100 @@ function numberChk(input) {
 							$(".ajax").append(html);
 							}
 						}); //ajax 끝
+							} else {
+								alert("시술 등록에 실패하였습니다.");
+							}
+						}
+					});// ajax종료												
+				}
+			}
+		});
+		
+		//디자이너 선택시마다 선택된 디자이너의 시술목록을 불러옴
+		$(".num").change(
+				function() {
+						var des_num = $(".num").val();
+						
+						$.ajax({
+							url : "/admin/style/styleAjax.do",
+							type : "post",
+							data : {
+								"des_num" : des_num
+							},
+							success : function(data){
+							$(".ajax").html("");
+							let html = "";
+							if(data.length == 0){
+								html += '<tr>'+'<td>'+'등록된 시술이 없습니다'+'</td>'+'</tr>'
+							}else{
+							for(let i =0; i<data.length; i++){
+								html += '<tr class='+'tac data-num='+data[i].styling_num+'>'
+								+'<td>' + '* 시술 구분'+ '</td>'
+								+'<td> <input type='+'"text"'+'name="styling_option" value='+data[i].styling_option+' readonly size="10">'+'</td>'
+								+'<td>' + '* 시술명' + '</td>'
+								+'<td> <input type='+'"text"'+'name="styling_name" id="styling_name1" value='+  data[i].styling_name +' readonly>'+'</td>'
+								+'<td>' + '* 시술가격' + '</td>'
+								+'<td> <input type='+'"text"'+'name="styling_price" id="styling_price1" value='+  data[i].styling_price +' readonly>'+'</td>'
+								+'<td> <input type='+'"button"'+'name="updateBtn" id="updateBtn" value="수정" class="updateBtn">'+'</td>'
+								+'<td> <input type='+'"button"'+'name="deleteBtn" id="deleteBtn" value="삭제" class="deleteBtn">'+'</td>'
+								+'</tr>'
+								} 
+							}
+							$(".ajax").append(html);
+							}
+						}); //ajax 끝
 				});
 		
 		//수정버튼 클릭시 팝업창띄움
 		$(document).on("click",".updateBtn",function(event){
 			var styling_num = $(this).parents("tr").attr("data-num");
 			alert(styling_num);
-			window.open("/admin/style/styleUpdateForm.do?styling_num="+styling_num,
-					"pop1", "width=850, height=350, left=700, top=200");
+			
+			//자식 팝업창이 닫히면 콜백함수실행됨
+			openDialog("/admin/style/styleUpdateForm.do?styling_num="+styling_num, "pop1", "width=850, height=350, left=700, top=200",function(win){
+				
+				var des_num = $(".num").val();
+				
+				//동적으로  시술 리스트를 출력함
+				$.ajax({
+					url : "/admin/style/styleAjax.do",
+					type : "post",
+					data : {
+						"des_num" : des_num
+					},
+					success : function(data){
+					$(".ajax").html("");
+					let html = "";
+					if(data.length == 0){
+						html += '<tr>'+'<td>'+'등록된 시술이 없습니다'+'</td>'+'</tr>'
+					}else{
+					for(let i =0; i<data.length; i++){
+						html += '<tr class='+'tac data-num='+data[i].styling_num+'>'
+						+'<td>' + '* 시술 구분'+ '</td>'
+						+'<td> <input type='+'"text"'+'name="styling_option" value='+data[i].styling_option+' readonly size="10">'+'</td>'
+						+'<td>' + '* 시술명' + '</td>'
+						+'<td> <input type='+'"text"'+'name="styling_name" id="styling_name1" value='+  data[i].styling_name +' readonly>'+'</td>'
+						+'<td>' + '* 시술가격' + '</td>'
+						+'<td> <input type='+'"text"'+'name="styling_price" id="styling_price1" value='+  data[i].styling_price +' readonly>'+'</td>'
+						+'<td> <input type='+'"button"'+'name="updateBtn" id="updateBtn" value="수정" class="updateBtn">'+'</td>'
+						+'<td> <input type='+'"button"'+'name="deleteBtn" id="deleteBtn" value="삭제" class="deleteBtn">'+'</td>'
+						+'</tr>'
+						} 
+					}
+					$(".ajax").append(html);
+					}
+				}); //ajax 끝
+				
+			});
+			
+			//window.open("/admin/style/styleUpdateForm.do?styling_num="+styling_num,
+			//		"pop1", "width=850, height=350, left=700, top=200");
 		});
 		
 		//삭제 버튼 클릭시 실행 deleteBtn
 			$(document).on("click",".deleteBtn",function(event){
 			var styling_num = $(this).parents("tr").attr("data-num");
+			var des_num = $(".num").val();
 			alert(styling_num);
 			
 			$.ajax({
@@ -139,7 +225,37 @@ function numberChk(input) {
 					if (data == 1) {
 						if(confirm("삭제하시겠습니까?")){
 							alert("시술 삭제에 성공하였습니다.");
-							location.reload(true);
+							
+							//성공시 적용된 화면을 보여주기위해 비동기로 적용된 리스트 출력하기
+							$.ajax({
+								url : "/admin/style/styleAjax.do",
+								type : "post",
+								data : {
+									"des_num" : des_num
+								},
+								success : function(data){
+								$(".ajax").html("");
+								let html = "";
+								if(data.length == 0){
+									html += '<tr>'+'<td>'+'등록된 시술이 없습니다'+'</td>'+'</tr>'
+								}else{
+								for(let i =0; i<data.length; i++){
+									html += '<tr class='+'tac data-num='+data[i].styling_num+'>'
+									+'<td>' + '* 시술 구분'+ '</td>'
+									+'<td> <input type='+'"text"'+'name="styling_option" value='+data[i].styling_option+' readonly size="10">'+'</td>'
+									+'<td>' + '* 시술명' + '</td>'
+									+'<td> <input type='+'"text"'+'name="styling_name" id="styling_name1" value='+  data[i].styling_name +' readonly>'+'</td>'
+									+'<td>' + '* 시술가격' + '</td>'
+									+'<td> <input type='+'"text"'+'name="styling_price" id="styling_price1" value='+  data[i].styling_price +' readonly>'+'</td>'
+									+'<td> <input type='+'"button"'+'name="updateBtn" id="updateBtn" value="수정" class="updateBtn">'+'</td>'
+									+'<td> <input type='+'"button"'+'name="deleteBtn" id="deleteBtn" value="삭제" class="deleteBtn">'+'</td>'
+									+'</tr>'
+									} 
+								}
+								$(".ajax").append(html);
+								}
+							}); //ajax 끝
+						
 						}
 					} else {
 						alert("시술 삭제에 실패하였습니다.");

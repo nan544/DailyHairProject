@@ -8,15 +8,11 @@
 <title>디자이너 리스트</title>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="/resources/include/css/common.css" />
-<link rel="stylesheet" type="text/css"
-	href="/resources/include/css/board.css" />
-	<style type="text/css">
+<style type="text/css">
 	span{
 	color: red;
 	}
-	</style>
+</style>
 <script type="text/javascript">
 
 /* function fn_fileDown(des_num){
