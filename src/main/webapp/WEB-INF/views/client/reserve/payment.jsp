@@ -52,6 +52,7 @@
 		.reserveTablehead { display: inline; padding: 10px; font: 15pt bold; color: #670000;}
 		.reserveBtn { width: 150px; height: 50px; background: #ffb03b; border: 0;	color: #fff;
 				padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;}
+		.paymentMini { display: inline; }
 	</style>
 	
 	<!-- 결제 라디오 버튼 클릭 이벤트 -->
@@ -109,11 +110,15 @@
 			<!-- 결제 수단 선택 -->
 			<div style="margin: 0 auto;">
 				<div class="paymentTable">
-				<label>카드 결제</label>　
-				<input type="radio" onclick="paymentCard()">
-				<label>　　</label>
-				<label>계좌이체</label>　
-				<input type="radio" onclick="paymentAccount()">
+					<div class="paymentMini" onclick="paymentCard()">
+						<label>카드 결제</label>　
+						<input type="radio" >
+					</div>
+					<label>　　</label>
+					<div class="paymentMini" onclick="paymentAccount()">
+						<label>계좌이체</label>　
+						<input type="radio">
+					</div>
 				</div>
 			</div>
 			

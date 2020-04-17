@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -52,13 +53,15 @@
 		.reserveTablehead { display: inline; padding: 10px; font: 15pt bold; color: #670000;}
 		.reserveBtn { width: 150px; height: 50px; background: #ffb03b; border: 0;	color: #fff;
 				padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;}
+		.designer { width: 300px; height: 200px }
+		.designerbox { float: left; margin: 10px 20px 10px 20px; }
 	</style>
 	
 	<!-- 버튼 이벤트 -->
 	<script type="text/javascript">
 		// 이전 단계로 버튼 이벤트
 		function selectDate() {
-			location.replace("/reserve/reserveSelectDate.do");
+			location.replace("/reserve/backToSelectDate.do");
 		}
 		
 		// 시술 선택 버튼 이벤트
@@ -83,7 +86,7 @@
 			<!-- 상단 -->
 			<div style="margin: 0 auto; text-align: center; width: 100%;">
 				<h1 style="margin-bottom: 10px;">예약하기</h1>
-				<p style="margin-bottom: 10px;">시술을 받으실 DailyHiarShop 매장 위치를 선택해주세요.</p>
+				<p style="margin-bottom: 10px;">어떤 디자이너가 시술을 해주었으면 하시나요?</p>
 			</div>
 			
 			<div style="width: 100%; margin: 0 auto;">
@@ -106,17 +109,51 @@
 				<hr style="border: 1 solid black; margin-top: 10px;" />
 			</div>
 			
-			<!-- 디자이너 선택 -->
-			<div>
+	<!-- 디자이너 영역 클릭 이벤트 -->
+	<script type="text/javascript">
+		function clickDesigner(num) {
+			var des_num = num;
+			alert("디자이너 식별번호 : " + des_num);
 			
+			/* location.replace("/reserve/reserveSelectDate.do"); */
+		}
+	</script>
+			
+			<!-- 디자이너 선택 -->
+			<div style="margin: 0 auto; text-align: center; max-width: 1020px">
+				<div style="width: 100%; margin: 0 auto;">
+					<c:choose>
+						<c:when test="${not empty designerList }">
+							<c:forEach var="des" items="${designerList }">
+								<div class="designerbox" onclick="clickDesigner(${des.des_num})">
+									<img class="designer" src="/resources/assets/img/NoImage.png">
+									<p>${des.des_name} (${des.des_job})</p>
+								</div>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<div class="designerbox">
+								<p>등록된 디자이너가 존재하지 않습니다.</p>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</div>
 			</div>
 			
+			<div style="width: 100%; margin: 0 auto;">
+				<hr style="border: none; margin-top: 10px;" />
+			</div>
 			
 			<!-- 버튼 -->
 			<div style="margin: 0 auto; margin-top: 75px;">
 				<button class="reserveBtn" onclick="selectDate()">이전 단계</button>
 				<button class="reserveBtn" onclick="selectSergery()">시술 선택</button>
 			</div>
+			
+			<!-- 하단 여백 -->
+			<!-- 버튼이 필요없어 질 때, 버튼 삭제 후 주석 해제 -->
+			<!-- <div style="width: 100%; height: 100px; margin-bottom: 50px;">
+			</div> -->
 			
 		</div>
 	</div>

@@ -4,8 +4,8 @@ public class ReserveVo {
 	int rest_num;			// 예약 번호
 	int des_num;			// 디자이너 번호
 	String m_id;			// 회원 ID
-	String rest_hairdate;		// 시술 일자
-	String rest_regdate;		// 예약 등록 일자
+	String rest_hairdate;	// 시술 일자
+	String rest_regdate;	// 예약 등록 일자
 	int rest_state;			// 예약 상태
 	String rest_payoption;	// 결제 방식
 	String rest_memo;		// 디자이너 전달사항

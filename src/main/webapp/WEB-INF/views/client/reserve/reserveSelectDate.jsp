@@ -57,8 +57,8 @@
 	<!-- 버튼 이벤트 -->
 	<script type="text/javascript">
 		// 이전 단계로 버튼 이벤트
-		function selectPlace() {
-			location.replace("/reserve/reserveSelectPlace.do");
+		function backToSelectPlace() {
+			location.replace("/reserve/backToSelectPlace.do");
 		}
 		
 		// 디자이너 선택 버튼 이벤트
@@ -114,7 +114,7 @@
 			
 			<!-- 버튼 -->
 			<div style="margin: 0 auto; margin-top: 75px;">
-				<button class="reserveBtn" onclick="selectPlace()">이전 단계</button>
+				<button class="reserveBtn" onclick="backToSelectPlace()">이전 단계</button>
 				<button class="reserveBtn" onclick="selectDesigner()">디자이너 선택</button>
 			</div>
 			

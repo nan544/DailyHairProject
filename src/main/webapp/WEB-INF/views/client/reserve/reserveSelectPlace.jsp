@@ -57,11 +57,11 @@
 		.designerbox { float: left; margin: 10px 20px 10px 20px; }
 	</style>
 	
-	<!-- 버튼 이벤트 -->
+	<!-- 이미지 영역 클릭 이벤트 -->
 	<script type="text/javascript">
 		// 왕십리 본점 이미지 선택 시
 		function selectPlace1() {
-			alert("왕십리 본점을 선택하셨습니다.\n시술 일자 선택으로 넘어갑니다.");
+			alert("왕십리 본점을 선택하셨습니다.\n시술 일자 선택으로 이동합니다.");
 			location.replace("/reserve/reserveSelectDate.do");
 		}
 		// 준비 중인 매장 선택 시
@@ -118,29 +118,26 @@
 			<!-- 매장 목록 -->
 			<div style="margin: 0 auto; text-align: center; max-width: 1020px">
 				<div style="width: 100%; margin: 0 auto;">
-					<div class="designerbox">
+					<div class="designerbox" onclick="selectPlace1()">
 						<img class="designer" src="/resources/assets/img/slide/ShopImage_002.jpg"
-							onclick="selectPlace1()" name="place1">
+							name="place1">
 						<p>왕십리 본점</p>
 					</div>
-					<div class="designerbox">
+					<div class="designerbox" onclick="selectPlace3()">
 						<img class="designer" src="/resources/assets/img/NoImage.png"
-							onclick="selectPlace3()" name="place2">
+							name="place2">
 						<p>테스트 목적</p>
 					</div>
-					<div class="designerbox">
-						<img class="designer" src="/resources/assets/img/NoImage.png"
-							onclick="selectPlace2()">
+					<div class="designerbox" onclick="selectPlace2()">
+						<img class="designer" src="/resources/assets/img/NoImage.png">
 						<p>준비 중 입니다.</p>
 					</div>
-					<div class="designerbox">
-						<img class="designer" src="/resources/assets/img/NoImage.png"
-							onclick="selectPlace2()">
+					<div class="designerbox" onclick="selectPlace2()">
+						<img class="designer" src="/resources/assets/img/NoImage.png">
 						<p>준비 중 입니다.</p>
 					</div>
-					<div class="designerbox">
-						<img class="designer" src="/resources/assets/img/NoImage.png"
-							onclick="selectPlace2()">
+					<div class="designerbox" onclick="selectPlace2()">
+						<img class="designer" src="/resources/assets/img/NoImage.png">
 						<p>준비 중 입니다.</p>
 					</div>
 				</div>

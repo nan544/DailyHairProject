@@ -109,7 +109,10 @@
 			
 			<!-- 시술 선택 -->
 			<div>
-			
+				<select>
+					<option value="1001">
+					
+				</select>
 			</div>
 			
 			<!-- 버튼 -->
