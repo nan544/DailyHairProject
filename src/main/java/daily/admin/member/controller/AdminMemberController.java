@@ -28,16 +28,17 @@ public class AdminMemberController {
 	
 	//회원 리스트 출력하기
 	@RequestMapping(value = "/member/memberList.do", method = RequestMethod.GET)
-	public ModelAndView memberList() {
+	public ModelAndView memberList(@ModelAttribute MemberVO mvo) {
 		
 		log.info("memberList 호출성공");
 		ModelAndView mav = new ModelAndView();
 		
-		List<MemberVO> memberList = adminMemberService.memberList();
+		List<MemberVO> memberList = adminMemberService.memberList(mvo);
 		
 		
 		if(memberList != null) {
 			mav.addObject("memberList", memberList);
+			mav.addObject("data",mvo);
 			mav.setViewName("admin/member/memberList");
 		}
 		

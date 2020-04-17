@@ -15,8 +15,8 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 	SqlSession sqlsession;
 
 	@Override
-	public List<MemberVO> memberList() {
-		return sqlsession.selectList("memberList");
+	public List<MemberVO> memberList(MemberVO mvo) {
+		return sqlsession.selectList("memberList",mvo);
 	}
 
 	@Override

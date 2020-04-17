@@ -25,4 +25,10 @@ public class MemberServiceImpl implements MemberService {
 		int result = dao.idChk(vo);
 		return result;
 	}
+	
+	//로그인
+	@Override
+	public MemberVO login(MemberVO lvo) {
+		return dao.login(lvo);
+	}
 }

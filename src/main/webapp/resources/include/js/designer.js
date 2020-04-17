@@ -48,6 +48,7 @@ function insertDes() {
 // 입력값 체크후 디자이너 수정하기
 function updateDes() {
 	
+	
 	var formData = new FormData($("#modifyForm")[0]);
 	
 	if (!chkSubmit($("#des_name"), "이름을")) {

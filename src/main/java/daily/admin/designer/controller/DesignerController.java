@@ -79,7 +79,7 @@ public class DesignerController {
 			dvo.setDes_file(des_file);
 		}
 		
-
+		
 		int result = designerService.insertDesigner(dvo);
 		
 		if (result == 1) {
@@ -92,7 +92,7 @@ public class DesignerController {
 
 	// 디자이너 정보 수정폼
 	@RequestMapping(value = "/designer/designerUpdateForm.do", method = RequestMethod.GET)
-	public ModelAndView designerUpdateForm(@ModelAttribute DesignerVO dvo,HttpServletRequest request) throws IOException {
+	public ModelAndView designerUpdateForm(@ModelAttribute DesignerVO dvo) throws IOException {
 		log.info("designerupdateForm 호출 성공" + dvo.getDes_num());
 
 		ModelAndView mav = new ModelAndView();
@@ -124,6 +124,7 @@ public class DesignerController {
 			String des_file = FileUploadUtil.fileUpload(dvo.getFile(), request, "designer");
 			dvo.setDes_file(des_file); 
 		}   */
+			
 		
 		//수정할떄 파일이 변경되면 기존 파일은 삭제되고 새로운파일로 등록됨
 		if(!dvo.getFile().isEmpty()) {
@@ -132,8 +133,13 @@ public class DesignerController {
 			}
 			String des_file = FileUploadUtil.fileUpload(dvo.getFile(), request, "designer");
 			dvo.setDes_file(des_file);
-		}else {
-			dvo.setDes_file("");
+		}
+		
+		//파일선택을 안했을시에는 전에있던 파일명으로 파일이름을 설정한다.
+		//DB에는 파일이름이 스트링으로 들어감 다운로드시 파일이름으로 접근해서 다운로드받으므로 
+		//파일 수정없이 내용만수정해도 전에 파일이름이 들어가기때문에 다운로드가능
+		if(dvo.getFile().isEmpty()) {
+			dvo.setDes_file(dvo.getDes_file());
 		}
 		
 		

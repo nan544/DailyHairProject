@@ -9,4 +9,7 @@ public interface MemberService {
 	
 	//아이디 중복체크
 	public int idChk(MemberVO vo) throws Exception;
+	
+	//로그인
+	public MemberVO login(MemberVO lvo);
 }

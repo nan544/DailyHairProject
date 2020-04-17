@@ -18,8 +18,14 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	AdminMemberDao adminMemberDao;
 
 	@Override
-	public List<MemberVO> memberList() {
-		return adminMemberDao.memberList();
+	public List<MemberVO> memberList(MemberVO mvo) {
+		
+		//정렬에 대한 기본값 설정하기
+		if(mvo.getOrder_by()==null) mvo.setOrder_by("m_num");
+		if(mvo.getOrder_sc()==null) mvo.setOrder_sc("DESC");
+
+		return adminMemberDao.memberList(mvo);
+		
 	}
 
 	@Override

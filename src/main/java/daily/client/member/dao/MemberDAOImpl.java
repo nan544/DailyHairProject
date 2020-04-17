@@ -27,5 +27,11 @@ public class MemberDAOImpl implements MemberDAO {
 		int result = sql.selectOne("idChk", vo);
 		return result;
 	}
+	
+	//로그인
+	@Override
+	public MemberVO login(MemberVO lvo) {
+		return (MemberVO)sql.selectOne("login", lvo);
+	}
 
 }

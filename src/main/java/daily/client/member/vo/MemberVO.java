@@ -1,7 +1,8 @@
 package daily.client.member.vo;
 
+import daily.common.util.CommonVO;
 
-public class MemberVO {
+public class MemberVO  extends CommonVO{
 
 	private String m_id;
 	private int m_num;

@@ -4,10 +4,66 @@
 
 <mapper namespace="daily.admin.member.dao.AdminMemberDao">
 	
-	<!-- 회원 리스트 출력하기 -->	
-	<select id="memberList" resultType="member">
+	
+	<!-- 검색조건에 따른 회원 리스트 출력용 쿼리 -->
+	<sql id="searchCommon">
 		SELECT m_id, m_num, m_name, m_pwd, m_gender, m_phone, m_email, m_memo, m_state, to_char(m_date,'YYYY-MM-DD') as m_date
 		FROM member
+		<where>
+			<if test="search == 'all'">
+				1 = 1
+			</if>
+			<if test="search == 'm_name'">
+				m_name LIKE '%'||#{m_name}||'%'
+			</if>
+			<if test="search == 'm_phone'">
+				m_phone LIKE '%'||(
+				select substr(m_phone,8,4)
+                from member
+                where m_num = #{m_num});
+			</if>
+		</where>
+	</sql>
+	
+	
+	<!-- 회원 리스트 출력하기 -->	
+	<select id="memberList" resultType="member" parameterType="member">
+		SELECT m_id, m_num, m_name, m_gender,m_email , m_phone , m_state, to_char(m_date,'YYYY-MM-DD') as m_date
+		FROM
+		( SELECT list.*, ROWNUM as RNUM
+			FROM(
+				SELECT m_id, m_num, m_name, m_gender,m_email , m_phone , m_state, m_date
+				FROM member
+				<where>
+					<if test="search == 'm_num'">
+						<![CDATA[m_name LIKE '%'||#{m_name}||'%']]>
+					</if>
+					<if test="search == 'm_phone'">
+						<![CDATA[m_phone LIKE '%'||(
+								select substr(m_phone,8,4) as m_phone
+               					 from member
+               					 where m_num = #{m_num});]]>
+					</if> 
+				</where>
+				<choose>
+					<when test="order_by == 'm_num'">
+						ORDER BY m_num
+					</when>
+					<when test="order_by == 'm_date'">
+						ORDER BY m_date
+					</when>
+				</choose>
+				<choose>
+					<when test="order_sc == 'ASC'">
+						ASC
+					</when>
+					<when test="order_sc == 'DESC'">
+						DESC
+					</when>
+				</choose>
+			) list
+		
+		)
 	</select>
 	
 	
@@ -17,6 +73,7 @@
 		FROM member
 		WHERE m_num = #{m_num}
 	</select>
+	
 	
    
 	<update id="memberUpdate" parameterType="member">
