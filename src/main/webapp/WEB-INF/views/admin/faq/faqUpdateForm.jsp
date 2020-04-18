@@ -19,7 +19,7 @@ textarea {
 	$(function() {
 
 		$("#faqListBtn").click(function() {
-			location.href = "admin/board/HairGoodsList.do";
+			location.href = "adminFaqList.do";
 		});
 		//수정완료 버튼 클릭시
 		$("#faqUpdateBtn").click(function() {

@@ -8,7 +8,7 @@
 
 	<select id="hgList" resultType="hairgoods">
 		SELECT hg_num, hg_title,
-		hg_thumb, hg_img1, hg_img2, hg_img3,hg_img4,hg_content,
+		hg_thumb, hg_img1, hg_img2, hg_img3, hg_img4, hg_content,
 		to_char(hg_regdate,'YYYY-MM-DD hh:mm:ss') as hg_regdate FROM hairgoods
 		order by
 		hg_num desc

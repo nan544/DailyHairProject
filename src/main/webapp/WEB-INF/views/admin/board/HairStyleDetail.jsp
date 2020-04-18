@@ -41,7 +41,7 @@ input[type="file"] {
 $(function() {
 	//목록으로 버튼 클릭 시
 	$("#ListBtn").click(function() {
-		location.href = "HairGoodsList.do";
+		location.href = "HairStyleList.do";
 	});
 	//수정완료 버튼 클릭시
 	$("#UpdateBtn").click(function() {
