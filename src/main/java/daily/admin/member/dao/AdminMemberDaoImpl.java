@@ -29,4 +29,9 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 		return sqlsession.update("memberUpdate",mvo);
 	}
 
+	@Override
+	public int memberListCnt(MemberVO mvo) {
+		return sqlsession.selectOne("memberListCnt",mvo);
+	}
+
 }

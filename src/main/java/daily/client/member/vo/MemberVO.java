@@ -15,7 +15,7 @@ public class MemberVO  extends CommonVO{
 	private int m_state;
 	private String m_date;
 
-	
+
 	public String getM_date() {
 		return m_date;
 	}

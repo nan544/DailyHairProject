@@ -6,7 +6,7 @@ public class CommonVO {
 	//페이징시 사용할 필드
 	
 	private String page; //페이지번호
-	private String pageSize;	//페이지에 보여주는 줄수
+	private String pageSize;	//페이지에 보여주는 줄수"
 	private String start_row;	//시작 레코드번호
 	private String end_row;		//종료 레코드 번호
 	

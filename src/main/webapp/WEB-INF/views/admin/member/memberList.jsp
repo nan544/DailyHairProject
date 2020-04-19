@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,9 @@ span {
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
+
 	$(function() {
+		$("#hidden").hide();
 		
 		//아이디 클릭시 상세보기 팝업창을 띄운다
 		$(".detail").click(
@@ -27,7 +30,7 @@ span {
 				});
 		
 		
-		//검색 후 검색 대상과 검색 단어를 출력한다
+	 	//검색 후 검색 대상과 검색 단어를 출력한다
 		var word = "<c:out value='${data.keyword}'/>";
 		var value="";
 		if(word!=""){
@@ -44,8 +47,8 @@ span {
 				var regex = new RegExp(word,'gi');
 				$(this).html($(this).text().replace(regex,"<span class='required'>"+word+"</span>"));
 			});
-		}
-		
+		} 	
+		 
 		//검색 대상이 변경될 때마다 처리 이벤트
 		$("#search").change(function(){
 			if($("#search").val()!="all"){
@@ -54,9 +57,54 @@ span {
 			}
 		});
 		
+		//검색 버튼 클릭 시 처리 이벤트
+		$("#searchData").click(function(){
+			
+			if($("#search").val()!="all"){
+				if(!chkSubmit($("#keyword"),"검색어를")) return;				
+			}
+			goPage(1);
+		});
 		
-		
+		//클릭할떄마다 정렬
+		$(".order").click(function(){
+			var order_by = $(this).attr("data-value");
+			$("#order_by").val(order_by);
+			
+			if($("#order_sc").val()=="DESC"){
+				$("#order_sc").val("ASC");
+			}else{
+				$("#order_sc").val("DESC");
+			}
+			goPage(1);
+			
+		});
 	});
+	
+	//검색과 한 페이지에 보여줄 레코드 수 처리 및 페이징을 위한 실질적인 처리 함수
+	function goPage(page){
+		if($("#search").val()=="all"){
+			$("#keyword").val("");
+		}
+		$("#page").val(page);
+		$("#f_search").attr({
+			"method" : "get",
+			"action" : "/admin/member/memberList.do"
+		});
+		$("#f_search").submit();
+	}
+	
+	function chkSubmit(item, msg) {
+		if(item.val().replace(/\s/g,"")=="") {
+			alert(msg+" 입력해 주세요.");
+			item.val("");
+			item.focus();
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 </script>
 </head>
 <body>
@@ -93,12 +141,12 @@ span {
 				<td align="center"><strong>성별</strong></td>
 				<td align="center"><strong>이메일</strong>
 				<td align="center"><strong>연락처</strong></td>
-				<td align="center" data-value="m_date" class="order"><strong>등록일</strong></td>
+				<td align="center" data-value="m_date" class="order"><strong>등록일</strong>
 						<c:choose>
 						<c:when test="${data.order_by == 'm_date' and data.order_sc == 'ASC'}">▲</c:when>
 						<c:when test="${data.order_by == 'm_date' and data.order_sc == 'DESC'}">▼</c:when>
 						<c:otherwise>▲</c:otherwise>
-					</c:choose>
+					</c:choose></td>
 				<td align="center"><strong>상태</strong></td>
 			</tr>
 		</thead>
@@ -134,8 +182,8 @@ span {
 	</table>
 	</div>
 	<br>
+	<form name="f_search" id="f_search">
 	<div class="optionContainer" align="center">
-		<form name="search" id="search">
 			<input type="hidden" id="page" name="page" value="1"/>
 			<input type="hidden" id="order_by" name="order_by" value="${data.order_by}"/>
 			<input type="hidden" id="order_sc" name="order_sc" value="${data.order_sc}"/>
@@ -149,13 +197,17 @@ span {
 							<option value="all">전체</option>
 							<option value="m_name">이름</option>
 							<option value="m_phone">전화번호 뒤4자리</option>
-						</select>				
+						</select>
+						<input type="text" id="hidden">
 						<input type="text" name="keyword" id="keyword"/>
 						<input type="button" id="searchData" value="검색"/>
 						</td>
 					</tr>	
 				</table>
+				</div>
 		</form>
-	</div>
+		<div id="boardPage">
+			<tag:paging page="${param.page}" total="${total}" list_size="${data.pageSize}"/>
+		</div>
 </body>
 </html>

@@ -205,8 +205,6 @@ var openDialog = function(uri, name, options, closeCallback) {
 				
 			});
 			
-			//window.open("/admin/style/styleUpdateForm.do?styling_num="+styling_num,
-			//		"pop1", "width=850, height=350, left=700, top=200");
 		});
 		
 		//삭제 버튼 클릭시 실행 deleteBtn

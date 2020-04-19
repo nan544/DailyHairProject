@@ -37,4 +37,9 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	public int memberUpdate(MemberVO mvo) {
 		return adminMemberDao.memberUpdate(mvo);
 	}
+
+	@Override
+	public int memberListCnt(MemberVO mvo) {
+		return adminMemberDao.memberListCnt(mvo);
+	}
 }

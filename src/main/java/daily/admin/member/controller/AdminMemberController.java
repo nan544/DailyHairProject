@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import daily.admin.member.service.AdminMemberService;
 import daily.client.member.vo.MemberVO;
+import daily.common.page.Paging;
+import daily.common.util.Util;
 
 
 @Controller
@@ -33,14 +35,21 @@ public class AdminMemberController {
 		log.info("memberList 호출성공");
 		ModelAndView mav = new ModelAndView();
 		
+		//페이지세팅 - ModelVO 는 CommonVO 를 상속하고있음
+		Paging.setPage(mvo);
+		
+		//전체 레코드수 구하기
+		int total = adminMemberService.memberListCnt(mvo);
+		log.info(total+"<<레코드수");
+		
+		
 		List<MemberVO> memberList = adminMemberService.memberList(mvo);
 		
 		
-		if(memberList != null) {
 			mav.addObject("memberList", memberList);
 			mav.addObject("data",mvo);
+			mav.addObject("total",total);
 			mav.setViewName("admin/member/memberList");
-		}
 		
 		
 		return mav;

@@ -9,4 +9,5 @@ public interface AdminMemberService {
 	public List<MemberVO> memberList(MemberVO mvo);
 	public MemberVO memberDetail(int m_num);
 	public int memberUpdate(MemberVO mvo);
+	public int memberListCnt(MemberVO mvo);
 }

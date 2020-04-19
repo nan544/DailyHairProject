@@ -7,20 +7,17 @@
 	
 	<!-- 검색조건에 따른 회원 리스트 출력용 쿼리 -->
 	<sql id="searchCommon">
-		SELECT m_id, m_num, m_name, m_pwd, m_gender, m_phone, m_email, m_memo, m_state, to_char(m_date,'YYYY-MM-DD') as m_date
+		SELECT m_id, m_num, m_name, m_pwd, m_gender, m_phone, m_email, m_memo, m_state, m_date
 		FROM member
 		<where>
 			<if test="search == 'all'">
 				1 = 1
 			</if>
 			<if test="search == 'm_name'">
-				m_name LIKE '%'||#{m_name}||'%'
+				m_name LIKE '%'||#{keyword}||'%'
 			</if>
 			<if test="search == 'm_phone'">
-				m_phone LIKE '%'||(
-				select substr(m_phone,8,4)
-                from member
-                where m_num = #{m_num});
+				m_phone LIKE '%'||#{keyword}
 			</if>
 		</where>
 	</sql>
@@ -32,19 +29,7 @@
 		FROM
 		( SELECT list.*, ROWNUM as RNUM
 			FROM(
-				SELECT m_id, m_num, m_name, m_gender,m_email , m_phone , m_state, m_date
-				FROM member
-				<where>
-					<if test="search == 'm_num'">
-						<![CDATA[m_name LIKE '%'||#{m_name}||'%']]>
-					</if>
-					<if test="search == 'm_phone'">
-						<![CDATA[m_phone LIKE '%'||(
-								select substr(m_phone,8,4) as m_phone
-               					 from member
-               					 where m_num = #{m_num});]]>
-					</if> 
-				</where>
+				<include refid="searchCommon"></include>
 				<choose>
 					<when test="order_by == 'm_num'">
 						ORDER BY m_num
@@ -62,7 +47,25 @@
 					</when>
 				</choose>
 			) list
-		
+		)
+		<where>
+			<if test="start_row != null and start_row !=''">
+				<if test="end_row != null and end_row != ''">
+					RNUM BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
+	</select>
+	
+	<!-- 회원목록 게시물 카운트 페이징 -->
+	<select id="memberListCnt" parameterType="member" resultType="int">
+		SELECT NVL(count(1),0)
+		FROM(
+			SELECT list.*, ROWNUM AS RNUM
+			FROM(
+				<include refid="searchCommon"></include>
+				ORDER BY m_num desc
+			) list
 		)
 	</select>
 	
@@ -75,7 +78,7 @@
 	</select>
 	
 	
-   
+   	<!-- 회원 상태값 수정하기(비활성화/활성화 용도) -->
 	<update id="memberUpdate" parameterType="member">
 		UPDATE member
 		SET m_state =#{m_state}
