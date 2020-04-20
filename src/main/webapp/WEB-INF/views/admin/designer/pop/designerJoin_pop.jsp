@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>디자이너 등록</title>
+<link href="/resources/include/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <style type="text/css">
 span {
 	color: red;
@@ -56,12 +58,12 @@ span {
 <body>
 	<div class="joinheader">
 		<h1>디자이너 등록</h1>
-		<label><span>*&nbsp;</span>부분은 필수입력 입니다.</label>
-		<hr align="left" width="650">
+		<br>
+		<p>&nbsp;&nbsp;<span>*&nbsp;</span>부분은 필수입력 입니다.</p>
 	</div>
 	<div class="joinContainer">
 		<form name="insertForm" id="insertForm" enctype="multipart/form-data">
-			<table>
+			<table class="table">
 				<tr>
 					<td><span>*&nbsp;</span>이름</td>
 					<td><input type="text" name="des_name" id="des_name"
@@ -112,9 +114,9 @@ span {
 				</tr>
 			</table>
 		</form>
-		<div class="buttonContainer">
-			<input type="button" name="insertBtn" id="insertBtn" value="등록하기" />
-			<input type="button" name="closeBtn" id="closeBtn" value="닫기" />
+		<div class="buttonContainer" align="center">
+			<input type="button" name="insertBtn" id="insertBtn" value="등록하기" class="btn" />
+			<input type="button" name="closeBtn"  id="closeBtn" value="닫기" class="btn" />
 		</div>
 	</div>
 

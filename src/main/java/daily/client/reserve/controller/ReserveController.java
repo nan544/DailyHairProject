@@ -14,11 +14,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import daily.admin.designer.controller.DesignerController;
 import daily.admin.designer.service.DesignerService;
 import daily.admin.designer.vo.DesignerVO;
+import daily.client.reserve.service.ReserveService;
+import daily.client.reserve.vo.ReserveVo;
 
 @Controller
 @RequestMapping(value = "/reserve")
@@ -28,6 +31,9 @@ public class ReserveController {
 	
 	@Autowired
 	private DesignerService designerService;
+	
+	@Autowired
+	private ReserveService reserveService;
 	
 	// 00. 로그인 세션 확인 하는 기능 추가할 것
 	// 예약하기 최초 접속 시 예약 정보 값 초기화
@@ -65,6 +71,13 @@ public class ReserveController {
 	}
 	
 	// 02. 시술 일자) [date] 달력 및 시간 내보이는 기능 추가할 것 
+	@RequestMapping(value = "/reserveSelectTime.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<ReserveVo> selectTime(@ModelAttribute ReserveVo rvo){ 
+		log.info("(동적으로 버튼 생성");
+		return reserveService.selectTime(rvo);
+	}
+	
 	
 	
 	// 02. 시술 일자 back) 매장 선택으로 돌아갈 때 세션값 초기화
@@ -79,7 +92,7 @@ public class ReserveController {
 	
 	// 03. 디자이너) [date > designer] 디자이너 선택 이동 시 디자이너 목록 노출
 	@RequestMapping(value = "/reserveSelectDesigner", method = RequestMethod.GET)
-	public ModelAndView reserveSelectDesigner(HttpSession session) {
+	public ModelAndView reserveSelectDesigner(@ModelAttribute ReserveVo rvo , HttpSession session) {
 		session.setAttribute("date", "(시술 일시)임시 적용값"); 
 		session.getAttribute("place");
 		

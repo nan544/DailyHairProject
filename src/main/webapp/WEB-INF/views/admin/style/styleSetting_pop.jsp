@@ -287,7 +287,7 @@ var openDialog = function(uri, name, options, closeCallback) {
 
 
 				<hr>
-				<table>
+				<table class="table">
 					<tr>
 						<td><span>&nbsp;*</span>시술 구분</td>
 						<td><select id="styling_option" name="styling_option">
@@ -326,7 +326,7 @@ var openDialog = function(uri, name, options, closeCallback) {
 		</form>
 	</div>
 	<div class="btnContainer">
-		<input type="button" name="closeBtn" id="closeBtn" value="닫기"/>
+		<input type="button" name="closeBtn" id="closeBtn" value="닫기" />
 	</div>
 </body>
 </html>

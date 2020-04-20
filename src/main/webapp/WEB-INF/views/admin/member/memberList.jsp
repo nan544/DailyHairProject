@@ -11,6 +11,16 @@
 span {
 	color: red;
 }
+#search{
+width : 130px;
+float: left;
+margin-right: 5px;
+}
+#keyword{
+width : 200px;
+float: left;
+margin-right: 5px;
+}
 </style>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
@@ -116,7 +126,7 @@ span {
 		<span>*</span>아이디를 클릭하면 상세보기
 	</p>
 	<div class="memberListContainer">
-	<table>
+	<table class="table table-hover">
 		<colgroup>
 			<col width="15%">
 			<col width="10%">
@@ -193,14 +203,14 @@ span {
 						<col width="30%">
 					</colgroup>
 					<tr>
-					<td><select id="search" name="search">
+					<td><select id="search" name="search" class="form-control">
 							<option value="all">전체</option>
 							<option value="m_name">이름</option>
-							<option value="m_phone">전화번호 뒤4자리</option>
+							<option value="m_phone">전화번호</option>
 						</select>
 						<input type="text" id="hidden">
-						<input type="text" name="keyword" id="keyword"/>
-						<input type="button" id="searchData" value="검색"/>
+						<input type="text" name="keyword" id="keyword" class="form-control"/>
+						<input type="button" id="searchData" value="검색" class="btn"/>
 						</td>
 					</tr>	
 				</table>

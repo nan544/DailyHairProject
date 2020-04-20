@@ -17,7 +17,7 @@
 				m_name LIKE '%'||#{keyword}||'%'
 			</if>
 			<if test="search == 'm_phone'">
-				m_phone LIKE '%'||#{keyword}
+				m_phone LIKE '_______'||#{keyword}||'%'
 			</if>
 		</where>
 	</sql>

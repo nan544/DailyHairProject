@@ -70,7 +70,7 @@ public class PagingTag extends TagSupport {
 		if(prevFirst > 0){
 			ret += "<a href=\"javascript:goPage('"+prevFirst+"');\"></span><img src='/resources/images/common/btn_paginate_prev.gif' alt='이전'/></span></a>";
 		}else {
-			ret += "<span><img src='/resources/images/common/btn_paginate_prev.gif' alt='이전'/></span>,</a>";
+			ret += "<span><img src='/resources/images/common/btn_paginate_prev.gif' alt='이전'/></span></a>";
 		}
 		
 		//
