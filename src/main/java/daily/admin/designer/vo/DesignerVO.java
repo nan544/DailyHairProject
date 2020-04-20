@@ -1,6 +1,6 @@
 package daily.admin.designer.vo;
 
-
+import org.springframework.web.multipart.MultipartFile;
 
 public class DesignerVO {
 
@@ -22,9 +22,19 @@ public class DesignerVO {
 	private String des_file;
 	private int des_state;
 	private String des_memo;
+	
+	private MultipartFile file;   //첨부파일
 
 	
 	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
 	public String getDes_gender() {
 		return des_gender;
 	}

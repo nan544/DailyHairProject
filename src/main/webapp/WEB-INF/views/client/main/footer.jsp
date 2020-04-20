@@ -46,6 +46,25 @@
 
 	<!-- Template Main JS File -->
 	<script type="text/javascript" src="/resources/assets/js/main.js"></script>
+	
+	<!-- 팝업 이벤트 목록 -->
+	<script type="text/javascript">
+		function clause1() {
+			var url = "/client/clause1.do";
+			var name = "이용약관";
+			var option = "width=500px, height=850px, toolbars=no, scrollbars=yes";
+			
+			window.open(url, name, option);
+		}
+		
+		function clause2() {
+			var url = "/client/clause2.do";
+			var name = "개인정보 수집 및 이용약관";
+			var option = "width=500px, height=850px, toolbars=no, scrollbars=yes";
+			
+			window.open(url, name, option);
+		}
+	</script>
 </head>
 
 <body>
@@ -54,8 +73,8 @@
     <div class="container">
 		<h3>DailyHairShop</h3>
 		<div>
-			<a href="#">이용약관</a> | 
-			<a href="#">개인정보 제공 동의 약관</a> | 
+			<a href="javascript:clause1()">이용약관</a> | 
+			<a href="javascript:clause2()">개인정보 제공 동의 약관</a> | 
 			<a href="#">자주하는 질문</a> | 
 			<i class="icofont-phone"></i> 문의 전화 02 001 0001(0002)
 			<i class="icofont-clock-time icofont-rotate-180"></i> 영업시간 10:00 AM - 19:00 PM

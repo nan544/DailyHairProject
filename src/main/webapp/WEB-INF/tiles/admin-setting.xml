@@ -19,6 +19,11 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/admin/main/{1}.jsp" />
 	</definition>
+	
+		<definition name="admin/member/*" extends="basic">
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/member/{1}.jsp" />
+	</definition>
 
 	<definition name="admin/designer/*" extends="basic">
 		<put-attribute name="main"

@@ -49,7 +49,7 @@
 	
 	<style type="text/css">
 		.designer { width: 300px; height: 200px }
-		.designerbox { width: 350px; }
+		.designerbox { float: left; margin: 10px 20px 10px 20px; }
 		.howtocome > li { text-align: center; width: 350px;}
 	</style>
 </head>
@@ -85,38 +85,32 @@
 			</div>
 			
 			<!-- 디자이너 목록 -->
-			<!-- 관리자 페이지에서 디자이너 등록, 수정, 삭제에 따른 변동 적용시킬 것 -->
-			<!-- 임시로 table 설정해놨지만 이후 하나하나 div로 설정할 것 -->
-			<table style="margin: 0 auto; display: block; text-align: center;">
-				<tr>
-					<td><div class="designerbox">
-							<img class="designer" src="/resources/assets/img/shopIntro/Designer_KGY.png"">
-							<p>입력 대기</p>
-						</div></td>
-					<td><div class="designerbox">
-							<img class="designer" src="/resources/assets/img/shopIntro/Designer_KGY.png"">
-							<p>입력 대기</p>
-						</div></td>
-					<td><div class="designerbox">
-							<img class="designer" src="/resources/assets/img/shopIntro/Designer_KGY.png"">
-							<p>입력 대기</p>
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="designerbox">
-							<img class="designer" src="/resources/assets/img/shopIntro/Designer_KGY.png"">
-							<p>입력 대기</p>
-						</div></td>
-					<td><div class="designerbox">
-							<img class="designer" src="/resources/assets/img/shopIntro/Designer_KGY.png"">
-							<p>입력 대기</p>
-						</div></td>
-					<td><div class="designerbox">
-							<img class="designer" src="/resources/assets/img/shopIntro/Designer_KGY.png"">
-							<p>입력 대기</p>
-						</div></td>
-				</tr>
-			</table>
+			<div style="margin: 0 auto; text-align: center; max-width: 1500px">
+				<div>
+					<div class="designerbox">
+						<img class="designer" src="/resources/assets/img/shopIntro/Designer_KGY.png">
+						<p>김국영 원장</p>
+					</div>
+					<div class="designerbox">
+						<img class="designer" src="/resources/assets/img/shopIntro/Designer_JJY.png">
+						<p>전준영 실장</p>
+					</div>
+					<div class="designerbox">
+						<img class="designer" src="/resources/assets/img/shopIntro/Designer_SJY.png">
+						<p>신진영 디자이너</p>
+					</div>
+				</div>
+				<div>
+					<div class="designerbox">
+						<img class="designer" src="/resources/assets/img/shopIntro/Designer_SMH.png">
+						<p>심명현 디자이너</p>
+					</div>
+					<div class="designerbox">
+						<img class="designer" src="/resources/assets/img/shopIntro/Designer_PJS.png">
+						<p>박정서 디자이너</p>
+					</div>
+				</div>
+			</div>
 			
 			<!-- 구분선 -->
 			<div style="margin: 20px; width: 100%;">
@@ -124,7 +118,7 @@
 			</div>
 			
 			<!-- 찾아 오시는 길 -->
-			<div style="margin: 0 auto;">
+			<div style="margin: 0 auto; margin-top: 20px;">
 				<div style="width: 500px; height: 500px; float: left;">
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.78473688856!2d127.10054351551068!3d37.512994934949894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca50a915f665b%3A0xabeb10cd5efdfce2!2z66Gv642w7JuU65Oc7YOA7JuM!5e0!3m2!1sko!2skr!4v1586479152966!5m2!1sko!2skr" width="500" height="500" frameborder="0" ></iframe>
 				</div>

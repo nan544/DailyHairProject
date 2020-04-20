@@ -2,10 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 
- <ul class="nav nav-sidebar">
+ <ul class="nav nav-sidebar dropdown">
             <li class="active"><a href="/admin/goMain.do">메인 페이지<span class="sr-only">(current)</span></a></li>
-            <li><a href="#">회원 관리</a></li>
-            <li><a href="#">예약 관리</a></li>
+            <li><a href="/admin/member/memberList.do">회원 관리</a></li>
+            <li><a href="#">예약 관리</a>
+            <ul class="dropdown">
+            	<li>예약현황</li>
+            	<li>예약취소내역</li>
+            	<li>예약완료내역</li>
+            </ul></li>
             <li><a href="/admin/adminFaqList.do">고객센터 관리</a></li>
             <li><a href="/admin/board/HairGoodsList.do">갤러리 관리</a>
             	<ul>

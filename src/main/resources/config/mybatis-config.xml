@@ -10,6 +10,7 @@
 		<typeAlias type="daily.admin.style.vo.StyleVO" alias="styling"></typeAlias>
 		<typeAlias type="daily.admin.board.vo.AdminHairGoodsVO" alias="hairgoods"></typeAlias>
 		<typeAlias type="daily.admin.board.vo.AdminHairStyleVO" alias="hairstyle"></typeAlias>
+		<typeAlias type="daily.client.member.vo.MemberVO" alias="member"></typeAlias>
 	</typeAliases>
 	
 	<!-- 필요시 추후 주석해제 합니다

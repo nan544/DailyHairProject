@@ -4,37 +4,44 @@
 
 <mapper namespace="daily.admin.style.dao.styleDao">
 
-
-	<select id="stylingList" parameterType="styling" resultType="styling">
-		SELECT *
-		FROM styling 
-		WHERE des_num = #{des_num}
-		<!-- SELECT a.styling_num as styling_num, 
-		FROM styling a inner join designer b
+	<select id="stylingList" resultType="styling" parameterType="styling">
+		select a.styling_num as styling_num, a.styling_name as styling_name, a.styling_price as styling_price ,b.des_name as des_name
+		from styling a inner join designer b
 		on a.des_num = b.des_num
-		where a.des_num = #{des_num} -->
+	</select>
+	
+	<!-- 상세보기 -->
+	<select id="detailStyling" resultType="styling" parameterType="styling">
+		select *
+		from styling
+		where styling_num = #{styling_num}
+	</select>
+	
+	<!-- 선택하는 디자이너 번호에따라 리스트 출력 -->
+	<select id="stylingAjaxList" resultType="styling" parameterType="styling">
+		select *
+		from styling
+		where des_num = #{des_num}
 	</select>
 
-	 <insert id="insertStyling" parameterType="styling">
-	 <selectKey keyProperty="styling_num" resultType="int" order="BEFORE">
-	 	select styling_seq.nextval from dual
-	 </selectKey>
-		INSERT INTO styling(styling_num,des_num,styling_name,styling_price,styling_option)
-		VALUES(#{styling_num}, #{des_num}, #{styling_name},#{styling_price},#{styling_option})
-	</insert>
+	<!-- 시술등록하기 -->
+	<insert id="insertStyling" parameterType="styling"> 
+	<selectKey keyProperty="styling_num" resultType="int" order="BEFORE">
+	select styling_seq.nextval from dual </selectKey> 
+		INSERT INTO styling(styling_num , des_num, styling_name, styling_price, styling_option) 
+		VALUES(#{styling_num}, #{des_num}, #{styling_name},#{styling_price},#{styling_option}) 
+		</insert>
 	
-<!-- 
-	<update id="updateSomething" parameterType="styling">
-		UPDATE tablename1
-		SET
-		columnname1=#{param1}
-		WHERE
-		columnname2 = #{param2}
-	</update>
-
-	<delete id="deleteSomething" parameterType="int">
-		DELETE FROM tablename1 WHERE
-		columnname1 = #{param1}
-	</delete> -->
+	<!-- 시술수정하기 -->
+	 <update id="updateStyling" parameterType="styling"> 
+	 	UPDATE styling
+		SET styling_option= #{styling_option} ,styling_name = #{styling_name} ,styling_price = #{styling_price}
+		WHERE styling_num = #{styling_num} </update> 
+		
+		 <delete id="deleteStyling" parameterType="int">
+		 DELETE 
+		 FROM styling 
+		 WHERE styling_num = #{styling_num} 
+		 </delete> 
 
 </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -90,8 +91,14 @@
 					<!-- <li class="active"><a href="#">로그인</a></li>
 					<li class="active"><a href="#">회원가입</a></li> -->
 					<!-- 둥근 노란색 테두리 메뉴 바 생성 클래스 지정 -->
-					<li class="book-a-table text-center"><a href="#">로그인</a></li>
-					<li class="book-a-table text-center"><a href="#">회원가입</a></li>
+					<li class="book-a-table text-center">
+						<c:if test="${login == '사용자'}"><a href="/member/login/logout.do">로그아웃</a></c:if>
+						<c:if test="${login == null}"><a href="/member/login/login.do">로그인</a></c:if>
+					</li>
+					<li class="book-a-table text-center">
+						<c:if test="${login == '사용자'}"><a href="#">마이페이지</a></c:if>
+						<c:if test="${login == null}"><a href="/member/clause.do">회원가입</a></c:if>
+					</li>
 				</ul>
 			</nav>
 		</div><!-- End MenuBar -->

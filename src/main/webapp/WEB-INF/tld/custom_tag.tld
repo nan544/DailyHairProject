@@ -12,26 +12,30 @@
 		<name>paging</name>
 	
 		<!-- 페이징하는 진영씨 경로수정하세요~ -->
-		<tag-class>com.spring.common.page.PagingTag</tag-class>
+		<tag-class>daily.common.page.PagingTag</tag-class>
 		<body-content>JSP</body-content>
+		
 		<attribute>
-			<name>page</name>
+			<name>page</name> 
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>int</type>
 		</attribute>
+		
 		<attribute>
 			<name>total</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>int</type>
 		</attribute>
+		
 		<attribute>
 			<name>list_size</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>int</type>
 		</attribute>
+		
 		<attribute>
 			<name>page_size</name>
 			<required>false</required>

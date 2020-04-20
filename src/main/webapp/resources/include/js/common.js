@@ -69,7 +69,6 @@ function inputVerify(index, data){
 	var data_regExp = new RegExp(pattern[index]);
 	var match = data_regExp.exec($(data).val());
 	if(match==null){
-		alert(match);
 		$(data).val("");
 		return false;
 	} else {
@@ -77,17 +76,22 @@ function inputVerify(index, data){
 	}
 }
 
-function isNumber(input) {
+
+function numberChk(input) {
 	if($(input).val()!=""){
 		var num_regExp = new RegExp("[0-9]$","i");	//only number
 		var match = num_regExp.exec($(input).val());
 		//alert(match);
 		if(match==null){
 			alert("숫자를 입력해주세요");
-			$(input).val($(input).val().substr(0, $(input).val().length-1));
+			$(input).val("");
+		}else{
+			return true;
 		}
 	}
 } 
+
+
 
 /* 함수명: chkFile(파일명) 
  * 설명: 이미지 파일 여부를 확인하기 위해 확장자 확인 함수. */ 
