@@ -28,8 +28,6 @@ public class AdminReservationController {
 		@Autowired
 		private DesignerService designerService;
 		
-		@Autowired
-		private StyleService stylingService;
 		
 		//예약내역 리스트출력
 		@RequestMapping(value = "/reservation/adminReservationList.do")
@@ -41,12 +39,10 @@ public class AdminReservationController {
 			
 			List<ReserveVo> reservationList = adminReservationService.reservationList();
 			List<DesignerVO> designerList = designerService.designerList();
-			List<StyleVO> styleList = stylingService.stylingList();
 			
 			
 			mav.addObject("desList",designerList);
 			mav.addObject("restList",reservationList);
-			//mav.addObject("styleList",styleList);
 			mav.setViewName("admin/reservation/reservationList");
 			
 			

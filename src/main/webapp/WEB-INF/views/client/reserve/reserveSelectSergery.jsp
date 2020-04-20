@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -58,7 +59,11 @@
 	<script type="text/javascript">
 		// 이전 단계로 버튼 이벤트
 		function selectDesigner() {
-			location.replace("/reserve/reserveSelectDesigner.do");
+			let date = "${data.rest_hairdate}";
+			let time =	"${data.rest_time}";
+			
+			location.href="/reserve/reserveSelectDesigner.do?rest_hairdate="+date+"&rest_time="+time;
+		//	location.replace("/reserve/reserveSelectDesigner.do");
 		}
 		
 		// 결제하기 버튼 이벤트
@@ -94,8 +99,8 @@
 			<!-- 예약 정보 -->
 			<div style="margin: 0 auto;">
 				<div class="reserveTablehead">예약 정보　　</div>
-				<div class="reserveTable">(매장)입력 대기 중</div>
-				<div class="reserveTable">(시술 일시)입력 대기 중</div>
+				<div class="reserveTable">${place}</div>
+				<div class="reserveTable">${data.rest_hairdate}&nbsp;&nbsp;&nbsp;${data.rest_time}</div>
 				<div class="reserveTable">(디자이너)입력 대기 중</div>
 				<div class="reserveTable">(시술)입력 대기 중</div>
 				<div></div>
@@ -108,10 +113,39 @@
 			</div>
 			
 			<!-- 시술 선택 -->
-			<div>
+			<div style="margin : 0 auto;">
 				<select>
-					<option value="1001">
-					
+					<option>기본시술</option>
+					<c:forEach var="style" items="${styleList}">
+						<c:if test="${style.styling_option =='기본시술'}">
+						<option value="${style.styling_num}">${style.styling_name}</option>
+						</c:if>
+					</c:forEach>
+				</select>
+				<select>
+					<option>펌시술</option>
+					<c:forEach var="style" items="${styleList}">
+						<c:if test="${style.styling_option =='펌시술'}">
+						<option value="${style.styling_num}">${style.styling_name}</option>
+						</c:if>
+					</c:forEach>
+				</select>
+				<select>
+					<option>기타1시술</option>
+					<c:forEach var="style" items="${styleList}">
+						<c:if test="${style.styling_option =='기타1시술'}">
+						<option value="${style.styling_num}">${style.styling_name}</option>
+						</c:if>
+					</c:forEach>
+				</select>
+				
+				<select>
+					<option>기타2시술</option>
+					<c:forEach var="style" items="${styleList}">
+						<c:if test="${style.styling_option =='기타2시술'}">
+						<option value="${style.styling_num}">${style.styling_name}</option>
+						</c:if>
+					</c:forEach>
 				</select>
 			</div>
 			

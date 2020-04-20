@@ -16,8 +16,8 @@ public class StyleDaoImpl implements StyleDao {
 	SqlSession sqlsession;
 
 	@Override
-	public List<StyleVO> stylingList() {
-		return sqlsession.selectList("stylingList");
+	public List<StyleVO> stylingList(int des_num) {
+		return sqlsession.selectList("stylingList",des_num);
 	}
 
 	@Override

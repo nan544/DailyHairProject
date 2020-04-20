@@ -6,11 +6,10 @@
 	
 	
 	<!-- 시술목록출력 -->
-<select id="stylingList" resultType="styling" parameterType="reservation">
-		select c.styling_name as styling_name
-       from reservation a inner join reservation_detail b
-		on a.rest_num = b.rest_num inner join styling c
-		on b.styling_num = c.styling_num
+<select id="stylingList" resultType="styling" parameterType="int">
+		select *
+        from styling
+		where des_num = #{des_num}
 	</select>
 	 
 	<!-- 상세보기 -->

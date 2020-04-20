@@ -18,8 +18,8 @@ public class StyleServiceImpl implements StyleService {
 	StyleDao styledao;
 	
 	@Override
-	public List<StyleVO> stylingList() {
-		return styledao.stylingList();
+	public List<StyleVO> stylingList(int des_num) {
+		return styledao.stylingList(des_num);
 	}
 
 

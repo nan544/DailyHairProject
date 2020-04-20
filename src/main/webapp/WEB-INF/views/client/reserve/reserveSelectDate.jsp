@@ -123,7 +123,13 @@
 		$("#timeForm").attr("method","get");
 		$("#timeForm").attr("action","/reserve/reserveSelectDesigner.do");
 		
-		location.replace("/reserve/reserveSelectDesigner.do");
+		alert($("#datePicker").val());
+		alert($("#rest_time").val());
+		
+		$("#timeForm").submit();
+		
+		
+		//location.replace("/reserve/reserveSelectDesigner.do");
 	}
 </script>
 </head>
@@ -169,9 +175,9 @@
 				<!-- 달력 노출 및 일자 선택 -->
 				<div style="margin: 0 auto;">
 				<form id="timeForm" name="timeForm">	
-					<input type="text" id="datePicker" name="rest_hairdate" class="form-control" value="날짜선택">
+					<input type="text" id="datePicker" name="rest_hairdate" class="form-control" placeholder="날짜를 선택해주세요">
 						<select id="rest_time" name="rest_time">
-							<option value="#">시간선택</option>
+							<option></option>
 							<option value="10:00">10:00</option>
 							<option value="10:30">10:30</option>
 							<option value="11:00">11:00</option>

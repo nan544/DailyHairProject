@@ -6,7 +6,7 @@ import daily.admin.designer.vo.DesignerVO;
 import daily.admin.style.vo.StyleVO;
 
 public interface StyleService {
-	public List<StyleVO> stylingList(); //시술리스트
+	public List<StyleVO> stylingList(int des_num); //시술리스트
 	public List<StyleVO> stylingAjaxList(int des_num); //시술리스트
 	public StyleVO detailStyling(StyleVO svo);		//상세보기
 	public int insertStyling(StyleVO svo);		//시술 등록
