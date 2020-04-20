@@ -40,4 +40,9 @@ public class AdminHairGoodsDAOImpl implements AdminHairGoodsDAO {
 		return session.delete("hgDelete", hg_num);
 	}
 
+	@Override
+	public int hairGoodsListCnt(AdminHairGoodsVO hgvo) {
+		return session.selectOne("hgListCnt", hgvo);
+	}
+
 }

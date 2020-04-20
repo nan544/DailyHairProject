@@ -5,6 +5,7 @@ import java.util.List;
 import daily.admin.board.vo.AdminHairGoodsVO;
 
 public interface AdminHairGoodsDAO {
+	public int hairGoodsListCnt(AdminHairGoodsVO hgvo);
 	public List<AdminHairGoodsVO> hairGoodslist(); //전체리스트출력
 	public AdminHairGoodsVO hairGoodsdetail(int hg_num); //상세보기
 	public int hairGoodsupdate(AdminHairGoodsVO hgvo);//수정

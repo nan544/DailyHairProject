@@ -40,14 +40,11 @@
 
 	<table border="1">
 	<colgroup>
-		<col width="5%"/>
+		<col width="10%"/>
 		<col width="30%"/>
 		<col width="10%"/>
-		<col width="15%"/>
-		<col width="8%"/>
-		<col width="8%"/>
-		<col width="8%"/>
-		<col width="8%"/>
+		<col width="25%"/>
+		<col width="25%"/>
 		
 	</colgroup>
 	<tr>
@@ -55,10 +52,7 @@
 		<th>제품이름</th>
 		<th>등록일</th>
 		<th>썸네일 이미지명</th>
-		<th>이미지1</th>
-		<th>이미지2</th>
-		<th>이미지3</th>
-		<th>이미지4</th>
+		<th>상세이미지</th>
 	</tr>
 	<!-- 데이터 출력 시작-->
 	<c:choose>
@@ -70,9 +64,6 @@
 					<td >${hsList.hs_regdate}</td>
 					<td >${hsList.hs_thumb}</td>
 					<td >${hsList.hs_img1}</td>
-					<td >${hsList.hs_img2}</td>
-					<td >${hsList.hs_img3}</td>
-					<td >${hsList.hs_img4}</td>
 				</tr>
 			</c:forEach>
 		</c:when>

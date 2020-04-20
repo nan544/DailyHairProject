@@ -5,15 +5,26 @@
 <mapper namespace="daily.admin.board.dao.HairGoodsDAO">
 
 
-
+<!-- 게시물 검색 쿼리 분리 -->
+	<sql id="List">
+	select * 
+	from hairgoods
+	</sql>
+	
 	<select id="hgList" resultType="hairgoods">
 		SELECT hg_num, hg_title,
-		hg_thumb, hg_img1, hg_img2, hg_img3, hg_img4, hg_content,
+		hg_thumb, hg_img1,hg_content,
 		to_char(hg_regdate,'YYYY-MM-DD hh:mm:ss') as hg_regdate FROM hairgoods
 		order by
 		hg_num desc
+	</select> 
+	<select id="hgListCnt" resultType="int" parameterType="hairgoods">
+	select count(1) from(
+	select list.*, rownum as Rnum
+	from(<include refid="List" />)list)
+	
+	
 	</select>
-
 	<insert id="hgInsert" parameterType="hairgoods">
 		<!-- HairGoods 게시글 등록 -->
 		<selectKey keyProperty="hg_num" resultType="int"
@@ -29,12 +40,18 @@
 		hg_title,
 		hg_content,
 		hg_thumb
+		<if test="hg_img1 != '400'">
+		,hg_img1
+		</if>
 		)
 		VALUES(
 		#{hg_num},
 		#{hg_title},
 		#{hg_content},
 		#{hg_thumb}
+		<if test="hg_img1 != '400'">
+		,#{hg_img1}
+		</if>
 		)
 	</insert>
 	<update id="hgUpdate" parameterType="hairgoods">
@@ -44,6 +61,9 @@
 		hg_content=#{hg_content}
 		<if test="hg_thumb !='400'">
 		, hg_thumb = #{hg_thumb}
+		</if>
+		<if test="hg_img1 !='400'">
+		, hg_img1 = #{hg_img1}
 		</if>
 		where hg_num = #{hg_num}
 
@@ -60,7 +80,6 @@
 		where
 		hg_num=#{hg_num}
 	</delete>
-	
 	
 </mapper>
 

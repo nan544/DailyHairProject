@@ -44,4 +44,9 @@ public class AdminHairGoodsServiceImpl implements AdminHairGoodsService {
 		return hairgoodsdao.hairGoodsdelete(hg_num);
 	}
 
+	@Override
+	public int boardListCnt(AdminHairGoodsVO hgvo) {
+		return hairgoodsdao.hairGoodsListCnt(hgvo);
+	}
+
 }

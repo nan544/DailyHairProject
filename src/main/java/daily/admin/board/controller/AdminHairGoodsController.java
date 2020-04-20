@@ -1,9 +1,9 @@
 package daily.admin.board.controller;
 
+
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import daily.admin.board.service.AdminHairGoodsService;
 import daily.admin.board.vo.AdminHairGoodsVO;
+import daily.common.page.Paging;
 import daily.common.util.FileUploadUtil;
+import daily.common.util.Util;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -30,11 +31,23 @@ public class AdminHairGoodsController {
 	private AdminHairGoodsService HairGoodsService;
 
 	@RequestMapping(value = "/board/HairGoodsList.do", method = RequestMethod.GET)
-	public String HairGoodsList(Model model) {
+	public String HairGoodsList(@ModelAttribute AdminHairGoodsVO hgvo,Model model) {
 		log.info("리스트 메소드 호출 성공");
-
+		
+		//페이징 세팅
+		Paging.setPage(hgvo);
+		
+		
+		//전체 레코드 수 구현
+		int total = HairGoodsService.boardListCnt(hgvo);
+		int count = total - (Util.nvl(hgvo.getPage())-1) * Util.nvl(hgvo.getPageSize());
+		
+		System.out.println(total);
+		System.out.println(count);
 		List<AdminHairGoodsVO> hgList = HairGoodsService.hairGoodslist();
 		model.addAttribute("hgList", hgList);
+		model.addAttribute("total", total);
+		model.addAttribute("data", hgvo);
 
 		return "admin/board/HairGoodsList";
 
@@ -56,7 +69,15 @@ public class AdminHairGoodsController {
 		String hg_thumb = FileUploadUtil.fileUpload(hgvo.getUploadFile(), request, "HairGoods");
 		hgvo.setHg_thumb(hg_thumb);
 
+		String hg_img1 = FileUploadUtil.fileUpload(hgvo.getUploadFile2(), request, "HairGoods");
+		hgvo.setHg_img1(hg_img1);
+
+		if (hgvo.getHg_img1() == null) {
+			hgvo.setHg_img1("400");
+		}
+
 		System.out.println(hgvo.getHg_thumb());
+		System.out.println(hgvo.getHg_img1());
 		System.out.println(hgvo.getHg_title());
 
 		int result = HairGoodsService.hairGoodsinsert(hgvo);
@@ -76,16 +97,23 @@ public class AdminHairGoodsController {
 	}
 
 	@RequestMapping(value = "/board/HGDelete.do")
-	public String delete(@ModelAttribute AdminHairGoodsVO hgvo, Model model) {
+	public String delete(@ModelAttribute AdminHairGoodsVO hgvo, Model model, HttpServletRequest request)
+			throws IOException {
 		log.info("글삭제 메소드 성공");
-
 		String url = "";
+		log.info(hgvo.getHg_num() + "");
 		int delete = HairGoodsService.hairGoodsdelete(hgvo.getHg_num());
+
+		FileUploadUtil.fileDelete(hgvo.getHg_thumb(), request);
+		if(hgvo.getHg_img1() != null) {
+		FileUploadUtil.fileDelete(hgvo.getHg_img1(), request);
+		}
+		log.info(request.getSession().getServletContext().getRealPath("/uploadStorage/"));
 
 		if (delete == 1) {
 			url = "HairGoodsList.do";
 		} else {
-			url = "admin/board/HairGoodsDetail";
+			url = "admin/board/HairGoodsDetail?hg_num"+hgvo.getHg_num();
 		}
 
 		return "redirect:" + url;
@@ -93,22 +121,31 @@ public class AdminHairGoodsController {
 	}
 
 	@RequestMapping(value = "/board/HGUpdate.do")
-	public String update(@ModelAttribute AdminHairGoodsVO hgvo, Model model,HttpServletRequest request) throws IOException {
+	public String update(@ModelAttribute AdminHairGoodsVO hgvo, Model model, HttpServletRequest request)
+			throws IOException {
 		log.info("글수정 메소드 성공");
-		
-		
-		
-			String hg_thumb = FileUploadUtil.fileUpload(hgvo.getUploadFile(), request, "HairGoods");
-			hgvo.setHg_thumb(hg_thumb);
-			
-			if(hgvo.getHg_thumb() == null) {
-				hgvo.setHg_thumb("400");
-			}
-			
-		System.out.println(hgvo.getHg_thumb());
+		if (!hgvo.getUploadFile().isEmpty()) {
+			FileUploadUtil.fileDelete(hgvo.getHg_thumb(), request);
+		}
+		if (!hgvo.getUploadFile2().isEmpty()) {
+			FileUploadUtil.fileDelete(hgvo.getHg_img1(), request);
+		}
+
+		String hg_thumb = FileUploadUtil.fileUpload(hgvo.getUploadFile(), request, "HairGoods");
+		hgvo.setHg_thumb(hg_thumb);
+		String hg_img1 = FileUploadUtil.fileUpload(hgvo.getUploadFile2(), request, "HairGoods");
+		hgvo.setHg_img1(hg_img1);
+
+
+		if (hgvo.getHg_thumb() == null) {
+			hgvo.setHg_thumb("400");
+		}
+		if (hgvo.getHg_img1() == null) {
+			hgvo.setHg_img1("400");
+		}
+
 		System.out.println(hgvo.getHg_title());
-		
-		
+
 		int result = HairGoodsService.hairGoodsupdate(hgvo);
 		String url = "";
 

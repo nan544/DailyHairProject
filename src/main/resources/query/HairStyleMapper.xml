@@ -6,7 +6,7 @@
 
 	<select id="hsList" resultType="hairstyle">
 		SELECT hs_num, hs_title,
-		hs_thumb, hs_img1, hs_img2, hs_img3,hs_img4,hs_content,
+		hs_thumb, hs_img1, hs_content,
 		to_char(hs_regdate,'YYYY-MM-DD hh:mm:ss') as hs_regdate FROM hairStyle
 		order by
 		hs_num desc
@@ -27,20 +27,31 @@
 		hs_title,
 		hs_content,
 		hs_thumb
+		<if test="hs_img1!='400'"> 
+		,hs_img1
+		</if>
 		)
 		VALUES(
 		#{hs_num},
 		#{hs_title},
 		#{hs_content},
 		#{hs_thumb}
+		<if test="hs_img1!='400'"> 
+		,#{hs_img1}
+		</if>
 		)
 	</insert>
 	<update id="hsUpdate" parameterType="hairstyle">
 
 		update hairstyle
 		set hs_title=#{hs_title},
-		hs_content=#{hs_content},
-		hs_thumb=#{hs_thumb}
+		hs_content=#{hs_content}
+		<if test="hs_thumb != '400'"> 
+		,hs_thumb=#{hs_thumb}
+		</if>
+		<if test="hs_img1 != '400'"> 
+		,hs_img1=#{hs_img1}
+		</if>
 		where hs_num = #{hs_num}
 
 
@@ -54,7 +65,7 @@
 	<delete id="hsDelete" parameterType="int">
 		delete from hairstyle
 		where
-		hs_num=#{hs_num}
+		hs_num = #{hs_num}
 	</delete>
 	
 </mapper>

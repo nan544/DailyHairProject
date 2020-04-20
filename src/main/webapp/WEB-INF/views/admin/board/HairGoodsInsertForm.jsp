@@ -99,7 +99,10 @@ input[type="file"] {
 				<span class="item"> <label class="required">*</label>썸네일이미지
 				</span><input type="file" id="uploadFile" name="uploadFile" value="이미지 등록">
 			</div>
-			<div></div>
+			<hr><div class="formLine">
+				<span class="item"> 상세이미지
+				</span><input type="file" id="uploadFile2" name="uploadFile2" value="이미지 등록">
+			</div>
 			<hr>
 			<!-- <div class="formLine">
 				<span class="item"> 이미지1 </span> <span class="imgBtn"> <input

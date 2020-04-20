@@ -38,11 +38,19 @@ input[type="file"] {
 </style>
 <script type="text/javascript">
 	$(function() {
+$(".uploadFile").hide();
 		//목록으로 버튼 클릭 시
 		$("#ListBtn").click(function() {
 			location.href = "HairGoodsList.do";
 		});
 
+		 //수정하기 버튼 클릭시
+		$(".imgUpdateBtn").click(function() {
+			$(".uploadFile").show();
+			$(".imgUpdateBtn").hide();
+			
+		}); 
+		 
 		//수정완료 버튼 클릭시
 		$("#UpdateBtn").click(function() {
 			if (confirm("게시글을 수정 하시겠습니까?")) {
@@ -51,7 +59,7 @@ input[type="file"] {
 				$("#updateForm").submit();
 				alert("수정이 완료되었습니다");
 			}
-		});
+		}); 
 		//삭제 버튼 클릭시
 		$("#DeleteBtn").click(function() {
 			if (confirm("게시글을 삭제 하시겠습니까?")) {
@@ -61,7 +69,8 @@ input[type="file"] {
 				alert("삭제가 완료되었습니다.");
 			}
 		});
-		$("#uploadFile").on("change keyup paste", function() {
+		//파일선택시 기존 파일명 숨기기
+		$(".uploadFile").on("change keyup paste", function() {
 			$("label[for='img']").hide();
 		});
 	});
@@ -71,7 +80,7 @@ input[type="file"] {
 <body>
 	<div id="contents">
 		<form id="updateForm" enctype="multipart/form-data" method="POST">
-			<h3>HairGoods 게시판 관리 - 등록</h3>
+			<h3>HairGoods 게시판 관리 - 상세보기 및 수정</h3>
 			<p align="right">* 항목은 필수 입력 값입니다.</p>
 			<!-- 목록으로 버튼 -->
 			<div id="listMenu">
@@ -83,6 +92,10 @@ input[type="file"] {
 			<!-- 수정 및 삭제를 위한 값 -->
 			<input type="hidden" id="hg_num" name="hg_num"
 				value="${detail.hg_num }">
+			<input type="hidden" id="hg_thumb" name="hg_thumb" value="${detail.hg_thumb}">	
+			<input type="hidden" id="hg_img1" name="hg_img1" value="${detail.hg_img1}">	
+				
+			<!--수정 및 상세보기 폼 출력 -->
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>제품명
 				</span> <input type="text" id="hg_title" name="hg_title"
@@ -98,17 +111,15 @@ input[type="file"] {
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>썸네일이미지
 				</span> <span class="imgBtn"><label for="img">${detail.hg_thumb}</label>
-					<input type="file" name="uploadFile" id="uploadFile"></span>
+					<input type="button" class="imgUpdateBtn" value="이미지수정"><input type="file" name="uploadFile" id="uploadFile" class="uploadFile"></span>
 			</div>
 			<hr>
-			<!-- <div class="formLine">
-				<span class="item"> 이미지1 </span> <span class="imgBtn"> <input
-					type="file" id="uploadFile" name="uploadFile" value="이미지 등록">
-					<input type="button" id="img1Delete" name="img1Delete"
-					value="이미지 삭제">
-				</span>
+			<div class="formLine">
+				<span class="item"> <label class="required">*</label>상세이미지
+				</span> <span class="imgBtn"><label for="img">${detail.hg_img1}</label>
+					<input type="button" class="imgUpdateBtn" value="이미지수정"><input type="file" name="uploadFile2" id="uploadFile2" class="uploadFile"></span>
 			</div>
-			<hr> -->
+			<hr> 
 			<!-- 
 			<div class="formLine">
 				<span class="item"> 미구현 </span> <span class="1imgBtn"> <input

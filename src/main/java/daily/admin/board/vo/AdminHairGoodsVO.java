@@ -1,22 +1,21 @@
 package daily.admin.board.vo;
 
-import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class AdminHairGoodsVO {
+import daily.common.util.CommonVO;
+
+public class AdminHairGoodsVO extends CommonVO{
 	private int hg_num;	//글번호
 	private String hg_title;	//글제목
 	private String hg_thumb;	//썸네일이미지
 	private String hg_img1;		//이미지1
-	private String hg_img2;		//이미지2
-	private String hg_img3;		//이미지3
-	private String hg_img4;		//이미지4
 	private String hg_content;	//내용
 	private String hg_regdate;	//작성일
 	
 	//파일업로드를 위한 속성
-	private MultipartFile uploadFile; //첨부파일
+	private MultipartFile uploadFile; //썸네일 첨부파일
+	private MultipartFile uploadFile2; //상세첨부파일
 	
 	public int getHg_num() {
 		return hg_num;
@@ -42,24 +41,6 @@ public class AdminHairGoodsVO {
 	public void setHg_img1(String hg_img1) {
 		this.hg_img1 = hg_img1;
 	}
-	public String getHg_img2() {
-		return hg_img2;
-	}
-	public void setHg_img2(String hg_img2) {
-		this.hg_img2 = hg_img2;
-	}
-	public String getHg_img3() {
-		return hg_img3;
-	}
-	public void setHg_img3(String hg_img3) {
-		this.hg_img3 = hg_img3;
-	}
-	public String getHg_img4() {
-		return hg_img4;
-	}
-	public void setHg_img4(String hg_img4) {
-		this.hg_img4 = hg_img4;
-	}
 	public String getHg_content() {
 		return hg_content;
 	}
@@ -78,6 +59,12 @@ public class AdminHairGoodsVO {
 	}
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
+	}
+	public MultipartFile getUploadFile2() {
+		return uploadFile2;
+	}
+	public void setUploadFile2(MultipartFile uploadFile2) {
+		this.uploadFile2 = uploadFile2;
 	}
 	
 	

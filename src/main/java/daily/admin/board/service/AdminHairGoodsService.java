@@ -10,6 +10,7 @@ public interface AdminHairGoodsService {
 	public int hairGoodsupdate(AdminHairGoodsVO hgvo);//수정
 	public int hairGoodsinsert(AdminHairGoodsVO hgvo);//등록
 	public int hairGoodsdelete(int hg_num);//삭제
+	public int boardListCnt(AdminHairGoodsVO hgvo);
 	
 	
 }
