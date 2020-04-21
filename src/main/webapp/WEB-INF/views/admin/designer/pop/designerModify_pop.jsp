@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>디자이너 수정</title>
+<link href="/resources/include/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <style type="text/css">
 span {
 	color: red;
@@ -160,19 +162,19 @@ span {
 	<h1>디자이너 정보</h1>
 	<hr>
 	<c:if test="${des.des_state == 0}">
-		<p>
+	&nbsp;&nbsp;	<label>
 			<span>*&nbsp;</span>현재상태 : '비활성화'
-		</p>
+		</label>
 	</c:if>
 	<c:if test="${des.des_state == 1}">
-		<p>
+		&nbsp;&nbsp;<label>
 			<span>*&nbsp;</span>현재상태 : '활성화'
-		</p>
+		</label>
 	</c:if>
-	<input type="button" name="openBtn" id="openBtn" value="활성화" />
-	<input type="button" name="deleteBtn" id="deleteBtn" value="비활성화" />
+	&nbsp;&nbsp;<input type="button" name="openBtn" id="openBtn" value="활성화" class="btn" />
+	<input type="button" name="deleteBtn" id="deleteBtn" value="비활성화" class="btn"/>
 	<hr>
-	<label><span>*&nbsp;</span>이력서 다운로드</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;<label><span>*&nbsp;</span>이력서 다운로드</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<c:if test="${empty des.des_file }">
 		<label>--</label>
 	</c:if>
@@ -181,7 +183,6 @@ span {
 			<a href="" onclick="fn_fileDown('${des.des_num}'); return false;">${des.des_file}</a>
 		</label>
 	</c:if>
-	<hr>
 	<form name="downForm" id="downForm">
 		<input type="hidden" name="des_num" id="des_num">
 	</form>
@@ -190,7 +191,7 @@ span {
 		<input type="hidden" name="des_num" id="des_num"
 			value="${des.des_num}" /> <input type="hidden" name="des_file"
 			id="des_file" value="${des.des_file}" />
-		<table>
+		<table class="table">
 			<tr>
 				<td><span>*&nbsp;</span>이름</td>
 				<td><input type="text" name="des_name" id="des_name" size="15"
@@ -238,13 +239,13 @@ span {
 			</tr>
 			<tr>
 				<td>이력서</td>
-				<td><input type="file" name="file" id="file"></td>
+				<td><input type="file" name="file" id="file" ></td>
 			</tr>
 		</table>
 	</form>
-	<div class="buttonContainer">
-		<input type="button" name="modifyBtn" id="modifyBtn" value="수정" /> <input
-			type="button" name="closeBtn" id="closeBtn" value="닫기" />
+	<div class="buttonContainer" align="center">
+		<input type="button" name="modifyBtn" id="modifyBtn" value="수정" class="btn"/> <input
+			type="button" name="closeBtn" id="closeBtn" value="닫기" class="btn" />
 	</div>
 </body>
 </html>

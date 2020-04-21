@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import daily.admin.designer.dao.DesignerDao;
 import daily.admin.designer.vo.DesignerVO;
+import daily.client.reserve.vo.ReserveVo;
 
 @Service("designerService")
 @Transactional
@@ -49,6 +50,11 @@ public class DesignerServiceImpl implements DesignerService {
 	@Override
 	public List<DesignerVO> designerAjaxList(int des_state) {
 		return designerdao.designerAjaxList(des_state);
+	}
+
+	@Override
+	public List<DesignerVO> stylingDesigner(ReserveVo rvo) {
+		return designerdao.stylingDesigner(rvo);
 	}
 
 }

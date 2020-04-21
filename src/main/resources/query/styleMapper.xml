@@ -3,11 +3,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="daily.admin.style.dao.styleDao">
-
-	<select id="stylingList" resultType="styling" parameterType="styling">
-		select a.styling_num as styling_num, a.styling_name as styling_name, a.styling_price as styling_price ,b.des_name as des_name
-		from styling a inner join designer b
-		on a.des_num = b.des_num
+	
+	
+	<!-- 시술목록출력 -->
+	<select id="stylingList" resultType="styling" parameterType="int">
+		select *
+        from styling
+		where des_num = #{des_num}
 	</select>
 	
 	<!-- 상세보기 -->

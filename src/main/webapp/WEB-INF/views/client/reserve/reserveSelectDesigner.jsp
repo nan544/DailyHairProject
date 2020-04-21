@@ -63,11 +63,6 @@
 		function selectDate() {
 			location.replace("/reserve/backToSelectDate.do");
 		}
-		
-		// 시술 선택 버튼 이벤트
-		function selectSergery() {
-			location.replace("/reserve/reserveSelectSergery.do");
-		}
 	</script>
 </head>
 
@@ -96,8 +91,8 @@
 			<!-- 예약 정보 -->
 			<div style="margin: 0 auto;">
 				<div class="reserveTablehead">예약 정보　　</div>
-				<div class="reserveTable">(매장)입력 대기 중</div>
-				<div class="reserveTable">(시술 일시)입력 대기 중</div>
+				<div class="reserveTable">${place}</div>
+				<div class="reserveTable">${data.rest_hairdate}&nbsp;&nbsp;&nbsp;${data.rest_time}</div>
 				<div class="reserveTable">(디자이너)입력 대기 중</div>
 				<div class="reserveTable">(시술)입력 대기 중</div>
 				<div></div>
@@ -112,14 +107,32 @@
 	<!-- 디자이너 영역 클릭 이벤트 -->
 	<script type="text/javascript">
 		function clickDesigner(num) {
+			
+			//클릭한 디자이너 번호설정
+			$("#des_num").val(num);
+			
 			var des_num = num;
-			alert("디자이너 식별번호 : " + des_num);
+			alert("디자이너 식별번호 : " + $("#des_num").val());
+			
+			alert("${data.rest_hairdate}");
+			alert("${data.rest_time}");
+			
+			$("#desForm").attr({
+				"method":"post",
+				"action":"/reserve/reserveSelectSergery.do",
+			});
+			$("#desForm").submit();
 			
 			/* location.replace("/reserve/reserveSelectDate.do"); */
 		}
 	</script>
 			
 			<!-- 디자이너 선택 -->
+			<form id="desForm" name="desForm">
+				<input type="hidden" id="rest_hairdate" name="rest_hairdate" value="${data.rest_hairdate}"/>
+				<input type="hidden" id="rest_time" name="rest_time" value="${data.rest_time }"/>
+				<input type="hidden" id="des_num" name="des_num" />
+			</form>
 			<div style="margin: 0 auto; text-align: center; max-width: 1020px">
 				<div style="width: 100%; margin: 0 auto;">
 					<c:choose>
@@ -139,7 +152,7 @@
 					</c:choose>
 				</div>
 			</div>
-			
+		
 			<div style="width: 100%; margin: 0 auto;">
 				<hr style="border: none; margin-top: 10px;" />
 			</div>
@@ -147,7 +160,6 @@
 			<!-- 버튼 -->
 			<div style="margin: 0 auto; margin-top: 75px;">
 				<button class="reserveBtn" onclick="selectDate()">이전 단계</button>
-				<button class="reserveBtn" onclick="selectSergery()">시술 선택</button>
 			</div>
 			
 			<!-- 하단 여백 -->

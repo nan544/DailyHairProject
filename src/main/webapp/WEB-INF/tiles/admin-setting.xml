@@ -20,6 +20,7 @@
 			value="/WEB-INF/views/admin/main/{1}.jsp" />
 	</definition>
 	
+	
 		<definition name="admin/member/*" extends="basic">
 		<put-attribute name="main"
 			value="/WEB-INF/views/admin/member/{1}.jsp" />
@@ -29,9 +30,15 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/admin/designer/{1}.jsp" />
 		</definition>
+		
 		<definition name="admin/faq/*" extends="basic">
 			<put-attribute name="main"
 				value="/WEB-INF/views/admin/faq/{1}.jsp" />
+		</definition>
+		
+		<definition name="admin/reservation/*" extends="basic">
+			<put-attribute name="main"
+				value="/WEB-INF/views/admin/reservation/{1}.jsp" />
 		</definition>
 		
 </tiles-definitions>

@@ -43,7 +43,10 @@
 	<script src="/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 	<script src="/resources/assets/vendor/venobox/venobox.min.js"></script>
 	<script src="/resources/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-
+	
+	<script src="/resources/include/js/bootstrap-datepicker.js"></script>
+	<script src="/resources/include/js/bootstrap-datepicker.ko.min.js"></script>
+	
 	<!-- Template Main JS File -->
 	<script type="text/javascript" src="/resources/assets/js/main.js"></script>
 	
