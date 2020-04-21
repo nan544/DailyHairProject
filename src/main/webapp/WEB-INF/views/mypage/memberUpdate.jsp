@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>패스워드 찾기</title>
+<title>회원정보</title>
 <style type="text/css">
 
 </style>
@@ -23,25 +23,16 @@
 </head>
 <body>
 
-<div>
-<h1>패스워드 찾기</h1>
-<form role="form" id="pwFindForm" name="pwFindForm">
 	<div>
-		<label for="m_id">아이디</label>
-		<input type="text" id="m_id" name="m_id" placeholder="아이디">
+		<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
+		<input type="button" value="예약현황">
+		<input type="button" value="계정 비활성화">
 	</div>
+
 	<div>
-		<label for="m_email">이메일</label>
-		<input type="email" id="m_email" name="m_email" placeholder="이메일">
-		<input type="button" id="pwFindBtn" name="pwFindBtn" value="확인">
+		<label>아이디<span style="color: red;"> *</span></label>
+		<input type="text" id="m_id" name="m_id" value="${memberUp.m_id}" readonly="readonly"/>
 	</div>
-	<div>
-		<a href="/member/login/login.do"><input type="button" value="로그인"></a>
-		<a href="/member/clause.do"><input type="button" value="회원가입"></a>
-		<a href="/member/login/idFind.do"><input type="button" value="아이디 찾기"></a>
-	</div>
-</form>
-</div>
 
 </body>
 </html>

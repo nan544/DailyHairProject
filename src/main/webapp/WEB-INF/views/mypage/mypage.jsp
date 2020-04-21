@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>마이페이지</title>
 <style type="text/css">
 
 </style>
@@ -21,10 +21,10 @@
 
 $(function() {
 	
-	$("#loginBtn").click(function() {
-		$("#loginForm").attr("method","post");
-		$("#loginForm").attr("action","/member/login/login.do");
-		$("#loginForm").submit();
+	$("#mypageBtn").click(function() {
+		$("#mypageForm").attr("method","post");
+		$("#mypageForm").attr("action","/mypage/mypage.do");
+		$("#mypageForm").submit();
 	});
 	
 	var msg = "<c:out value='${msg}'/>";
@@ -33,31 +33,30 @@ $(function() {
 		alert(msg);
 	}
 	
+	$("#memberUpdate").click(function() {
+		location.href = "/mypage/memberUpdate.do";
+	})
+	
 });
 
 </script>
 </head>
 <body>
-
-<div>
-<h2 class="text-light"><span>DailyHairShop</span></h2>
-	<form role="form" id="loginForm" name="loginForm">
+	<div>
+		<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
+		<input type="button" value="예약현황">
+		<input type="button" value="계정 비활성화">
+	</div>
+<c:if test="${mypage == null}">
+	<h1>본인확인</h1>
+	<form role="form" id="mypageForm" name="mypageForm">
 		<div>
-			<label for="m_id">아이디</label><br>
-			<input type="text" id="m_id" name="m_id" placeholder="아이디">
-		</div>
-		<div>
-			<label for="m_pwd">패스워드</label><br>
+			<label for="m_pwd">패스워드</label>
 			<input type="password" id="m_pwd" name="m_pwd" placeholder="패스워드">
-			<input type="button" id="loginBtn" name="loginBtn" value="로그인">
-		</div>
-		<div>
-			<a href="/member/clause.do"><input type="button" value="회원가입"></a>
-			<a href="/member/login/idFind.do"><input type="button" value="아이디 찾기"></a>
-			<a href="/member/login/pwFind.do"><input type="button" value="패스워드 찾기"></a>
+			<input type="button" id="mypageBtn" name="mypageBtn" value="확인">
 		</div>
 	</form>
-</div>
+</c:if>
 
 </body>
 </html>

@@ -36,9 +36,9 @@
 		<input type="button" id="pwModifyBtn" name="pwModifyBtn" value="확인">
 	</div>
 	<div>
-		<a href="/login/login.do"><input type="button" value="로그인"></a>
+		<a href="/member/login/login.do"><input type="button" value="로그인"></a>
 		<a href="/member/clause.do"><input type="button" value="회원가입"></a>
-		<a href="/login/idFind.do"><input type="button" value="아이디 찾기"></a>
+		<a href="/member/login/idFind.do"><input type="button" value="아이디 찾기"></a>
 	</div>
 </form>
 </div>

@@ -32,9 +32,8 @@ var phoneJ = /^[0-9]{11,11}$/;
 
 $(function(){
 	
-	
+	//아이디 중복체크를 하기 전에는 가입 버튼을 잠금
 	$("#insertBtn").attr("disabled",true);
-	
 	
 	//아이디 정규식
 	$("#m_id").blur(function() {
@@ -91,6 +90,7 @@ $(function(){
 		}
 	});
 	
+	//가입 버튼을 눌렀을 때 적용되는 정규식
 	$("#insertBtn").click(function(){
 		//필수 입력 요소들을 입력하지 않고 가입 버튼을 눌렀을 때 못넘어가게 함
 		if($("#m_id").val()==""){
@@ -144,7 +144,7 @@ $(function(){
 		
 		var id = $("#m_id").val();
 		
-		//아이디 정규식
+			//아이디 정규식
 			if(idJ.test($("#m_id").val())){
 				$("#id_check").text("");
 			}else{
@@ -163,7 +163,7 @@ $(function(){
 				}else if(data == 0){
 					$("#idChk").attr("value", "Y");
 					alert("사용 가능한 아이디입니다.");
-					$("#insertBtn").attr("disabled",false);
+					$("#insertBtn").attr("disabled",false);		//아이디 중복체크를 했으면 가입 버튼 잠금이 풀림
 				}
 			}
 		});
@@ -179,7 +179,7 @@ $(function(){
 		<label for="m_Id">아이디<span style="color: red;"> *</span></label><br>
 		<input type="text" id="m_id" name="m_id" placeholder="아이디"/>
 		<button type="button" id="idChk" name="idChk" onclick="fn_idChk();" value="N">중복체크</button><br>
-		<div id="id_check" style="font-size:11px;"></div>
+		<div id="id_check" style="font-size:11px;"></div>	<!-- 입력된 값이 정규식에 맞지 않으면 텍스트 박스 밑에 빨간 글씨로 경고문을 띄움 -->
 	</div>
 	<div>
 		<label for="m_Pwd">패스워드<span style="color: red;"> *</span></label><br>
