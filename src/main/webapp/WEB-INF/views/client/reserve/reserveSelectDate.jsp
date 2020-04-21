@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -70,7 +71,7 @@
 	$(function() {
 		$("#datePicker").datepicker({
 			format : "yyyy-mm-dd",
-			startDate : 'd',
+			startDate : '+1d',
 			autoclose : true,
 			templates : {
 				leftArrow : '&laquo;',
@@ -97,7 +98,7 @@
 		if($("#datePicker").val() == ''){
 			alert("날짜를 선택하세요");
 			return;
-		}else if($("#rest_time").val()==''){
+		}else if($("#rest_time").val()=='시간선택'){
 			alert("시간을 선택하세요");
 			return;
 		}else{
@@ -156,6 +157,12 @@
 </head>
 
 <body>
+	<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인해주세요");
+			location.href="/";
+		</script>
+	</c:if>
 	<!-- header 삽입 -->
 	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
 	

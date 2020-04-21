@@ -10,4 +10,5 @@ public interface ReserveDao {
 	// DB에 접근하여 데이터를 조작하는 역할
 	
 	public List<ReserveVo> selectTime(ReserveVo rvo);
+	public int insertReservation(ReserveVo rvo);	//예약하기
 }
