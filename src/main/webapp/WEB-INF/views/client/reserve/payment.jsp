@@ -57,13 +57,33 @@
 	
 	<!-- 결제 라디오 버튼 클릭 이벤트 -->
 	<script type="text/javascript">
+	$(function(){
+		
+		
+	});
 	function paymentCard() {
 		alert("카드결제를 진행하겠습니다.");
-		location.replace("/reserve/reservePaymentCard.do");
+		
+		alert($("#des_num").val()+"<< 가져갈 디자이너 번호");
+		alert($("#rest_hairdate").val()+"<<선택한 시술날짜");
+		alert($("#rest_time").val()+"<<선택한 시술시간");
+		alert($("#rest_memo").val()+"<<작성한 메모");
+		alert($("input[name='rest_payoption']:checked").val()+"<<선택한 결제유형");
+		//reserveInser.do
+			
+		//location.replace("/reserve/reservePaymentCard.do");
 	}
 	function paymentAccount() {
 		alert("계좌이체를 진행하겠습니다.");
-		location.replace("/reserve/reservePaymentAccount.do");
+		
+		alert($("#des_num").val()+"<< 가져갈 디자이너 번호");
+		alert($("#rest_hairdate").val()+"<<선택한 시술날짜");
+		alert($("#rest_time").val()+"<<선택한 시술시간");
+		alert($("#rest_memo").val()+"<<작성한 메모");
+		alert($("input[name='rest_payoption']:checked").val()+"<<선택한 결제유형");
+		//reserveInser.do
+			
+		//location.replace("/reserve/reservePaymentAccount.do");
 	}
 	</script>
 	
@@ -94,10 +114,10 @@
 			<!-- 예약 정보 -->
 			<div style="margin: 0 auto;">
 				<div class="reserveTablehead">예약 정보　　</div>
-				<div class="reserveTable">(매장)입력 대기 중</div>
-				<div class="reserveTable">(시술 일시)입력 대기 중</div>
-				<div class="reserveTable">(디자이너)입력 대기 중</div>
-				<div class="reserveTable">(시술)입력 대기 중</div>
+				<div class="reserveTable">${place}</div>
+				<div class="reserveTable">${data.rest_hairdate}&nbsp;&nbsp;&nbsp;${data.rest_time}</div>
+				<div class="reserveTable">${desname.des_name }(${desname.des_job })</div>
+				<div class="reserveTable">시술명</div>
 				<div></div>
 				<div class="reserveTablehead" style="float: left;">결제 금액　　</div>
 				<div class="reserveTable" style="float: right;">(금액)입력 대기 중</div>
@@ -110,15 +130,21 @@
 			<!-- 결제 수단 선택 -->
 			<div style="margin: 0 auto;">
 				<div class="paymentTable">
+				<form id="insertForm" name="insertForm">
+				<input type="hidden" id="rest_hairdate" name="rest_hairdate" value="${data.rest_hairdate}"/>
+				<input type="hidden" id="rest_time" name="rest_time" value="${data.rest_time }"/>
+				<input type="hidden" id="des_num" name="des_num" value="${data.des_num}"/>
+				<input type="hidden" id="rest_memo" name="rest_memo" value="${data.rest_memo}"/> 
 					<div class="paymentMini" onclick="paymentCard()">
 						<label>카드 결제</label>　
-						<input type="radio" >
+						<input type="radio" name="rest_payoption" value="카드결제">
 					</div>
 					<label>　　</label>
 					<div class="paymentMini" onclick="paymentAccount()">
 						<label>계좌이체</label>　
-						<input type="radio">
+						<input type="radio" name="rest_payoption" value="계좌이체">
 					</div>
+				</form>
 				</div>
 			</div>
 			

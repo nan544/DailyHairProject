@@ -22,7 +22,7 @@ public class ClientMainController {
 	// 예약하기로 이동
 	@RequestMapping(value = "/reservePage.do")
 	public String clientReservePage() {
-		return "client/reserve/reserveLoginCheck";
+		return "client/reserve/reserveSelectPlace";
 	}
 	
 	// 고객센터 - 문의하기로 이동

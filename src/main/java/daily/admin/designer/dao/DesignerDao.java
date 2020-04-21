@@ -3,6 +3,7 @@ package daily.admin.designer.dao;
 import java.util.*;
 
 import daily.admin.designer.vo.DesignerVO;
+import daily.client.reserve.vo.ReserveVo;
 
 public interface DesignerDao {
 
@@ -19,5 +20,6 @@ public interface DesignerDao {
 	public int openDesigner(int des_num);
 	
 	public List<DesignerVO> designerAjaxList(int des_state);
-
+	
+	public List<DesignerVO> stylingDesigner(ReserveVo rvo);
 }

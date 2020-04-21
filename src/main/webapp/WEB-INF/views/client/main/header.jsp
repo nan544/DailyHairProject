@@ -45,9 +45,18 @@
 	<script src="/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 	<script src="/resources/assets/vendor/venobox/venobox.min.js"></script>
 	<script src="/resources/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-
+	
+	<script src="/resources/include/js/bootstrap-datepicker.js"></script>
+	<script src="/resources/include/js/bootstrap-datepicker.ko.min.js"></script>
+	
 	<!-- Template Main JS File -->
 	<script type="text/javascript" src="/resources/assets/js/main.js"></script>
+	
+	<script type="text/javascript">
+		function logout(){
+			alert("로그아웃되셨습니다.");
+		}
+	</script>
 </head>
 
 <body>
@@ -78,7 +87,7 @@
 					<li class="drop-down"><a href="#">고객센터</a>
 						<ul>
 							<li><a href="#">문의하기</a></li>
-							<li><a href="#">자주하는 질문</a></li>
+							<li><a href="/faq/faqView.do">자주하는 질문</a></li>
 						</ul>
 					</li>
 					<li class="drop-down"><a href="/client/hairStyle.do">Gallery</a>
@@ -92,12 +101,12 @@
 					<li class="active"><a href="#">회원가입</a></li> -->
 					<!-- 둥근 노란색 테두리 메뉴 바 생성 클래스 지정 -->
 					<li class="book-a-table text-center">
-						<c:if test="${login == '사용자'}"><a href="/member/login/logout.do">로그아웃</a></c:if>
-						<c:if test="${login == null}"><a href="/member/login/login.do">로그인</a></c:if>
+						<c:if test="${not empty login}"><a href="/member/login/logout.do">로그아웃</a></c:if>
+						<c:if test="${empty login}"><a href="/member/login/login.do">로그인</a></c:if>
 					</li>
 					<li class="book-a-table text-center">
-						<c:if test="${login == '사용자'}"><a href="#">마이페이지</a></c:if>
-						<c:if test="${login == null}"><a href="/member/clause.do">회원가입</a></c:if>
+						<c:if test="${not empty login}"><a href="/mypage/mypage.do">마이페이지</a></c:if>
+						<c:if test="${empty login}"><a href="/member/clause.do">회원가입</a></c:if>
 					</li>
 				</ul>
 			</nav>

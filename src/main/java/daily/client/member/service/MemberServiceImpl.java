@@ -31,4 +31,23 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO login(MemberVO lvo) {
 		return dao.login(lvo);
 	}
+	
+	//마이페이지 본인확인
+	@Override
+	public MemberVO mypage(MemberVO lvo) {
+		return dao.mypage(lvo);
+	}
+	
+	//마이페이지 회원정보 상세보기
+	@Override
+	public MemberVO memberMypage(int m_num) {
+		return dao.memberMypage(m_num);
+	}
+	
+	//아이디 찾기
+	@Override
+	public int idFind(MemberVO vo) throws Exception {
+		int result = dao.idFind(vo);
+		return result;
+	}
 }

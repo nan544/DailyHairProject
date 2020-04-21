@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="UTF-8">
-<title>ReserveLoginCheck</title>
+<title>자주하는 질문</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -48,27 +49,19 @@
 	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
 	
 	<style type="text/css">
-		.reserveTable { display: inline; padding: 10px; font-size: 12px;}
-		.reserveTablehead { display: inline; padding: 10px; font: 15pt bold; color: #670000;}
+		.faq_box { border: 2 dashed gray; 
+					width: 80%; }
+		.faq_question { margin-right: 30px; font-size: 50px; }
+		.faq_answer { margin-right: 15px;
+						margin-left: 45px; }
 	</style>
-	
-	<!-- 로그인 세션 확인 후 알람 -->
-	
-	<!-- 자동으로 매장 선택 페이지로 이동 -->
-	<script type="text/javascript">
-	setTimeout(function(){
-		alert("매장 선택 화면으로 이동합니다.");
-		location.replace("/reserve/reserveSelectPlace.do");
-	}, 500);
-	</script>
-	
 </head>
 
 <body>
 	<!-- header 삽입 -->
 	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
 	
-	<!-- ======= Reserve Section ======= -->
+	<!-- ======= Faq Section ======= -->
 	<section id="about" class="about">
 	<div class="container-fluid" >
 		<div class="row">
@@ -76,42 +69,58 @@
 			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
 			</div>
 			
-			<!-- 상단 -->
+			<!-- 상단  -->
 			<div style="margin: 0 auto; text-align: center; width: 100%;">
-				<h1 style="margin-bottom: 10px;">예약하기</h1>
-				<p style="margin-bottom: 10px;">로그인 정보 확인중...</p>
+				<h1 style="margin-bottom: 15px;"><strong>DailyHairShop</strong></h1>
+				<p style="margin-bottom: 85px;">자주하는 질문</p>
 			</div>
 			
-			<div style="width: 100%; margin: 0 auto;">
-				<hr style="border: 1 solid black; margin-bottom: 10px;" />
+			<!-- 자주하는 질문 목록 -->
+			<div style="margin: 0 auto; max-width: 1020px;">
+				<div style="width: 100%;">
+					<c:choose>
+						<c:when test="${not empty faqList }">
+							<c:forEach var="faq" items="${faqList }">
+								
+								<!-- 자주하는 질문 목록 -->
+								<div class="faq_box">
+									<!-- 질문 제목 -->
+									<div>
+										<h3><span class="faq_question">Q</span>${faq.faq_question}</h3>
+									</div>
+									<!-- 질문 답변 -->
+									<div style="float: left;"><!-- Left -->
+										<p><span class="faq_answer">A</span></p>
+									</div>
+									<div>
+										<p>${faq.faq_answer}</p>
+									</div>
+								</div>
+								
+								<!-- 구분선 -->
+								<div style="margin: 0 auto; width: 100%;">
+									<hr style="margin: 30px 0 30px 0;" />				
+								</div>
+								
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<div class="designerbox">
+								<p>등록되어있는 자주하는 질문이 존재하지 않습니다.</p>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</div>
 			</div>
 			
-			<!-- 예약 정보 -->
-			<div style="margin: 0 auto;">
-				<div class="reserveTablehead">예약 정보　　</div>
-				<div class="reserveTable">(매장)입력 대기 중</div>
-				<div class="reserveTable">(시술 일시)입력 대기 중</div>
-				<div class="reserveTable">(디자이너)입력 대기 중</div>
-				<div class="reserveTable">(시술)입력 대기 중</div>
-				<div></div>
-				<div class="reserveTablehead" style="float: left;">결제 금액　　</div>
-				<div class="reserveTable" style="float: right;">(금액)입력 대기 중</div>
+			<!-- 하단 여백 -->
+			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
 			</div>
-			
-			<div style="width: 100%; margin: 0 auto;">
-				<hr style="border: 1 solid black; margin-top: 10px;" />
-			</div>
-			
-			<!-- 최하단 구분 -->
-			<div style="width: 100%; height: 550px; margin-top: 50px;">
-			</div>
-			
 		</div>
 	</div>
-	</section><!-- End Reserve Section -->
+	</section><!-- End Faq Section -->
 	
 	<!-- footer 삽입 -->
 	<jsp:include page="/WEB-INF/views/client/main/footer.jsp"></jsp:include>
 </body>
-
 </html>

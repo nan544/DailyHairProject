@@ -14,6 +14,7 @@
 <title><tiles:getAsString name="title" /></title>
 <link rel="icon" href="/resources/images/common/icon.png">
 
+<link rel="stylesheet" href="/resources/include/css/bootstrap-datepicker.css">
 <!-- Bootstrap core CSS -->
 <link href="/resources/include/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -64,9 +65,10 @@
 	<!-- Bootstrap core JavaScript -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="/resources/include/js/bootstrap-datepicker.js"></script>
+<script src="/resources/include/js/bootstrap-datepicker.ko.min.js"></script>
 	<script src="/resources/include/dist/js/bootstrap.min.js"></script>
 	<script src="/resources/include/dist/assets/js/docs.min.js"></script>
-	<script
-		src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

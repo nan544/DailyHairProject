@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import daily.admin.designer.vo.DesignerVO;
+import daily.client.reserve.vo.ReserveVo;
 
 @Repository
 public class DesignerDaoImpl implements DesignerDao {
@@ -49,5 +50,11 @@ public class DesignerDaoImpl implements DesignerDao {
 	public List<DesignerVO> designerAjaxList(int des_state) {
 		return session.selectList("designerAjaxList", des_state);
 	}
+
+	@Override
+	public List<DesignerVO> stylingDesigner(ReserveVo rvo) {
+		return session.selectList("stylingDesigner",rvo);
+	}
+
 
 }

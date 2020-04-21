@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import daily.client.member.service.MemberService;
@@ -27,22 +28,22 @@ public class LoginController {
 	//로그인
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String getLogin() throws Exception {
-		logger.info("get login");
+		logger.info("login.do 호출 성공");
 		
 		return "member/login/login";
 	}
 	
-	//로그인 처리 메소드
+	//로그인 처리
 	@RequestMapping(value = "/login.do",method = RequestMethod.POST)
 	public ModelAndView postLogin(@ModelAttribute("MemberVO")MemberVO lvo, HttpSession session,HttpServletRequest request) {
-		logger.info("post login");
+		logger.info("로그인 처리 성공");
 		
 		ModelAndView mav = new ModelAndView();
 		
 		MemberVO vo = service.login(lvo);
 		
 		if(vo != null) {
-			session.setAttribute("login", "사용자");
+			session.setAttribute("login", vo);
 			mav.setViewName("client/main/main");
 			return mav;
 		}else{
@@ -53,7 +54,7 @@ public class LoginController {
 				
 	}
 	
-	//로그아웃 처리 메소드
+	//로그아웃 처리
 	@RequestMapping(value = "/logout.do")
 	public String logout(HttpSession session, HttpServletRequest request) {
 		logger.info("logout.do 호출 성공");
@@ -87,6 +88,17 @@ public class LoginController {
 		logger.info("get pwModify");
 		
 		return "member/login/pwModify";
+	}
+	
+	//아이디 찾기
+	@RequestMapping(value = "/idFind.do", method = RequestMethod.POST)
+	@ResponseBody
+	public int idFind(MemberVO vo) throws Exception {
+		logger.info("아이디 찾기");
+		
+		int result = service.idFind(vo);
+		
+		return result;
 	}
 	
 }

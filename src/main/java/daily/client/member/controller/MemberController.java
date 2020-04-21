@@ -22,26 +22,26 @@ public class MemberController {
 	@Inject
 	MemberService service;
 	
-	//이용 약관 get
+	//회원가입에 이용약관
 	@RequestMapping(value = "/clause.do", method = RequestMethod.GET)
 	public String getClause() throws Exception {
-		logger.info("get clause");
+		logger.info("clause.do 호출 성공");
 		
 		return "member/join/clause";
 	}
 	
-	//회원 가입 get
+	//회원가입
 	@RequestMapping(value = "/join.do", method = RequestMethod.GET)
 	public String getJoin() throws Exception {
-		logger.info("get join");
+		logger.info("join.do 호출 성공");
 		
 		return "member/join/join";
 	}
 
-	//회원 가입 post
+	//회원가입 처리
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public String postJoin(@ModelAttribute MemberVO vo) throws Exception {
-		logger.info("post join");
+		logger.info("회원가입 처리 성공");
 		
 		int result = service.idChk(vo);
 		try {
@@ -58,12 +58,14 @@ public class MemberController {
 	}
 	
 	//아이디 중복체크
-	
 	@RequestMapping(value = "/idChk.do", method = RequestMethod.POST)
 	@ResponseBody
 	public int idChk(MemberVO vo) throws Exception {
+		logger.info("아이디 중복체크 성공");
+		
 		int result = service.idChk(vo);
 		
 		return result;
 	}
+	
 }
