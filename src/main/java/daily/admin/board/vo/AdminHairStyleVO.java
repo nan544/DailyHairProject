@@ -2,7 +2,9 @@ package daily.admin.board.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class AdminHairStyleVO {
+import daily.common.util.CommonVO;
+
+public class AdminHairStyleVO extends CommonVO {
 	private int hs_num;
 	private String hs_title;
 	private String hs_thumb;

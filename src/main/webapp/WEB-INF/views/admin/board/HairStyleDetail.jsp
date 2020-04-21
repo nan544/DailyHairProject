@@ -89,7 +89,7 @@ $(function() {
 			<input type="hidden" id="hs_num" name="hs_num" value="${detail.hs_num}">
 		<input type="hidden" name="hs_thumb" id="hs_thumb" value="${detail.hs_thumb}">
 		<input type="hidden" name="hs_img1" id="hs_img1" value="${detail.hs_img1}">
-			<h3>HairGoods 게시판 관리 - 등록</h3>
+			<h3>HairStyle 게시판 관리 - 상세보기 및 수정</h3>
 			<p align="right">* 항목은 필수 입력 값입니다.</p>
 			<!-- 목록으로 버튼 -->
 			<div id="listMenu">
@@ -98,6 +98,13 @@ $(function() {
 				</p>
 			</div>
 			<hr>
+			<!-- 수정 및 삭제를 위한 값 -->
+			<input type="hidden" id="hs_num" name="hs_num"
+				value="${detail.hs_num }">
+			<input type="text" id="hs_thumb" name="hs_thumb" value="${detail.hs_thumb}">	
+			<input type="text" id="hs_img1" name="hs_img1" value="${detail.hs_img1}">	
+				
+			<!--수정 및 상세보기 폼 출력 -->
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>제품명
 				</span> <input type="text" id="hs_title" name="hs_title"
@@ -122,46 +129,11 @@ $(function() {
 					<input type="button" class="imgUpdateBtn" value="이미지수정"><input type="file" name="uploadFile2" id="uploadFile2" class="uploadFile"></span>
 			</div>
 			<hr>
-			
-			<!-- <div class="formLine">
-				<span class="item"> 이미지1 </span> <span class="imgBtn"> <input
-					type="file" id="uploadFile" name="uploadFile" value="이미지 등록">
-					<input type="button" id="img1Delete" name="img1Delete"
-					value="이미지 삭제">
-				</span>
-			</div>
-			<hr> -->
-			<!-- 
-			<div class="formLine">
-				<span class="item"> 미구현 </span> <span class="1imgBtn"> <input
-					type="button" id="img2Insert" name="img2Insert" value="이미지 등록">
-					<input type="button" id="img2Delete" name="img2Delete"
-					value="이미지 삭제">
-				</span>
-			</div>
-			<hr>
-			<div class="formLine">
-				<span class="item"> 미구현 </span> <span class="1imgBtn"> <input
-					type="button" id="img3Insert" name="img3Insert" value="이미지 등록">
-					<input type="button" id="img3Delete" name="img3Delete"
-					value="이미지 삭제">
-				</span>
-			</div>
-			<hr>
-			<div class="formLine">
-				<span class="item"> 미구현 </span> <span class="1imgBtn"> <input
-					type="button" id="img4Insert" name="img4Insert" value="이미지 등록">
-					<input type="button" id="img24elete" name="img4Delete"
-					value="이미지 삭제">
-
-				</span>
-
-			</div> -->
 		</form>
 	</div>
 	<!-- 수정 및 삭제 버튼  -->
 	<div>
-		<input type="button" value="수정하기" class="but" id="UpdateBtn">
+		<input type="button" value="수정완료" class="but" id="UpdateBtn">
 		<input type="button" value="게시글 삭제" class="but" id="DeleteBtn">
 
 	</div>

@@ -126,35 +126,7 @@ public class AdminHairGoodsController {
 			throws IOException {
 		log.info("글수정 메소드 성공");
 
-		/* 새로 입력(수정 및 추가)한 파일이 있으면 */
-		if (hgvo.getUploadFile()!=null || hgvo.getUploadFile2()!=null) {
-			/* 썸네일 이미지 변경 */
-			if (hgvo.getUploadFile()!=null) { // 이미지가 있을때
-				FileUploadUtil.fileDelete(hgvo.getHg_thumb(), request); // 기존 파일 삭제
-				String hg_thumb = FileUploadUtil.fileUpload(hgvo.getUploadFile(), request, "HairGoods"); // 새로운파일 업로드
-				hgvo.setHg_thumb(hg_thumb);
-			} else { // 이미지가 없을때
-				hgvo.setHg_thumb("400");// 400=쿼리에서 구분할 값
-			}
-			
-			/* 상세이미지 변경 */
-			if (hgvo.getUploadFile2()!=null) {
-
-				if (hgvo.getHg_img1() != null) { // 이미지가 있으면 파일 삭제
-					FileUploadUtil.fileDelete(hgvo.getHg_img1(), request);
-				}
-				String hg_img1 = FileUploadUtil.fileUpload(hgvo.getUploadFile2(), request, "HairGoods"); // 새로운 파일 업로드
-				hgvo.setHg_img1(hg_img1);
-			} else { // 이미지가 없으면
-				hgvo.setHg_img1("400"); // 400=쿼리에서 구분할 값
-			}
-		} else { // 새로 입력(수정 및 추가)한 파일이 없으면
-			hgvo.setHg_thumb("400");// 쿼리에서 구분할 값
-			hgvo.setHg_img1("400"); // 쿼리에서 구분할 값
-		}
-		log.info("이미지 업로드 끝");
-
-		int result = HairGoodsService.hairGoodsupdate(hgvo);
+		int result = HairGoodsService.hairGoodsupdate(hgvo, request);
 		String url = "";
 
 		if (result == 1) {

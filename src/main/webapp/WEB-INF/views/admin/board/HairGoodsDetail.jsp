@@ -120,32 +120,6 @@ $(".uploadFile").hide();
 					<input type="button" class="imgUpdateBtn" value="이미지수정"><input type="file" name="uploadFile2" id="uploadFile2" class="uploadFile"></span>
 			</div>
 			<hr> 
-			<!-- 
-			<div class="formLine">
-				<span class="item"> 미구현 </span> <span class="1imgBtn"> <input
-					type="button" id="img2Insert" name="img2Insert" value="이미지 등록">
-					<input type="button" id="img2Delete" name="img2Delete"
-					value="이미지 삭제">
-				</span>
-			</div>
-			<hr>
-			<div class="formLine">
-				<span class="item"> 미구현 </span> <span class="1imgBtn"> <input
-					type="button" id="img3Insert" name="img3Insert" value="이미지 등록">
-					<input type="button" id="img3Delete" name="img3Delete"
-					value="이미지 삭제">
-				</span>
-			</div>
-			<hr>
-			<div class="formLine">
-				<span class="item"> 미구현 </span> <span class="1imgBtn"> <input
-					type="button" id="img4Insert" name="img4Insert" value="이미지 등록">
-					<input type="button" id="img24elete" name="img4Delete"
-					value="이미지 삭제">
-
-				</span>
-
-			</div> -->
 		</form>
 	</div>
 	<!-- 수정 및 삭제 버튼  -->

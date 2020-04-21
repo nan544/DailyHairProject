@@ -34,11 +34,6 @@
 	<select id="hgListCnt" resultType="int" parameterType="hairgoods">
 	select count(*) from hairGoods
 	
-	
-	
-	
-	
-	
 	<!-- select list.*, rownum as Rnum
 	from(<include refid="List" />)list) -->
 	
