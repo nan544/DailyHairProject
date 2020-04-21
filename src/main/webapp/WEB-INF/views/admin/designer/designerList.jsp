@@ -12,6 +12,10 @@
 	span{
 	color: red;
 	}
+#state{
+width : 100px;
+float: left;
+}
 </style>
 <script type="text/javascript">
 
@@ -105,27 +109,29 @@
 	<div class="designerContainer">
 		<div class="desHeader">
 			<h1>디자이너 관리</h1>
-			<select class="order">
+			<select class="order form-control" id="state">
 				<option value="1">활성화</option>
 				<option value="0">비활성화</option>
-			</select> <input type="button" id="insertStyle" name="intsetStyle"
-				value="시술 관리" />
+			</select>&nbsp; <input type="button" id="insertStyle" name="intsetStyle"
+				class="btn" value="시술 관리" />
 		</div>
 		<div class="desList">
 			<form name="detailForm" id="detailForm">
 				<input type="hidden" name="des_num" id="des_num">
 			</form>
-			<table summary="디자이너 리스트">
+			<table class="table table-hover">
 				<colgroup>
-					<col width="25%">
-					<col width="15%">
 					<col width="15%">
 					<col width="20%">
+					<col width="10%">
 					<col width="15%">
+					<col width="20%">
+					<col width="10%">
 					<col width="10%">
 				</colgroup>
 				<thead>
 					<tr>
+						<td align="center"><strong>디자이너번호</strong>
 						<td align="center"><strong>등록일</strong></td>
 						<td align="center"><strong>직급</strong></td>
 						<td align="center"><strong>이름</strong></td>
@@ -140,6 +146,7 @@
 							<hr>
 							<c:forEach var="des" items="${designerList}">
 								<tr class="tac" data-num="${des.des_num}">
+									<td>${des.des_num}</td>
 									<td>${des.des_regdate}</td>
 									<td>${des.des_job}</td>
 									<td>${des.des_name}</td>
@@ -151,7 +158,7 @@
 										<td>활성화</td>
 									</c:if>
 									<td><input type="button" id="modify" name="modify"
-										class="modify" value="[상세보기 / 수정]" /></td>
+										class="modify btn" value="[상세보기 / 수정]" /></td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -165,7 +172,7 @@
 			</table>
 		</div>
 		<div class="buttonContainer">
-			<input type="button" value="디자이너 등록" id="insertDesigner" />
+			<input type="button" value="디자이너 등록" id="insertDesigner" class="btn"/>
 		</div>
 	</div>
 </body>

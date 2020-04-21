@@ -53,7 +53,7 @@
 		<%--====================상세 페이지 이동을 위한 Form =============== --%>
 
 		<div id="faqList">
-			<table border="1" id="List" summary="게시판 리스트">
+			<table border="1" id="List" summary="게시판 리스트" class="table table-hover">
 				<colgroup>
 					<col />
 				</colgroup>

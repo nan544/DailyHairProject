@@ -36,13 +36,9 @@ public class StyleController {
 
 		ModelAndView mav = new ModelAndView();
 
-		List<StyleVO> svo = styleService.stylingList();
 		List<DesignerVO> dvo = designerService.designerList();
 
-		if (svo != null) {
-			mav.addObject("stylingList", svo);
-			mav.addObject("desList", dvo);
-		}
+		mav.addObject("desList", dvo);
 
 		mav.setViewName("admin/style/styleSetting_pop");
 
@@ -83,7 +79,7 @@ public class StyleController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		StyleVO detail = styleService.detailStyling(svo);
+		StyleVO detail = styleService.detailStyling(svo.getStyling_num());
 		
 		if(detail != null) {
 			mav.addObject("style",detail);
