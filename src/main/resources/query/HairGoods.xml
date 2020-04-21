@@ -9,19 +9,38 @@
 	<sql id="List">
 	select * 
 	from hairgoods
+	ORDER BY hg_num desc
 	</sql>
 	
 	<select id="hgList" resultType="hairgoods">
 		SELECT hg_num, hg_title,
 		hg_thumb, hg_img1,hg_content,
-		to_char(hg_regdate,'YYYY-MM-DD hh:mm:ss') as hg_regdate FROM hairgoods
-		order by
-		hg_num desc
+		to_char(hg_regdate,'YYYY-MM-DD hh:mm:ss') as hg_regdate 
+		FROM( 
+			SELECT list.*, ROWNUM as RNUM
+			FROM (
+			<include refid="List"/>
+			) list
+			)
+		<where>
+			<if test="start_row != null and start_row !=''">
+				<if  test="end_row != null and end_row !=''">
+					RNUM BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>	
+		 </where>
 	</select> 
+	
 	<select id="hgListCnt" resultType="int" parameterType="hairgoods">
-	select count(1) from(
-	select list.*, rownum as Rnum
-	from(<include refid="List" />)list)
+	select count(*) from hairGoods
+	
+	
+	
+	
+	
+	
+	<!-- select list.*, rownum as Rnum
+	from(<include refid="List" />)list) -->
 	
 	
 	</select>

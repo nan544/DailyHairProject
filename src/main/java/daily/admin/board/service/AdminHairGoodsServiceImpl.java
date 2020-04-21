@@ -17,8 +17,8 @@ public class AdminHairGoodsServiceImpl implements AdminHairGoodsService {
 	private AdminHairGoodsDAO hairgoodsdao;
 	
 	@Override
-	public List<AdminHairGoodsVO> hairGoodslist() {
-		List<AdminHairGoodsVO> list = hairgoodsdao.hairGoodslist();
+	public List<AdminHairGoodsVO> hairGoodslist(AdminHairGoodsVO hgvo) {
+		List<AdminHairGoodsVO> list = hairgoodsdao.hairGoodslist(hgvo);
 		return list;
 	}
 

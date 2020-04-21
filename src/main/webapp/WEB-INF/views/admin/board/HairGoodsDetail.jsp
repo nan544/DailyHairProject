@@ -41,7 +41,7 @@ input[type="file"] {
 $(".uploadFile").hide();
 		//목록으로 버튼 클릭 시
 		$("#ListBtn").click(function() {
-			location.href = "HairGoodsList.do";
+			history.go(-1);
 		});
 
 		 //수정하기 버튼 클릭시
@@ -92,8 +92,8 @@ $(".uploadFile").hide();
 			<!-- 수정 및 삭제를 위한 값 -->
 			<input type="hidden" id="hg_num" name="hg_num"
 				value="${detail.hg_num }">
-			<input type="hidden" id="hg_thumb" name="hg_thumb" value="${detail.hg_thumb}">	
-			<input type="hidden" id="hg_img1" name="hg_img1" value="${detail.hg_img1}">	
+			<input type="text" id="hg_thumb" name="hg_thumb" value="${detail.hg_thumb}">	
+			<input type="text" id="hg_img1" name="hg_img1" value="${detail.hg_img1}">	
 				
 			<!--수정 및 상세보기 폼 출력 -->
 			<div class="formLine">

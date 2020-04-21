@@ -15,8 +15,8 @@ public class AdminHairGoodsDAOImpl implements AdminHairGoodsDAO {
 	private SqlSession session;
 	
 	@Override
-	public List<AdminHairGoodsVO> hairGoodslist() {
-		List<AdminHairGoodsVO> list=session.selectList("hgList");
+	public List<AdminHairGoodsVO> hairGoodslist(AdminHairGoodsVO hgvo) {
+		List<AdminHairGoodsVO> list=session.selectList("hgList", hgvo);
 		return list;
 	}
 

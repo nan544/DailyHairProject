@@ -41,7 +41,7 @@ public class AdminMemberController {
 		//전체 레코드수 구하기
 		int total = adminMemberService.memberListCnt(mvo);
 		log.info(total+"<<레코드수");
-		
+	
 		
 		List<MemberVO> memberList = adminMemberService.memberList(mvo);
 		

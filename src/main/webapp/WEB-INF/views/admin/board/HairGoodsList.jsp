@@ -30,9 +30,13 @@
 			$("#detailForm").submit();
 		});
 	});
-	function goPage(page) {
+	function goPage(page){
 		$("#page").val(page);
-
+		$("#f_search").attr({
+			"method" : "get",
+			"action" : "/admin/board/HairGoodsList.do"
+		});
+		$("#f_search").submit();
 	}
 </script>
 </head>
@@ -45,15 +49,16 @@
 
 		<%--====================상세 페이지 이동을 위한 Form =============== --%>
 	<form name="detailForm" id="detailForm">
-		<input type="hidden" name="hg_num" id="hg_num"> <input
-			type="hidden" name="page" value="1"> <input
-			type="hidden" name="pageSize" value="${data.pageSize }">
+		<input type="hidden" name="hg_num" id="hg_num">
 	</form>
 	<%--====================상세 페이지 이동을 위한 Form =============== --%>
-
+	<!-- 페이징 -->
+	<form id="f_search">
+	<input type="hidden" id="page" name="page" value="1">
+	</form>
+	<!--  -->
 	<table border="1">
 		<colgroup>
-			<col width="5%" />
 			<col width="10%" />
 			<col width="30%" />
 			<col width="10%" />
@@ -73,7 +78,7 @@
 			<c:when test="${not empty hgList }">
 				<c:forEach var="hgList" items="${hgList}" varStatus="status">
 					<tr data-num="${hgList.hg_num}">
-						<td class="goDetail">${status.index }</td>
+						<td class="goDetail">${hgList.hg_num }</td>
 						<td class="goDetail">${hgList.hg_title}</td>
 						<td>${hgList.hg_regdate}</td>
 						<td>${hgList.hg_thumb}</td>
@@ -95,7 +100,7 @@
 	<!-- 페이지 네비게이션 -->
 	<div id="boardPage">
 		<tag:paging page="${param.page}" total="${total}"
-			list_size="${data.pageSize }"></tag:paging>
+			list_size="${data.pageSize}"></tag:paging>
 
 	</div>
 </body>

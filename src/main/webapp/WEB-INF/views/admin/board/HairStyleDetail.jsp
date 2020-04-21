@@ -42,7 +42,7 @@ $(function() {
 	$(".uploadFile").hide();
 	//목록으로 버튼 클릭 시
 	$("#ListBtn").click(function() {
-		location.href = "HairStyleList.do";
+		history.go(-1);
 	});
 	
 	 //수정하기 버튼 클릭시
