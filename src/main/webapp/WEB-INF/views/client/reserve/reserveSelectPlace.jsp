@@ -68,11 +68,6 @@
 		function selectPlace2() {
 			alert("준비 중인 매장입니다.\n다른 매장을 선택해주세요.");
 		}
-		// 테스트 목적
-		function selectPlace3() {
-			alert("테스트 목적으로 구현되었습니다.\n추후 반드시 삭제해주세요.");
-			location.replace("/reserve/reserveSelectDateTest.do");
-		}
 	</script>
 	
 </head>
@@ -122,15 +117,6 @@
 						<img class="designer" src="/resources/assets/img/slide/ShopImage_002.jpg"
 							name="place1">
 						<p>왕십리 본점</p>
-					</div>
-					<div class="designerbox" onclick="selectPlace3()">
-						<img class="designer" src="/resources/assets/img/NoImage.png"
-							name="place2">
-						<p>테스트 목적</p>
-					</div>
-					<div class="designerbox" onclick="selectPlace2()">
-						<img class="designer" src="/resources/assets/img/NoImage.png">
-						<p>준비 중 입니다.</p>
 					</div>
 					<div class="designerbox" onclick="selectPlace2()">
 						<img class="designer" src="/resources/assets/img/NoImage.png">

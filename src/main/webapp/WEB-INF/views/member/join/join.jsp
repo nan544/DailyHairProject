@@ -3,38 +3,75 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>회원가입</title>
-<style type="text/css">
+<meta content="" name="descriptison">
+<meta content="" name="keywords">
 
-</style>
-<!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="/resources/image/icon.png" />
-<link rel="apple-touch-icon" href="/resources/image/icon.png" />
-<!-- 모바일 웹 페이지 설정 끝 -->
-<!--[if lt IE 9]>
-<script src="/resources/include/js/html5shiv.js"></script>
-<![endif]-->
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript">
-//아이디 정규식
-var idJ = /^[a-z0-9]{6,13}$/;
-//비밀번호 정규식
-var pwJ = /^[a-z0-9]{10,18}$/; 
-//이름 정규식
-var nameJ = /^[가-힣]{2,6}$/;
-//이메일 검사 정규식
-var mailJ = /^[A-Za-z0-9]{0,20}$/;
-//휴대폰 번호 정규식
-var phoneJ = /^[0-9]{11,11}$/;
+	<!-- Favicons -->
+	<link href="/resources/assets/img/favicon.png" rel="icon">
+	<link href="/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
+	
+	<!-- Vendor CSS Files -->
+	<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/icofont/icofont.min.css" >
+	<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/boxicons/css/boxicons.min.css" >
+	<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/animate.css/animate.min.css" >
+	<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/venobox/venobox.css" >
+	<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/owl.carousel/assets/owl.carousel.min.css" >
+	
+	<!-- Template Main CSS File -->
+	<link rel="stylesheet" type="text/css" href="/resources/assets/css/style.css" >
+	
+	<!-- =======================================================
+	* Template Name: Delicious - v2.0.0
+	* Template URL: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/
+	* Author: BootstrapMade.com
+	* License: https://bootstrapmade.com/license/
+	======================================================== -->
 
-$(function(){
+	<!-- Vendor JS Files -->
+	<script src="/resources/assets/vendor/jquery/jquery.min.js"></script>
+	<script src="/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/resources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+	<script src="/resources/assets/vendor/php-email-form/validate.js"></script>
+	<script src="/resources/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+	<script src="/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script src="/resources/assets/vendor/venobox/venobox.min.js"></script>
+	<script src="/resources/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+
+	<!-- Template Main JS File -->
+	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
+
+	<!-- 모바일 웹 페이지 설정 -->
+	<link rel="shortcut icon" href="/resources/image/icon.png" />
+	<link rel="apple-touch-icon" href="/resources/image/icon.png" />
+	<!-- 모바일 웹 페이지 설정 끝 -->
+	<!--[if lt IE 9]>
+	<script src="/resources/include/js/html5shiv.js"></script>
+	<![endif]-->
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+	<!-- 정규식 적용 -->
+	<script type="text/javascript">
+	//아이디 정규식
+	var idJ = /^[a-z0-9]{6,13}$/;
+	//비밀번호 정규식
+	var pwJ = /^[a-z0-9]{10,18}$/; 
+	//이름 정규식
+	var nameJ = /^[가-힣]{2,6}$/;
+	//이메일 검사 정규식
+	var mailJ = /^[A-Za-z0-9]{0,20}$/;
+	//휴대폰 번호 정규식
+	var phoneJ = /^[0-9]{11,11}$/;
 	
-	
+	$(function(){
 	$("#insertBtn").attr("disabled",true);
-	
 	
 	//아이디 정규식
 	$("#m_id").blur(function() {
@@ -137,8 +174,8 @@ $(function(){
 		$("#insertForm").attr("method","post");
 		$("#insertForm").attr("action","/member/join.do");
 		$("#insertForm").submit();
+		});
 	});
-});
 
 	function fn_idChk() {
 		
@@ -168,63 +205,116 @@ $(function(){
 			}
 		});
 	}
-</script>
+	// 회원가입 취소 버튼 이벤트
+	function joinCancle(){
+		alert("회원가입을 취소합니다.");
+		location.replace("/client/main.do"); }
+	</script>
+	
+	<style type="text/css">
+		.msgbox { width: 115px; padding: 10px; }
+		.checkbtn { width: 100px; height: 30px;
+					font-size: 13px;
+					border: 0;
+					background-color: rgba(255, 250, 243, 1); }
+		.join_input { text-align: inherit; }
+		.other_btn { width: 100px; height: 35px;
+					text-align: center;
+					cursor: pointer;
+					display: inline-block;
+					font-size: 10px;
+					padding: 8px 16px 10px 16px;
+					font-weight: 500;
+					line-height: 1;
+					color: #444444;
+					margin: 0 auto;
+					transition: all ease-in-out 0.3s;
+					background: white;
+					border: 2px dashed #ffb03b;
+					border-radius: 25px; }
+	</style>
 </head>
-<body>
 
-<div>
-<h2 class="text-light"><a href="/client/main.do"><span>DailyHairShop</span></a></h2>
-<form role="form" id="insertForm" name="insertForm">
-	<div>
-		<label for="m_Id">아이디<span style="color: red;"> *</span></label><br>
-		<input type="text" id="m_id" name="m_id" placeholder="아이디"/>
-		<button type="button" id="idChk" name="idChk" onclick="fn_idChk();" value="N">중복체크</button><br>
-		<div id="id_check" style="font-size:11px;"></div>
-	</div>
-	<div>
-		<label for="m_Pwd">패스워드<span style="color: red;"> *</span></label><br>
-		<input type="password" id="m_pwd" name="m_pwd" placeholder="패스워드"/><br>
-		<div id="pwd_check" style="font-size:11px;"></div>
-		<label for="m_Pwd">패스워드 확인<span style="color: red;"> *</span></label><br>
-		<input type="password" id="m_pwd2" placeholder="패스워드 확인"/>
-	</div>
-	<div>
-		<label for="m_Name">이 름<span style="color: red;"> *</span></label><br>
-		<input type="text" id="m_name" name="m_name" placeholder="이름"/>
-		<div id="name_check" style="font-size:11px;"></div>
-	</div>
-	<div>
-		<label>성 별<span style="color: red;"> *</span></label><br>
-		<input type="radio" id="m_gender1" name="m_gender" value="남" checked="checked"/>
-		<label for="m_Gender1">남</label>
-		<input type="radio" id="m_gender2" name="m_gender" value="여" />
-		<label for="m_Gender2">여</label>
-	</div>
-	<div>
-		<label for="m_Phone">전화번호<span style="color: red;"> *</span></label><br>
-		<input type="text" id="m_phone" name="m_phone" placeholder="전화번호"/>
-		<div id="phone_check" style="font-size:11px;"></div>
-	</div>
-	<div>
-		<label for="m_Email">이메일<span style="color: red;"> *</span></label><br>
-		<input type="text" id="m_email" name="m_email" placeholder="이메일"/>@
-		<select id="emailDomain">
-			<option value="gmail.com">구글</option>
-			<option value="naver.com">네이버</option>
-			<option value="daum.com">다음</option>
-			<option value="nate.com">네이트</option>
-		</select><br>
-		<div id="email_check" style="font-size:11px;"></div>
-	</div>
-	<div>
-		<label for="m_Memo">추가사항</label><br>
-		<textarea rows="8" cols="40" id="m_memo" name="m_memo" placeholder="DailyHair에 알리고 싶은 개인사항"></textarea>
-	</div>
-		<div>
-		<input type="button" id="insertBtn" name="insertBtn" value="가입"/>
-		<a href="/client/main.do"><input type="button" value="취소"></a>
+<body>
+	<!-- header 삽입 -->
+	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
+	
+	<!-- ======= Join Section ======= -->
+	<section id="about" class="about">
+	<div class="container-fluid" >
+		<div class="row">
+			<!-- 최상단 구분 -->
+			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
+			</div>
+			
+			<div style="margin: 0 auto; padding: 10px;">
+				<div style="margin-bottom: 30px; text-align: center;">
+					<h1 style="font-size: 50px;">DailyHairShop</h1>
+					<h3>Sign up as member</h3>
+				</div><br>
+				
+				<form role="form" id="insertForm" name="insertForm">
+				<div class="join_input">
+					<label for="m_Id" class="msgbox"><span style="color: red;">* </span>ID</label>
+					<input type="text" id="m_id" name="m_id" placeholder=" ID"/>
+					<button type="button" class="checkbtn" id="idChk" name="idChk"
+						onclick="fn_idChk();" value="N">중복체크</button><br>
+					<div id="id_check" style="font-size:11px;"></div>
+				</div>
+				<div class="join_input">
+					<label for="m_Pwd" class="msgbox"><span style="color: red;">* </span>PW</label>
+					<input type="password" id="m_pwd" name="m_pwd" placeholder=" PassWord"/><br>
+					<div id="pwd_check" style="font-size:11px;"></div>
+					<label for="m_Pwd" class="msgbox"><span style="color: red;">* </span>PW 재입력</label>
+					<input type="password" id="m_pwd2" placeholder=" PassWord"/>
+				</div>
+				<div class="join_input">
+					<label for="m_Name" class="msgbox"><span style="color: red;">* </span>이 름</label>
+					<input type="text" id="m_name" name="m_name" placeholder=" 이름"/>
+					<div id="name_check" style="font-size:11px;"></div>
+				</div>
+				<div class="join_input">
+					<label class="msgbox"><span style="color: red;">* </span>성 별</label>
+					<input type="radio" id="m_gender1" name="m_gender" value="남"/>
+					<label for="m_Gender1">남</label>
+					<input type="radio" id="m_gender2" name="m_gender" value="여"/>
+					<label for="m_Gender2">여</label>
+				</div>
+				<div class="join_input">
+					<label for="m_Phone" class="msgbox"><span style="color: red;">* </span>Phone</label>
+					<input type="text" id="m_phone" name="m_phone" placeholder=" 전화번호"/>
+					<div id="phone_check" style="font-size:11px;"></div>
+				</div>
+				<div class="join_input">
+					<label for="m_Email" class="msgbox"><span style="color: red;">* </span>Email</label>
+					<input type="text" id="m_email" name="m_email" placeholder=" Email"/>　@　
+					<select id="emailDomain">
+						<option value="gmail.com">Google</option>
+						<option value="naver.com">Naver</option>
+						<option value="daum.com">Daum</option>
+						<option value="nate.com">Nate</option>
+					</select><br>
+					<div id="email_check" style="font-size:11px;"></div>
+				</div>
+				<div>
+					<label for="m_Memo" class="msgbox">추가사항</label><br>
+					<textarea rows="6" cols="55" id="m_memo" name="m_memo" placeholder=" DailyHair에 알리고 싶은 개인사항"></textarea>
+				</div>
+				<div style="margin-top: 50px;">
+					<center><input type="button" class="other_btn" id="insertBtn" name="insertBtn" value="가입"/>
+					<input type="button" class="other_btn" onclick="joinCancle()" value="취소"/></center>
+				</div>
+				</form>
+			</div>
+			
+			<!-- 하단 여백 -->
+			<div style="width: 100%; height: 50px; margin-bottom: 50px;">
+			</div>
 		</div>
-	</form>
-</div>
+	</div>
+	</section><!-- End Join Section -->
+	
+	<!-- footer 삽입 -->
+	<jsp:include page="/WEB-INF/views/client/main/footer.jsp"></jsp:include>
 </body>
 </html>

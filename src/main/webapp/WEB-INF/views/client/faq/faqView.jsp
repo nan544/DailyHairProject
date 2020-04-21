@@ -6,11 +6,7 @@
 
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-
-	scale=1.0, minimum-scale=1.0, user-scalable=no" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>회원가입 성공</title>
+<title>자주하는 질문</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -52,54 +48,79 @@
 	<!-- Template Main JS File -->
 	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
 	
-	<!-- 모바일 웹 페이지 설정 -->
-	<link rel="shortcut icon" href="/resources/image/icon.png" />
-	<link rel="apple-touch-icon" href="/resources/image/icon.png" />
-	<!-- 모바일 웹 페이지 설정 끝 -->
-	<!--[if lt IE 9]>
-	<script src="/resources/include/js/html5shiv.js"></script>
-	<![endif]-->
-	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-	
-	<!-- 자동으로 매장 선택 페이지로 이동 -->
-	<script type="text/javascript">
-	setTimeout(function(){
-		alert("메인화면으로 이동합니다.");
-		location.replace("/client/main.do");
-	}, 1000);
-	</script>
+	<style type="text/css">
+		.faq_box { border: 2 dashed gray; 
+					width: 80%; }
+		.faq_question { margin-right: 30px; font-size: 50px; }
+		.faq_answer { margin-right: 15px;
+						margin-left: 45px; }
+	</style>
 </head>
-
 
 <body>
 	<!-- header 삽입 -->
 	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
 	
-	<!-- ======= Join Section ======= -->
+	<!-- ======= Faq Section ======= -->
 	<section id="about" class="about">
 	<div class="container-fluid" >
 		<div class="row">
 			<!-- 최상단 구분 -->
-			<div style="width: 100%; height: 200px; margin-bottom: 50px;">
+			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
 			</div>
 			
-			<div style="width: 100%; text-align: center;">
-				<h1 style="font-size: 75px;">DailyHairShop</h1>
-				<br style="margin: 15px;">
-				<h5>저희 DailyHairShop 회원이 되신 것을 축하드립니다!</h5>
-				<h5>잠시후 자동으로 메인페이지로 이동합니다.</h5>
-				<h5>항상 좋은 서비스를 위해 열정을 다하겠습니다.</h5>
+			<!-- 상단  -->
+			<div style="margin: 0 auto; text-align: center; width: 100%;">
+				<h1 style="margin-bottom: 15px;"><strong>DailyHairShop</strong></h1>
+				<p style="margin-bottom: 85px;">자주하는 질문</p>
+			</div>
+			
+			<!-- 자주하는 질문 목록 -->
+			<div style="margin: 0 auto; max-width: 1020px;">
+				<div style="width: 100%;">
+					<c:choose>
+						<c:when test="${not empty faqList }">
+							<c:forEach var="faq" items="${faqList }">
+								
+								<!-- 자주하는 질문 목록 -->
+								<div class="faq_box">
+									<!-- 질문 제목 -->
+									<div>
+										<h3><span class="faq_question">Q</span>${faq.faq_question}</h3>
+									</div>
+									<!-- 질문 답변 -->
+									<div style="float: left;"><!-- Left -->
+										<p><span class="faq_answer">A</span></p>
+									</div>
+									<div>
+										<p>${faq.faq_answer}</p>
+									</div>
+								</div>
+								
+								<!-- 구분선 -->
+								<div style="margin: 0 auto; width: 100%;">
+									<hr style="margin: 30px 0 30px 0;" />				
+								</div>
+								
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<div class="designerbox">
+								<p>등록되어있는 자주하는 질문이 존재하지 않습니다.</p>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</div>
 			</div>
 			
 			<!-- 하단 여백 -->
-			<div style="width: 100%; height: 200px; margin-bottom: 50px;">
+			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
 			</div>
 		</div>
 	</div>
-	</section><!-- End Join Section -->
+	</section><!-- End Faq Section -->
 	
 	<!-- footer 삽입 -->
 	<jsp:include page="/WEB-INF/views/client/main/footer.jsp"></jsp:include>
 </body>
-
 </html>

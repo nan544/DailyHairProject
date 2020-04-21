@@ -54,16 +54,6 @@ public class ReserveController {
 		return "client/reserve/reserveSelectDate";
 	}
 	
-	// 01. 지점선택) [place > date] 테스트 목적 선택 후 시술 일자 선택으로
-	@RequestMapping(value = "/reserveSelectDateTest")
-	public String reserveSelectDateTest(HttpSession session, HttpServletRequest request) {
-		log.info("지점선택) 테스트 목적 session 저장 완료");
-		session.setAttribute("place", "테스트 목적");
-		
-		log.info("지점선택) reserveSelectDate.do 호출 완료");
-		return "client/reserve/reserveSelectDate";
-	}
-	
 	// 02. 시술 일자) [date] 달력 및 시간 내보이는 기능 추가할 것 
 	
 	
@@ -72,6 +62,9 @@ public class ReserveController {
 	public String backToSelectPlace(HttpSession session) {
 		log.info("이전단계) 매장 session 초기화");
 		session.setAttribute("place", "(매장)입력 대기 중");
+		session.setAttribute("date", "(시술 일시)입력 대기 중");
+		session.setAttribute("designer", "(디자이너)입력 대기 중");
+		session.setAttribute("sergery", "(시술)입력 대기 중");
 		
 		log.info("이전단계) reserveSelectPlace.do 호출 완료");
 		return "client/reserve/reserveSelectPlace";
@@ -80,8 +73,11 @@ public class ReserveController {
 	// 03. 디자이너) [date > designer] 디자이너 선택 이동 시 디자이너 목록 노출
 	@RequestMapping(value = "/reserveSelectDesigner", method = RequestMethod.GET)
 	public ModelAndView reserveSelectDesigner(HttpSession session) {
-		session.setAttribute("date", "(시술 일시)임시 적용값"); 
-		session.getAttribute("place");
+		log.info("시술 일시) 임시 적용");
+		session.setAttribute("place", "왕십리 본점");
+		session.setAttribute("date", "(Test) 2020-04-20" + " / " + "14:00"); 
+		session.setAttribute("designer", "(디자이너)입력 대기 중");
+		session.setAttribute("sergery", "(시술)입력 대기 중");
 		
 		ModelAndView mav = new ModelAndView();
 		List<DesignerVO> desList = designerService.designerList();

@@ -75,7 +75,7 @@
 		<div>
 			<a href="javascript:clause1()">이용약관</a> | 
 			<a href="javascript:clause2()">개인정보 제공 동의 약관</a> | 
-			<a href="#">자주하는 질문</a> | 
+			<a href="/faq/faqView.do">자주하는 질문</a> | 
 			<i class="icofont-phone"></i> 문의 전화 02 001 0001(0002)
 			<i class="icofont-clock-time icofont-rotate-180"></i> 영업시간 10:00 AM - 19:00 PM
 		</div>
