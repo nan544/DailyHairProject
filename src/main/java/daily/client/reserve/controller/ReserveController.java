@@ -153,6 +153,9 @@ public class ReserveController {
 		
 		List<StyleVO> styleList = styleService.stylingList(rvo.getDes_num());
 		
+		DesignerVO dvo = designerService.designerDetail(rvo.getDes_num());
+		
+		model.addAttribute("desname",dvo);
 		model.addAttribute("styleList",styleList);
 		model.addAttribute("data",rvo);
 		
@@ -161,21 +164,31 @@ public class ReserveController {
 	}
 	
 	// 00. 결제하기로 이동
-	@RequestMapping(value = "/reservePayment")
-	public String reservePayment() {
+	@RequestMapping(value = "/reservePayment.do", method = RequestMethod.POST)
+	public String reservePayment(@ModelAttribute ReserveVo rvo, Model model) {
+		
+		System.out.println("호출완료");
+		
+		List<StyleVO> styleList = styleService.stylingList(rvo.getDes_num());
+		DesignerVO dvo = designerService.designerDetail(rvo.getDes_num());
+		
+		model.addAttribute("desname",dvo);
+		model.addAttribute("styleList",styleList);
+		model.addAttribute("data",rvo);
+		
 		return "client/reserve/payment";
 	}
 	
-	// 00. 카드 결제
-	@RequestMapping(value = "/reservePaymentCard")
-	public String reservePaymentCard() {
+	// 최종단계 결제하기 -> DB에 인서트
+	@RequestMapping(value = "/reserveInser.do",method = RequestMethod.POST)
+	public String insertReservation() {
 		return "client/reserve/paymentCard";
 	}
 	
 	// 00. 계좌이체
-	@RequestMapping(value = "/reservePaymentAccount")
-	public String reservePaymentAccount() {
-		return "client/reserve/paymentAccount";
-	}
+	/*
+	 * @RequestMapping(value = "/reservePaymentAccount") public String
+	 * reservePaymentAccount() { return "client/reserve/paymentAccount"; }
+	 */
 	
 }

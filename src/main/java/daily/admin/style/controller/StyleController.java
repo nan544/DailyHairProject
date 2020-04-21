@@ -79,7 +79,7 @@ public class StyleController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		StyleVO detail = styleService.detailStyling(svo);
+		StyleVO detail = styleService.detailStyling(svo.getStyling_num());
 		
 		if(detail != null) {
 			mav.addObject("style",detail);

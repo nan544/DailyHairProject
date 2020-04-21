@@ -15,11 +15,26 @@ public class ReserveVo {
 	
 	private String m_name;			//회원이름
 	private String m_gender;		//회원성별
-	private String m_phone;			//회원전화번호
+	private String m_phone;		    //회원전화번호
+	
+	
+	private int styling_num;
+	private String styling_name;
 	
 	
 	
-	
+	public String getStyling_name() {
+		return styling_name;
+	}
+	public void setStyling_name(String styling_name) {
+		this.styling_name = styling_name;
+	}
+	public int getStyling_num() {
+		return styling_num;
+	}
+	public void setStyling_num(int styling_num) {
+		this.styling_num = styling_num;
+	}
 	
 	public String getM_name() {
 		return m_name;

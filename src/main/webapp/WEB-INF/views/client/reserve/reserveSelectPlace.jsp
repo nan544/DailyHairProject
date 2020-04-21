@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -60,10 +61,10 @@
 	<!-- 이미지 영역 클릭 이벤트 -->
 	<script type="text/javascript">
 		// 왕십리 본점 이미지 선택 시
-		function selectPlace1() {
-			alert("왕십리 본점을 선택하셨습니다.\n시술 일자 선택으로 이동합니다.");
+   			function selectPlace1() {
+			//alert("왕십리 본점을 선택하셨습니다.\n시술 일자 선택으로 이동합니다.");
 			location.replace("/reserve/reserveSelectDate.do");
-		}
+		} 
 		// 준비 중인 매장 선택 시
 		function selectPlace2() {
 			alert("준비 중인 매장입니다.\n다른 매장을 선택해주세요.");
@@ -78,6 +79,13 @@
 </head>
 
 <body>
+	<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인해주세요");
+			location.href="/";
+		</script>
+	</c:if>
+
 	<!-- header 삽입 -->
 	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
 	

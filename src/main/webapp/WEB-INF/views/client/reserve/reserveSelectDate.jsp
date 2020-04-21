@@ -120,15 +120,20 @@
 
 	// 디자이너 선택 버튼 이벤트
 	function selectDesigner() {
+		
+		if($("#datePicker").val() == ''){
+			alert("날짜를 선택하세요");
+			return;
+		}else if($("#rest_time").val()==''){
+			alert("시간을 선택하세요");
+			return;
+		}else{
+		
 		$("#timeForm").attr("method","get");
 		$("#timeForm").attr("action","/reserve/reserveSelectDesigner.do");
-		
-		alert($("#datePicker").val());
-		alert($("#rest_time").val());
-		
 		$("#timeForm").submit();
 		
-		
+		}
 		//location.replace("/reserve/reserveSelectDesigner.do");
 	}
 </script>
@@ -174,9 +179,10 @@
 
 				<!-- 달력 노출 및 일자 선택 -->
 				<div style="margin: 0 auto;">
-				<form id="timeForm" name="timeForm">	
-					<input type="text" id="datePicker" name="rest_hairdate" class="form-control" placeholder="날짜를 선택해주세요">
-						<select id="rest_time" name="rest_time">
+					<form id="timeForm" name="timeForm">
+						<input type="text" id="datePicker" name="rest_hairdate"
+							class="form-control" placeholder="날짜를 선택해주세요"> <select
+							id="rest_time" name="rest_time">
 							<option></option>
 							<option value="10:00">10:00</option>
 							<option value="10:30">10:30</option>
@@ -194,8 +200,8 @@
 							<option value="16:30">16:30</option>
 							<option value="17:00">17:00</option>
 						</select>
-							</form>
-					</div>
+					</form>
+				</div>
 
 
 				<!-- 버튼 -->

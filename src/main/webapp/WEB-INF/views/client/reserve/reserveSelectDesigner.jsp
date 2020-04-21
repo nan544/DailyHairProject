@@ -63,11 +63,6 @@
 		function selectDate() {
 			location.replace("/reserve/backToSelectDate.do");
 		}
-		
-		// 시술 선택 버튼 이벤트
-		function selectSergery() {
-			location.replace("/reserve/reserveSelectSergery.do");
-		} 
 	</script>
 </head>
 
@@ -165,7 +160,6 @@
 			<!-- 버튼 -->
 			<div style="margin: 0 auto; margin-top: 75px;">
 				<button class="reserveBtn" onclick="selectDate()">이전 단계</button>
-				<button class="reserveBtn" onclick="selectSergery()">시술 선택</button>
 			</div>
 			
 			<!-- 하단 여백 -->

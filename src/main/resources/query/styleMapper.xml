@@ -6,12 +6,12 @@
 	
 	
 	<!-- 시술목록출력 -->
-<select id="stylingList" resultType="styling" parameterType="int">
+	<select id="stylingList" resultType="styling" parameterType="int">
 		select *
         from styling
 		where des_num = #{des_num}
 	</select>
-	 
+	
 	<!-- 상세보기 -->
 	<select id="detailStyling" resultType="styling" parameterType="styling">
 		select *

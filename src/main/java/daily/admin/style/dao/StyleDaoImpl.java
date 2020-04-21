@@ -41,8 +41,8 @@ public class StyleDaoImpl implements StyleDao {
 	}
 
 	@Override
-	public StyleVO detailStyling(StyleVO svo) {
-		return sqlsession.selectOne("detailStyling" , svo);
+	public StyleVO detailStyling(int styling_num) {
+		return sqlsession.selectOne("detailStyling" , styling_num);
 	}
 
 
