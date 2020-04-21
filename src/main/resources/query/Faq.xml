@@ -7,7 +7,7 @@
 	<select id="faqList" resultType="faq">
 		SELECT * 
 		FROM faq
-		ORDER BY faq_num desc
+		ORDER BY faq_num asc
 	</select>
 
 	<!-- 게시글 상세보기  -->

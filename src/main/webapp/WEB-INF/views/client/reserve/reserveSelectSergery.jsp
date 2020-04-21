@@ -165,12 +165,15 @@
 				</form>
 			</div>
 			
+			<div style="width: 100%; margin: 0 auto;">
+				<hr style="border: 0; margin-top: 10px;" />
+			</div>
+			
 			<!-- 버튼 -->
 			<div style="margin: 0 auto; margin-top: 75px;">
 				<button class="reserveBtn" onclick="selectDesigner()">이전 단계</button>
 				<button class="reserveBtn" onclick="payment()">결제하기</button>
 			</div>
-			
 		</div>
 	</div>
 	</section><!-- End Reserve Section -->
