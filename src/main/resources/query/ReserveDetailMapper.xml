@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="daily.client.reservedetail.dao.ReserveDetailDao">
+
+
+	<!-- 예약상세테이블에 인서트하기 -->
+	<insert id="insertReservationDetail" parameterType="int">
+		INSERT INTO reservation_detail(detail_num, rest_num, styling_num)
+		VALUES(reservation_detail_seq.nextval,reservation_seq.currval, #{styling_num})
+	</insert>
+
+</mapper>

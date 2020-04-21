@@ -29,9 +29,5 @@ public class ReserveServiceImpl implements ReserveService {
 	}
 
 
-	@Override
-	public int insertReservationDetail(int styling_num) {
-		return reserveDao.insertReservationDetail(styling_num);
-	}
 
 }

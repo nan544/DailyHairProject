@@ -10,6 +10,7 @@
 		<typeAlias type="daily.admin.style.vo.StyleVO" alias="styling"></typeAlias>
 		<typeAlias type="daily.client.member.vo.MemberVO" alias="member"></typeAlias>
 		<typeAlias type="daily.client.reserve.vo.ReserveVo" alias="reservation"></typeAlias>
+		<typeAlias type="daily.client.reservedetail.vo.ReserveDetailVO" alias="reservationDetail"></typeAlias>
 	</typeAliases>
 	
 	<!-- 필요시 추후 주석해제 합니다

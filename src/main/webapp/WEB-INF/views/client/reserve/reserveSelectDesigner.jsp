@@ -67,6 +67,12 @@
 </head>
 
 <body>
+	<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인해주세요");
+			location.href="/";
+		</script>
+	</c:if>
 	<!-- header 삽입 -->
 	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
 	

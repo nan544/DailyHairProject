@@ -1,10 +1,8 @@
 package daily.client.reserve.controller;
 
 
-import java.util.Arrays;
 import java.util.List;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -27,6 +25,7 @@ import daily.admin.style.service.StyleService;
 import daily.admin.style.vo.StyleVO;
 import daily.client.reserve.service.ReserveService;
 import daily.client.reserve.vo.ReserveVo;
+import daily.client.reservedetail.service.ReserveDetailService;
 
 @Controller
 @RequestMapping(value = "/reserve")
@@ -42,6 +41,9 @@ public class ReserveController {
 	
 	@Autowired
 	private StyleService styleService;
+	
+	@Autowired 
+	private ReserveDetailService reserveDetailService;
 	
 	// 01. 지점선택) [place > date] 왕십리 본점 선택 후 시술 일자 선택으로
 	@RequestMapping(value = "/reserveSelectDate")
@@ -146,7 +148,6 @@ public class ReserveController {
 	@RequestMapping(value = "/reservePayment.do", method = RequestMethod.POST)
 	public String reservePayment(@ModelAttribute ReserveVo rvo, Model model, @RequestParam("holy")String holy) {
 		
-		System.out.println("호출완료");
 		
 		
 		List<StyleVO> styleList = styleService.stylingList(rvo.getDes_num());
@@ -164,13 +165,13 @@ public class ReserveController {
 	@RequestMapping(value = "/reserveInsert.do",method = RequestMethod.POST)
 	public String insertReservation(@ModelAttribute ReserveVo rvo,@RequestParam("style_number")List<String> holy){
 			
-		 System.out.println(holy);
-		
+		//예약테이블에 인서트
 		int result = reserveService.insertReservation(rvo);
 		
+		//예약테이블에 인서트가 성공하면 예약상세테이블에 인서트
 		if(result == 1 ) {
 			for(String i : holy) {
-				reserveService.insertReservationDetail(Integer.parseInt(i));
+				reserveDetailService.insertReservationDetail(Integer.parseInt(i));
 			}
 			return "client/reserve/paymentCard";
 		}else {

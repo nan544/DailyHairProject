@@ -11,5 +11,4 @@ public interface ReserveDao {
 	
 	public List<ReserveVo> selectTime(ReserveVo rvo);
 	public int insertReservation(ReserveVo rvo);	//예약하기
-	public int insertReservationDetail(int styling_num);			//예약상세테이블 인서트
 }
