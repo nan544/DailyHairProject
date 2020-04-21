@@ -41,21 +41,6 @@ public class ReserveController {
 	@Autowired
 	private StyleService styleService;
 	
-	// 00. 로그인 세션 확인 하는 기능 추가할 것
-	// 예약하기 최초 접속 시 예약 정보 값 초기화
-	@RequestMapping(value = "/reserveSelectPlace")
-	public String reserveSelectPlace(HttpSession session) {
-		log.info("최초접속) 세션 값 초기화");
-		
-		session.setAttribute("place", "(매장)입력 대기 중");
-		session.setAttribute("date", "(시술 일시)입력 대기 중");
-		session.setAttribute("designer", "(디자이너)입력 대기 중");
-		session.setAttribute("sergery", "(시술)입력 대기 중");
-		
-		log.info("최초접속) reserveSelectPlace.do 호출 완료");
-		return "client/reserve/reserveSelectPlace";
-	}
-	
 	// 01. 지점선택) [place > date] 왕십리 본점 선택 후 시술 일자 선택으로
 	@RequestMapping(value = "/reserveSelectDate")
 	public String reserveSelectDate(HttpSession session, HttpServletRequest request) {
