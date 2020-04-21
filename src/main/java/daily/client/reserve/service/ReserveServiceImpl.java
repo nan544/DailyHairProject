@@ -20,5 +20,18 @@ public class ReserveServiceImpl implements ReserveService {
 	public List<ReserveVo> selectTime(ReserveVo rvo) {
 		return reserveDao.selectTime(rvo);
 	}
+	
+	
+	//예약하기
+	@Override
+	public int insertReservation(ReserveVo rvo) {
+		return reserveDao.insertReservation(rvo);
+	}
+
+
+	@Override
+	public int insertReservationDetail(int styling_num) {
+		return reserveDao.insertReservationDetail(styling_num);
+	}
 
 }

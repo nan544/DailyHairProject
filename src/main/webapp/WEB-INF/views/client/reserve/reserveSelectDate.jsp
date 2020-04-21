@@ -97,7 +97,7 @@
 	$(function() {
 		$("#datePicker").datepicker({
 			format : "yyyy-mm-dd",
-			startDate : 'd',
+			startDate : '+1d',
 			autoclose : true,
 			templates : {
 				leftArrow : '&laquo;',
@@ -124,7 +124,7 @@
 		if($("#datePicker").val() == ''){
 			alert("날짜를 선택하세요");
 			return;
-		}else if($("#rest_time").val()==''){
+		}else if($("#rest_time").val()=='시간선택'){
 			alert("시간을 선택하세요");
 			return;
 		}else{
@@ -183,7 +183,7 @@
 						<input type="text" id="datePicker" name="rest_hairdate"
 							class="form-control" placeholder="날짜를 선택해주세요"> <select
 							id="rest_time" name="rest_time">
-							<option></option>
+							<option value="시간선택">시간선택</option>
 							<option value="10:00">10:00</option>
 							<option value="10:30">10:30</option>
 							<option value="11:00">11:00</option>

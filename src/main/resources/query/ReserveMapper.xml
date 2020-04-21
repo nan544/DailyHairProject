@@ -3,13 +3,30 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="daily.client.reserve.dao.ReserveDao">
-
+	
 	<select id="selectTime" parameterType="reservation" resultType="reservation">
 		SELECT *
 		FROM reservation
 		WHERE rest_hairdate = #{rest_hairdate} AND rest_state = 1
 	</select>
-
+	
+	
+	<!-- 예약등록하기 -->
+	<insert id="insertReservation" parameterType="reservation">
+		INSERT INTO reservation(rest_num, des_num, m_id, rest_hairdate, rest_payoption, rest_memo, rest_time)
+		VALUES(reservation_seq.nextval,#{des_num},#{m_id},#{rest_hairdate},#{rest_payoption},#{rest_memo},#{rest_time})
+	</insert>
+	
+	
+	<!-- 예약상세테이블에 인서트하기 -->
+	<insert id="insertReservationDetail" parameterType="int">
+	<selectKey keyProperty="rest_num" resultType="int">
+		select reservation_seq.currval from dual
+	</selectKey>
+		INSERT INTO reservation_detail(detail_num, rest_num, styling_num)
+		VALUES(reservation_detail_seq.nextval, #{rest_num}, #{styling_num})
+	</insert>
+	
 <!-- 	<select id="getAll" resultMap="YourResultSet">
 		SELECT * FROM tablename1
 	</select>

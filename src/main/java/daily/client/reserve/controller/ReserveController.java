@@ -1,6 +1,7 @@
 package daily.client.reserve.controller;
 
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.mail.Session;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -127,7 +129,6 @@ public class ReserveController {
 	@RequestMapping(value = "/reserveSelectSergery.do", method = RequestMethod.POST)
 	public String reserveSelectSergery(ReserveVo rvo , Model model) {
 		
-		System.out.println(rvo.getDes_num());
 		
 		List<StyleVO> styleList = styleService.stylingList(rvo.getDes_num());
 		
@@ -143,13 +144,15 @@ public class ReserveController {
 	
 	// 00. 결제하기로 이동
 	@RequestMapping(value = "/reservePayment.do", method = RequestMethod.POST)
-	public String reservePayment(@ModelAttribute ReserveVo rvo, Model model) {
+	public String reservePayment(@ModelAttribute ReserveVo rvo, Model model, @RequestParam("holy")String holy) {
 		
 		System.out.println("호출완료");
+		
 		
 		List<StyleVO> styleList = styleService.stylingList(rvo.getDes_num());
 		DesignerVO dvo = designerService.designerDetail(rvo.getDes_num());
 		
+		model.addAttribute("number",holy);
 		model.addAttribute("desname",dvo);
 		model.addAttribute("styleList",styleList);
 		model.addAttribute("data",rvo);
@@ -158,9 +161,22 @@ public class ReserveController {
 	}
 	
 	// 최종단계 결제하기 -> DB에 인서트
-	@RequestMapping(value = "/reserveInser.do",method = RequestMethod.POST)
-	public String insertReservation() {
-		return "client/reserve/paymentCard";
+	@RequestMapping(value = "/reserveInsert.do",method = RequestMethod.POST)
+	public String insertReservation(@ModelAttribute ReserveVo rvo,@RequestParam("style_number")List<String> holy){
+			
+		 System.out.println(holy);
+		
+		int result = reserveService.insertReservation(rvo);
+		
+		if(result == 1 ) {
+			for(String i : holy) {
+				reserveService.insertReservationDetail(Integer.parseInt(i));
+			}
+			return "client/reserve/paymentCard";
+		}else {
+			return "client/reserve/payment";
+		}
+				
 	}
 	
 	// 00. 계좌이체

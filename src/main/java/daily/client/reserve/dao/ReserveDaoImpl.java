@@ -18,5 +18,16 @@ public class ReserveDaoImpl implements ReserveDao {
 	public List<ReserveVo> selectTime(ReserveVo rvo) {
 		return sqlSession.selectList("selectTime",rvo);
 	}
+	
+	//예약하기
+	@Override
+	public int insertReservation(ReserveVo rvo) {
+		return sqlSession.insert("insertReservation",rvo);
+	}
+
+	@Override
+	public int insertReservationDetail(int styling_num) {
+		return sqlSession.insert("insertReservationDetail",styling_num);
+	}
 
 }
