@@ -71,6 +71,7 @@
 		alert($("#rest_time").val()+"<<선택한 시술시간");
 		alert($("#rest_memo").val()+"<<작성한 메모");
 		alert($("input[name='rest_payoption']:checked").val()+"<<선택한 결제유형");
+		alert($("#rest_totalprice").val()+"<<<시술 총가격");
 		
 		$("#insertForm").attr({
 			"method":"post",
@@ -89,6 +90,7 @@
 		alert($("#rest_time").val()+"<<선택한 시술시간");
 		alert($("#rest_memo").val()+"<<작성한 메모");
 		alert($("input[name='rest_payoption']:checked").val()+"<<선택한 결제유형");
+		
 		//reserveInser.do
 			
 		//location.replace("/reserve/reservePaymentAccount.do");
@@ -151,6 +153,7 @@
 				<input type="hidden" id="rest_memo" name="rest_memo" value="${data.rest_memo}"/>
 				<input type="hidden" id="m_id" name="m_id" value="${login.m_id}"/>
 				<input type="hidden" id="style_number" name="style_number" value="${number}"/>
+				<input type="hidden" id="rest_totalprice" name="rest_totalprice" value="${data.rest_totalprice }"/>
 					<div class="paymentMini">
 						<label>카드 결제</label>　
 						<input type="radio" name="rest_payoption" value="카드결제" onclick="paymentCard()">

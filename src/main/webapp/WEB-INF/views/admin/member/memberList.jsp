@@ -35,10 +35,10 @@ margin-right: 5px;
 		//아이디 클릭시 상세보기 팝업창을 띄운다
 		$(".detail").click(
 				function() {
-					var m_num = $(this).parents("tr").attr("data-num");
-					alert(m_num);
-					window.open("/admin/member/memberDetailForm.do?m_num="
-							+ m_num, "memberpop",
+					var m_id = $(this).parents("tr").attr("data-num");
+					alert(m_id);
+					window.open("/admin/member/memberDetailForm.do?m_id="
+							+ m_id, "memberpop",
 							"width=800, height=800, left=600, top=100");
 				});
 		
@@ -235,7 +235,7 @@ margin-right: 5px;
 				<c:when test="${not empty memberList}">
 					<hr>
 					<c:forEach var="member" items="${memberList}">
-						<tr data-num="${member.m_num}">
+						<tr data-num="${member.m_id}">
 							<td align="center">${member.m_num}</td>
 							<td align="center" class="detail">${member.m_id}</td>
 							<td align="center" class="name">${member.m_name}</td>

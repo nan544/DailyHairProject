@@ -13,4 +13,6 @@ public interface StyleDao {
 	public int updateStyling(StyleVO svo); //시술수정
 	public int deleteStyling(int styling_num);	//시술삭제
 	
+	public List<StyleVO> stylingnameList(int rest_num);
+	
 }

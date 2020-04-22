@@ -60,11 +60,11 @@ public class AdminMemberController {
 	
 	//회원 상세보기폼 출력
 	@RequestMapping(value = "/member/memberDetailForm.do", method = RequestMethod.GET)
-	public ModelAndView memberDetailForm(@RequestParam int m_num) {
+	public ModelAndView memberDetailForm(@RequestParam String m_id) {
 		log.info("memberDetailForm 호출성공");
 		ModelAndView mav = new ModelAndView();
 		
-		MemberVO detail = adminMemberService.memberDetail(m_num);
+		MemberVO detail = adminMemberService.memberDetail(m_id);
 		ReserveVo history = null; //예약 리스트 뽑아오기
 		
 		if(detail != null) {

@@ -14,7 +14,7 @@
 	</select>
 	
 	<!-- 디자이너리스트에서 활성화/비활성화 선택시 선택한 값에 맞게 출력되는 쿼리문 --> <!-- NVL(des_file,'-') as des_file -->
-	<select id="designerAjaxList" resultType="designer" parameterType="designer">
+	<select id="designerAjaxList" resultType="designer" parameterType="int">
 		SELECT to_char(des_regdate,'YYYY-MM-DD')as des_regdate, des_job,
 		des_name, des_phone, des_file , des_num , des_state
 		FROM designer

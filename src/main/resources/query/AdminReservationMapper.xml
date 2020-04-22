@@ -6,32 +6,48 @@
 	
 	<!-- 예약내역 출력 -->
 	<select id="reservationList" resultType="reservation">
-		SELECT a.rest_time as rest_time, b.m_gender as m_gender, a.m_id as m_id, b.m_name as m_name, b.m_phone as m_phone
+		SELECT a.rest_num as rest_num, a.rest_time as rest_time, b.m_gender as m_gender, a.m_id as m_id, b.m_name as m_name, b.m_phone as m_phone, a.rest_totalprice as rest_totalprice,to_char(a.rest_hairdate,'yyyy-mm-dd') as rest_hairdate
 		FROM reservation a inner join member b
 		ON a.m_id = b.m_id
+		WHERE a.rest_state = 1 and a.rest_hairdate = sysdate
+		ORDER BY a.rest_time
 	</select>
 	
+	<!-- 날짜선택시 동적으로 리스트변경 -->
+		<select id="dateList" resultType="reservation" parameterType="reservation">
+		SELECT a.rest_num as rest_num, a.rest_time as rest_time, b.m_gender as m_gender, a.m_id as m_id, b.m_name as m_name, b.m_phone as m_phone, a.rest_totalprice as rest_totalprice,to_char(a.rest_hairdate,'yyyy-mm-dd') as rest_hairdate
+		FROM reservation a inner join member b
+		ON a.m_id = b.m_id
+		<where>
+		<if test="des_num != 0">
+		 a.rest_state = 1 and a.rest_hairdate = #{rest_hairdate} and a.des_num = #{des_num}
+		 </if>
+		 <if test="des_num == 0">
+		 a.rest_state = 1 and a.rest_hairdate = #{rest_hairdate}
+		 </if>
+		</where>
+		ORDER BY a.rest_time
+		</select>
 	
-<!--private int rest_num;			// 예약 번호
-	private int des_num;			// 디자이너 번호
-	private String m_id;			// 회원 ID
-	private String rest_hairdate;	// 시술 일자
-	private String rest_regdate;	// 예약 등록 일자
-	private String rest_time;		//시술 시간
-	private int rest_state;			// 예약 상태
-	private String rest_payoption;	// 결제 방식
-	private String rest_memo;		// 디자이너 전달사항
-	private String rest_comment;	// 시술 특이사항
 	
 	
-	private String m_gender;		//회원성별
-	private String m_phone; -->
-
-
-<!-- 	<select id="getAll" resultMap="YourResultSet">
-		SELECT * FROM tablename1
+	<!-- 예약상세내역출력 -->
+	<select id="reservationDetail" resultType="reservation" parameterType="int">
+		SELECT a.rest_num as rest_num, a.des_num as des_num, a.m_id as m_id, to_char(a.rest_hairdate,'yyyy-mm-dd') as rest_hairdate, a.rest_time as rest_time, a.rest_state as rest_state, a.rest_memo as rest_memo, a.rest_comment as rest_comment, b.des_name as des_name, a.rest_totalprice as rest_totalprice 
+		FROM reservation a inner join designer b
+		on a.des_num = b.des_num
+		WHERE a.rest_num = #{rest_num}
 	</select>
-
+	
+	<!-- 시술완료 리스트 출력 -->
+	<select id="resultList" resultType="reservation" parameterType="String">
+		SELECT a.rest_num as rest_num, a.des_num as des_num, a.m_id as m_id, to_char(a.rest_hairdate,'yyyy-mm-dd') as rest_hairdate, a.rest_time as rest_time, a.rest_state as rest_state, a.rest_memo as rest_memo, a.rest_comment as rest_comment, b.des_name as des_name, a.rest_totalprice as rest_totalprice
+		FROM reservation a inner join designer b
+		on a.des_num = b.des_num
+		WHERE a.rest_state = 2 and a.m_id = #{m_id}
+		ORDER BY a.rest_time
+	</select>
+	<!--
 	<insert id="insertSomething" parameterType="#modelname">
 		INSERT INTO tablename1 (columnname1, columnname2, columnname3)
 		VALUES(#{value1},#{value2},#{value3})
