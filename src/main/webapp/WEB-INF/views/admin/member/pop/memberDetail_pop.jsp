@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원상세정보</title>
+<link href="/resources/include/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
@@ -64,11 +66,10 @@
 		<option value="1">활성</option>
 		<option value="0">비활성</option>
 	</select>
-	<hr>
-	<div class="memberDeatailContainer">
+	
+	<div class="memberDeatailContainer" style="margin-top: 10px;">
 		<form name="updateForm" id="updateForm">
-			<fieldset>
-				<table>
+				<table class="table">
 					<colgroup>
 						<col width="25%">
 						<col width="25%">
@@ -99,12 +100,17 @@
 						<th>가입일자</th>
 						<td>${detail.m_date}</td>
 					</tr>
+					<tr><td></td><td></td><td></td><td></td></tr>
 				</table>
-			</fieldset>
 		</form>
 	</div>
 	<div class="reservationContainer">
 		<h2>이전 시술내역</h2>
+		<table class="table" style="margin-top: 10px;">
+			<tr>
+				<td></td>
+			</tr>
+		</table>
 	</div>
 	<div class="btnContainer">
 		<input type="button" name="updateBtn" id="updateBtn" value="수정" /> <input
