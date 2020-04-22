@@ -15,8 +15,8 @@ public class AdminHairStyleServiceImpl implements AdminHairStyleService {
 	AdminHairStyleDAO hairStyleDao;
 	
 	@Override
-	public List<AdminHairStyleVO> hairStylelist() {
-		return hairStyleDao.hairStylelist();
+	public List<AdminHairStyleVO> hairStylelist(AdminHairStyleVO hsvo) {
+		return hairStyleDao.hairStylelist(hsvo);
 	}
 
 	@Override
@@ -37,6 +37,11 @@ public class AdminHairStyleServiceImpl implements AdminHairStyleService {
 	@Override
 	public int hairStyledelete(int hs_num) {
 		return hairStyleDao.hairStyledelete(hs_num);
+	}
+
+	@Override
+	public int boardListCnt(AdminHairStyleVO hsvo) {
+		return hairStyleDao.hairStyleCnt(hsvo);
 	}
 
 }

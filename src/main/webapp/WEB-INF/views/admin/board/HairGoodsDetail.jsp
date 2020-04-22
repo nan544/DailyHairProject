@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,19 +40,19 @@ input[type="file"] {
 </style>
 <script type="text/javascript">
 	$(function() {
-$(".uploadFile").hide();
+		$(".uploadFile").hide();
 		//목록으로 버튼 클릭 시
 		$("#ListBtn").click(function() {
 			history.go(-1);
 		});
 
-		 //수정하기 버튼 클릭시
+		//수정하기 버튼 클릭시
 		$(".imgUpdateBtn").click(function() {
 			$(".uploadFile").show();
 			$(".imgUpdateBtn").hide();
-			
-		}); 
-		 
+
+		});
+
 		//수정완료 버튼 클릭시
 		$("#UpdateBtn").click(function() {
 			if (confirm("게시글을 수정 하시겠습니까?")) {
@@ -59,7 +61,7 @@ $(".uploadFile").hide();
 				$("#updateForm").submit();
 				alert("수정이 완료되었습니다");
 			}
-		}); 
+		});
 		//삭제 버튼 클릭시
 		$("#DeleteBtn").click(function() {
 			if (confirm("게시글을 삭제 하시겠습니까?")) {
@@ -78,6 +80,12 @@ $(".uploadFile").hide();
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- 이미지 파일명 표기를 위한 식 -->
+	<c:set var="hg_thumb_"
+		value="${fn:substringAfter(detail.hg_thumb,'_') }" />
+	<c:set var="hg_thumb__" value="${fn:substringAfter(hg_thumb_,'_') }" />
+	<c:set var="hg_img1_" value="${fn:substringAfter(detail.hg_img1,'_') }" />
+	<c:set var="hg_img1__" value="${fn:substringAfter(hg_img1_,'_') }" />
 	<div id="contents">
 		<form id="updateForm" enctype="multipart/form-data" method="POST">
 			<h3>HairGoods 게시판 관리 - 상세보기 및 수정</h3>
@@ -91,10 +99,10 @@ $(".uploadFile").hide();
 			<hr>
 			<!-- 수정 및 삭제를 위한 값 -->
 			<input type="hidden" id="hg_num" name="hg_num"
-				value="${detail.hg_num }">
-			<input type="text" id="hg_thumb" name="hg_thumb" value="${detail.hg_thumb}">	
-			<input type="text" id="hg_img1" name="hg_img1" value="${detail.hg_img1}">	
-				
+				value="${detail.hg_num }"> <input type="hidden" id="hg_thumb"
+				name="hg_thumb" value="${detail.hg_thumb}"> <input
+				type="hidden" id="hg_img1" name="hg_img1" value="${detail.hg_img1}">
+
 			<!--수정 및 상세보기 폼 출력 -->
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>제품명
@@ -110,22 +118,26 @@ $(".uploadFile").hide();
 			<hr>
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>썸네일이미지
-				</span> <span class="imgBtn"><label for="img">${detail.hg_thumb}</label>
-					<input type="button" class="imgUpdateBtn" value="이미지수정"><input type="file" name="uploadFile" id="uploadFile" class="uploadFile"></span>
+				</span> <span class="imgBtn"><label for="img">${hg_thumb__}</label>
+				
+					<input type="button" class="imgUpdateBtn" value="이미지수정"><input
+					type="file" name="uploadFile" id="uploadFile" class="uploadFile"></span>
 			</div>
 			<hr>
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>상세이미지
-				</span> <span class="imgBtn"><label for="img">${detail.hg_img1}</label>
-					<input type="button" class="imgUpdateBtn" value="이미지수정"><input type="file" name="uploadFile2" id="uploadFile2" class="uploadFile"></span>
+				</span> <span class="imgBtn"><label for="img">${hg_img1__}</label> 
+				<input
+					type="button" class="imgUpdateBtn" value="이미지수정"><input
+					type="file" name="uploadFile2" id="uploadFile2" class="uploadFile"></span>
 			</div>
-			<hr> 
+			<hr>
 		</form>
 	</div>
 	<!-- 수정 및 삭제 버튼  -->
 	<div id="btnMenu">
-		<input type="button" value="수정완료" class="but" id="UpdateBtn"> <input
-			type="button" value="게시글 삭제" class="but" id="DeleteBtn">
+		<input type="button" value="수정완료" class="but" id="UpdateBtn">
+		<input type="button" value="게시글 삭제" class="but" id="DeleteBtn">
 
 	</div>
 </body>

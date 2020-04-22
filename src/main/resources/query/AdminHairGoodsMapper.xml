@@ -5,39 +5,48 @@
 <mapper namespace="daily.admin.board.dao.HairGoodsDAO">
 
 
-<!-- 게시물 검색 쿼리 분리 -->
+	<!-- 게시물 검색 쿼리 분리 -->
 	<sql id="List">
-	select * 
-	from hairgoods
-	ORDER BY hg_num desc
+		select *
+		from hairgoods
+		<where>
+			<if test="search == 'hg_title'">
+		 <![CDATA[ hg_title LIKE '%'||#{keyword}||'%']]>
+			</if>
+		</where>
 	</sql>
-	
+
 	<select id="hgList" resultType="hairgoods">
 		SELECT hg_num, hg_title,
 		hg_thumb, hg_img1,hg_content,
-		to_char(hg_regdate,'YYYY-MM-DD hh:mm:ss') as hg_regdate 
-		FROM( 
-			SELECT list.*, ROWNUM as RNUM
-			FROM (
-			<include refid="List"/>
-			) list
-			)
+		to_char(hg_regdate,'YYYY-MM-DD') as hg_regdate
+		FROM(
+		SELECT list.*, ROWNUM as RNUM
+		FROM (
+		<include refid="List" />
+		) list
+		)
 		<where>
 			<if test="start_row != null and start_row !=''">
-				<if  test="end_row != null and end_row !=''">
+				<if test="end_row != null and end_row !=''">
 					RNUM BETWEEN #{start_row} AND #{end_row}
 				</if>
-			</if>	
-		 </where>
-	</select> 
-	
-	<select id="hgListCnt" resultType="int" parameterType="hairgoods">
-	select count(*) from hairGoods
-	
-	<!-- select list.*, rownum as Rnum
-	from(<include refid="List" />)list) -->
-	
-	
+			</if>
+		</where>
+	</select>
+
+	<select id="hgListCnt" resultType="int"
+		parameterType="hairgoods">
+		select nvl(count(1),0)
+		FROM(
+		SELECT list.*, ROWNUM as RUNM
+		FROM(
+		<include refid="List"/>
+			ORDER BY hg_num desc)list)
+
+			<!-- select list.*, rownum as Rnum from(<include refid="List" />)list) -->
+
+
 	</select>
 	<insert id="hgInsert" parameterType="hairgoods">
 		<!-- HairGoods 게시글 등록 -->
@@ -55,7 +64,7 @@
 		hg_content,
 		hg_thumb
 		<if test="hg_img1 != '400'">
-		,hg_img1
+			,hg_img1
 		</if>
 		)
 		VALUES(
@@ -64,7 +73,7 @@
 		#{hg_content},
 		#{hg_thumb}
 		<if test="hg_img1 != '400'">
-		,#{hg_img1}
+			,#{hg_img1}
 		</if>
 		)
 	</insert>
@@ -74,10 +83,10 @@
 		set hg_title=#{hg_title},
 		hg_content=#{hg_content}
 		<if test="hg_thumb !='400'">
-		, hg_thumb = #{hg_thumb}
+			, hg_thumb = #{hg_thumb}
 		</if>
 		<if test="hg_img1 !='400'">
-		, hg_img1 = #{hg_img1}
+			, hg_img1 = #{hg_img1}
 		</if>
 		where hg_num = #{hg_num}
 
@@ -94,6 +103,6 @@
 		where
 		hg_num=#{hg_num}
 	</delete>
-	
+
 </mapper>
 

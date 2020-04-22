@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +16,14 @@
 		if ("<c:out value='${data.pageSize}'/>" != "") {
 			$("#pageSize").val("<c:out value='${data.pageSize}'/>");
 		}
+		
+		
+		//등록 버튼 클릭시 등록폼 호출
 		$("#insertFormBtn").click(function() {
 			location.href = "/admin/board/HGInsertForm.do";
 		});
+		
+		//글번호, 글제목 클릭시 상세페이지로 이동
 		$(".goDetail").click(function() {
 			var hg_num = $(this).parents("tr").attr("data-num");
 			$("#hg_num").val(hg_num);
@@ -29,7 +35,15 @@
 			});
 			$("#detailForm").submit();
 		});
+		//검색 버튼 클릭시
+		$("#searchBtn").click(function() {
+			goPage(1);
+		});
+		
+		
 	});
+	
+	/* 페이징을 위한 메소드 */
 	function goPage(page){
 		$("#page").val(page);
 		$("#f_search").attr({
@@ -43,21 +57,21 @@
 <body>
 	<p>
 	<h3>HairGoods 게시판 관리</h3>
-	<input type="text" id="search" name="search" placeholder="제품이름(제목)">
+	<!-- 검색 및 페이징 -->
+	<form id="f_search">
+	<input type="hidden" id="page" name="page" value="${data.page}">
+	<input type="text" id="keyword" name="keyword" placeholder="제품이름(제목)" value="${data.keyword }" >
+	<input type="hidden" id="search" name="search" value="hg_title">
 	<input type="button" id="searchBtn" name="searchBtn" value="검색">
+	</form>
 	<p>
 
 		<%--====================상세 페이지 이동을 위한 Form =============== --%>
 	<form name="detailForm" id="detailForm">
-		<input type="hidden" name="hg_num" id="hg_num">
+		<input type="hidden" name="hg_num" id="hg_num"> 
 	</form>
 	<%--====================상세 페이지 이동을 위한 Form =============== --%>
-	<!-- 페이징 -->
-	<form id="f_search">
-	<input type="hidden" id="page" name="page" value="1">
-	</form>
-	<!--  -->
-	<table border="1">
+	<table class="table table-hover table-condensed">
 		<colgroup>
 			<col width="10%" />
 			<col width="30%" />
@@ -77,12 +91,16 @@
 		<c:choose>
 			<c:when test="${not empty hgList }">
 				<c:forEach var="hgList" items="${hgList}" varStatus="status">
+				<c:set var="hg_thumb_" value="${fn:substringAfter(hgList.hg_thumb,'_') }" />
+				<c:set var="hg_thumb__" value="${fn:substringAfter(hg_thumb_,'_') }"/>
+				<c:set var="hg_img1_" value="${fn:substringAfter(hgList.hg_img1,'_') }"/>
+				<c:set var="hg_img1__" value="${fn:substringAfter(hg_img1_,'_') }"/>
 					<tr data-num="${hgList.hg_num}">
 						<td class="goDetail">${hgList.hg_num }</td>
 						<td class="goDetail">${hgList.hg_title}</td>
 						<td>${hgList.hg_regdate}</td>
-						<td>${hgList.hg_thumb}</td>
-						<td>${hgList.hg_img1}</td>
+						<td>${hg_thumb__}</td>
+						<td>${hg_img1__}</td>
 					</tr>
 				</c:forEach>
 			</c:when>

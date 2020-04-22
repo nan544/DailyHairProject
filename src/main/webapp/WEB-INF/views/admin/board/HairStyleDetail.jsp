@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,58 +39,64 @@ input[type="file"] {
 }
 </style>
 <script type="text/javascript">
+	$(function() {
+		$(".uploadFile").hide();
+		//목록으로 버튼 클릭 시
+		$("#ListBtn").click(function() {
+			history.go(-1);
+		});
 
-$(function() {
-	$(".uploadFile").hide();
-	//목록으로 버튼 클릭 시
-	$("#ListBtn").click(function() {
-		history.go(-1);
-	});
-	
-	 //수정하기 버튼 클릭시
-	$(".imgUpdateBtn").click(function() {
-		$(".uploadFile").show();
-		$(".imgUpdateBtn").hide();
-		
-	}); 
-	 
-	 
-	//수정완료 버튼 클릭시
-	$("#UpdateBtn").click(function() {
-		if (confirm("게시글을 수정 하시겠습니까?")) {
-			$("#updateForm").attr("method", "post");
-			$("#updateForm").attr("action", "/admin/board/HSUpdate.do");
-			$("#updateForm").submit();
-			alert("수정이 완료되었습니다");
-		}
-	});
+		//수정하기 버튼 클릭시
+		$(".imgUpdateBtn").click(function() {
+			$(".uploadFile").show();
+			$(".imgUpdateBtn").hide();
 
-	//삭제 버튼 클릭시
-	$("#DeleteBtn").click(function() {
-		if (confirm("게시글을 삭제 하시겠습니까?")) {
-			$("#updateForm").attr("method", "post");
-			$("#updateForm").attr("action", "/admin/board/HSDelete.do");
-			$("#updateForm").submit();
-			alert("삭제가 완료되었습니다.");
-		}
-	});
-	//파일선택시 기존 파일명 숨기기
-	$(".uploadFile").on("change keyup paste", function() {
-		$("label[for='img']").hide();
-	});
-});
+		});
 
+		//수정완료 버튼 클릭시
+		$("#UpdateBtn").click(function() {
+			if (confirm("게시글을 수정 하시겠습니까?")) {
+				$("#updateForm").attr("method", "post");
+				$("#updateForm").attr("action", "/admin/board/HSUpdate.do");
+				$("#updateForm").submit();
+				alert("수정이 완료되었습니다");
+			}
+		});
+
+		//삭제 버튼 클릭시
+		$("#DeleteBtn").click(function() {
+			if (confirm("게시글을 삭제 하시겠습니까?")) {
+				$("#updateForm").attr("method", "post");
+				$("#updateForm").attr("action", "/admin/board/HSDelete.do");
+				$("#updateForm").submit();
+				alert("삭제가 완료되었습니다.");
+			}
+		});
+		//파일선택시 기존 파일명 숨기기
+		$(".uploadFile").on("change keyup paste", function() {
+			$("label[for='img']").hide();
+		});
+	});
 </script>
 <title>Insert title here</title>
 </head>
 <body>
+			<!-- 이미지 파일명 표기를 위한 식 -->
+			<c:set var="hs_thumb_"
+				value="${fn:substringAfter(detail.hs_thumb,'_') }" />
+			<c:set var="hs_thumb__" value="${fn:substringAfter(hs_thumb_,'_') }" />
+			<c:set var="hs_img1_"
+				value="${fn:substringAfter(detail.hs_img1,'_') }" />
+			<c:set var="hs_img1__" value="${fn:substringAfter(hs_img1_,'_') }" />
 	<div id="contents">
 		<form id="updateForm" enctype="multipart/form-data" method="POST">
-		
+
+
 			<!-- 수정 및 삭제를 위한 값 -->
-			<input type="hidden" id="hs_num" name="hs_num" value="${detail.hs_num}">
-		<input type="hidden" name="hs_thumb" id="hs_thumb" value="${detail.hs_thumb}">
-		<input type="hidden" name="hs_img1" id="hs_img1" value="${detail.hs_img1}">
+			<input type="hidden" id="hs_num" name="hs_num"
+				value="${detail.hs_num}"> <input type="hidden"
+				name="hs_thumb" id="hs_thumb" value="${detail.hs_thumb}"> <input
+				type="hidden" name="hs_img1" id="hs_img1" value="${detail.hs_img1}">
 			<h3>HairStyle 게시판 관리 - 상세보기 및 수정</h3>
 			<p align="right">* 항목은 필수 입력 값입니다.</p>
 			<!-- 목록으로 버튼 -->
@@ -98,12 +106,6 @@ $(function() {
 				</p>
 			</div>
 			<hr>
-			<!-- 수정 및 삭제를 위한 값 -->
-			<input type="hidden" id="hs_num" name="hs_num"
-				value="${detail.hs_num }">
-			<input type="text" id="hs_thumb" name="hs_thumb" value="${detail.hs_thumb}">	
-			<input type="text" id="hs_img1" name="hs_img1" value="${detail.hs_img1}">	
-				
 			<!--수정 및 상세보기 폼 출력 -->
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>제품명
@@ -119,14 +121,16 @@ $(function() {
 			<hr>
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>썸네일이미지
-				</span> <span class="imgBtn"><label for="img">${detail.hs_thumb}</label>
-					<input type="button" class="imgUpdateBtn" value="이미지수정"><input type="file" name="uploadFile" id="uploadFile" class="uploadFile"></span>
+				</span> <span class="imgBtn"><label for="img">${hs_thumb__}</label>
+					<input type="button" class="imgUpdateBtn" value="이미지수정"><input
+					type="file" name="uploadFile" id="uploadFile" class="uploadFile"></span>
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> <label class="required">*</label>상세이미지
-				</span> <span class="imgBtn"><label for="img">${detail.hs_img1}</label>
-					<input type="button" class="imgUpdateBtn" value="이미지수정"><input type="file" name="uploadFile2" id="uploadFile2" class="uploadFile"></span>
+				<span class="item"> <label class="required"></label>상세이미지
+				</span> <span class="imgBtn"><label for="img">${hs_img1__}</label>
+					<input type="button" class="imgUpdateBtn" value="이미지수정"><input
+					type="file" name="uploadFile2" id="uploadFile2" class="uploadFile"></span>
 			</div>
 			<hr>
 		</form>

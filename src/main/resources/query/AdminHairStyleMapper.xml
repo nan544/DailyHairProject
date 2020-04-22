@@ -4,14 +4,36 @@
 
 <mapper namespace="daily.admin.board.dao.HairStyleDAO">
 
+	<sql id="List">
+		SELECT *
+		FROM hairstyle
+		<where>
+			<if test="search=='hs_title'">
+			<![CDATA[ hs_title LIKE '%'||#{keyword}||'%']]>
+			</if>
+		</where>
+	</sql>
+
+
 	<select id="hsList" resultType="hairstyle">
 		SELECT hs_num, hs_title,
 		hs_thumb, hs_img1, hs_content,
-		to_char(hs_regdate,'YYYY-MM-DD hh:mm:ss') as hs_regdate FROM hairStyle
-		order by
-		hs_num desc
+		to_char(hs_regdate,'YYYY-MM-DD') as hs_regdate
+		FROM(
+		SELECT list.*, ROWNUM as RNUM
+		FROM (
+		<include refid="List" />
+		ORDER BY hs_num desc
+		)List)
+		<where>
+			<if test="start_row != null and start_row !=''">
+				<if test="end_row != null and end_row !=''">
+					RNUM BETWEEN #{start_row} AND #{end_row}
+				</if>
+			</if>
+		</where>
 	</select>
-	
+
 	<insert id="hsInsert" parameterType="hairstyle">
 		<!-- HairGoods 게시글 등록 -->
 		<selectKey keyProperty="hs_num" resultType="int"
@@ -27,8 +49,8 @@
 		hs_title,
 		hs_content,
 		hs_thumb
-		<if test="hs_img1!='400'"> 
-		,hs_img1
+		<if test="hs_img1!='400'">
+			,hs_img1
 		</if>
 		)
 		VALUES(
@@ -36,8 +58,8 @@
 		#{hs_title},
 		#{hs_content},
 		#{hs_thumb}
-		<if test="hs_img1!='400'"> 
-		,#{hs_img1}
+		<if test="hs_img1!='400'">
+			,#{hs_img1}
 		</if>
 		)
 	</insert>
@@ -46,11 +68,11 @@
 		update hairstyle
 		set hs_title=#{hs_title},
 		hs_content=#{hs_content}
-		<if test="hs_thumb != '400'"> 
-		,hs_thumb=#{hs_thumb}
+		<if test="hs_thumb != '400'">
+			,hs_thumb=#{hs_thumb}
 		</if>
-		<if test="hs_img1 != '400'"> 
-		,hs_img1=#{hs_img1}
+		<if test="hs_img1 != '400'">
+			,hs_img1=#{hs_img1}
 		</if>
 		where hs_num = #{hs_num}
 
@@ -67,5 +89,17 @@
 		where
 		hs_num = #{hs_num}
 	</delete>
-	
+
+	<select id="hsCnt" resultType="int" parameterType="hairstyle">
+		SELECT nvl(count(1),0)
+		FROM(
+			SELECT
+				list.*, ROWNUM as RNUM
+			FROM (
+		<include refid="List" />
+		ORDER BY hs_num desc) 
+		list)
+
+	</select>
+
 </mapper>

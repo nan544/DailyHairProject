@@ -18,8 +18,8 @@ public class AdminHairStyleDAOImpl implements AdminHairStyleDAO {
 	SqlSession sqlSession;
 
 	@Override
-	public List<AdminHairStyleVO> hairStylelist() {
-		return sqlSession.selectList("hsList");
+	public List<AdminHairStyleVO> hairStylelist(AdminHairStyleVO hsvo) {
+		return sqlSession.selectList("hsList", hsvo);
 	}
 
 	@Override
@@ -40,6 +40,11 @@ public class AdminHairStyleDAOImpl implements AdminHairStyleDAO {
 	@Override
 	public int hairStyledelete(int hs_num) {
 		return sqlSession.delete("hsDelete", hs_num);
+	}
+
+	@Override
+	public int hairStyleCnt(AdminHairStyleVO hsvo) {
+		return sqlSession.selectOne("hsCnt", hsvo);
 	}
 	
 
