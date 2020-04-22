@@ -3,7 +3,6 @@ package daily.client.reserve.controller;
 
 import java.util.List;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,6 +25,7 @@ import daily.admin.style.service.StyleService;
 import daily.admin.style.vo.StyleVO;
 import daily.client.reserve.service.ReserveService;
 import daily.client.reserve.vo.ReserveVo;
+import daily.client.reservedetail.service.ReserveDetailService;
 
 @Controller
 @RequestMapping(value = "/reserve")
@@ -40,6 +41,9 @@ public class ReserveController {
 	
 	@Autowired
 	private StyleService styleService;
+	
+	@Autowired 
+	private ReserveDetailService reserveDetailService;
 	
 	// 01. 지점선택) [place > date] 왕십리 본점 선택 후 시술 일자 선택으로
 	@RequestMapping(value = "/reserveSelectDate")
@@ -127,7 +131,6 @@ public class ReserveController {
 	@RequestMapping(value = "/reserveSelectSergery.do", method = RequestMethod.POST)
 	public String reserveSelectSergery(ReserveVo rvo , Model model) {
 		
-		System.out.println(rvo.getDes_num());
 		
 		List<StyleVO> styleList = styleService.stylingList(rvo.getDes_num());
 		
@@ -143,13 +146,14 @@ public class ReserveController {
 	
 	// 00. 결제하기로 이동
 	@RequestMapping(value = "/reservePayment.do", method = RequestMethod.POST)
-	public String reservePayment(@ModelAttribute ReserveVo rvo, Model model) {
+	public String reservePayment(@ModelAttribute ReserveVo rvo, Model model, @RequestParam("holy")String holy) {
 		
-		System.out.println("호출완료");
+		
 		
 		List<StyleVO> styleList = styleService.stylingList(rvo.getDes_num());
 		DesignerVO dvo = designerService.designerDetail(rvo.getDes_num());
 		
+		model.addAttribute("number",holy);
 		model.addAttribute("desname",dvo);
 		model.addAttribute("styleList",styleList);
 		model.addAttribute("data",rvo);
@@ -158,9 +162,22 @@ public class ReserveController {
 	}
 	
 	// 최종단계 결제하기 -> DB에 인서트
-	@RequestMapping(value = "/reserveInser.do",method = RequestMethod.POST)
-	public String insertReservation() {
-		return "client/reserve/paymentCard";
+	@RequestMapping(value = "/reserveInsert.do",method = RequestMethod.POST)
+	public String insertReservation(@ModelAttribute ReserveVo rvo,@RequestParam("style_number")List<String> holy){
+			
+		//예약테이블에 인서트
+		int result = reserveService.insertReservation(rvo);
+		
+		//예약테이블에 인서트가 성공하면 예약상세테이블에 인서트
+		if(result == 1 ) {
+			for(String i : holy) {
+				reserveDetailService.insertReservationDetail(Integer.parseInt(i));
+			}
+			return "client/reserve/paymentCard";
+		}else {
+			return "client/reserve/payment";
+		}
+				
 	}
 	
 	// 00. 계좌이체

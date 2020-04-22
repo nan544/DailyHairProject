@@ -227,7 +227,7 @@
                font-weight: 500;
                line-height: 1;
                color: #444444;
-               margin: 0 auto;
+               margin: 0 3px 10px 3px;
                transition: all ease-in-out 0.3s;
                background: white;
                border: 2px dashed #ffb03b;

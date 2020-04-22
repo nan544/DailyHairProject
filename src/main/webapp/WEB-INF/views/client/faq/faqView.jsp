@@ -47,13 +47,32 @@
 
 	<!-- Template Main JS File -->
 	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
+	<!-- jQuery 사용 -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<!-- 아코디언 메뉴 -->
+	<script type="text/javascript">
+	$(document).ready(function() {
+	    $('[id^=showmenu]').click(function() {
+	        $('[class^=menu]').not($(this).next('[class^=menu]').slideToggle("fast")).slideUp();
+	    });
+	});
+	</script>
 	
 	<style type="text/css">
-		.faq_box { border: 2 dashed gray; 
-					width: 80%; }
-		.faq_question { margin-right: 30px; font-size: 50px; }
-		.faq_answer { margin-right: 15px;
-						margin-left: 45px; }
+		ul { list-style:none; }
+		.faq_box { width: 1020px; }
+		.faq_answer { margin-right: 15px; margin-left: 35px;
+					color: #F15F5F; font-weight: 700; }
+		.accordion_head { padding: 15px 0px 5px 25px;
+						box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+						transition: all ease-in-out 0.3s; }
+		.accordion_head:hover { padding: 15px 0px 5px 25px;
+						box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
+						background: #FAF4C0; }
+		.accordion_head p { font-size: 20px; }
+		.accordion_head span { font-size: 35px; font-weight: 700;
+								color: #ffcf88; margin-right: 25px; }
+		.menu1 { padding-top: 25px; }
 	</style>
 </head>
 
@@ -85,21 +104,27 @@
 								<!-- 자주하는 질문 목록 -->
 								<div class="faq_box">
 									<!-- 질문 제목 -->
-									<div>
-										<h3><span class="faq_question">Q</span>${faq.faq_question}</h3>
+									<div class="accordion_head" id="showmenu1">
+										<p><span>Q</span>${faq.faq_question}</p>
 									</div>
 									<!-- 질문 답변 -->
-									<div style="float: left;"><!-- Left -->
-										<p><span class="faq_answer">A</span></p>
-									</div>
-									<div>
-										<p>${faq.faq_answer}</p>
+									<div class="menu1" style="display: none;"><!-- Left -->
+										<div style="float: left;">
+											<ul>
+												<li><p><span class="faq_answer">A</span></p></li>
+											</ul>
+										</div>
+										<div>
+											<ul>
+												<li><p>${faq.faq_answer}</p></li>
+											</ul>
+										</div>
 									</div>
 								</div>
 								
 								<!-- 구분선 -->
 								<div style="margin: 0 auto; width: 100%;">
-									<hr style="margin: 30px 0 30px 0;" />				
+									<br>
 								</div>
 								
 							</c:forEach>
