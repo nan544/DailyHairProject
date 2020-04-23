@@ -21,7 +21,7 @@
 	
 	<!-- 예약상세테이블에 있는 시술목록출력 -->
 	<select id="stylingnameList" resultType="styling" parameterType="int">
-		select styling_name
+		select a.styling_name as styling_name , a.styling_price as styling_price
 		from styling a inner join reservation_detail b
 		on a.styling_num = b.styling_num
 		where rest_num = #{rest_num}

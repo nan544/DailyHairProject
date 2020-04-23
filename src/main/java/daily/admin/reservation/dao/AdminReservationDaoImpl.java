@@ -40,4 +40,10 @@ public class AdminReservationDaoImpl implements AdminReservationDao {
 		return sqlSession.selectList("dateList",rvo);
 	}
 
+	//예약상태 수정하기
+	@Override
+	public int updateReservation(ReserveVo rvo) {
+		return sqlSession.update("updateReservation",rvo);
+	}
+
 }
