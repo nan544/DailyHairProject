@@ -52,10 +52,18 @@
 		.reserveTable { display: inline; padding: 10px; font-size: 12px;}
 		.reserveTablehead { display: inline; padding: 10px; font: 15pt bold; color: #670000;}
 		.reserveBtn { width: 150px; height: 50px; background: #ffb03b; border: 0;	color: #fff;
-				padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;}
+					padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;}
+		.reserveBtnNot { width: 150px; height: 50px; background: #BDBDBD; border: 0;	color: #fff;
+					padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px; }
+		.stylebox { border-spacing: 10px; border-collapse: inherit; margin: 0 auto; padding: 25px 0px 35px 0px; }
+		.style1 {  }
+		.style2 { padding-left: 15px; text-align: right; }
+		.style3 { padding-left: 15px; }
+		.styleNo1 { padding: 75px 0px 0px 0px; text-align: center; }
+		.styleNo2 { padding: 0px 0px 20px 0px; text-align: center; }
 	</style>
 	
-	<!-- 버튼 이벤트 -->
+	<!-- 이벤트 -->
 	<script type="text/javascript">
 		$(function(){
 			//시술선택시 이벤트
@@ -70,6 +78,7 @@
 					}			
 			});
 			$("#price").html(sum+"원");
+			$("#rest_totalprice").val(sum);
 			
 			let total = "";
 			//시술이 선택되면 선택된 시술의 시술명을 출력
@@ -102,6 +111,7 @@
 			alert($("#rest_hairdate").val()+"<<선택한 시술날짜");
 			alert($("#rest_time").val()+"<<선택한 시술시간");
 		   	alert($("#rest_memo").val()+"<<요구사항");
+		   	alert($("#rest_totalprice").val()+"<< 총 시술가격");
 			
 		   	if($("input:checkbox[name=styling_num]:checked").length==0){
 		   		alert("시술을 하나이상 선택해주세요");
@@ -119,6 +129,7 @@
 		   
 		  
 		$("#holy").val(checkArr);
+		
 		   
 		  $("#stylingForm").attr({
 				"method":"post",
@@ -177,25 +188,31 @@
 			<!-- 시술 선택 -->
 			<div style="margin : 0 auto;">
 			<form id="stylingForm" name="stylingForm">
-			<table>
-			<c:choose>
+				<table class="stylebox">
+				<c:choose>
 					<c:when test="${not empty styleList}">
 						<c:forEach var="style" items="${styleList }">
-				<tr data-num="${style.styling_price}" data-name="${style.styling_name}"><td>${style.styling_name}</td>
-					<td>&nbsp;&nbsp;&nbsp;${style.styling_price}원</td>
-				<td>&nbsp;&nbsp;&nbsp;<input type="checkbox" name="styling_num" value="${style.styling_num}"class="check"/></td></tr>
+							<tr data-num="${style.styling_price}" data-name="${style.styling_name}">
+								<td class="style1">${style.styling_name}</td>
+								<td class="style2">${style.styling_price}원</td>
+								<td class="style3"><input type="checkbox" name="styling_num"
+									value="${style.styling_num}"class="check"/></td>
+							</tr>
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
-						<p>등록된 시술이없습니다</p>
+						<p class="styleNo1">등록된 시술이없습니다</p>
+						<p class="styleNo2">다른 디자이너를 선택해주시기 바랍니다.</p>
 					</c:otherwise>
 				</c:choose>
 				</table>
+				
 				<input type="hidden" id="rest_hairdate" name="rest_hairdate" value="${data.rest_hairdate}"/>
 				<input type="hidden" id="rest_time" name="rest_time" value="${data.rest_time }"/>
 				<input type="hidden" id="des_num" name="des_num" value="${data.des_num}"/>
-				<textarea rows="5" cols="50" id="rest_memo" name="rest_memo" placeholder="시술 시 참고사항을 적어주세요"></textarea>
+				<textarea rows="5" cols="50" id="rest_memo" name="rest_memo" placeholder=" 시술 시 참고사항을 적어주세요"></textarea>
 				<input type="hidden" name="holy" id="holy" value=""/>
+				<input type="hidden" name="rest_totalprice" id="rest_totalprice" value=""/>
 				</form>
 			</div>
 			
@@ -206,7 +223,9 @@
 			<!-- 버튼 -->
 			<div style="margin: 0 auto; margin-top: 75px;">
 				<button class="reserveBtn" onclick="selectDesigner()">이전 단계</button>
-				<button class="reserveBtn" onclick="payment()">결제하기</button>
+				<!-- <button class="reserveBtn" onclick="payment()">결제하기</button> -->
+				<c:if test="${not empty styleList}"><button class="reserveBtn" onclick="payment()">결제하기</button></c:if>
+				<c:if test="${empty styleList}"><button class="reserveBtnNot" onclick="payment()" disabled="disabled">결제하기</button></c:if>
 			</div>
 		</div>
 	</div>

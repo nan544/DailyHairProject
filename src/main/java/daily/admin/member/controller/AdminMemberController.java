@@ -15,8 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import daily.admin.member.service.AdminMemberService;
 import daily.client.member.vo.MemberVO;
+import daily.client.reserve.service.ReserveService;
+import daily.client.reserve.vo.ReserveVo;
 import daily.common.page.Paging;
-import daily.common.util.Util;
 
 
 @Controller
@@ -27,6 +28,8 @@ public class AdminMemberController {
 	@Autowired
 	AdminMemberService adminMemberService;
 	
+	@Autowired
+	ReserveService reserveService;
 	
 	//회원 리스트 출력하기
 	@RequestMapping(value = "/member/memberList.do", method = RequestMethod.GET)
@@ -57,11 +60,12 @@ public class AdminMemberController {
 	
 	//회원 상세보기폼 출력
 	@RequestMapping(value = "/member/memberDetailForm.do", method = RequestMethod.GET)
-	public ModelAndView memberDetailForm(@RequestParam int m_num) {
+	public ModelAndView memberDetailForm(@RequestParam String m_id) {
 		log.info("memberDetailForm 호출성공");
 		ModelAndView mav = new ModelAndView();
 		
-		MemberVO detail = adminMemberService.memberDetail(m_num);
+		MemberVO detail = adminMemberService.memberDetail(m_id);
+		ReserveVo history = null; //예약 리스트 뽑아오기
 		
 		if(detail != null) {
 			mav.addObject("detail",detail);
