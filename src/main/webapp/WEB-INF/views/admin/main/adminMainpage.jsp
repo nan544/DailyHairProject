@@ -16,8 +16,14 @@
 </head>
 <body>
 <c:if test="${login == '관리자'}">
- <h1>메인페이지입니다</h1>
- <h2>컨텐츠 부분이에염</h2>
+	<script type="text/javascript">
+	window.location.href="/admin/reservation/adminReservationList.do";
+	</script>
+</c:if>
+<c:if test="${empty login}">
+	<script type="text/javascript">
+		window.location.href="/";
+	</script>
 </c:if>
 </body>
 </html>

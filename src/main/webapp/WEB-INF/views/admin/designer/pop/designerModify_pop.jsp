@@ -8,11 +8,6 @@
 <title>디자이너 수정</title>
 <link href="/resources/include/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-<style type="text/css">
-span {
-	color: red;
-}
-</style>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/designer.js"></script>
@@ -157,95 +152,141 @@ span {
 
 	});
 </script>
+<style type="text/css">
+body {
+	background-color: #f2f2f2;
+}
+
+.infoContainer {
+	background-color: white;
+	width: 95%;
+	margin: 10px auto;
+	border: 1px solid;
+	border-radius: 5px;
+}
+
+.tc {
+	color: gray;
+}
+
+span {
+	color: red;
+}
+
+input[type=text] {
+	border-radius: 3px;
+	margin-top: 5px;
+}
+
+span {
+	color: red;
+}
+#des_job{
+width: 130px;
+height: 32px;
+}
+#des_holyday{
+width: 130px;
+height: 32px;
+}
+</style>
 </head>
 <body>
-	<h1>디자이너 정보</h1>
+	<h1 align="center">디자이너 정보</h1>
 	<hr>
 	<c:if test="${des.des_state == 0}">
-	&nbsp;&nbsp;	<label>
-			<span>*&nbsp;</span>현재상태 : '비활성화'
+	&nbsp;&nbsp;	<label> <span>*&nbsp;</span>현재상태 : '비활성화'
 		</label>
 	</c:if>
 	<c:if test="${des.des_state == 1}">
-		&nbsp;&nbsp;<label>
-			<span>*&nbsp;</span>현재상태 : '활성화'
+		&nbsp;&nbsp;<label> <span>*&nbsp;</span>현재상태 : '활성화'
 		</label>
 	</c:if>
-	&nbsp;&nbsp;<input type="button" name="openBtn" id="openBtn" value="활성화" class="btn" />
-	<input type="button" name="deleteBtn" id="deleteBtn" value="비활성화" class="btn"/>
-	<hr>
-	&nbsp;&nbsp;<label><span>*&nbsp;</span>이력서 다운로드</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<c:if test="${empty des.des_file }">
-		<label>--</label>
-	</c:if>
-	<c:if test="${not empty des.des_file }">
-		<label>
-			<a href="" onclick="fn_fileDown('${des.des_num}'); return false;">${des.des_file}</a>
-		</label>
-	</c:if>
-	<form name="downForm" id="downForm">
-		<input type="hidden" name="des_num" id="des_num">
-	</form>
+	&nbsp;&nbsp;
+	<input type="button" name="openBtn" id="openBtn" value="활성화"
+		class="btn"
+		style="background-color: white; border: 1px solid gray; padding: 5px;" />
+	<input type="button" name="deleteBtn" id="deleteBtn" value="비활성화"
+		class="btn"
+		style="background-color: white; border: 1px solid gray; padding: 5px;" />
+	<div class="infoContainer">
+		<form name="downForm" id="downForm">
+			<input type="hidden" name="des_num" id="des_num">
+		</form>
 
-	<form name="modifyForm" id="modifyForm" enctype="multipart/form-data">
-		<input type="hidden" name="des_num" id="des_num"
-			value="${des.des_num}" /> <input type="hidden" name="des_file"
-			id="des_file" value="${des.des_file}" />
-		<table class="table">
-			<tr>
-				<td><span>*&nbsp;</span>이름</td>
-				<td><input type="text" name="des_name" id="des_name" size="15"
-					maxlength="5" value="${des.des_name}" readonly="readonly" /></td>
-			</tr>
-			<tr>
-				<td><span>*&nbsp;</span>직급</td>
-				<td><select name="des_job" id="des_job">
-						<option value="">직급 선택</option>
-						<option value="원장">원 장</option>
-						<option value="실장">실 장</option>
-						<option value="디자이너">디자이너</option>
-				</select></td>
-			</tr>
-			<tr>
-				<td><span>*&nbsp;</span>연락처</td>
-				<td><input type="text" name="des_phone" id="des_phone"
-					placeholder="010-1234-1234" size="15" maxlength="13"
-					value="${des.des_phone}" /></td>
-			</tr>
-			<tr>
-				<td><span>*&nbsp;</span>휴무일</td>
-				<td><select name="des_holyday" id="des_holyday">
-						<option value="">선택하세요</option>
-						<option value="월요일">월요일</option>
-						<option value="화요일">화요일</option>
-						<option value="수요일">수요일</option>
-						<option value="목요일">목요일</option>
-						<option value="금요일">금요일</option>
-						<option value="토요일">토요일</option>
-						<option value="일요일">일요일</option>
-				</select></td>
-			</tr>
-			<tr>
-				<td><span>*&nbsp;</span>성별</td>
-				<td><label for="des_gender1">남성</label> <input type="radio"
-					name="des_gender" id="des_gender1" value="남성" /> <label
-					for="des_gender2">여성</label> <input type="radio" name="des_gender"
-					id="des_gender2" value="여성" /></td>
-			</tr>
-			<tr>
-				<td>특이사항</td>
-				<td><input type="text" name="des_memo" id="des_memo" size="50"
-					placeholder="특이사항을 입력해주세요" maxlength="50" value="${des.des_memo}" />
-			</tr>
-			<tr>
-				<td>이력서</td>
-				<td><input type="file" name="file" id="file" ></td>
-			</tr>
-		</table>
-	</form>
+		<form name="modifyForm" id="modifyForm" enctype="multipart/form-data">
+			<input type="hidden" name="des_num" id="des_num"
+				value="${des.des_num}" /> <input type="hidden" name="des_file"
+				id="des_file" value="${des.des_file}" />
+			<table class="table">
+				<tr>
+					<td><span>*&nbsp;</span>이력서 다운로드</td>
+					<td><c:if test="${empty des.des_file }">
+									--
+						</c:if> 
+						<c:if test="${not empty des.des_file }">
+							<a href="" onclick="fn_fileDown('${des.des_num}'); return false;">${des.des_file}</a>
+						</c:if></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle;"><span>*&nbsp;</span>이름</td>
+					<td><input type="text" name="des_name" id="des_name" size="15"
+						maxlength="5" value="${des.des_name}" readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle;"><span>*&nbsp;</span>직급</td>
+					<td><select name="des_job" id="des_job" class="form-control">
+							<option value="">직급 선택</option>
+							<option value="원장">원 장</option>
+							<option value="실장">실 장</option>
+							<option value="디자이너">디자이너</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle;"><span>*&nbsp;</span>연락처</td>
+					<td><input type="text" name="des_phone" id="des_phone"
+						placeholder="010-1234-1234" size="15" maxlength="13"
+						value="${des.des_phone}" /></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle;"><span>*&nbsp;</span>휴무일</td>
+					<td><select name="des_holyday" id="des_holyday" class="form-control">
+							<option value="">선택하세요</option>
+							<option value="월요일">월요일</option>
+							<option value="화요일">화요일</option>
+							<option value="수요일">수요일</option>
+							<option value="목요일">목요일</option>
+							<option value="금요일">금요일</option>
+							<option value="토요일">토요일</option>
+							<option value="일요일">일요일</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle;"><span>*&nbsp;</span>성별</td>
+					<td><label for="des_gender1">남성</label> <input type="radio"
+						name="des_gender" id="des_gender1" value="남성" /> <label
+						for="des_gender2">여성</label> <input type="radio" name="des_gender"
+						id="des_gender2" value="여성" /></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle;">특이사항</td>
+					<td><input type="text" name="des_memo" id="des_memo" size="50"
+						placeholder="특이사항을 입력해주세요" maxlength="50" value="${des.des_memo}" />
+				</tr>
+				<tr>
+					<td style="vertical-align: middle;">이력서</td>
+					<td><input type="file" name="file" id="file"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 	<div class="buttonContainer" align="center">
-		<input type="button" name="modifyBtn" id="modifyBtn" value="수정" class="btn"/> <input
-			type="button" name="closeBtn" id="closeBtn" value="닫기" class="btn" />
+		<input type="button" name="modifyBtn" id="modifyBtn" value="수정"
+			class="btn"
+			style="background-color: white; border: 1px solid gray; padding: 5px;" />
+		<input type="button" name="closeBtn" id="closeBtn" value="닫기"
+			class="btn"
+			style="background-color: white; border: 1px solid gray; padding: 5px;" />
 	</div>
 </body>
 </html>

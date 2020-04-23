@@ -38,5 +38,11 @@ public class AdminReservationServiceImpl implements AdminReservationService {
 	public List<ReserveVo> dateList(ReserveVo rvo) {
 		return adminReservationDao.dateList(rvo);
 	}
+	
+	//예약상태 수정하기
+	@Override
+	public int updateReservation(ReserveVo rvo) {
+		return adminReservationDao.updateReservation(rvo);
+	}
 
 }

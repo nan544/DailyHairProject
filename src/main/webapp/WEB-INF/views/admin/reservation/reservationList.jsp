@@ -9,12 +9,11 @@
 <style type="text/css">
 #datePicker{
 width : 130px;
-position: absolute;
-top : 80px;
-right: 300px;
 }
 #des_num{
 width : 130px;
+float: left;
+margin-right: 15px;
 }
 tbody tr td,th{
 text-align: center;
@@ -26,10 +25,23 @@ text-align: center;
 <script src="/resources/include/js/bootstrap-datepicker.ko.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		//오늘날짜 출력을 위한 자바스크립트
+		
+		let today = new Date();
+		
+		let year = today.getFullYear();		//년도
+		let month = today.getMonth()+1; //월
+		let date = today.getDate();     //날짜
+		
+		month = month >= 10 ? month : '0' + month;
+		
+		$("#datePicker").val(year+'-'+month+'-'+date);
+		
+		
 		//달력
 		$("#datePicker").datepicker({
 			format : "yyyy-mm-dd",
-			startDate : 'd',
+			startDate : '-1y',
 			autoclose : true,
 			templates : {
 				leftArrow : '&laquo;',
@@ -53,7 +65,7 @@ text-align: center;
 							
 						if(data.length == 0){
 							$(".ajaxList").html("");
-							$(".ajaxList").html("<td colspan='6' align='center'><h3>금일예약자가 없습니다</h3></td>");
+							$(".ajaxList").html("<tr><td colspan='6' align='center'>금일예약자가 없습니다</td></tr>");
 						}else{
 							
 							$(".ajaxList").html("");
@@ -65,7 +77,7 @@ text-align: center;
 								let m_id = data[i].m_id;
 								html += '<tr class="detail"'+'data-num='+rest_num+' data-name='+m_id+'>' + '<td>'
 										+ data[i].rest_num + '</td>'
-										+ '<td>' + data[i].rest_hairdate + data[i].rest_time + '</td>'
+										+ '<td>' + data[i].rest_hairdate +" / "+ data[i].rest_time + '</td>'
 										+ '<td>' + data[i].m_gender + '</td>'
 										+ '<td>' + data[i].m_id + '</td>'
 										+ '<td>'
@@ -94,7 +106,7 @@ text-align: center;
 		//디자이너 셀렉트박스 바꿀때마다 날짜 초기화
 		$("#des_num").change(function(){
 			$("#datePicker").val("");		
-			$(".ajaxList").html("<td colspan='6' align='center'><h3>날짜를 선택하세요</h3></td>");
+			$(".ajaxList").html("<tr><td colspan='6' align='center'>날짜를 선택하세요</td></tr>");
 		});
 	});
 	
@@ -113,7 +125,7 @@ text-align: center;
 			</select>
 		</c:when>
 	</c:choose> 
- <input type="text" id="datePicker" class="form-control" value="날짜선택">
+ <input type="text" id="datePicker" class="form-control" value="">
  <p style="margin-top: 10px;"><span style="color: red;">*</span>&nbsp;클릭하여 상세보기</p>
  	<table class="table table-hover">
  		<colgroup>

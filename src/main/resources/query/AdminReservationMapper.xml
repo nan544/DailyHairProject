@@ -9,7 +9,7 @@
 		SELECT a.rest_num as rest_num, a.rest_time as rest_time, b.m_gender as m_gender, a.m_id as m_id, b.m_name as m_name, b.m_phone as m_phone, a.rest_totalprice as rest_totalprice,to_char(a.rest_hairdate,'yyyy-mm-dd') as rest_hairdate
 		FROM reservation a inner join member b
 		ON a.m_id = b.m_id
-		WHERE a.rest_state = 1 and a.rest_hairdate = sysdate
+		WHERE a.rest_state = 1 and a.rest_hairdate = to_char(sysdate,'yyyy-mm-dd')
 		ORDER BY a.rest_time
 	</select>
 	
@@ -39,31 +39,30 @@
 		WHERE a.rest_num = #{rest_num}
 	</select>
 	
-	<!-- 시술완료 리스트 출력 -->
+	<!-- 시술완료 리 스트 출력 -->
 	<select id="resultList" resultType="reservation" parameterType="String">
-		SELECT a.rest_num as rest_num, a.des_num as des_num, a.m_id as m_id, to_char(a.rest_hairdate,'yyyy-mm-dd') as rest_hairdate, a.rest_time as rest_time, a.rest_state as rest_state, a.rest_memo as rest_memo, a.rest_comment as rest_comment, b.des_name as des_name, a.rest_totalprice as rest_totalprice
-		FROM reservation a inner join designer b
-		on a.des_num = b.des_num
-		WHERE a.rest_state = 2 and a.m_id = #{m_id}
-		ORDER BY a.rest_time
+		SELECT a.rest_num as rest_num, a.des_num as des_num, a.m_id as m_id, to_char(a.rest_hairdate,'yyyy-mm-dd') as rest_hairdate, a.rest_time as rest_time, a.rest_state as rest_state, a.rest_memo as rest_memo, a.rest_comment as rest_comment, b.des_name as des_name, a.rest_totalprice as rest_totalprice,c.m_name as m_name, c.m_num as m_num, c.m_phone as m_phone
+		FROM reservation a inner join designer b 
+		on a.des_num = b.des_num inner join member c
+		on a.m_id = c.m_id
+		<where>
+			<if test="m_id!=''">
+				a.rest_state = 2 and a.m_id = #{m_id}
+			</if>
+			<if test="m_id==''">
+				a.rest_state = 2
+			</if>
+		</where>
+	     	ORDER BY a.rest_time desc
 	</select>
-	<!--
-	<insert id="insertSomething" parameterType="#modelname">
-		INSERT INTO tablename1 (columnname1, columnname2, columnname3)
-		VALUES(#{value1},#{value2},#{value3})
-	</insert>
 
-	<update id="updateSomething" parameterType="#modelname">
-		UPDATE tablename1
-		SET
-		columnname1=#{param1}
-		WHERE
-		columnname2 = #{param2}
-	</update>
 
-	<delete id="deleteSomething" parameterType="int">
-		DELETE FROM tablename1 WHERE
-		columnname1 = #{param1}
-	</delete> -->
+	<!-- 예약상태 수정하기 -->
+ 	<update id="updateReservation" parameterType="reservation">
+		UPDATE reservation
+		SET rest_state = #{rest_state} , rest_comment = #{rest_comment}
+		WHERE rest_num = #{rest_num}
+	</update> 
+
 
 </mapper>

@@ -6,11 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>시술등록</title>
-<style type="text/css">
-span {
-	color: red;
-}
-</style>
+<link href="/resources/include/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
@@ -105,14 +102,14 @@ var openDialog = function(uri, name, options, closeCallback) {
 							}else{
 							for(let i =0; i<data.length; i++){
 								html += '<tr class='+'tac data-num='+data[i].styling_num+'>'
-								+'<td>' + '* 시술 구분'+ '</td>'
-								+'<td> <input type='+'"text"'+'name="styling_option" value='+data[i].styling_option+' readonly size="10">'+'</td>'
-								+'<td>' + '* 시술명' + '</td>'
-								+'<td> <input type='+'"text"'+'name="styling_name" id="styling_name1" value='+  data[i].styling_name +' readonly>'+'</td>'
-								+'<td>' + '* 시술가격' + '</td>'
-								+'<td> <input type='+'"text"'+'name="styling_price" id="styling_price1" value='+  data[i].styling_price +' readonly>'+'</td>'
-								+'<td> <input type='+'"button"'+'name="updateBtn" id="updateBtn" value="수정" class="updateBtn">'+'</td>'
-								+'<td> <input type='+'"button"'+'name="deleteBtn" id="deleteBtn" value="삭제" class="deleteBtn">'+'</td>'
+								+'<th style="vertical-align : middle;">' + '시술구분 :'+ '</th>'
+								+'<td> <label style="margin-top : 6px; color : gray;">'+data[i].styling_option+'</label>'
+								+'<th style="vertical-align : middle;">' + '시술명 :' + '</th>'
+								+'<td> <label style="margin-top : 6px; color : gray;">'+ data[i].styling_name +'</label>'+'</td>'
+								+'<th style="vertical-align : middle;">' + '시술가격 :' + '</th>'
+								+'<td> <label style="margin-top : 6px; color : gray;">'+  data[i].styling_price +'원</label>'+'</td>'
+								+'<td> <input type='+'"button"'+'name="updateBtn" id="updateBtn" value="수정" class="updateBtn" style="background-color: white; border: 1px solid gray; padding: 5px; border-radius: 5px;">'+'</td>'
+								+'<td> <input type='+'"button"'+'name="deleteBtn" id="deleteBtn" value="삭제" class="deleteBtn" style="background-color: white; border: 1px solid gray; padding: 5px; border-radius: 5px;">'+'</td>'
 								+'</tr>'
 								} 
 							}
@@ -147,14 +144,14 @@ var openDialog = function(uri, name, options, closeCallback) {
 							}else{
 							for(let i =0; i<data.length; i++){
 								html += '<tr class='+'tac data-num='+data[i].styling_num+'>'
-								+'<td>' + '* 시술 구분'+ '</td>'
-								+'<td> <input type='+'"text"'+'name="styling_option" value='+data[i].styling_option+' readonly size="10">'+'</td>'
-								+'<td>' + '* 시술명' + '</td>'
-								+'<td> <input type='+'"text"'+'name="styling_name" id="styling_name1" value='+  data[i].styling_name +' readonly>'+'</td>'
-								+'<td>' + '* 시술가격' + '</td>'
-								+'<td> <input type='+'"text"'+'name="styling_price" id="styling_price1" value='+  data[i].styling_price +' readonly>'+'</td>'
-								+'<td> <input type='+'"button"'+'name="updateBtn" id="updateBtn" value="수정" class="updateBtn">'+'</td>'
-								+'<td> <input type='+'"button"'+'name="deleteBtn" id="deleteBtn" value="삭제" class="deleteBtn">'+'</td>'
+								+'<th style="vertical-align : middle;">' + '시술구분 :'+ '</th>'
+								+'<td> <label style="margin-top : 6px; color : gray;">'+data[i].styling_option+'</label>'
+								+'<th style="vertical-align : middle;">' + '시술명 :' + '</th>'
+								+'<td> <label style="margin-top : 6px; color : gray;">'+ data[i].styling_name +'</label>'+'</td>'
+								+'<th style="vertical-align : middle;">' + '시술가격 :' + '</th>'
+								+'<td> <label style="margin-top : 6px; color : gray;">'+  data[i].styling_price +'원</label>'+'</td>'
+								+'<td> <input type='+'"button"'+'name="updateBtn" id="updateBtn" value="수정" class="updateBtn" style="background-color: white; border: 1px solid gray; padding: 5px; border-radius: 5px;">'+'</td>'
+								+'<td> <input type='+'"button"'+'name="deleteBtn" id="deleteBtn" value="삭제" class="deleteBtn" style="background-color: white; border: 1px solid gray; padding: 5px; border-radius: 5px;">'+'</td>'
 								+'</tr>'
 								} 
 							}
@@ -169,7 +166,7 @@ var openDialog = function(uri, name, options, closeCallback) {
 			alert(styling_num);
 			
 			//자식 팝업창이 닫히면 콜백함수실행됨
-			openDialog("/admin/style/styleUpdateForm.do?styling_num="+styling_num, "pop1", "width=850, height=350, left=700, top=200",function(win){
+			openDialog("/admin/style/styleUpdateForm.do?styling_num="+styling_num, "pop1", "width=900, height=350, left=600, top=200",function(win){
 				
 				var des_num = $(".num").val();
 				
@@ -188,14 +185,14 @@ var openDialog = function(uri, name, options, closeCallback) {
 					}else{
 					for(let i =0; i<data.length; i++){
 						html += '<tr class='+'tac data-num='+data[i].styling_num+'>'
-						+'<td>' + '* 시술 구분'+ '</td>'
-						+'<td> <input type='+'"text"'+'name="styling_option" value='+data[i].styling_option+' readonly size="10">'+'</td>'
-						+'<td>' + '* 시술명' + '</td>'
-						+'<td> <input type='+'"text"'+'name="styling_name" id="styling_name1" value='+  data[i].styling_name +' readonly>'+'</td>'
-						+'<td>' + '* 시술가격' + '</td>'
-						+'<td> <input type='+'"text"'+'name="styling_price" id="styling_price1" value='+  data[i].styling_price +' readonly>'+'</td>'
-						+'<td> <input type='+'"button"'+'name="updateBtn" id="updateBtn" value="수정" class="updateBtn">'+'</td>'
-						+'<td> <input type='+'"button"'+'name="deleteBtn" id="deleteBtn" value="삭제" class="deleteBtn">'+'</td>'
+						+'<th style="vertical-align : middle;">' + '시술구분 :'+ '</th>'
+						+'<td> <label style="margin-top : 6px; color : gray;">'+data[i].styling_option+'</label>'
+						+'<th style="vertical-align : middle;">' + '시술명 :' + '</th>'
+						+'<td> <label style="margin-top : 6px; color : gray;">'+ data[i].styling_name +'</label>'+'</td>'
+						+'<th style="vertical-align : middle;">' + '시술가격 :' + '</th>'
+						+'<td> <label style="margin-top : 6px; color : gray;">'+  data[i].styling_price +'원</label>'+'</td>'
+						+'<td> <input type='+'"button"'+'name="updateBtn" id="updateBtn" value="수정" class="updateBtn" style="background-color: white; border: 1px solid gray; padding: 5px; border-radius: 5px;">'+'</td>'
+						+'<td> <input type='+'"button"'+'name="deleteBtn" id="deleteBtn" value="삭제" class="deleteBtn" style="background-color: white; border: 1px solid gray; padding: 5px; border-radius: 5px;">'+'</td>'
 						+'</tr>'
 						} 
 					}
@@ -239,17 +236,17 @@ var openDialog = function(uri, name, options, closeCallback) {
 								}else{
 								for(let i =0; i<data.length; i++){
 									html += '<tr class='+'tac data-num='+data[i].styling_num+'>'
-									+'<td>' + '* 시술 구분'+ '</td>'
-									+'<td> <input type='+'"text"'+'name="styling_option" value='+data[i].styling_option+' readonly size="10">'+'</td>'
-									+'<td>' + '* 시술명' + '</td>'
-									+'<td> <input type='+'"text"'+'name="styling_name" id="styling_name1" value='+  data[i].styling_name +' readonly>'+'</td>'
-									+'<td>' + '* 시술가격' + '</td>'
-									+'<td> <input type='+'"text"'+'name="styling_price" id="styling_price1" value='+  data[i].styling_price +' readonly>'+'</td>'
-									+'<td> <input type='+'"button"'+'name="updateBtn" id="updateBtn" value="수정" class="updateBtn">'+'</td>'
-									+'<td> <input type='+'"button"'+'name="deleteBtn" id="deleteBtn" value="삭제" class="deleteBtn">'+'</td>'
+									+'<th style="vertical-align : middle;">' + '시술구분 :'+ '</th>'
+									+'<td> <label style="margin-top : 6px; color : gray;">'+data[i].styling_option+'</label>'
+									+'<th style="vertical-align : middle;">' + '시술명 :' + '</th>'
+									+'<td> <label style="margin-top : 6px; color : gray;">'+ data[i].styling_name +'</label>'+'</td>'
+									+'<th style="vertical-align : middle;">' + '시술가격 :' + '</th>'
+									+'<td> <label style="margin-top : 6px; color : gray;">'+  data[i].styling_price +'원</label>'+'</td>'
+									+'<td> <input type='+'"button"'+'name="updateBtn" id="updateBtn" value="수정" class="updateBtn" style="background-color: white; border: 1px solid gray; padding: 5px; border-radius: 5px;">'+'</td>'
+									+'<td> <input type='+'"button"'+'name="deleteBtn" id="deleteBtn" value="삭제" class="deleteBtn" style="background-color: white; border: 1px solid gray; padding: 5px; border-radius: 5px;">'+'</td>'
 									+'</tr>'
 									} 
-								}
+ 								}
 								$(".ajax").append(html);
 								}
 							}); //ajax 끝
@@ -264,16 +261,55 @@ var openDialog = function(uri, name, options, closeCallback) {
 		
 	});
 </script>
+<style type="text/css">
+body{
+background-color: #f2f2f2;
+}
+.infoContainer{
+background-color: white;
+width: 95%;
+margin: 10px auto;
+border:  1px solid;
+border-radius: 5px;
+}
+.insertContainer{
+background-color: white;
+width: 95%;
+margin: 10px auto;
+border:  1px solid;
+border-radius: 5px;
+}
+tbody tr th,td{
+text-align: center;
+vertical-align: middle;
+}
+thead tr th,td{
+text-align: center;
+vertical-align: middle;
+}
+.num{
+width : 150px;
+}
+.tc{
+color: gray;
+}
+span {
+	color: red;
+}
+input[type=text]{
+border-radius: 3px;
+margin-top: 5px;
+}
+</style>
 </head>
 <body>
 	<h1 align="center">시술 관리</h1>
-	<div class="insertContainer">
+	<div class="infoContainer">
 		<form id="insertStyle" name="insertStyle">
-			<fieldset>
-				<p align="center">시술 추가</p>
+				<h4 align="center" class="tc">시술 추가</h4>
 				<c:choose>
 					<c:when test="${not empty desList}">
-						<select id="des_num" name="des_num" class="num">
+						<select id="des_num" name="des_num" class="num form-control" style="margin-left: 20px;">
 								<option value="#">디자이너선택</option>
 							<c:forEach var="des" items="${desList}">
 								<option value="${des.des_num}">${des.des_name}</option>
@@ -285,48 +321,41 @@ var openDialog = function(uri, name, options, closeCallback) {
 					</c:otherwise>
 				</c:choose>
 
-
-				<hr>
-				<table class="table">
+				<table class="table" style="margin-top: 10px;">
 					<tr>
-						<td><span>&nbsp;*</span>시술 구분</td>
-						<td><select id="styling_option" name="styling_option">
+						<th style="vertical-align: middle;  border-top: 0px; padding: 15px;"><span>&nbsp;*</span>시술구분</th>
+						<td  style="border-top: 0px;">
+						<select id="styling_option" name="styling_option" class="form-control">
 								<option value="기본시술">기본시술</option>
 								<option value="펌시술">펌 시술</option>
 								<option value="기타1시술">기타 1시술</option>
 								<option value="기타2시술">기타 2시술</option>
 						</select></td>
-						<td><span>&nbsp;*</span>시술명</td>
-						<td><input type="text" name="styling_name" id="styling_name" /></td>
-						<td><span>&nbsp;*</span>시술가격</td>
-						<td><input type="text" name="styling_price"
+						<th style="vertical-align: middle; border-top: 0px;"><span>&nbsp;*</span>시술명</th>
+						<td style="border-top: 0px;"><input type="text" name="styling_name" id="styling_name"/></td>
+						<th style="vertical-align: middle;  border-top: 0px;" ><span>&nbsp;*</span>시술가격</th>
+						<td style="border-top: 0px;"><input type="text" name="styling_price"
 							id="styling_price" /></td>
-						<td><input type="button" name="insertBtn" id="insertBtn"
-							value="등록" /></td>
+						<td style="border-top: 0px; "><input type="button" name="insertBtn" id="insertBtn"
+							value="등록" class="btn" style="background-color: white; border: 1px solid gray; padding: 5px; "/></td>
 					</tr>
 				</table>
-			</fieldset>
 		</form>
 	</div>
-	<br>
-	<br>
-	<div class="updateContainer">
+	<div class="infoContainer">
 		<form id="updateStyle" name="updateStyle">
-			<fieldset>
-				<p align="center">시술 목록</p>
-				<hr>
-				<table>
+				<h4 align="center" class="tc">시술 목록</h4>
+				<table class="table">
 					<tbody class="ajax">
 						<tr>
 							<td>디자이너를 선택하세요</td>
 						</tr>
 					</tbody>
 				</table>
-			</fieldset>
 		</form>
 	</div>
-	<div class="btnContainer">
-		<input type="button" name="closeBtn" id="closeBtn" value="닫기" />
+	<div class="btnContainer" style="position: absolute; right: 10px;">
+		<input type="button" name="closeBtn" id="closeBtn" value="닫기" class="btn" style="background-color: white; border: 1px solid gray; margin-right: 10px; height: 30px;"/>
 	</div>
 </body>
 </html>
