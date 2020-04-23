@@ -13,7 +13,7 @@
 	color: red;
 	}
 #state{
-width : 100px;
+width : 130px;
 float: left;
 }
 </style>

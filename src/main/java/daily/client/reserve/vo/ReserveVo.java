@@ -11,7 +11,7 @@ public class ReserveVo {
 	private String rest_payoption;	// 결제 방식
 	private String rest_memo;		// 디자이너 전달사항
 	private String rest_comment;	// 시술 특이사항
-	
+	private int rest_totalprice;	//예약 총 금액
 	
 	private String m_name;			//회원이름
 	private String m_gender;		//회원성별
@@ -20,9 +20,24 @@ public class ReserveVo {
 	
 	private int styling_num;
 	private String styling_name;
+	private String des_name;
 	
 	
 	
+	
+	
+	public String getDes_name() {
+		return des_name;
+	}
+	public void setDes_name(String des_name) {
+		this.des_name = des_name;
+	}
+	public int getRest_totalprice() {
+		return rest_totalprice;
+	}
+	public void setRest_totalprice(int rest_totalprice) {
+		this.rest_totalprice = rest_totalprice;
+	}
 	public String getStyling_name() {
 		return styling_name;
 	}

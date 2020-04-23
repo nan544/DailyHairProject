@@ -16,6 +16,9 @@ right: 300px;
 #des_num{
 width : 130px;
 }
+tbody tr td,th{
+text-align: center;
+}
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 
@@ -23,6 +26,7 @@ width : 130px;
 <script src="/resources/include/js/bootstrap-datepicker.ko.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		//달력
 		$("#datePicker").datepicker({
 			format : "yyyy-mm-dd",
 			startDate : 'd',
@@ -33,6 +37,64 @@ width : 130px;
 			},
 			title : "날짜선택",
 			language : "ko"
+		}).on(
+				"changeDate",
+				function(e) {
+					
+					let rest_hairdate = $("#datePicker").val();
+					let des_num = $("#des_num").val();
+					
+					
+					 $.ajax({	
+						url : "/admin/reservation/dateList.do",
+						type : "post",
+						data : { "rest_hairdate" : rest_hairdate , "des_num" : des_num},
+						success : function(data){
+							
+						if(data.length == 0){
+							$(".ajaxList").html("");
+							$(".ajaxList").html("<td colspan='6' align='center'><h3>금일예약자가 없습니다</h3></td>");
+						}else{
+							
+							$(".ajaxList").html("");
+							
+							let html = "";
+							
+							for (let i = 0; i < data.length; i++) {
+								let rest_num = data[i].rest_num;
+								let m_id = data[i].m_id;
+								html += '<tr class="detail"'+'data-num='+rest_num+' data-name='+m_id+'>' + '<td>'
+										+ data[i].rest_num + '</td>'
+										+ '<td>' + data[i].rest_hairdate + data[i].rest_time + '</td>'
+										+ '<td>' + data[i].m_gender + '</td>'
+										+ '<td>' + data[i].m_id + '</td>'
+										+ '<td>'
+										+ data[i].m_name + '</td>'
+										+ '<td>' + data[i].m_phone + '</td>'
+										+'</tr>';
+						}	
+					
+							$(".ajaxList").append(html);
+							}
+						}
+					}); //ajax 종료
+					
+					
+				});
+		
+		//로우 클릭시 상세보기 팝업 띄우기
+		$(document).on("click",".detail",function(event){
+			var rest_num = $(this).attr("data-num");
+			var m_id = $(this).attr("data-name");
+			window.open("/admin/reservation/reservationDetailForm.do?rest_num="
+					+rest_num+"&m_id="+m_id, "reservationpop",
+					"width=800, height=800, left=600, top=100");
+		});
+		
+		//디자이너 셀렉트박스 바꿀때마다 날짜 초기화
+		$("#des_num").change(function(){
+			$("#datePicker").val("");		
+			$(".ajaxList").html("<td colspan='6' align='center'><h3>날짜를 선택하세요</h3></td>");
 		});
 	});
 	
@@ -44,7 +106,7 @@ width : 130px;
 	<c:choose>
 		<c:when test="${not empty desList}">
 			<select id="des_num" name="des_num" class="des_num form-control">
-				<option value="all">디자이너선택</option>
+				<option value="0">전체디자이너</option>
 				<c:forEach var="des" items="${desList}">
 					<option value="${des.des_num}">${des.des_name}</option>
 				</c:forEach>
@@ -52,44 +114,37 @@ width : 130px;
 		</c:when>
 	</c:choose> 
  <input type="text" id="datePicker" class="form-control" value="날짜선택">
- <hr>
- 	<table class="table">
+ <p style="margin-top: 10px;"><span style="color: red;">*</span>&nbsp;클릭하여 상세보기</p>
+ 	<table class="table table-hover">
  		<colgroup>
- 			<col width="10%">
- 			<col width="10%">
- 			<col width="10%">
- 			<col width="10%">
- 			<col width="20%">
+ 			<col width="15%">
+ 			<col width="15%">
+ 			<col width="15%">
+ 			<col width="15%">
  			<col width="20%">
  			<col width="20%">
  		</colgroup>
  		<thead>
  			<tr>
- 				<td>방문 시간</td>
- 				<td>성별</td>
- 				<td>아이디</td>
- 				<td>회원 이름</td>
- 				<td>전화번호</td>
- 				<td>시술 종류</td>
- 				<td>총 시술가격</td>
+ 				<th>예약 번호</th>
+ 				<th>방문 시간</th>
+ 				<th>성별</th>
+ 				<th>아이디</th>
+ 				<th>회원 이름</th>
+ 				<th>전화번호</th>
  			</tr>
  		</thead>
- 		<tbody>
+ 		<tbody class="ajaxList">
  			<c:choose>
  				<c:when test="${not empty restList}">
  					<c:forEach var="res" items="${restList}">
- 						<tr data-num="${res.rest_num}">
- 							<td>${res.rest_time}</td>
+ 						<tr data-num="${res.rest_num}" data-name="${res.m_id}" class="detail">
+ 							<td>${res.rest_num}</td>
+ 							<td>${res.rest_hairdate} / ${res.rest_time}</td>
  							<td>${res.m_gender }</td>
  							<td>${res.m_id}</td>
  							<td>${res.m_name }</td>
  							<td>${res.m_phone}</td>
- 							<td>시술명
- 						<%-- <c:forEach var="style" items="${styleList}">
- 							${style.styling_name } <br>
- 						</c:forEach> --%>
- 							</td>
- 							<td>총 시술가격</td>
  					</c:forEach>
  				</c:when>
  				<c:otherwise>

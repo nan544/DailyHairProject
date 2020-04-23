@@ -45,5 +45,10 @@ public class StyleDaoImpl implements StyleDao {
 		return sqlsession.selectOne("detailStyling" , styling_num);
 	}
 
+	@Override
+	public List<StyleVO> stylingnameList(int rest_num) {
+		return sqlsession.selectList("stylingnameList",rest_num);
+	}
+
 
 }
