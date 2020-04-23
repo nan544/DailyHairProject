@@ -11,7 +11,7 @@
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="/admin/goMain.do">DailyHair[관리자 페이지]</a>
+		<a class="navbar-brand" href="/admin/reservation/adminReservationList.do">DailyHair[관리자 페이지]</a>
 		</div>
 		<c:if test="${login == '관리자'}">
 			<div id="logout" class="navbar-right" style="margin-top: 10px; margin-right: 100px;">

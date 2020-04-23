@@ -39,7 +39,7 @@ margin-right: 5px;
 					alert(m_id);
 					window.open("/admin/member/memberDetailForm.do?m_id="
 							+ m_id, "memberpop",
-							"width=800, height=800, left=600, top=100");
+							"width=800, height=700, left=600, top=100");
 				});
 		
 		

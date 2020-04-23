@@ -9,4 +9,5 @@ public interface AdminReservationDao {
 	public ReserveVo reservationDetail(int rest_num); //예약상세보기
 	public List<ReserveVo> resultList(String m_id); //예약완료내역
 	public List<ReserveVo> dateList(ReserveVo rvo); //날짜선택시 리스트출력
+	public int updateReservation(ReserveVo rvo);	//예약상태 수정하기
 }

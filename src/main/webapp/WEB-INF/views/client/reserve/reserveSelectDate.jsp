@@ -212,7 +212,7 @@
 							<label>2. 시간을 선택해주세요.</label><br>
 							<select id="rest_time" name="rest_time"
 								style="width: 100px;" >
-								<option></option>
+								<option value="시간선택"></option>
 								<option value="10:00">10:00</option>
 								<option value="10:30">10:30</option>
 								<option value="11:00">11:00</option>

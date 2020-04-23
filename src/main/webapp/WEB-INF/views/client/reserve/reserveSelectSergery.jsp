@@ -117,7 +117,6 @@
 		   		alert("시술을 하나이상 선택해주세요");
 		   		return false;
 		   	}
-		 //  var checkArr= []; 
 		   
 		   //체크박스를 담을 배열
 		   let checkArr = new Array()
