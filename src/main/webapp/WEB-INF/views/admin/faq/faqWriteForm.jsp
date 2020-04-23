@@ -12,13 +12,14 @@ textarea {
 	height: 100px;
 	resize: none;
 }
-#listMenu > p{
+
+#listMenu>p {
 	float: letf;
 }
-
 </style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
 	$(function() {
 
@@ -28,6 +29,8 @@ textarea {
 		});
 		//등록완료 버튼 클릭시
 		$("#faqInsertBtn").click(function() {
+			if(!chkData("#faq_question","질문을")) return;
+			if(!chkData("#faq_answer","답변을")) return;
 			if (confirm("등록 하시겠습니까?")) {
 				$("#insertForm").attr("method", "post");
 				$("#insertForm").attr("action", "/admin/adminFaqInsert.do");
@@ -45,11 +48,11 @@ textarea {
 		<div>
 			<h2>자주하는 질문 관리-게시글 등록</h2>
 		</div>
-	<div id="listMenu">
-		<p>
-			<input type="button" value="목록으로" class="but" id="faqListBtn">
-		</p>
-	</div>
+		<div id="listMenu">
+			<p>
+				<input type="button" value="목록으로" class="but" id="faqListBtn">
+			</p>
+		</div>
 		<form id="insertForm" name="insertForm">
 			<table>
 				<tr>

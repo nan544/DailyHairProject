@@ -39,9 +39,13 @@ input[type="file"] {
 </style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#hairGoodsInsertBtn").click(function() {
+			if(!chkData("#hs_title","제목을")) return;
+			if(!chkData("#hs_content","특징(한줄평)")) return;
+			if(!chkFile($("#uploadFile"),"썸네일이미지를")) return;
 			if (confirm("게시물을 등록 하시겠습니까?")) {
 				var form = $("form");
 				var formData = new FormData(form[0]);

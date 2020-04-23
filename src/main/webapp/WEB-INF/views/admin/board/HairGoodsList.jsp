@@ -71,7 +71,7 @@
 		<input type="hidden" name="hg_num" id="hg_num"> 
 	</form>
 	<%--====================상세 페이지 이동을 위한 Form =============== --%>
-	<table class="table table-hover table-condensed">
+	<table class="table table-condensed table-hover">
 		<colgroup>
 			<col width="10%" />
 			<col width="30%" />
@@ -95,7 +95,7 @@
 				<c:set var="hg_thumb__" value="${fn:substringAfter(hg_thumb_,'_') }"/>
 				<c:set var="hg_img1_" value="${fn:substringAfter(hgList.hg_img1,'_') }"/>
 				<c:set var="hg_img1__" value="${fn:substringAfter(hg_img1_,'_') }"/>
-					<tr data-num="${hgList.hg_num}">
+					<tr data-num="${hgList.hg_num}" >
 						<td class="goDetail">${hgList.hg_num }</td>
 						<td class="goDetail">${hgList.hg_title}</td>
 						<td>${hgList.hg_regdate}</td>

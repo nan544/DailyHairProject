@@ -39,9 +39,17 @@ input[type="file"] {
 </style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
 	$(function() {
+
 		$("#hairGoodsInsertBtn").click(function() {
+			if (!chkData("#hg_title", "제품명을"))
+				return;
+			if (!chkData("#hg_content", "특징(한줄평)"))
+				return;
+			if (!chkFile($("#uploadFile"), "썸네일이미지를"))
+				return;
 			if (confirm("게시물을 등록 하시겠습니까?")) {
 				var form = $("form");
 				var formData = new FormData(form[0]);
@@ -99,9 +107,10 @@ input[type="file"] {
 				<span class="item"> <label class="required">*</label>썸네일이미지
 				</span><input type="file" id="uploadFile" name="uploadFile" value="이미지 등록">
 			</div>
-			<hr><div class="formLine">
-				<span class="item"> 상세이미지
-				</span><input type="file" id="uploadFile2" name="uploadFile2" value="이미지 등록">
+			<hr>
+			<div class="formLine">
+				<span class="item"> 상세이미지 </span><input type="file" id="uploadFile2"
+					name="uploadFile2" value="이미지 등록">
 			</div>
 			<hr>
 			<!-- <div class="formLine">

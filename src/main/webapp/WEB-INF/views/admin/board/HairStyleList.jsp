@@ -68,7 +68,7 @@
 	<%--====================상세 페이지 이동을 위한 Form =============== --%>
 	<!-- 페이징 -->
 	<!--  -->
-	<table id="contentTable" class="table table-hover table-condensed">
+	<table class="table table-condensed table-hover">
 		<colgroup >
 			<col width="10%" />
 			<col width="20%" />
@@ -77,7 +77,7 @@
 			<col width="25%" />
 
 		</colgroup>
-		<tr>
+		<tr class="active">
 			<th>글번호</th>
 			<th>제품이름</th>
 			<th>등록일</th>

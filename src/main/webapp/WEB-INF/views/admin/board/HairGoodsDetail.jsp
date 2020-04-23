@@ -38,6 +38,9 @@ input[type="file"] {
 	float: right;
 }
 </style>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$(".uploadFile").hide();
@@ -55,6 +58,10 @@ input[type="file"] {
 
 		//수정완료 버튼 클릭시
 		$("#UpdateBtn").click(function() {
+			if (!chkData("#hg_title", "제품명을"))
+				return;
+			if (!chkData("#hg_content", "특징(한줄평)"))
+				return;
 			if (confirm("게시글을 수정 하시겠습니까?")) {
 				$("#updateForm").attr("method", "post");
 				$("#updateForm").attr("action", "/admin/board/HGUpdate.do");
@@ -99,8 +106,8 @@ input[type="file"] {
 			<hr>
 			<!-- 수정 및 삭제를 위한 값 -->
 			<input type="hidden" id="hg_num" name="hg_num"
-				value="${detail.hg_num }"> <input type="hidden" id="hg_thumb"
-				name="hg_thumb" value="${detail.hg_thumb}"> <input
+				value="${detail.hg_num }"> <input type="hidden"
+				id="hg_thumb" name="hg_thumb" value="${detail.hg_thumb}"> <input
 				type="hidden" id="hg_img1" name="hg_img1" value="${detail.hg_img1}">
 
 			<!--수정 및 상세보기 폼 출력 -->
@@ -119,15 +126,14 @@ input[type="file"] {
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>썸네일이미지
 				</span> <span class="imgBtn"><label for="img">${hg_thumb__}</label>
-				
+
 					<input type="button" class="imgUpdateBtn" value="이미지수정"><input
 					type="file" name="uploadFile" id="uploadFile" class="uploadFile"></span>
 			</div>
 			<hr>
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>상세이미지
-				</span> <span class="imgBtn"><label for="img">${hg_img1__}</label> 
-				<input
+				</span> <span class="imgBtn"><label for="img">${hg_img1__}</label> <input
 					type="button" class="imgUpdateBtn" value="이미지수정"><input
 					type="file" name="uploadFile2" id="uploadFile2" class="uploadFile"></span>
 			</div>

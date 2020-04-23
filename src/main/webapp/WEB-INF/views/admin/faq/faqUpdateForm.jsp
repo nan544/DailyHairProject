@@ -17,12 +17,14 @@ textarea {
 	//목록으로 버튼 클릭시 전체 페이지로 이동
 
 	$(function() {
-
+		//목록으로
 		$("#faqListBtn").click(function() {
 			location.href = "adminFaqList.do";
 		});
 		//수정완료 버튼 클릭시
 		$("#faqUpdateBtn").click(function() {
+			if(!chkData("#faq_question","질문을")) return;
+			if(!chkData("#faq_answer","답변을")) return;
 			if (confirm("자주하는 질문을 수정 하시겠습니까?")) {
 				$("#updateForm").attr("method", "post");
 				$("#updateForm").attr("action", "/admin/adminFaqUpdate.do");

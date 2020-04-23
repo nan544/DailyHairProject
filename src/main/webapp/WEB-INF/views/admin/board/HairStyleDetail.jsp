@@ -38,6 +38,9 @@ input[type="file"] {
 	float: right;
 }
 </style>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$(".uploadFile").hide();
@@ -55,6 +58,10 @@ input[type="file"] {
 
 		//수정완료 버튼 클릭시
 		$("#UpdateBtn").click(function() {
+			if (!chkData("#hs_title", "제목을"))
+				return;
+			if (!chkData("#hs_content", "특징(한줄평)"))
+				return;
 			if (confirm("게시글을 수정 하시겠습니까?")) {
 				$("#updateForm").attr("method", "post");
 				$("#updateForm").attr("action", "/admin/board/HSUpdate.do");
@@ -81,13 +88,12 @@ input[type="file"] {
 <title>Insert title here</title>
 </head>
 <body>
-			<!-- 이미지 파일명 표기를 위한 식 -->
-			<c:set var="hs_thumb_"
-				value="${fn:substringAfter(detail.hs_thumb,'_') }" />
-			<c:set var="hs_thumb__" value="${fn:substringAfter(hs_thumb_,'_') }" />
-			<c:set var="hs_img1_"
-				value="${fn:substringAfter(detail.hs_img1,'_') }" />
-			<c:set var="hs_img1__" value="${fn:substringAfter(hs_img1_,'_') }" />
+	<!-- 이미지 파일명 표기를 위한 식 -->
+	<c:set var="hs_thumb_"
+		value="${fn:substringAfter(detail.hs_thumb,'_') }" />
+	<c:set var="hs_thumb__" value="${fn:substringAfter(hs_thumb_,'_') }" />
+	<c:set var="hs_img1_" value="${fn:substringAfter(detail.hs_img1,'_') }" />
+	<c:set var="hs_img1__" value="${fn:substringAfter(hs_img1_,'_') }" />
 	<div id="contents">
 		<form id="updateForm" enctype="multipart/form-data" method="POST">
 
@@ -128,8 +134,8 @@ input[type="file"] {
 			<hr>
 			<div class="formLine">
 				<span class="item"> <label class="required"></label>상세이미지
-				</span> <span class="imgBtn"><label for="img">${hs_img1__}</label>
-					<input type="button" class="imgUpdateBtn" value="이미지수정"><input
+				</span> <span class="imgBtn"><label for="img">${hs_img1__}</label> <input
+					type="button" class="imgUpdateBtn" value="이미지수정"><input
 					type="file" name="uploadFile2" id="uploadFile2" class="uploadFile"></span>
 			</div>
 			<hr>
