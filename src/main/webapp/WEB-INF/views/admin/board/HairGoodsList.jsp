@@ -80,7 +80,7 @@
 			<col width="22.5%" />
 
 		</colgroup>
-		<tr>
+		<tr class="active">
 			<th>글번호</th>
 			<th>스타일명</th>
 			<th>등록일</th>
