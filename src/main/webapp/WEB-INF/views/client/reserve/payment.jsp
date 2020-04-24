@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -64,14 +65,22 @@
 	function paymentCard() {
 		alert("카드결제를 진행하겠습니다.");
 		
+		alert($("#m_id").val()+"<<가져갈 아이디");
 		alert($("#des_num").val()+"<< 가져갈 디자이너 번호");
 		alert($("#rest_hairdate").val()+"<<선택한 시술날짜");
 		alert($("#rest_time").val()+"<<선택한 시술시간");
 		alert($("#rest_memo").val()+"<<작성한 메모");
 		alert($("input[name='rest_payoption']:checked").val()+"<<선택한 결제유형");
-		//reserveInser.do
-			
-		//location.replace("/reserve/reservePaymentCard.do");
+		alert($("#rest_totalprice").val()+"<<<시술 총가격");
+		
+		$("#insertForm").attr({
+			"method":"post",
+			"action":"/reserve/reserveInsert.do"
+		});
+		
+		
+		$("#insertForm").submit();
+		
 	}
 	function paymentAccount() {
 		alert("계좌이체를 진행하겠습니다.");
@@ -81,6 +90,7 @@
 		alert($("#rest_time").val()+"<<선택한 시술시간");
 		alert($("#rest_memo").val()+"<<작성한 메모");
 		alert($("input[name='rest_payoption']:checked").val()+"<<선택한 결제유형");
+		
 		//reserveInser.do
 			
 		//location.replace("/reserve/reservePaymentAccount.do");
@@ -90,6 +100,12 @@
 </head>
 
 <body>
+	<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인해주세요");
+			location.href="/";
+		</script>
+	</c:if>
 	<!-- header 삽입 -->
 	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
 	
@@ -134,16 +150,20 @@
 				<input type="hidden" id="rest_hairdate" name="rest_hairdate" value="${data.rest_hairdate}"/>
 				<input type="hidden" id="rest_time" name="rest_time" value="${data.rest_time }"/>
 				<input type="hidden" id="des_num" name="des_num" value="${data.des_num}"/>
-				<input type="hidden" id="rest_memo" name="rest_memo" value="${data.rest_memo}"/> 
-					<div class="paymentMini" onclick="paymentCard()">
+				<input type="hidden" id="rest_memo" name="rest_memo" value="${data.rest_memo}"/>
+				<input type="hidden" id="m_id" name="m_id" value="${login.m_id}"/>
+				<input type="hidden" id="style_number" name="style_number" value="${number}"/>
+				<input type="hidden" id="rest_totalprice" name="rest_totalprice" value="${data.rest_totalprice }"/>
+					<div class="paymentMini">
 						<label>카드 결제</label>　
-						<input type="radio" name="rest_payoption" value="카드결제">
+						<input type="radio" name="rest_payoption" value="카드결제" onclick="paymentCard()">
 					</div>
 					<label>　　</label>
-					<div class="paymentMini" onclick="paymentAccount()">
+					<div class="paymentMini">
 						<label>계좌이체</label>　
-						<input type="radio" name="rest_payoption" value="계좌이체">
+						<input type="radio" name="rest_payoption" value="계좌이체" onclick="paymentAccount()">
 					</div>
+					<input type="hidden" id="styling_num" name="styling_num" value="${data.styling_num}"/>
 				</form>
 				</div>
 			</div>

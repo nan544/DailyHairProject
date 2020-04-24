@@ -10,4 +10,5 @@ public interface ReserveService {
 	// Controller에서 호출되는 기능들
 	
 	public List<ReserveVo> selectTime(ReserveVo rvo);
+	public int insertReservation(ReserveVo rvo);					//예약하기
 }

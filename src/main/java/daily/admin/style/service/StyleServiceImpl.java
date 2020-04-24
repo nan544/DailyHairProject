@@ -51,4 +51,10 @@ public class StyleServiceImpl implements StyleService {
 	}
 
 
+	@Override
+	public List<StyleVO> stylingnameList(int rest_num) {
+		return styledao.stylingnameList(rest_num);
+	}
+
+
 }

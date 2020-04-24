@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 	color: red;
 	}
 #state{
-width : 100px;
+width : 130px;
 float: left;
 }
 </style>
@@ -31,7 +31,7 @@ float: left;
 		$("#insertDesigner").click(
 				function() {
 					window.open("designerJoinForm.do", "pop",
-							"width=800, height=700, left=600, top=100");
+							"width=800, height=600, left=600, top=100");
 				});
 
 
