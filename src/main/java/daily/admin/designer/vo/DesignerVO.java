@@ -22,11 +22,29 @@ public class DesignerVO {
 	private String des_file;
 	private int des_state;
 	private String des_memo;
+	private String des_image;
 	
 	private MultipartFile file;   //첨부파일
+	private MultipartFile file2;	//이미지 첨부파일(디자이너사진)
 
 	
 	
+	public String getDes_image() {
+		return des_image;
+	}
+
+	public void setDes_image(String des_image) {
+		this.des_image = des_image;
+	}
+
+	public MultipartFile getFile2() {
+		return file2;
+	}
+
+	public void setFile2(MultipartFile file2) {
+		this.file2 = file2;
+	}
+
 	public MultipartFile getFile() {
 		return file;
 	}

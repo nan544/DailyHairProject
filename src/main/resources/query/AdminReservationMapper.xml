@@ -124,5 +124,6 @@
 				ORDER BY rest_num desc
 			) list
 		)
+		WHERE rest_state = 2 
 	</select>
 </mapper>

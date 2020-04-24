@@ -20,6 +20,15 @@
 		formObj.attr("action", "/admin/designer/download.do");
 		formObj.submit();
 	}
+	
+	
+	//이미지 다운로드
+	function fn_fileDownImage(des_num) {
+		var formObj = $("#downForm");
+		$("#des_num").attr("value", des_num);
+		formObj.attr("action", "/admin/designer/downloadImage.do");
+		formObj.submit();
+	}
 
 	$(function() {
 		//활성화되어있는 디자이너 수정시 활성화 버튼은 비활성화시키고
@@ -132,7 +141,19 @@
 				}); //활성화  ajax종료
 			}
 		}); //디자이너 활성화 이벤트 종료
-
+		
+		
+		 //현재 프로필사진 보여주기
+		let image = "<c:out value='${des.des_image}'/>";
+		if(image!=""){
+			$("#fileImage").attr({
+				src: "/uploadStorage/designer/${des.des_image}",
+				width:"200px",
+				height:"250px"
+			});
+		} 
+		
+		
 	});
 </script>
 <style type="text/css">
@@ -196,20 +217,31 @@ height: 32px;
 		<form name="downForm" id="downForm">
 			<input type="hidden" name="des_num" id="des_num">
 		</form>
-
 		<form name="modifyForm" id="modifyForm" enctype="multipart/form-data">
 			<input type="hidden" name="des_num" id="des_num"
-				value="${des.des_num}" /> <input type="hidden" name="des_file"
-				id="des_file" value="${des.des_file}" />
+				value="${des.des_num}" /> 
+				<input type="hidden" name="des_file" id="des_file" value="${des.des_file}" />
+				<input type="hidden" name="des_image" id="des_image" value="${des.des_image}" />
 			<table class="table">
 				<tr>
-					<td><span>*&nbsp;</span>이력서 다운로드</td>
+					<td><span>*&nbsp;</span>이력서</td>
 					<td><c:if test="${empty des.des_file }">
 									--
 						</c:if> 
 						<c:if test="${not empty des.des_file }">
 							<a href="" onclick="fn_fileDown('${des.des_num}'); return false;">${des.des_file}</a>
 						</c:if></td>
+						<td rowspan="5"><img id="fileImage"></td>
+				</tr>
+				<tr>
+					<td><span>*&nbsp;</span>현재 프로필</td>
+					<td><c:if test="${empty des.des_image }">
+									--
+						</c:if> 
+						<c:if test="${not empty des.des_image }">
+							<a href="" onclick="fn_fileDownImage('${des.des_num}'); return false;" id="mm">${des.des_image}</a>
+						</c:if>
+						</td>
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;"><span>*&nbsp;</span>이름</td>
@@ -243,6 +275,7 @@ height: 32px;
 							<option value="토요일">토요일</option>
 							<option value="일요일">일요일</option>
 					</select></td>
+					<td></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;"><span>*&nbsp;</span>성별</td>
@@ -250,15 +283,23 @@ height: 32px;
 						name="des_gender" id="des_gender1" value="남성" /> <label
 						for="des_gender2">여성</label> <input type="radio" name="des_gender"
 						id="des_gender2" value="여성" /></td>
+						<td></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">특이사항</td>
 					<td><input type="text" name="des_memo" id="des_memo" size="50"
 						placeholder="특이사항을 입력해주세요" maxlength="50" value="${des.des_memo}" />
+					<td></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">이력서</td>
 					<td><input type="file" name="file" id="file"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle;">프로필사진</td>
+					<td><input type="file" name="file2" id="file2"></td>
+					<td></td>
 				</tr>
 			</table>
 		</form>

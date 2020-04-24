@@ -25,6 +25,19 @@ margin-right: 5px;
 <script type="text/javascript">
  $(function(){
 	
+	 
+	//상세보기 페이지 띄우기
+	$(".resultDetail").click(function(){
+	 let rest_num =	$(this).attr("data-num");
+	 let m_id = $(this).attr("data-name");
+	 window.open("/admin/reservation/resultReservationDetail.do?rest_num="
+				+ rest_num+"&m_id="+m_id,"resultDetail",
+				"width=800, height=700, left=600, top=100");
+	 
+	});
+	 
+	 
+	 
 	//검색 후 검색 대상과 검색 단어를 출력한다
 		var word = "<c:out value='${data.keyword}'/>";
 		var value="";
@@ -103,7 +116,7 @@ margin-right: 5px;
 				<c:choose>
 					<c:when test="${not empty resultList}">
 						<c:forEach var="result" items="${resultList}">
-							<tr data-num="${result.rest_num}" class="resultDetail">
+							<tr data-num="${result.rest_num}" data-name="${result.m_id}" class="resultDetail">
 								<td>${result.rest_hairdate} / ${result.rest_time}</td>
 								<td class="name">${result.m_id}</td>
 								<td>${result.m_name}</td>

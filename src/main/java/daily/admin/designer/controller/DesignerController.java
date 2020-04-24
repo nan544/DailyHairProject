@@ -83,6 +83,11 @@ public class DesignerController {
 			dvo.setDes_file(des_file);
 		}
 		
+		if(dvo.getFile2()!=null) {
+			String des_file2 = FileUploadUtil.fileUpload(dvo.getFile2(), request, "designer");
+			dvo.setDes_image(des_file2);
+		}
+		
 		
 		int result = designerService.insertDesigner(dvo);
 		
@@ -132,6 +137,15 @@ public class DesignerController {
 			dvo.setDes_file(des_file);
 		}
 		
+		//수정할떄 파일이 변경되면 기존 파일은 삭제되고 새로운파일로 등록됨
+		if(!dvo.getFile2().isEmpty()) {
+			if(!dvo.getDes_image().isEmpty()) {
+				FileUploadUtil.fileDelete(dvo.getDes_image(), request);
+			}
+			String des_file2 = FileUploadUtil.fileUpload(dvo.getFile2(), request, "designer");
+			dvo.setDes_image(des_file2);
+		}
+		
 		//파일선택을 안했을시에는 전에있던 파일명으로 파일이름을 설정한다.
 		//DB에는 파일이름이 스트링으로 들어감 다운로드시 파일이름으로 접근해서 다운로드받으므로 
 		//파일 수정없이 내용만수정해도 전에 파일이름이 들어가기때문에 다운로드가능
@@ -139,6 +153,9 @@ public class DesignerController {
 			dvo.setDes_file(dvo.getDes_file());
 		}
 		
+		if(dvo.getFile2().isEmpty()) {
+			dvo.setDes_image(dvo.getDes_image());
+		}
 		
 		int result = designerService.updateDesigner(dvo);
 		
@@ -197,10 +214,9 @@ public class DesignerController {
 		  
 	 DesignerVO down = designerService.designerDetail(dvo.getDes_num());
 	 String downRoot = down.getDes_file(); 
-	 System.out.println(downRoot); 
 	 
 	 byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(request.getSession().getServletContext().getRealPath("/uploadStorage/designer/")+downRoot));
-
+	 
 	 
 	 response.setContentType("application/octet-stream");
 	 response.setContentLength(fileByte.length);
@@ -209,5 +225,26 @@ public class DesignerController {
 	 response.getOutputStream().flush();
 	 response.getOutputStream().close();
 	 }
+	 
+	  
+	//이미지 파일 다운로드
+	  @RequestMapping(value = "/designer/downloadImage.do") 
+	  public void fileDownImage(@ModelAttribute DesignerVO dvo, HttpServletResponse response, HttpServletRequest request) throws IOException {
+		  log.info("fileDownImage 호출성공");
+		  
+	 DesignerVO down = designerService.designerDetail(dvo.getDes_num());
+	 String downImage = down.getDes_image();
+	 
+	 byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File(request.getSession().getServletContext().getRealPath("/uploadStorage/designer/")+downImage));
+	 
+	 
+	 response.setContentType("application/octet-stream");
+	 response.setContentLength(fileByte.length);
+	 response.setHeader("Content-Disposition","attachment; fileName=\""+URLEncoder.encode(downImage,"UTF-8")+"\";");
+	 response.getOutputStream().write(fileByte);
+	 response.getOutputStream().flush();
+	 response.getOutputStream().close();
+	 }
+	  
 	 
 }

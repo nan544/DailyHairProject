@@ -140,4 +140,19 @@ public class AdminReservationController {
 		
 		return "admin/reservation/adminReservationResultList";
 	}
+	
+	//시술완료 상세보기 출력
+	@RequestMapping(value = "/reservation/resultReservationDetail.do")
+	public String resultReservationDetail(int rest_num , String m_id , Model model) {
+		log.info("resultReservationDetail 호출완료");
+		
+		ReserveVo resultDetail = adminReservationService.reservationDetail(rest_num);
+		List<StyleVO> styleList = styleService.stylingnameList(rest_num);
+		MemberVO mvo = AdminmemberService.memberDetail(m_id);
+		model.addAttribute("reservation", resultDetail);
+		model.addAttribute("nameList",styleList);
+		model.addAttribute("member", mvo);
+		
+		return "admin/reservation/pop/resultReservationDetail_pop";
+	}
 }

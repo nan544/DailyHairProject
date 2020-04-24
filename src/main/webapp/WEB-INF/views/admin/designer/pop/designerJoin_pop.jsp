@@ -138,6 +138,10 @@ height: 32px;
 					<td style="vertical-align: middle;">이력서</td>
 					<td><input type="file" name="file" id="file"></td>
 				</tr>
+				<tr>
+					<td style="vertical-align: middle;">프로필사진</td>
+					<td><input type="file" name="file2" id="file2"></td>
+				</tr>
 			</table>
 		</form>
 		</div>
