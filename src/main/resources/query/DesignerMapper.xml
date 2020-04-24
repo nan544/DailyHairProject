@@ -36,7 +36,7 @@
 		FROM designer a
 		WHERE a.des_num not in(SELECT DISTINCT des_num
 							   FROM reservation
-							   WHERE rest_hairdate = #{rest_hairdate} and rest_time = #{rest_time})
+							   WHERE rest_hairdate = #{rest_hairdate} and rest_time = #{rest_time} and rest_state = 1)
 	</select>
 	
 	
