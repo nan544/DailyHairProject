@@ -10,8 +10,8 @@
 <meta content="" name="keywords">
 
 	<!-- Favicons -->
-	<link href="/resources/assets/img/favicon.png" rel="icon">
-	<link href="/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="apple-touch-icon">
 	
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -118,7 +118,6 @@
 			
 			<!-- Slide 4 -->
 			<div class="carousel-item" style="background: url(/resources/assets/img/slide/corona2.jpg);">
-				<div class="carousel-background"><img src="assets/img/slide/slide-3.jpg" alt=""></div>
 				<div class="carousel-container">
 					<div class="carousel-content">
 						<h2 class="animated fadeInDown"><span>코로나 </span> 예방 수칙</h2>

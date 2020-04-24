@@ -13,7 +13,7 @@
 		ORDER BY des_num 
 	</select>
 	
-	<!-- 디자이너리스트에서 활성화/비활성화 선택시 선택한 값에 맞게 출력되는 쿼리문 --> <!-- NVL(des_file,'-') as des_file -->
+	<!-- 디자이너리스트에서 활성화/비활성화 선택시 선택한 값에 맞게 출력되는 쿼리문 -->
 	<select id="designerAjaxList" resultType="designer" parameterType="int">
 		SELECT to_char(des_regdate,'YYYY-MM-DD')as des_regdate, des_job,
 		des_name, des_phone, des_file , des_num , des_state
@@ -56,6 +56,7 @@
 		WHERE des_num = #{des_num}
 	</update>
 	
+	
 	<!-- 메소드명은 deleteDesigner이지만 실제로는 비활성화 시키는것이므로 상태값을 업데이트 시킨다 --> 
 	<update id="deleteDesigner" parameterType="int">
 		UPDATE designer
@@ -70,10 +71,4 @@
 		WHERE des_num = #{des_num}
 	</update>
 	
-	<!-- 첨부파일 다운받기 -->
-	<!-- <select id="downloadFile" parameterType="designer" resultType="designer">
-		SELECT des_file
-		FROM designer
-		WHERE des_num = #{des_num}
-	</select> -->
 </mapper>

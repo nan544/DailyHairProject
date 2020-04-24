@@ -39,6 +39,27 @@
 	href="/resources/assets/css/style.css">
 
 <!-- =======================================================
+=======
+	<!-- Favicons -->
+	<link href="/resources/assets/img/DHS-icon.png" rel="icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="apple-touch-icon">
+   
+   <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
+   
+   <!-- Vendor CSS Files -->
+   <link rel="stylesheet" type="text/css" href="/resources/assets/vendor/bootstrap/css/bootstrap.min.css" >
+   <link rel="stylesheet" type="text/css" href="/resources/assets/vendor/icofont/icofont.min.css" >
+   <link rel="stylesheet" type="text/css" href="/resources/assets/vendor/boxicons/css/boxicons.min.css" >
+   <link rel="stylesheet" type="text/css" href="/resources/assets/vendor/animate.css/animate.min.css" >
+   <link rel="stylesheet" type="text/css" href="/resources/assets/vendor/venobox/venobox.css" >
+   <link rel="stylesheet" type="text/css" href="/resources/assets/vendor/owl.carousel/assets/owl.carousel.min.css" >
+   
+   <!-- Template Main CSS File -->
+   <link rel="stylesheet" type="text/css" href="/resources/assets/css/style.css" >
+   
+   <!-- =======================================================
+>>>>>>> master
    * Template Name: Delicious - v2.0.0
    * Template URL: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/
    * Author: BootstrapMade.com

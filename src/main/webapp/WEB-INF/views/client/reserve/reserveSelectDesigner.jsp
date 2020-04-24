@@ -11,8 +11,8 @@
 <meta content="" name="keywords">
 
 	<!-- Favicons -->
-	<link href="/resources/assets/img/favicon.png" rel="icon">
-	<link href="/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="apple-touch-icon">
 	
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -118,10 +118,6 @@
 			$("#des_num").val(num);
 			
 			var des_num = num;
-			alert("디자이너 식별번호 : " + $("#des_num").val());
-			
-			alert("${data.rest_hairdate}");
-			alert("${data.rest_time}");
 			
 			$("#desForm").attr({
 				"method":"post",

@@ -150,22 +150,6 @@
     $(this).find('.btn-get-started').addClass('animated fadeInUp');
   });
 
-  // Back to top button
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 100) {
-      $('.back-to-top').fadeIn('slow');
-    } else {
-      $('.back-to-top').fadeOut('slow');
-    }
-  });
-
-  $('.back-to-top').click(function() {
-    $('html, body').animate({
-      scrollTop: 0
-    }, 1500, 'easeInOutExpo');
-    return false;
-  });
-
   // Menu list isotope and filter
   $(window).on('load', function() {
     var menuIsotope = $('.menu-container').isotope({
@@ -204,4 +188,37 @@
     $('.venobox').venobox();
   });
 
+  // Back to top button
+  /*$(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('.back-to-top').fadeIn('slow');
+    } else {
+      $('.back-to-top').fadeOut('slow');
+    }
+  });
+
+  $('.back-to-top').click(function() {
+    $('html, body').animate({ scrollTop : 0 }, 400);
+    return false;
+  });*/
+  
 })(jQuery);
+
+//Back to top button
+$( document ).ready( function() {
+
+	$( window ).scroll( function() {
+	  if ( $( this ).scrollTop() > 100 ) {
+	    $( '.back-to-top' ).fadeIn();
+	  } else {
+	    $( '.back-to-top' ).fadeOut();
+	  }
+	} );
+	
+	$( '.back-to-top' ).click( function() {
+	  $( 'html, body' ).animate( { scrollTop : 0 }, 750 );
+	  return false;
+	} );
+
+} );
+

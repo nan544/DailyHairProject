@@ -30,8 +30,8 @@ public class AdminReservationServiceImpl implements AdminReservationService {
 	
 	//예약 완료내역
 	@Override
-	public List<ReserveVo> resultList(String m_id) {
-		return adminReservationDao.resultList(m_id);
+	public List<ReserveVo> resultList(ReserveVo rvo) {
+		return adminReservationDao.resultList(rvo);
 	}
 	//날짜변경시 리스트출력
 	@Override
@@ -43,6 +43,24 @@ public class AdminReservationServiceImpl implements AdminReservationService {
 	@Override
 	public int updateReservation(ReserveVo rvo) {
 		return adminReservationDao.updateReservation(rvo);
+	}
+	
+	//디자이너별 예약건수 확인하기
+	@Override
+	public int cofirmReservation(int des_num) {
+		return adminReservationDao.cofirmReservation(des_num);
+	}
+	
+	//검색조건  시술완료 리스트
+	@Override
+	public List<ReserveVo> resultSearchList(ReserveVo rvo) {
+		return adminReservationDao.resultSearchList(rvo);
+	}
+	
+	//시술완료리스트 검색시마다 레코드수 체크
+	@Override
+	public int searchListCnt(ReserveVo rvo) {
+		return adminReservationDao.searchListCnt(rvo);
 	}
 
 }

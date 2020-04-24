@@ -86,30 +86,13 @@
 		//수정버튼 클릭시 실행 비동기로 보내서 수정완료시 1리턴 실패시0 리턴
 		//성공시에는 팝업창을 닫고 부모창을 새로고침시켜서 수정값을 적용시킴
 		$("#modifyBtn").click(function() {
+			
 			updateDes();
-			/* $.ajax({
-				url : "/admin/designer/designerUpdate.do",
-				type : "POST",
-				data : "des_num=" + $("#des_num").val() + "&des_job="
-						+ $("#des_job").val() + "&des_phone="
-						+ $("#des_phone").val() + "&des_holyday="
-						+ $("#des_holyday").val() + "&des_gender="
-						+ $("input[name='des_gender']:checked").val()
-						+ "&des_memo=" + $("#des_memo").val()
-						+ "&des_file=" + $("#des_file").val(),
-				success : function(data) {
-
-					if (data == 1) {
-						alert("디자이너 수정에 성공하였습니다.");
-						opener.parent.location.reload();
-						window.close();
-					} else {
-						alert("디자이너 수정에 실패하였습니다.");
-					}
-				}
-			}); *///수정 ajax 종료
-		}); //수정버튼 이벤트 종료
-
+	
+		}); 
+		
+	
+		
 		//디자이너 비활성화 버튼 클릭시 실행
 		$("#deleteBtn").click(function() {
 			if (confirm("정말로 비활성화시키시겠습니까?")) {
@@ -118,13 +101,13 @@
 					type : "POST",
 					data : "des_num=" + $("#des_num").val(),
 					success : function(data) {
-						if (data == 1) {
+						 if (data == 1) {
 							alert("비활성화 완료");
 							opener.parent.location.reload();
 							window.close();
 						} else {
-							alert("비활성화 실패");
-						}
+							alert("예약이 있는 디자이너는 비활성화를 할수 없습니다.");
+						} 
 					}
 				}); //비활성화  ajax종료
 			}

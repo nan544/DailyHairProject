@@ -254,7 +254,7 @@ margin-right: 5px;
 				</c:when>
 				<c:otherwise>
 					<tr>
-						<td>등록된 회원이 없습니다</td>
+						<td colspan="8" align="center">등록된 회원이 없습니다</td>
 					</tr>
 				</c:otherwise>
 			</c:choose>
