@@ -23,6 +23,7 @@ import daily.admin.style.vo.StyleVO;
 import daily.client.member.service.MemberService;
 import daily.client.member.vo.MemberVO;
 import daily.client.reserve.vo.ReserveVo;
+import daily.common.page.Paging;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -60,14 +61,15 @@ public class AdminReservationController {
 
 	// 예약상세보기
 	@RequestMapping(value = "/reservation/reservationDetailForm.do")
-	public ModelAndView reservationDetailForm(int rest_num, String m_id) {
+	public ModelAndView reservationDetailForm(ReserveVo rvo1) {
 		log.info("reservationDeatilForm 호출");
 
 		ModelAndView mav = new ModelAndView();
-		MemberVO mvo = AdminmemberService.memberDetail(m_id);
-		ReserveVo rvo = adminReservationService.reservationDetail(rest_num);
-		List<StyleVO> svoList = styleService.stylingnameList(rest_num);
-		List<ReserveVo> resultList = adminReservationService.resultList(m_id);
+		MemberVO mvo = AdminmemberService.memberDetail(rvo1.getM_id());
+		ReserveVo rvo = adminReservationService.reservationDetail(rvo1.getRest_num());
+		List<StyleVO> svoList = styleService.stylingnameList(rvo1.getRest_num());
+		
+		List<ReserveVo> resultList = adminReservationService.resultList(rvo1);
 
 		if (rvo != null) {
 			mav.addObject("resultList", resultList);
@@ -118,12 +120,22 @@ public class AdminReservationController {
 
 	}
 	
-	// 예약완료(시술완료) 리스트출력
+	// 예약완료(시술완료)리스트출력
 	@RequestMapping(value = "/reservation/resultReservationList.do")
-	public String resultReservationList(Model model) {
+	public String resultReservationList(ReserveVo rvo , Model model) {
 		log.info("resultReservationList 호출완료");
 		
-		List<ReserveVo> resultList = adminReservationService.resultList("");
+		// 페이지세팅 - ReserveVO 는 CommonVO 를 상속하고있음
+		Paging.setPage(rvo);
+		
+		// 전체 레코드수 구하기
+		int total = adminReservationService.searchListCnt(rvo);
+		log.info(total+"<<레코드수");
+		
+		List<ReserveVo> resultList = adminReservationService.resultSearchList(rvo);
+		
+		model.addAttribute("data", rvo);
+		model.addAttribute("total", total);
 		model.addAttribute("resultList",resultList);
 		
 		return "admin/reservation/adminReservationResultList";
