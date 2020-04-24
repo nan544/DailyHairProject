@@ -3,17 +3,19 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="container-fluid">
-	<div class="navbar-header">
+	<div>
+		<div>
 		<button type="button" class="navbar-toggle collapsed"
 			data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 			aria-controls="navbar">
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="/admin/goMain.do">DailyHair[관리자 페이지]</a>
+		<a class="navbar-brand" href="/admin/reservation/adminReservationList.do">DailyHair[관리자 페이지]</a>
+		</div>
 		<c:if test="${login == '관리자'}">
-			<div id="logout">
-				<input type="button" id="logout" name="logout" value="로그아웃"/>
+			<div id="logout" class="navbar-right" style="margin-top: 10px; margin-right: 100px;">
+				<input type="button" id="logout" name="logout" value="로그아웃" class= "btn btn-default"/>
 				<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 				<script type="text/javascript">
 				$(function(){

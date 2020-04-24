@@ -78,6 +78,7 @@
 					}			
 			});
 			$("#price").html(sum+"원");
+			$("#rest_totalprice").val(sum);
 			
 			let total = "";
 			//시술이 선택되면 선택된 시술의 시술명을 출력
@@ -110,12 +111,12 @@
 			alert($("#rest_hairdate").val()+"<<선택한 시술날짜");
 			alert($("#rest_time").val()+"<<선택한 시술시간");
 		   	alert($("#rest_memo").val()+"<<요구사항");
+		   	alert($("#rest_totalprice").val()+"<< 총 시술가격");
 			
 		   	if($("input:checkbox[name=styling_num]:checked").length==0){
 		   		alert("시술을 하나이상 선택해주세요");
 		   		return false;
 		   	}
-		 //  var checkArr= []; 
 		   
 		   //체크박스를 담을 배열
 		   let checkArr = new Array()
@@ -127,6 +128,7 @@
 		   
 		  
 		$("#holy").val(checkArr);
+		
 		   
 		  $("#stylingForm").attr({
 				"method":"post",
@@ -209,6 +211,7 @@
 				<input type="hidden" id="des_num" name="des_num" value="${data.des_num}"/>
 				<textarea rows="5" cols="50" id="rest_memo" name="rest_memo" placeholder=" 시술 시 참고사항을 적어주세요"></textarea>
 				<input type="hidden" name="holy" id="holy" value=""/>
+				<input type="hidden" name="rest_totalprice" id="rest_totalprice" value=""/>
 				</form>
 			</div>
 			
