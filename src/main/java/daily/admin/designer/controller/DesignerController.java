@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import daily.admin.designer.service.DesignerService;
 import daily.admin.designer.vo.DesignerVO;
+import daily.admin.reservation.service.AdminReservationService;
 import daily.common.util.FileUploadUtil;
 
 import org.apache.commons.fileupload.FileUpload;
@@ -33,6 +34,9 @@ public class DesignerController {
 
 	@Autowired
 	private DesignerService designerService;
+	
+	@Autowired
+	private AdminReservationService reservationService;
 
 	// 디자이너 리스트 출력
 	@RequestMapping(value = "/designer/designerList.do", method = RequestMethod.GET)
@@ -118,13 +122,6 @@ public class DesignerController {
 		log.info("designerUpdate 호출 성공");
 
 		String msg = "0";
-
-		
-	/*	if(dvo.getFile()!=null) {
-			String des_file = FileUploadUtil.fileUpload(dvo.getFile(), request, "designer");
-			dvo.setDes_file(des_file); 
-		}   */
-			
 		
 		//수정할떄 파일이 변경되면 기존 파일은 삭제되고 새로운파일로 등록됨
 		if(!dvo.getFile().isEmpty()) {
@@ -160,15 +157,18 @@ public class DesignerController {
 	@ResponseBody
 	public String designerDelete(@ModelAttribute DesignerVO dvo) {
 
-		String msg = "0";
-
-		int result = designerService.deleteDesigner(dvo.getDes_num());
-		if (result == 1) {
-			msg = "1";
-			return msg;
-		} else {
-			msg = "0";
-			return msg;
+		
+		//비활성화 하기전에 현재 예약건이있는 디자이너인지 확인합니다
+		int count = reservationService.cofirmReservation(dvo.getDes_num());	 
+		
+		System.out.println(count);
+		
+		
+		if(count>0) {
+			return "0";
+		}else{
+			designerService.deleteDesigner(dvo.getDes_num());
+			return "1";
 		}
 	}
 

@@ -118,10 +118,6 @@
 			$("#des_num").val(num);
 			
 			var des_num = num;
-			alert("디자이너 식별번호 : " + $("#des_num").val());
-			
-			alert("${data.rest_hairdate}");
-			alert("${data.rest_time}");
 			
 			$("#desForm").attr({
 				"method":"post",
