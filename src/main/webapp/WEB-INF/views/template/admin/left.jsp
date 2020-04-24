@@ -25,6 +25,6 @@
             	</ul>
             </li>
             <li><a href="/admin/designer/designerList.do">매장 관리</a></li>
-            <li><a href="#">통계</a></li>
+            <li><a href="/admin/bi/main.do">통계</a></li>
           </ul>
           </div>

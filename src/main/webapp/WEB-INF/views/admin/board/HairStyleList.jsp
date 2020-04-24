@@ -57,7 +57,7 @@
 			type="hidden" id="page" name="page" value="${data.page}">
 		<input type="text" id="keyword" name=keyword placeholder="제품이름(제목)" value="${data.keyword}">
 		<input type="hidden" id="search" name="search" value="hs_title">
-		<input type="button" id="searchBtn" name="searchBtn" value="검색">
+		<input type="button" id="searchBtn" class="btnBoard" name="searchBtn" value="검색">
 		</form>
 	<p>
 
@@ -110,7 +110,7 @@
 		<!-- 데이터 출력 끝-->
 	</table>
 
-	<input type="button" id="insertFormBtn" name="insertFormBtn" value="등록">
+	<input type="button"  class="btnBoard" id="insertFormBtn" name="insertFormBtn" value="등록">
 
 	<!-- 페이지 네비게이션 -->
 	<div id="boardPage">

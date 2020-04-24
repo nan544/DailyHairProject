@@ -8,6 +8,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.btnBoard{
+width : 70px;
+float: left;
+margin-right: 5px;
+}
+.keyword{
+width : 200px;
+float: left;
+margin-right: 5px;
+}
+</style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
@@ -55,16 +67,16 @@
 </script>
 </head>
 <body>
-	<p>
 	<h3>HairGoods 게시판 관리</h3>
 	<!-- 검색 및 페이징 -->
+	<div>
 	<form id="f_search">
 	<input type="hidden" id="page" name="page" value="${data.page}">
-	<input type="text" id="keyword" name="keyword" placeholder="제품이름(제목)" value="${data.keyword }" >
+	<input type="text" id="keyword" class="keyword form-control" name="keyword" placeholder="제품이름(제목)" value="${data.keyword }" >
 	<input type="hidden" id="search" name="search" value="hg_title">
-	<input type="button" id="searchBtn" name="searchBtn" value="검색">
+	<input type="button" id="searchBtn" class="btn btnBoard"  name="searchBtn" value="검색" >
 	</form>
-	<p>
+	</div>
 
 		<%--====================상세 페이지 이동을 위한 Form =============== --%>
 	<form name="detailForm" id="detailForm">
@@ -113,7 +125,7 @@
 		<!-- 데이터 출력 끝-->
 	</table>
 	<!-- BtnMenu -->
-	<input type="button" id="insertFormBtn" name="insertFormBtn" value="등록">
+	<input type="button" class="btn btnBoard" id="insertFormBtn" name="insertFormBtn" value="등록">
 
 	<!-- 페이지 네비게이션 -->
 	<div id="boardPage">
