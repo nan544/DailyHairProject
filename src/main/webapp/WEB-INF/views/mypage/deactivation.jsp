@@ -31,7 +31,7 @@ $(function() {
 			$.ajax({
 				url : "/mypage/memberDelete.do",
 				type : "POST",
-				data : m_num + $("#m_num").val(),
+				data : "m_num" + $("#m_num").val(),
 				success : function(data) {
 					if (data == 1) {
 						alert("계정이 비활성화 되었습니다.");
@@ -59,7 +59,7 @@ $(function() {
 	<p> 3. 예약현황이 존재할 경우 비활성화를 하실 수 없습니다. </p>
 	<p> 4. 비활성화를 해제하시려면 관리자에게 문의하셔야 합니다. </p><br><br>
 	
-	<p><center> 관리자 문의 전화 ☎ 02-001-0002 </center></p>
+	<p> 관리자 문의 전화 ☎ 02-001-0002 </p>
 	
 	<input type="button" name="deleteBtn" id="deleteBtn" value="비활성화" class="btn"/>
 </div>
