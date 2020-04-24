@@ -110,19 +110,11 @@ public class StyleController {
 	//시술 삭제하기
 	@RequestMapping(value = "/style/deleteStyling.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String deleteStyling(int styling_num) {
+	public int deleteStyling(int styling_num) {
 	log.info("deleteStyling 호출 성공");
 		
-		String msg = "0";
 		int result = styleService.deleteStyling(styling_num);
-
-		if (result == 1) {
-			msg = "1";
-			return msg;
-		} else {
-			msg = "0";
-			return msg;
-		}
+		return result;
 	}
 	
 }

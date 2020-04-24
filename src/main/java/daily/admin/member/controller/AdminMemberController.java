@@ -64,12 +64,12 @@ public class AdminMemberController {
 
 	// 회원 상세보기폼 출력
 	@RequestMapping(value = "/member/memberDetailForm.do", method = RequestMethod.GET)
-	public ModelAndView memberDetailForm(@RequestParam String m_id) {
+	public ModelAndView memberDetailForm(ReserveVo rvo) {
 		log.info("memberDetailForm 호출성공");
 		ModelAndView mav = new ModelAndView();
 
-		MemberVO detail = adminMemberService.memberDetail(m_id);
-		List<ReserveVo> resultList = adminReservationService.resultList(m_id);
+		MemberVO detail = adminMemberService.memberDetail(rvo.getM_id());
+		List<ReserveVo> resultList = adminReservationService.resultList(rvo);
 		// List<StyleVO> styleList = styleService.stylingnameList(rest_num);
 
 		if (detail != null) {

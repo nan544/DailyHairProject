@@ -1,6 +1,8 @@
 package daily.client.reserve.vo;
 
-public class ReserveVo {
+import daily.common.util.CommonVO;
+
+public class ReserveVo extends CommonVO{
 	private int rest_num;			// 예약 번호
 	private int des_num;			// 디자이너 번호
 	private String m_id;			// 회원 ID

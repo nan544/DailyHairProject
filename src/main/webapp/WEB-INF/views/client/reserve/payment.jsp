@@ -65,13 +65,6 @@
 	function paymentCard() {
 		alert("카드결제를 진행하겠습니다.");
 		
-		alert($("#m_id").val()+"<<가져갈 아이디");
-		alert($("#des_num").val()+"<< 가져갈 디자이너 번호");
-		alert($("#rest_hairdate").val()+"<<선택한 시술날짜");
-		alert($("#rest_time").val()+"<<선택한 시술시간");
-		alert($("#rest_memo").val()+"<<작성한 메모");
-		alert($("input[name='rest_payoption']:checked").val()+"<<선택한 결제유형");
-		alert($("#rest_totalprice").val()+"<<<시술 총가격");
 		
 		$("#insertForm").attr({
 			"method":"post",
@@ -85,15 +78,10 @@
 	function paymentAccount() {
 		alert("계좌이체를 진행하겠습니다.");
 		
-		alert($("#des_num").val()+"<< 가져갈 디자이너 번호");
-		alert($("#rest_hairdate").val()+"<<선택한 시술날짜");
-		alert($("#rest_time").val()+"<<선택한 시술시간");
-		alert($("#rest_memo").val()+"<<작성한 메모");
-		alert($("input[name='rest_payoption']:checked").val()+"<<선택한 결제유형");
-		
-		//reserveInser.do
-			
-		//location.replace("/reserve/reservePaymentAccount.do");
+		$("#insertForm").attr({
+			"method":"post",
+			"action":"/reserve/reserveInsert.do"
+		});	
 	}
 	</script>
 	
@@ -133,10 +121,8 @@
 				<div class="reserveTable">${place}</div>
 				<div class="reserveTable">${data.rest_hairdate}&nbsp;&nbsp;&nbsp;${data.rest_time}</div>
 				<div class="reserveTable">${desname.des_name }(${desname.des_job })</div>
-				<div class="reserveTable">시술명</div>
 				<div></div>
-				<div class="reserveTablehead" style="float: left;">결제 금액　　</div>
-				<div class="reserveTable" style="float: right;">(금액)입력 대기 중</div>
+				<div class="reserveTablehead" style="float: left;">결제 금액  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${data.rest_totalprice }원　</div>
 			</div>
 			
 			<div style="width: 100%; margin: 0 auto;">
