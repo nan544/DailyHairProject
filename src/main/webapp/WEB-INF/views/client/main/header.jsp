@@ -61,9 +61,14 @@
 <!-- jQuery 사용 -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
-<!-- datepicker 설정 초기값 -->
+<!-- datepicker 설정  -->
 <link href="/resources/dateAndTimePicker/dist/css/jquery-ui.css" rel="stylesheet" type="text/css">
 <script src="/resources/dateAndTimePicker/dist/js/jquery-ui.js"></script>
+
+<!-- timepicker 설정 -->
+<script type="text/javascript" src="/resources/dateAndTimePicker/dist/js/jquery.timepicker.min.js" ></script>
+<link type="text/css" rel="stylesheet" href="/resources/dateAndTimePicker/dist/css/jquery.timepicker.css" media=""/>
+
 </head>
 
 <body>
