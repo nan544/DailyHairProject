@@ -218,10 +218,7 @@
 					}
 
 					//이메일의 앞 부분 텍스트와 뒷부분 주소를 합침
-					$("#m_email")
-							.val(
-									$("#m_email").val() + "@"
-											+ $("#emailDomain").val());
+					$("#m_email").val($("#m_email").val() + "@" + $("#emailDomain").val());
 
 					//가입 버튼을 눌렀을 때 post형식으로 보냄시킴
 					$("#insertForm").attr("method", "post");

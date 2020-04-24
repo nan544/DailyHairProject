@@ -62,4 +62,10 @@
 		WHERE m_num = #{m_num}
 	</update>
 	
+	<select id="memberDetail" parameterType="int" resultType="member">
+		SELECT * 
+		FROM member
+		where m_num = #{m_num}
+	</select>
+	
 </mapper>

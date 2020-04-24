@@ -27,4 +27,6 @@ public interface MemberService {
 	//게정 비활성화
 	public int deleteMember(int m_num);
 
+	public MemberVO memberDetail(int m_num);
+	
 }

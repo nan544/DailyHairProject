@@ -1,5 +1,7 @@
 package daily.client.mypage.controller;
 
+import java.io.IOException;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -91,29 +93,51 @@ public class MypageController {
 	}
 	
 	//계정 비활성화
-	@RequestMapping(value="/deactivation.do", method = RequestMethod.GET)
+	/*@RequestMapping(value="/deactivation.do", method = RequestMethod.GET)
 	public String getdeactivation() throws Exception{
 		log.info("deactivation 호출 성공");
 			
 		return "mypage/deactivation";
-	}
+	}*/
 	
-	//계정 비활성화 처리
-	@RequestMapping(value = "/memberDelete.do", method = RequestMethod.POST)
-	@ResponseBody
-	public String memberDelete(@ModelAttribute MemberVO mvo) {
-		log.info("계정 비활성화 성공");
+	@RequestMapping(value = "/deactivation.do", method = RequestMethod.GET)
+	public ModelAndView memberUpdateForm(@ModelAttribute MemberVO mvo) throws IOException {
+		log.info("memberUpdateForm 호출 성공" + mvo.getM_num());
 
-		String msg = "0";
+		ModelAndView mav = new ModelAndView();
 
-		int result = service.deleteMember(mvo.getM_num());
-		if (result == 1) {
-			msg = "1";
-			return msg;
+		MemberVO updateMember = new MemberVO();
+		updateMember = service.memberDetail(mvo.getM_num());
+		
+		if (updateMember != null) {
+			mav.addObject("member", updateMember);
+			mav.setViewName("mypage/deactivation");
+			return mav;
 		} else {
-			msg = "0";
-			return msg;
+			mav.addObject("msg", "에러");
+			mav.setViewName("mypage/mypage");
+			return mav;
 		}
 	}
+	
+	//계정 비활성화하기
+	/*@RequestMapping(value = "/designer/designerDelete.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String designerDelete(@ModelAttribute DesignerVO dvo) {
+
+		
+		//비활성화 하기전에 현재 예약건이있는 디자이너인지 확인합니다
+		int count = reservationService.cofirmReservation(dvo.getDes_num());	 
+		
+		System.out.println(count);
+		
+		
+		if(count>0) {
+			return "0";
+		}else{
+			designerService.deleteDesigner(dvo.getDes_num());
+			return "1";
+		}
+	}*/
 	
 }

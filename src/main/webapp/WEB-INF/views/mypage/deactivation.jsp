@@ -30,8 +30,8 @@ $(function() {
 		if (confirm("비활성화 하시겠습니까?")) {
 			$.ajax({
 				url : "/mypage/memberDelete.do",
-				type : "POST",
-				data : "m_num" + $("#m_num").val(),
+				type : "post",
+				data : "m_num=" + $("m_num").val(),
 				success : function(data) {
 					if (data == 1) {
 						alert("계정이 비활성화 되었습니다.");

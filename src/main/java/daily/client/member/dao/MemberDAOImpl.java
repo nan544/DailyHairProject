@@ -62,5 +62,10 @@ public class MemberDAOImpl implements MemberDAO {
 	public int deleteMember(int m_num) {
 		return sql.update("deleteMember", m_num);
 	}
+
+	@Override
+	public MemberVO memberDetail(int m_num) {
+		return sql.selectOne("memberDetail", m_num);
+	}
 	
 }
