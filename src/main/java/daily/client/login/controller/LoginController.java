@@ -94,11 +94,18 @@ public class LoginController {
 	@RequestMapping(value = "/idFind.do", method = RequestMethod.POST)
 	@ResponseBody
 	public int idFind(MemberVO vo) throws Exception {
-		logger.info("아이디 찾기");
-		
+		logger.info("아이디 찾기 호출");
+			
 		int result = service.idFind(vo);
-		
+			
 		return result;
+	}
+	
+	@RequestMapping(value = "/idFindSuccess.do", method = RequestMethod.GET)
+	public String getIdFindS() throws Exception {
+		logger.info("아이디 찾기 성공");
+		
+		return "member/login/idFindSuccess";
 	}
 	
 }

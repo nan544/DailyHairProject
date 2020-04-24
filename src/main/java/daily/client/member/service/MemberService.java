@@ -15,10 +15,16 @@ public interface MemberService {
 	
 	//마이페이지 본인확인
 	public MemberVO mypage(MemberVO lvo);
-	
-	//마이페이지 회원정보 상세보기
-	public MemberVO memberMypage(int m_num);
 
+	/*public MemberVO memberUpdate(int m_num);*/
+	
+	//회원정보 select
+	public MemberVO memberSelect(String m_id);
+	
 	//아이디 찾기
 	public int idFind(MemberVO vo) throws Exception;
+	
+	//게정 비활성화
+	public int deleteMember(int m_num);
+
 }

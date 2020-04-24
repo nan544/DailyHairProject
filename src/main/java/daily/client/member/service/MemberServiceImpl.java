@@ -38,16 +38,29 @@ public class MemberServiceImpl implements MemberService {
 		return dao.mypage(lvo);
 	}
 	
-	//마이페이지 회원정보 상세보기
-	@Override
-	public MemberVO memberMypage(int m_num) {
-		return dao.memberMypage(m_num);
-	}
+	/*@Override
+	public MemberVO memberUpdate(int m_num) {
+		return dao.memberUpdate(m_num);
+	}*/
 	
+	//회원정보 select
+	@Override
+	public MemberVO memberSelect(String m_id) {
+		MemberVO vo = dao.memberSelect(m_id);
+		return vo;
+	}
+
 	//아이디 찾기
 	@Override
 	public int idFind(MemberVO vo) throws Exception {
 		int result = dao.idFind(vo);
 		return result;
 	}
+
+	//계정 비활성화
+	@Override
+	public int deleteMember(int m_num) {
+		return dao.deleteMember(m_num);
+	}
+	
 }

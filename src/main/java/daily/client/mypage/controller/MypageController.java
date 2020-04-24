@@ -10,9 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import daily.admin.designer.vo.DesignerVO;
 import daily.client.member.service.MemberService;
 import daily.client.member.vo.MemberVO;
 
@@ -41,7 +42,7 @@ public class MypageController {
 		ModelAndView mav = new ModelAndView();
 			
 		MemberVO vo = service.mypage(lvo);
-			
+	
 		if(vo != null) {
 			session.setAttribute("mypage", "사용자");
 			mav.setViewName("mypage/mypage");
@@ -51,25 +52,68 @@ public class MypageController {
 			mav.setViewName("mypage/mypage");
 			return mav;
 		}
-					
+
 	}
 	
-	//회원 상세보기폼 출력
-	@RequestMapping(value = "/memberUpdate.do", method = RequestMethod.GET)
-	public ModelAndView getMemberMypage(@RequestParam int m_num) {
-		log.info("memberUpdate.do 호출");
+	/*마이페이지 회원정보창
+	@RequestMapping(value="/memberUpdateView.do", method = RequestMethod.GET)
+	public ModelAndView memberUpdateView(@RequestParam int m_num) {
+		log.info("회원정보 호출 성공");
 		
 		ModelAndView mav = new ModelAndView();
 		
-		MemberVO memberUp = service.memberMypage(m_num);
+		MemberVO member = service.memberUpdate(m_num);
 		
-		if(memberUp != null) {
-			mav.addObject("member",memberUp);
+		if(member != null) {
+			mav.addObject("member", member);
 			mav.setViewName("mypage/memberUpdate");
-				
 		}
-			
+		
 		return mav;
+	}*/
+	
+	@RequestMapping(value = "/memberSelect.do", method = RequestMethod.GET)
+	public ModelAndView memberModify(HttpSession session) {
+		log.info("modify.do 호출 성공");
+		ModelAndView mav = new ModelAndView();
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		
+		if(member == null) {
+			mav.setViewName("mypage/memberSelect");
+			return mav;
+		}
+		
+		MemberVO vo = service.memberSelect(member.getM_id());
+		mav.addObject("member", vo);
+		mav.setViewName("mypage/memberSelect");
+		return mav;
+	}
+	
+	//계정 비활성화
+	@RequestMapping(value="/deactivation.do", method = RequestMethod.GET)
+	public String getdeactivation() throws Exception{
+		log.info("deactivation 호출 성공");
+			
+		return "mypage/deactivation";
+	}
+	
+	//계정 비활성화 처리
+	@RequestMapping(value = "/memberDelete.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String memberDelete(@ModelAttribute MemberVO mvo) {
+		log.info("계정 비활성화 성공");
+
+		String msg = "0";
+
+		int result = service.deleteMember(mvo.getM_num());
+		if (result == 1) {
+			msg = "1";
+			return msg;
+		} else {
+			msg = "0";
+			return msg;
+		}
 	}
 	
 }

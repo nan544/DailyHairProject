@@ -39,16 +39,28 @@ public class MemberDAOImpl implements MemberDAO {
 		return (MemberVO)sql.selectOne("mypage", lvo);
 	}
 
-	//마이페이지 회원정보 상세보기
-	@Override
-	public MemberVO memberMypage(int m_num) {
-		return sql.selectOne("memberMypage", m_num);
-	}
+	/*@Override
+	public MemberVO memberUpdate(int m_num) {
+		return sql.selectOne("memberUpdate", m_num);
+	}*/
 	
+	//회원정보 select
+	@Override
+	public MemberVO memberSelect(String m_id) {
+		return (MemberVO)sql.selectOne("memberSelect", m_id);
+	}
+
 	//아이디 찾기
 	@Override
 	public int idFind(MemberVO vo) throws Exception {
 		int result = sql.selectOne("idFind", vo);
 		return result;
 	}
+
+	//게정 비활성화
+	@Override
+	public int deleteMember(int m_num) {
+		return sql.update("deleteMember", m_num);
+	}
+	
 }

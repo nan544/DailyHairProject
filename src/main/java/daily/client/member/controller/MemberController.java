@@ -1,6 +1,7 @@
 package daily.client.member.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +23,7 @@ public class MemberController {
 	@Inject
 	MemberService service;
 	
-	//회원가입에 이용약관
+	//이용약관
 	@RequestMapping(value = "/clause.do", method = RequestMethod.GET)
 	public String getClause() throws Exception {
 		logger.info("clause.do 호출 성공");
