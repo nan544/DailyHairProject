@@ -67,14 +67,59 @@
 			
 			window.open(url, name, option);
 		}
+		
+		function sohyePop1() {
+			var url = "/resources/assets/img/slide/kimsoGIF15.gif";
+			var name = "김소혜 이뻐요";
+			var option = "width=641px, height=494px, toolbars=no, scrollbars=yes";
+			
+			window.open(url, name, option);
+		}
+		
+		function sohyePop2() {
+			var url = "/resources/assets/img/slide/kimsoGIF9.gif";
+			var name = "김소혜 이뻐요";
+			var option = "width=450px, height=528px, toolbars=no, scrollbars=yes";
+			
+			window.open(url, name, option);
+		}
+		
+		function sohyePop3() {
+			var url = "/resources/assets/img/slide/kimsoGIF16.gif";
+			var name = "김소혜 이뻐요";
+			var option = "width=306px, height=440px, toolbars=no, scrollbars=yes";
+			
+			window.open(url, name, option);
+		}
+		
+		function sohyePop4() {
+			var url = "/resources/assets/img/slide/kimsoGIF18.gif";
+			var name = "김소혜 이뻐요";
+			var option = "width=222px, height=396px, toolbars=no, scrollbars=yes";
+			
+			window.open(url, name, option);
+		}
+		
+		function sohyePop5() {
+			var url = "/resources/assets/img/slide/kimsoGIF6.gif";
+			var name = "김소혜 이뻐요";
+			var option = "width=480px, height=292px, toolbars=no, scrollbars=yes";
+			
+			window.open(url, name, option);
+		}
 	</script>
 	
 <!-- jQuery 사용 -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
-<!-- datepicker 설정 초기값 -->
+<!-- datepicker 설정  -->
 <link href="/resources/dateAndTimePicker/dist/css/jquery-ui.css" rel="stylesheet" type="text/css">
 <script src="/resources/dateAndTimePicker/dist/js/jquery-ui.js"></script>
+
+<!-- timepicker 설정 -->
+<script type="text/javascript" src="/resources/dateAndTimePicker/dist/js/jquery.timepicker.min.js" ></script>
+<link type="text/css" rel="stylesheet" href="/resources/dateAndTimePicker/dist/css/jquery.timepicker.css" media=""/>
+
 </head>
 
 <body>
@@ -82,7 +127,7 @@
 	<footer id="footer">
     <div class="container">
 		<h3>DailyHairShop</h3>
-		<div>
+		<div style="margin-bottom: 50px;">
 			<a href="javascript:clause1()">이용약관</a> | 
 			<a href="javascript:clause2()">개인정보 제공 동의 약관</a> | 
 			<a href="/faq/faqView.do">자주하는 질문</a> | 
@@ -90,14 +135,11 @@
 			<i class="icofont-clock-time icofont-rotate-180"></i> 영업시간 10:00 AM - 19:00 PM
 		</div>
 		
-		<div>　</div>
-		<div>
-		
-		</div>
-		
-		<div>　</div>
 		<div class="copyright">
-		(주) DailyHairShop　|　 대표 김국영　|　사업자 등록번호 001 - 01 - 00001　|　본점 위치 서울특별시 성동구 무학로 2길 소혜빌딩 17층, 18층 (매장, 사무실)
+		(주) DailyHairShop　|　 대표 김국영　|　사업자 등록번호 001 - 01 - 00001　|　본점 위치 서울특별시 성동구 무학로 2길 <span
+			onclick="sohyePop1()">소혜빌딩</span> <span onclick="sohyePop2()">17층,</span> <span
+			onclick="sohyePop3()">18층</span> <span onclick="sohyePop4()">(매장,</span> <span
+			onclick="sohyePop5()">사무실)</span>
 		</div>
 		<div class="copyright">
 		&copy; Copyright <strong><span>DailyHairShop</span></strong>. All Rights Reserved　|　Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>　|　

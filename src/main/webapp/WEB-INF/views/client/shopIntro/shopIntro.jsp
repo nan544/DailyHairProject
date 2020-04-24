@@ -48,8 +48,9 @@
 	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
 	
 	<style type="text/css">
-		.designer { width: 300px; height: 200px; }
-		.designerbox { float: left; margin: 10px 20px 10px 20px;
+		.designer { width: 280px; height: 200px; }
+		.designerbox { float: left; padding: 10px; 
+						margin: 10px 20px 10px 20px;
 						transition: all ease-in-out 0.3s;
 						transform: scale(1);
 						-webkit-transform: scale(1);
@@ -153,8 +154,7 @@
 				</div>
 				<div class="content" style="width: 500px; float: right; padding-top: 50px;">
 					<ul class="howtocome">
-						<li><h3>찾아 오시는 길</h3></li>
-						<li><h6>　</h6></li>
+						<li style="margin-bottom: 45px;"><h3>찾아 오시는 길</h3></li>
 						<li><i class="bx bx-check-double"></i> 8105번 잠실역 1번 출구 하차 후 도보 15분</li>
 						<li><i class="bx bx-check-double"></i> 8000번 잠실역 5번 출구 하차 후 도보 62분</li>
 						<li><i class="bx bx-check-double"></i> 1309번 잠실역 6번 출구 하차 후 도보 48분</li>

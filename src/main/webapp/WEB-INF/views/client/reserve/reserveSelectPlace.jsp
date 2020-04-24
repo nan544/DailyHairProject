@@ -54,10 +54,21 @@
 		.reserveBtn { width: 150px; height: 50px; background: #ffb03b; border: 0;	color: #fff;
 				padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;}
 		
-		.designer { width: 300px; height: 200px }
-		.designerbox { float: left; margin: 10px 20px 10px 20px;
-						transition: all ease-in-out 0.3s; }
-		.designerbox:hover { box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18); }
+		.designer { width: 280px; height: 200px }
+		.designerbox { float: left; padding: 10px; 
+						margin: 10px 20px 10px 20px;
+						transition: all ease-in-out 0.3s;
+						transform: scale(1);
+						-webkit-transform: scale(1);
+						-moz-transform: scale(1);
+						-ms-transform: scale(1);
+						-o-transform: scale(1); }
+		.designerbox:hover { box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
+							transform: scale(1.1);
+							-webkit-transform: scale(1.1);
+							-moz-transform: scale(1.1);
+							-ms-transform: scale(1.1);
+							-o-transform: scale(1.1); }
 		.designerbox p { padding-top: 15px; }
 	</style>
 	

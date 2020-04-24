@@ -53,16 +53,47 @@
 		.reserveTablehead { display: inline; padding: 10px; font: 15pt bold; color: #670000;}
 		.reserveBtn { width: 150px; height: 50px; background: #ffb03b; border: 0;	color: #fff;
 				padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;}
-		.designer { width: 300px; height: 200px }
-		.designerbox { float: left; margin: 10px 20px 10px 20px; }
+		.designer { width: 280px; height: 400px }
+		.designerbox { float: left; padding: 10px; 
+						margin: 10px 20px 10px 20px;
+						transition: all ease-in-out 0.3s;
+						transform: scale(1);
+						-webkit-transform: scale(1);
+						-moz-transform: scale(1);
+						-ms-transform: scale(1);
+						-o-transform: scale(1); }
+		.designerbox:hover { box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
+							transform: scale(1.1);
+							-webkit-transform: scale(1.1);
+							-moz-transform: scale(1.1);
+							-ms-transform: scale(1.1);
+							-o-transform: scale(1.1); }
+		.designerbox p { padding-top: 15px; }
 	</style>
 	
 	<!-- 버튼 이벤트 -->
 	<script type="text/javascript">
-		// 이전 단계로 버튼 이벤트
-		function selectDate() {
-			location.replace("/reserve/backToSelectDate.do");
-		}
+	// 이전 단계로 버튼 이벤트
+	function selectDate() {
+		location.replace("/reserve/backToSelectDate.do");
+	}
+	
+	<!-- 디자이너 영역 클릭 이벤트 -->
+	function clickDesigner(num) {
+		
+		//클릭한 디자이너 번호설정
+		$("#des_num").val(num);
+		
+		var des_num = num;
+		
+		$("#desForm").attr({
+			"method":"post",
+			"action":"/reserve/reserveSelectSergery.do",
+		});
+		$("#desForm").submit();
+		
+		/* location.replace("/reserve/reserveSelectDate.do"); */
+	}
 	</script>
 </head>
 
@@ -110,25 +141,6 @@
 				<hr style="border: 1 solid black; margin-top: 10px;" />
 			</div>
 			
-	<!-- 디자이너 영역 클릭 이벤트 -->
-	<script type="text/javascript">
-		function clickDesigner(num) {
-			
-			//클릭한 디자이너 번호설정
-			$("#des_num").val(num);
-			
-			var des_num = num;
-			
-			$("#desForm").attr({
-				"method":"post",
-				"action":"/reserve/reserveSelectSergery.do",
-			});
-			$("#desForm").submit();
-			
-			/* location.replace("/reserve/reserveSelectDate.do"); */
-		}
-	</script>
-			
 			<!-- 디자이너 선택 -->
 			<form id="desForm" name="desForm">
 				<input type="hidden" id="rest_hairdate" name="rest_hairdate" value="${data.rest_hairdate}"/>
@@ -141,8 +153,18 @@
 						<c:when test="${not empty designerList }">
 							<c:forEach var="des" items="${designerList }">
 								<div class="designerbox" onclick="clickDesigner(${des.des_num})">
-									<img class="designer" src="/resources/assets/img/NoImage.png">
+									<img class="designer" src="/resources/assets/img/slide/kimsoGIF19.gif">
 									<p>${des.des_name} (${des.des_job})</p>
+									<%-- <!-- 디자이너 사진이 있을 때 -->
+									<c:when test="${not empty designerImage }">
+										<img class="designer" src="/resources/assets/img/slide/kimsoGIF10.gif">
+										<p>${des.des_name} (${des.des_job})</p>
+									</c:when>
+									<!-- 디자이너 사진이 없을 때 -->
+									<c:otherwise>
+										<img class="designer" src="/resources/assets/img/designerNoImg.png">
+										<p>${des.des_name} (${des.des_job})</p>
+									</c:otherwise> --%>
 								</div>
 							</c:forEach>
 						</c:when>
