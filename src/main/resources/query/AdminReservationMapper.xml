@@ -4,6 +4,29 @@
 
 <mapper namespace="daily.admin.reservation.dao.AdminReservationDao">
 	
+	
+	
+	<!-- 검색조건에 따른 회원 리스트 출력용 쿼리 -->
+	<sql id="searchCommon">
+		SELECT a.rest_num as rest_num, a.des_num as des_num, a.m_id as m_id, a.rest_hairdate as rest_hairdate, a.rest_time as rest_time, a.rest_state as rest_state, a.rest_memo as rest_memo, a.rest_comment as rest_comment, b.des_name as des_name, a.rest_totalprice as rest_totalprice,c.m_name as m_name, c.m_num as m_num, c.m_phone as m_phone
+		FROM reservation a inner join designer b 
+		on a.des_num = b.des_num inner join member c
+		on a.m_id = c.m_id
+		<where>
+			<if test="search == 'all'">
+				1 = 1 and a.rest_state = 2
+			</if>
+			<if test="search == 'm_name'">
+				c.m_name LIKE '%'||#{keyword}||'%' and a.rest_state = 2
+			</if>
+			<if test="search == 'm_phone'">
+				c.m_phone LIKE '_______'||#{keyword}||'%' and a.rest_state = 2
+			</if>
+		</where>
+	</sql>
+	
+ 	
+	
 	<!-- 예약내역 출력 -->
 	<select id="reservationList" resultType="reservation">
 		SELECT a.rest_num as rest_num, a.rest_time as rest_time, b.m_gender as m_gender, a.m_id as m_id, b.m_name as m_name, b.m_phone as m_phone, a.rest_totalprice as rest_totalprice,to_char(a.rest_hairdate,'yyyy-mm-dd') as rest_hairdate
@@ -29,8 +52,6 @@
 		ORDER BY a.rest_time
 		</select>
 	
-	
-	
 	<!-- 예약상세내역출력 -->
 	<select id="reservationDetail" resultType="reservation" parameterType="int">
 		SELECT a.rest_num as rest_num, a.des_num as des_num, a.m_id as m_id, to_char(a.rest_hairdate,'yyyy-mm-dd') as rest_hairdate, a.rest_time as rest_time, a.rest_state as rest_state, a.rest_memo as rest_memo, a.rest_comment as rest_comment, b.des_name as des_name, a.rest_totalprice as rest_totalprice 
@@ -39,7 +60,8 @@
 		WHERE a.rest_num = #{rest_num}
 	</select>
 	
-	<!-- 시술완료 리 스트 출력 -->
+	
+	<!-- 예약상세보기 시술완료 리 스트 출력 -->
 	<select id="resultList" resultType="reservation" parameterType="String">
 		SELECT a.rest_num as rest_num, a.des_num as des_num, a.m_id as m_id, to_char(a.rest_hairdate,'yyyy-mm-dd') as rest_hairdate, a.rest_time as rest_time, a.rest_state as rest_state, a.rest_memo as rest_memo, a.rest_comment as rest_comment, b.des_name as des_name, a.rest_totalprice as rest_totalprice,c.m_name as m_name, c.m_num as m_num, c.m_phone as m_phone
 		FROM reservation a inner join designer b 
@@ -54,7 +76,8 @@
 			</if>
 		</where>
 	     	ORDER BY a.rest_time desc
-	</select>
+	</select> 
+	
 
 
 	<!-- 예약상태 수정하기 -->
@@ -63,6 +86,44 @@
 		SET rest_state = #{rest_state} , rest_comment = #{rest_comment}
 		WHERE rest_num = #{rest_num}
 	</update> 
-
-
+	
+			
+	<!-- 디자이너마다 예약 건수가 있나 확인하는 쿼리 -->
+	<select id="cofirmReservation" parameterType="int" resultType="int">
+		select count(*)
+		from reservation
+		where des_num = #{des_num} and rest_state = 1
+	</select>
+	
+	
+	<!-- 시술완료  페이지 검색 리스트 출력  -->
+ 	<select id="resultSearchList" resultType="reservation" parameterType="reservation">
+		SELECT rest_num, des_num, m_id , to_char(rest_hairdate,'yyyy-mm-dd') as rest_hairdate, rest_time, rest_state, rest_memo, rest_comment, des_name, rest_totalprice, m_name,  m_num, m_phone
+		FROM 
+		( SELECT list.*, ROWNUM as RNUM
+		FROM(
+			<include refid="searchCommon"></include>) list
+			)
+		<where>
+			<if test="start_row != null and start_row !=''">
+				<if test="end_row != null and end_row != ''">
+					RNUM BETWEEN #{start_row} AND #{end_row} and rest_state = 2
+				</if>
+			</if>
+		</where>
+	     	ORDER BY rest_time desc
+	</select> 
+	
+	<!-- 검색 조건마다 레코드 총 개수구하기 -->
+	<select id="searchListCnt" parameterType="reservation" resultType="int">
+		SELECT NVL(count(1),0)
+		FROM(
+			SELECT list.*, ROWNUM AS RNUM
+			FROM(
+				<include refid="searchCommon"></include>
+				ORDER BY rest_num desc
+			) list
+		)
+		WHERE rest_state = 2 
+	</select>
 </mapper>

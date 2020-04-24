@@ -30,8 +30,8 @@ public class AdminReservationDaoImpl implements AdminReservationDao {
 	
 	//예약완료내역
 	@Override
-	public List<ReserveVo> resultList(String m_id) {
-		return sqlSession.selectList("resultList",m_id);
+	public List<ReserveVo> resultList(ReserveVo rvo) {
+		return sqlSession.selectList("resultList",rvo);
 	}
 	
 	//날짜변경시 리스트 출력
@@ -44,6 +44,25 @@ public class AdminReservationDaoImpl implements AdminReservationDao {
 	@Override
 	public int updateReservation(ReserveVo rvo) {
 		return sqlSession.update("updateReservation",rvo);
+	}
+	
+	
+	//디자이너별 예약건수확인
+	@Override
+	public int cofirmReservation(int des_num) {
+		return sqlSession.selectOne("cofirmReservation",des_num);
+	}
+	
+	//시술완료 검색리스트
+	@Override
+	public List<ReserveVo> resultSearchList(ReserveVo rvo) {
+		return sqlSession.selectList("resultSearchList",rvo);
+	}
+	
+	//검색시마다 레코드수 구하기
+	@Override
+	public int searchListCnt(ReserveVo rvo) {
+		return sqlSession.selectOne("searchListCnt",rvo);
 	}
 
 }

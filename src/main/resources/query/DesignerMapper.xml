@@ -13,7 +13,7 @@
 		ORDER BY des_num 
 	</select>
 	
-	<!-- 디자이너리스트에서 활성화/비활성화 선택시 선택한 값에 맞게 출력되는 쿼리문 --> <!-- NVL(des_file,'-') as des_file -->
+	<!-- 디자이너리스트에서 활성화/비활성화 선택시 선택한 값에 맞게 출력되는 쿼리문 -->
 	<select id="designerAjaxList" resultType="designer" parameterType="int">
 		SELECT to_char(des_regdate,'YYYY-MM-DD')as des_regdate, des_job,
 		des_name, des_phone, des_file , des_num , des_state
@@ -45,16 +45,17 @@
 		<selectKey keyProperty="des_num" resultType="int" order="BEFORE">
 			select designer_seq.nextval from dual
 		</selectKey>
-		INSERT INTO designer(des_num, des_name, des_job, des_phone, des_gender, des_holyday, des_file, des_memo)
-		VALUES(#{des_num},#{des_name},#{des_job},#{des_phone}, #{des_gender}, #{des_holyday},#{des_file,jdbcType=VARCHAR }, #{des_memo})
+		INSERT INTO designer(des_num, des_name, des_job, des_phone, des_gender, des_holyday, des_file, des_memo, des_image)
+		VALUES(#{des_num},#{des_name},#{des_job},#{des_phone}, #{des_gender}, #{des_holyday},#{des_file,jdbcType=VARCHAR }, #{des_memo} , #{des_image,jdbcType=VARCHAR})
 	</insert>
 	
 	<!-- 디자이너 수정하기 -->
 	<update id="updateDesigner" parameterType="designer">
 		UPDATE designer
-		SET des_job= #{des_job}, des_phone=#{des_phone}, des_gender=#{des_gender}, des_holyday=#{des_holyday}, des_file=#{des_file,jdbcType=VARCHAR}, des_memo=#{des_memo}
+		SET des_job= #{des_job}, des_phone=#{des_phone}, des_gender=#{des_gender}, des_holyday=#{des_holyday}, des_file=#{des_file,jdbcType=VARCHAR}, des_memo=#{des_memo},des_image = #{des_image,jdbcType=VARCHAR}
 		WHERE des_num = #{des_num}
 	</update>
+	
 	
 	<!-- 메소드명은 deleteDesigner이지만 실제로는 비활성화 시키는것이므로 상태값을 업데이트 시킨다 --> 
 	<update id="deleteDesigner" parameterType="int">
@@ -70,10 +71,4 @@
 		WHERE des_num = #{des_num}
 	</update>
 	
-	<!-- 첨부파일 다운받기 -->
-	<!-- <select id="downloadFile" parameterType="designer" resultType="designer">
-		SELECT des_file
-		FROM designer
-		WHERE des_num = #{des_num}
-	</select> -->
 </mapper>

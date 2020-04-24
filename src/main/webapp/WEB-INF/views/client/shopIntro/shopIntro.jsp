@@ -10,8 +10,8 @@
 <meta content="" name="keywords">
 
 	<!-- Favicons -->
-	<link href="/resources/assets/img/favicon.png" rel="icon">
-	<link href="/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="apple-touch-icon">
 	
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -48,9 +48,39 @@
 	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
 	
 	<style type="text/css">
-		.designer { width: 300px; height: 200px }
-		.designerbox { float: left; margin: 10px 20px 10px 20px; }
+		.designer { width: 280px; height: 200px; }
+		.designerbox { float: left; padding: 10px; 
+						margin: 10px 20px 10px 20px;
+						transition: all ease-in-out 0.3s;
+						transform: scale(1);
+						-webkit-transform: scale(1);
+						-moz-transform: scale(1);
+						-ms-transform: scale(1);
+						-o-transform: scale(1); }
+		.designerbox:hover { box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
+							 transform: scale(1.1);
+							-webkit-transform: scale(1.1);
+							-moz-transform: scale(1.1);
+							-ms-transform: scale(1.1);
+							-o-transform: scale(1.1); }
+		.designerbox p { padding-top: 15px; }
 		.howtocome > li { text-align: center; width: 350px;}
+		.shopImg { width: 500px; height:350px;
+					padding: 15px; margin: 15px;
+					box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+					background-color: #FFFAFA;
+					transition: all ease-in-out 0.3s;
+					transform: scale(1);
+					-webkit-transform: scale(1);
+					-moz-transform: scale(1);
+					-ms-transform: scale(1);
+					-o-transform: scale(1); }
+		.shopImg:hover { box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18); 
+						 transform: scale(1.1);
+						-webkit-transform: scale(1.1);
+						-moz-transform: scale(1.1);
+						-ms-transform: scale(1.1);
+						-o-transform: scale(1.1); }
 	</style>
 </head>
 
@@ -74,9 +104,9 @@
 			</div>
 			
 			<!-- 상단 Shop 사진 2장 가운데 정렬 -->
-			<div style="margin: 0 auto;">
-				<img src="/resources/assets/img/slide/ShopImage_002.jpg" width="500px" height="350px" style="padding: 15px;">
-				<img src="/resources/assets/img/slide/ShopImage_005.jpg" width="500px" height="350px" style="padding: 15px;">
+			<div class="shopImgBox" style="margin: 0 auto;">
+				<img class="shopImg" src="/resources/assets/img/slide/ShopImage_002.jpg">
+				<img class="shopImg" src="/resources/assets/img/slide/ShopImage_005.jpg">
 			</div>
 			
 			<!-- 구분선 -->
@@ -124,8 +154,7 @@
 				</div>
 				<div class="content" style="width: 500px; float: right; padding-top: 50px;">
 					<ul class="howtocome">
-						<li><h3>찾아 오시는 길</h3></li>
-						<li><h6>　</h6></li>
+						<li style="margin-bottom: 45px;"><h3>찾아 오시는 길</h3></li>
 						<li><i class="bx bx-check-double"></i> 8105번 잠실역 1번 출구 하차 후 도보 15분</li>
 						<li><i class="bx bx-check-double"></i> 8000번 잠실역 5번 출구 하차 후 도보 62분</li>
 						<li><i class="bx bx-check-double"></i> 1309번 잠실역 6번 출구 하차 후 도보 48분</li>

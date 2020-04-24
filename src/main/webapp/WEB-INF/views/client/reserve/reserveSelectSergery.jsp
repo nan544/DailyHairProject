@@ -11,8 +11,8 @@
 <meta content="" name="keywords">
 
 	<!-- Favicons -->
-	<link href="/resources/assets/img/favicon.png" rel="icon">
-	<link href="/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="apple-touch-icon">
 	
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -107,11 +107,6 @@
 		
 		// 결제하기 버튼 이벤트
 		function payment() {
-			alert($("#des_num").val()+"<< 가져갈 디자이너 번호");
-			alert($("#rest_hairdate").val()+"<<선택한 시술날짜");
-			alert($("#rest_time").val()+"<<선택한 시술시간");
-		   	alert($("#rest_memo").val()+"<<요구사항");
-		   	alert($("#rest_totalprice").val()+"<< 총 시술가격");
 			
 		   	if($("input:checkbox[name=styling_num]:checked").length==0){
 		   		alert("시술을 하나이상 선택해주세요");

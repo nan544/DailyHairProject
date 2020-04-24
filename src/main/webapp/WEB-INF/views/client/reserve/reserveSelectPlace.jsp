@@ -11,8 +11,8 @@
 <meta content="" name="keywords">
 
 	<!-- Favicons -->
-	<link href="/resources/assets/img/favicon.png" rel="icon">
-	<link href="/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="apple-touch-icon">
 	
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -54,8 +54,22 @@
 		.reserveBtn { width: 150px; height: 50px; background: #ffb03b; border: 0;	color: #fff;
 				padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;}
 		
-		.designer { width: 300px; height: 200px }
-		.designerbox { float: left; margin: 10px 20px 10px 20px; }
+		.designer { width: 280px; height: 200px }
+		.designerbox { float: left; padding: 10px; 
+						margin: 10px 20px 10px 20px;
+						transition: all ease-in-out 0.3s;
+						transform: scale(1);
+						-webkit-transform: scale(1);
+						-moz-transform: scale(1);
+						-ms-transform: scale(1);
+						-o-transform: scale(1); }
+		.designerbox:hover { box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
+							transform: scale(1.1);
+							-webkit-transform: scale(1.1);
+							-moz-transform: scale(1.1);
+							-ms-transform: scale(1.1);
+							-o-transform: scale(1.1); }
+		.designerbox p { padding-top: 15px; }
 	</style>
 	
 	<!-- 이미지 영역 클릭 이벤트 -->
@@ -105,10 +119,10 @@
 			<!-- 예약 정보 -->
 			<div style="margin: 0 auto;">
 				<div class="reserveTablehead">예약 정보　　</div>
-				<div class="reserveTable">${place}</div>
-				<div class="reserveTable">${date}</div>
-				<div class="reserveTable">${designer}</div>
-				<div class="reserveTable">${sergery}</div>
+				<div class="reserveTable">(매장)입력 대기 중</div>
+				<div class="reserveTable">(시술일시)입력 대기 중</div>
+				<div class="reserveTable">(디자이너)입력 대기 중</div>
+				<div class="reserveTable">(시술)입력 대기 중</div>
 				<div></div>
 				<div class="reserveTablehead" style="float: left;">결제 금액　　</div>
 				<div class="reserveTable" style="float: right;">(금액)입력 대기 중</div>
