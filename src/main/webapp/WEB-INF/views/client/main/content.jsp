@@ -72,7 +72,7 @@
 		
 			<!-- Slide 1 -->
 			<!-- <div class="carousel-item active" style="background: url(/resources/assets/img/slide/ShopImage_002.jpg);"> -->
-			<div class="carousel-item active" style="background: url(/resources/assets/img/slide/kimsoGIF15.gif);">
+			<div class="carousel-item active" style="background: url(/resources/assets/img/slide/ShopImage_002.jpg);">
 				<div class="carousel-container">
 					<div class="carousel-content">
 						<h2 class="animated fadeInDown"><span>DailyHair</span>Shop</h2>
