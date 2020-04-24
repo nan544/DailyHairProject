@@ -7,6 +7,10 @@
 <meta charset="UTF-8">
 <title>DailyHairShop</title>
 
+	<!-- Favicons -->
+	<link href="/resources/assets/img/DHS-icon.png" rel="icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="apple-touch-icon">
+
 </head>
 
 <body>

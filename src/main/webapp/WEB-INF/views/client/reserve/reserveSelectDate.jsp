@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -11,34 +11,29 @@
 <meta content="" name="keywords">
 
 <!-- Favicons -->
-<link href="/resources/assets/img/favicon.png" rel="icon">
-<link href="/resources/assets/img/apple-touch-icon.png"
-	rel="apple-touch-icon">
+<link href="/resources/assets/img/DHS-icon.png" rel="icon">
+<link href="/resources/assets/img/DHS-icon.png" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/vendor/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/vendor/icofont/icofont.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/vendor/boxicons/css/boxicons.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/vendor/animate.css/animate.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/vendor/venobox/venobox.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/vendor/owl.carousel/assets/owl.carousel.min.css">
-<link rel="stylesheet"
-	href="/resources/include/css/bootstrap-datepicker.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/icofont/icofont.min.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/boxicons/css/boxicons.min.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/animate.css/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/venobox/venobox.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/owl.carousel/assets/owl.carousel.min.css">
 
 <!-- Template Main CSS File -->
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/css/style.css">
+
+<!-- jQuery 사용 -->
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<!-- datepicker 설정 초기값 -->
+<link href="/resources/dateAndTimePicker/dist/css/jquery-ui.css" rel="stylesheet" type="text/css">
+<script src="/resources/dateAndTimePicker/dist/js/jquery-ui.js"></script>
 
 <!-- =======================================================
 	* Template Name: Delicious - v2.0.0
@@ -49,19 +44,13 @@
 
 <!-- Vendor JS Files -->
 <script src="/resources/assets/vendor/jquery/jquery.min.js"></script>
-<script
-	src="/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script
-	src="/resources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/resources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 <script src="/resources/assets/vendor/php-email-form/validate.js"></script>
 <script src="/resources/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
-<script
-	src="/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="/resources/assets/vendor/venobox/venobox.min.js"></script>
 <script src="/resources/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-
-<script src="/resources/include/js/bootstrap-datepicker.js"></script>
-<script src="/resources/include/js/bootstrap-datepicker.ko.min.js"></script>
 
 <!-- Template Main JS File -->
 <script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
@@ -70,21 +59,25 @@
 <script type="text/javascript">
 	$(function() {
 		$("#datePicker").datepicker({
-			format : "yyyy-mm-dd",
-			startDate : '+1d',
-			autoclose : true,
-			templates : {
-				leftArrow : '&laquo;',
-				rightArrow : '&raquo'
-			},
-			title : "날짜선택",
-			language : "ko"
+			dateFormat: 'yy-mm-dd',
+			prevText: '이전 달',		// 마우스 오버시 이전달 텍스트
+			nextText: '다음 달',		// 마우스 오버시 다음달 텍스트
+			closeText: '닫기',		// 닫기 버튼 텍스트 변경
+			currentText: '오늘',		// 오늘 버튼 텍스트 변경
+			monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],	//한글 캘린더중 월 표시를 위한 부분
+			monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],	//한글 캘린더 중 월 표시를 위한 부분
+			dayNames: ['일', '월', '화', '수', '목', '금', '토'],	//한글 캘린더 요일 표시 부분
+			dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],	//한글 요일 표시 부분
+			dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],	// 한글 요일 표시 부분
+			showMonthAfterYear: true,	// true : 년 월 / false : 월 년 순으로 보여줌
+			yearSuffix: '년',		// 년도 표시
+			showButtonPanel: false	// 오늘로 가는 버튼과 달력 닫기 버튼 보기 옵션
 		}).on(
 				"changeDate",
 				function(e) {
 					var date = $("#datePicker").val();
 					
-				});
+		});
 	});
 	
 	// 이전 단계로 버튼 이벤트
@@ -205,8 +198,9 @@
 					<form id="timeForm" name="timeForm">
 						<div class="date_left">
 							<label>1. 날짜를 선택해주세요.</label><br>
-							<input type="text" id="datePicker" name="rest_hairdate"
-								class="form-control" placeholder="날짜를 선택해주세요">
+							<input type="text" class="datepicker" id="datePicker" name="rest_hairdate"
+								placeholder="날짜 선택" data-language="ko" readonly="readonly"
+								style="width: 150px; height: 35px; text-align: center;">
 						</div>
 						<div class="date_right">
 							<label>2. 시간을 선택해주세요.</label><br>

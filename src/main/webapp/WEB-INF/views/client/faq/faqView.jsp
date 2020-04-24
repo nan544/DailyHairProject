@@ -11,8 +11,8 @@
 <meta content="" name="keywords">
 
 	<!-- Favicons -->
-	<link href="/resources/assets/img/favicon.png" rel="icon">
-	<link href="/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="icon">
+	<link href="/resources/assets/img/DHS-icon.png" rel="apple-touch-icon">
 	
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -65,7 +65,8 @@
 					color: #F15F5F; font-weight: 700; }
 		.accordion_head { padding: 15px 0px 5px 25px;
 						box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-						transition: all ease-in-out 0.3s; }
+						transition: all ease-in-out 0.3s;
+						background-color: #FFFAFA; }
 		.accordion_head:hover { padding: 15px 0px 5px 25px;
 						box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
 						background: #FAF4C0; }
