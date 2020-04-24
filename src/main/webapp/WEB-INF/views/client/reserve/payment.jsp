@@ -78,10 +78,9 @@
 			"action":"/reserve/reserveInsert.do"
 		});
 		
-		
 		$("#insertForm").submit();
-		
 	}
+	
 	function paymentAccount() {
 		alert("계좌이체를 진행하겠습니다.");
 		
