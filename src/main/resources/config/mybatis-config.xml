@@ -10,6 +10,7 @@
 		<typeAlias type="daily.admin.style.vo.StyleVO" alias="styling"></typeAlias>
 		<typeAlias type="daily.admin.board.vo.AdminHairGoodsVO" alias="hairgoods"></typeAlias>
 		<typeAlias type="daily.admin.board.vo.AdminHairStyleVO" alias="hairstyle"></typeAlias>
+		<typeAlias type="daily.admin.bi.vo.AdminBiVO" alias="bi"></typeAlias>
 		<typeAlias type="daily.client.member.vo.MemberVO" alias="member"></typeAlias>
 		<typeAlias type="daily.client.reserve.vo.ReserveVo" alias="reservation"></typeAlias>
 		<typeAlias type="daily.client.reservedetail.vo.ReserveDetailVO" alias="reservationDetail"></typeAlias>

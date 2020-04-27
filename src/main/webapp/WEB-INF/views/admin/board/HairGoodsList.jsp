@@ -68,7 +68,7 @@ margin-right: 5px;
 </head>
 <body>
 	<h3>HairGoods 게시판 관리</h3>
-	<!-- 검색 및 페이징 -->
+	<!-- 검색 및 페이징을 위한 form -->
 	<div>
 	<form id="f_search">
 	<input type="hidden" id="page" name="page" value="${data.page}">
@@ -77,6 +77,8 @@ margin-right: 5px;
 	<input type="button" id="searchBtn" class="btn btnBoard"  name="searchBtn" value="검색" >
 	</form>
 	</div>
+	<!-- 검색 및 페이징을 위한 form -->
+	
 
 		<%--====================상세 페이지 이동을 위한 Form =============== --%>
 	<form name="detailForm" id="detailForm">
