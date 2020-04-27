@@ -110,7 +110,7 @@
 			<!-- 결제 수단 선택 -->
 			<div style="margin: 0 auto;">
 				<div class="paymentTable">
-				<label>카드 결제</label>　
+				<label>카드 제d</label>　
 				<input type="radio" checked="checked">
 				<label>　　</label>
 				<label>계좌이체</label>　

@@ -62,5 +62,11 @@ public class AdminReservationServiceImpl implements AdminReservationService {
 	public int searchListCnt(ReserveVo rvo) {
 		return adminReservationDao.searchListCnt(rvo);
 	}
+	
+	//예약취소리스트 출력
+	@Override
+	public List<ReserveVo> reservationCancleList(ReserveVo rvo) {
+		return adminReservationDao.reservationCancleList(rvo);
+	}
 
 }

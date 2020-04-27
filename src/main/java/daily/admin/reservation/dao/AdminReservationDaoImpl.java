@@ -65,4 +65,10 @@ public class AdminReservationDaoImpl implements AdminReservationDao {
 		return sqlSession.selectOne("searchListCnt",rvo);
 	}
 
+	//에약취소리스트 출력
+	@Override
+	public List<ReserveVo> reservationCancleList(ReserveVo rvo) {
+		return sqlSession.selectList("resultSearchList",rvo);
+	}
+
 }

@@ -159,6 +159,7 @@ width : 110px;
 	</div>
 	<div class="infoContainer">
 		<h4 align="center" style="color: gray;">이전 시술내역</h4>
+		<label style="margin-left: 10px; color: gray;"><span style="color: red;">*</span>클릭하여 시술명 상세보기</label>
  	<table class="table table-hover">
  		<colgroup>
  			<col width="10%">
