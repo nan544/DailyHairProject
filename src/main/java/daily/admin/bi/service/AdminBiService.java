@@ -8,6 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 import daily.admin.bi.vo.AdminBiVO;
 
 public interface AdminBiService {
-	public ModelAndView list() throws ParseException;
+	public List<AdminBiVO> list() throws ParseException;
 	
 }

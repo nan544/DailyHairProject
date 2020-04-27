@@ -3,15 +3,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="daily.bi.dao.AdminBiDao">
-
-	<!-- <select id=list parameterType="bi" resultType="bi">
+	
+	<select id="list" resultType="bi">
 		SELECT
-			columnname1,
-			columnname2,
-			columnname3
-		FROM tablename1
-		WHERE columnname1 = #{value}
-	</select> -->
+			rest_hairdate ,	sum(rest_totalprice)
+		FROM
+			reservation
+		WHERE
+			rest_state = 2 and rest_hairdate between '20/04/20' and '20/05/30'
+		GROUP BY 
+			rest_hairdate
+		order BY
+			rest_hairdate ASC
+	</select>
+
 
 
 </mapper>

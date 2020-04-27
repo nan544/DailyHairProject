@@ -120,7 +120,7 @@ margin-right: 5px;
 			</c:when>
 			<c:otherwise>
 				<tr>
-					<td colspan="8" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+					<td colspan="5" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 				</tr>
 			</c:otherwise>
 		</c:choose>
