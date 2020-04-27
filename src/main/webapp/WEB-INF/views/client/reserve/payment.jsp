@@ -81,6 +81,8 @@
 			"method":"post",
 			"action":"/reserve/reserveInsert.do"
 		});	
+		
+		$("#insertForm").submit();
 	}
 	</script>
 	

@@ -128,9 +128,13 @@ public class AdminReservationController {
 		// 페이지세팅 - ReserveVO 는 CommonVO 를 상속하고있음
 		Paging.setPage(rvo);
 		
+		
+		rvo.setRest_state(2);
+		
 		// 전체 레코드수 구하기
 		int total = adminReservationService.searchListCnt(rvo);
 		log.info(total+"<<레코드수");
+		
 		
 		List<ReserveVo> resultList = adminReservationService.resultSearchList(rvo);
 		
@@ -154,5 +158,29 @@ public class AdminReservationController {
 		model.addAttribute("member", mvo);
 		
 		return "admin/reservation/pop/resultReservationDetail_pop";
+	}
+	
+	//예약 취소내역 리스트 출력
+	@RequestMapping(value = "/reservation/reservationCancleList.do")
+	public String reservationCancleList(ReserveVo rvo , Model model) {
+		log.info("reservationCancleList 호출완료");
+		
+		// 페이지세팅 - ReserveVO 는 CommonVO 를 상속하고있음
+		Paging.setPage(rvo);
+		
+		rvo.setRest_state(0);
+		
+		// 전체 레코드수 구하기
+		int total = adminReservationService.searchListCnt(rvo);
+		log.info(total+"<<레코드수");
+		
+		
+		List<ReserveVo> cancleList = adminReservationService.reservationCancleList(rvo);
+		
+		model.addAttribute("data", rvo);
+		model.addAttribute("total", total);
+		model.addAttribute("cancleList",cancleList);
+		
+		return "admin/reservation/adminReservationCancleList";
 	}
 }
