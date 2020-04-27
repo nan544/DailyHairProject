@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 
@@ -49,6 +51,11 @@
 	
 	<!-- Template Main JS File -->
 	<script type="text/javascript" src="/resources/assets/js/main.js"></script>
+	
+<style type="text/css">
+	p > span { color: red; font: bold; }
+</style>
+
 </head>
 
 <body>
@@ -60,12 +67,68 @@
 	<div class="container-fluid" >
 		<div class="row">
 			<!-- 최상단 구분 -->
-			<div style="width: 100%; height: 150px; margin-bottom: 50px;">
+			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
 			</div>
 			
-			<div style="width: 100%; height: 500px; text-align: center;">
-				<h1 style="padding-top: 150px;">HairGoods Gallery 준비중</h1>
+			<!-- 상단 문구 -->
+			<div style="margin: 0 auto; text-align: center; width: 100%;">
+				<h1 style="margin-bottom: 35px;">HairGoods Gallery</h1>
+				<p style="margin-bottom: 50px;"><span>*</span> 실제 매장에서 고객님들의 시술에 사용되는 제품입니다. <span>*</span></p>
 			</div>
+			
+			<!-- 상품 문구 -->
+			<div style="margin: 0 auto; max-width: 1020px;">
+				<div style="width: 100%;">
+					
+				</div>
+			</div>
+			
+			
+			
+			<!-- Test -->
+			<table class="table table-condensed table-hover">
+				<colgroup>
+					<col width="10%" />
+					<col width="30%" />
+					<col width="10%" />
+					<col width="22.5%" />
+					<col width="22.5%" />
+				</colgroup>
+				<tr class="active">
+					<th>글번호</th>
+					<th>스타일명</th>
+					<th>등록일</th>
+					<th>썸네일 이미지명</th>
+					<th>상세이미지</th>
+				</tr>
+				<!-- 데이터 출력 시작-->
+				<c:choose>
+					<c:when test="${not empty hgList }">
+						<c:forEach var="hgList" items="${hgList}" varStatus="status">
+						<c:set var="hg_thumb_" value="${fn:substringAfter(hgList.hg_thumb,'_') }" />
+						<c:set var="hg_thumb__" value="${fn:substringAfter(hg_thumb_,'_') }"/>
+						<c:set var="hg_img1_" value="${fn:substringAfter(hgList.hg_img1,'_') }"/>
+						<c:set var="hg_img1__" value="${fn:substringAfter(hg_img1_,'_') }"/>
+							<tr data-num="${hgList.hg_num}" >
+								<td class="goDetail">${hgList.hg_num }</td>
+								<td class="goDetail">${hgList.hg_title}</td>
+								<td>${hgList.hg_regdate}</td>
+								<td>${hg_thumb__}</td>
+								<td>${hg_img1__}</td>
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td colspan="8" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+				<!-- 데이터 출력 끝-->
+			</table>
+			
+			
+			
 		</div>
 	</div>
 	</section><!-- End HairGoods Section -->

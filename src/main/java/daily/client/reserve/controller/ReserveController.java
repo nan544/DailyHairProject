@@ -31,6 +31,7 @@ import daily.client.reservedetail.service.ReserveDetailService;
 @RequestMapping(value = "/reserve")
 public class ReserveController {
 	// view에서 controller로 service에 있는 기능 호출 - dao를 통해 DB조작
+	
 	private Logger log = LoggerFactory.getLogger(DesignerController.class);
 	
 	@Autowired
@@ -55,15 +56,13 @@ public class ReserveController {
 		return "client/reserve/reserveSelectDate";
 	}
 	
-	// 02. 시술 일자) [date] 달력 및 시간 내보이는 기능 추가할 것 
+	// 02. 시술 일자) [date]  
 	@RequestMapping(value = "/reserveSelectTime.do", method = RequestMethod.POST)
 	@ResponseBody
 	public List<ReserveVo> selectTime(@ModelAttribute ReserveVo rvo){ 
 		log.info("(동적으로 버튼 생성");
 		return reserveService.selectTime(rvo);
 	}
-	
-	
 	
 	// 02. 시술 일자 back) 매장 선택으로 돌아갈 때 세션값 초기화
 	@RequestMapping(value = "/backToSelectPlace")
@@ -92,7 +91,6 @@ public class ReserveController {
 		
 		log.info("디자이너) 디자이너 목록 노출");
 		mav.addObject("designerList", desList);
-		
 		mav.addObject("data",rvo);
 		
 		log.info("디자이너) reserveSelectDesigner.do 호출 완료");
@@ -110,10 +108,7 @@ public class ReserveController {
 		log.info("디자이너) 클릭한 디자이너 key값 전달 - ");
 		designerVO = designerService.designerDetail(dvo.getDes_num());
 		
-		
-		
 		log.info("디자이너) reserveSelectDesigner.do 호출 완료");
-		
 		return mav;
 	}
 	
@@ -130,16 +125,12 @@ public class ReserveController {
 	// 시술 선택으로 이동
 	@RequestMapping(value = "/reserveSelectSergery.do", method = RequestMethod.POST)
 	public String reserveSelectSergery(ReserveVo rvo , Model model) {
-		
-		
 		List<StyleVO> styleList = styleService.stylingList(rvo.getDes_num());
-		
 		DesignerVO dvo = designerService.designerDetail(rvo.getDes_num());
 		
 		model.addAttribute("desname",dvo);
 		model.addAttribute("styleList",styleList);
 		model.addAttribute("data",rvo);
-		
 		
 		return "client/reserve/reserveSelectSergery";
 	}
@@ -147,8 +138,6 @@ public class ReserveController {
 	// 00. 결제하기로 이동
 	@RequestMapping(value = "/reservePayment.do", method = RequestMethod.POST)
 	public String reservePayment(@ModelAttribute ReserveVo rvo, Model model, @RequestParam("holy")String holy) {
-		
-		
 		
 		List<StyleVO> styleList = styleService.stylingList(rvo.getDes_num());
 		DesignerVO dvo = designerService.designerDetail(rvo.getDes_num());
