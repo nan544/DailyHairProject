@@ -162,7 +162,7 @@ public class ReserveController {
 			for(String i : holy) {
 				reserveDetailService.insertReservationDetail(Integer.parseInt(i));
 			}
-			return "client/reserve/paymentCard";
+			return "client/reserve/paymentFinal";
 		}else {
 			return "client/reserve/payment";
 		}

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
-<title>디자이너 시술 목록</title>
+<title>paymentCard</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -48,51 +48,53 @@
 	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
 	
 	<style type="text/css">
-	body { background-color: #fffaf3; }
-	.stylingBox { box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
-				margin: 0 auto; background-color: #FFFFFF;
-				padding: 20px; }
-	.styleCell:hover { background-color: #D4F4FA; transition: 0.4s; }
+		.reserveTable { display: inline; padding: 10px; font-size: 12px;}
+		.reserveTablehead { display: inline; padding: 10px; font: 15pt bold; color: #670000;}
+		.reserveBtn { width: 150px; height: 50px; background: #ffb03b; border: 0;	color: #fff;
+					padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;}
+		.paymentOutBox { margin: 0 auto; width: 750px; height: 500px; 
+						background-color: #FFFFFF; padding-top: 50px;
+						box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);}
+		.paymentInBox { margin: 0 auto; width: 500px; height: 500px; text-align: center; }
 	</style>
+	
 </head>
 
 <body>
-<div style="margin: 25px;">
-	<div style="text-align: center; margin-top: 50px;">
-		<h1>시술 가능 목록</h1>
-	</div><br>
+	<!-- header 삽입 -->
+	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
 	
-	<!-- 디자이너 시술 가능 목록 -->
-	<!-- ======= ShopIntro Section ======= -->
+	<!-- ======= Reserve Section ======= -->
+	<section id="about" class="about">
 	<div class="container-fluid" >
 		<div class="row">
-			<div class="stylingBox" >
-			<c:choose>
-				<c:when test="${not empty styleList }">
-					<c:forEach var="style" items="${styleList}">
-						<table style="width: 300px;" cellpadding="10px">
-							<colgroup>
-								<col width="60%">
-								<col width="40%">
-							</colgroup>
-							<tr class="styleCell"><td style="text-align: left;">${style.styling_name}</td>
-								<td style="text-align: right;">${style.styling_price}원</td></tr>
-						</table>
-					</c:forEach>
-				</c:when>
-				
-				<c:otherwise>
-					<div style="text-align: center; margin: 0 auto; width: 300px; padding: 30px;">
-						<p>현재 디자이너에게</p>
-						<p>등록된 시술이</p>
-						<p>존재하지 않습니다.</p>
-					</div>
-				</c:otherwise>
-			</c:choose>
+			<!-- 최상단 구분 -->
+			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
 			</div>
+			
+			<!-- 상단 -->
+			<div style="margin: 0 auto; text-align: center; width: 100%;">
+				<h1 style="margin-bottom: 20px;"></h1>
+			</div>
+			
+			<!-- 결제 상자 -->
+			<div class="paymentOutBox">
+				<div class="paymentInBox">
+					<h4 style="">Payment is in progress...</h4>
+					<img width="400" height="300" src="/resources/assets/img/reserve/loading2.gif">
+				</div>
+			</div>
+			
+			<!-- 최하단 구분 -->
+			<div style="width: 100%; margin-top: 50px;">
+			</div>
+			
 		</div>
 	</div>
-</div>
+	</section><!-- End Reserve Section -->
+	
+	<!-- footer 삽입 -->
+	<jsp:include page="/WEB-INF/views/client/main/footer.jsp"></jsp:include>
 </body>
 
 </html>
