@@ -12,6 +12,9 @@
 		//취소버튼 클릭시 전페이지로 가기
 		$("#closeBtn").click(function(){
 			let qna_num = $("#qna_num").val();
+			
+			alert(qna_num);
+			
 			location.href="/client/qna/qnaDetail.do?qna_num="+qna_num;
 		});
 		
@@ -51,9 +54,9 @@
 	});
 	
 	//이미지 다운로드
-	function fn_fileDown(qna_num) {
+	function fn_fileDown(qna_num1) {
 		var formObj = $("#downForm");
-		$("#qna_num").attr("value", qna_num);
+		$("#qna_num1").attr("value", qna_num1);
 		formObj.attr("action", "/client/qna/download.do");
 		formObj.submit();
 	}
@@ -61,7 +64,7 @@
 </head>
 <body>
 	<form name="downForm" id="downForm">
-			<input type="hidden" name="qna_num" id="qna_num">
+			<input type="hidden" name="qna_num" id="qna_num1">
 	</form>
  	<h1 align="center">1:1 문의수정</h1>
 	
