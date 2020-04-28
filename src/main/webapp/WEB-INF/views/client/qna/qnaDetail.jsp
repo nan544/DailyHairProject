@@ -34,9 +34,9 @@
 	});
 	
 	//이미지 다운로드
-	function fn_fileDown(qna_num) {
+	function fn_fileDown(qna_num1) {
 		var formObj = $("#downForm");
-		$("#qna_num").attr("value", qna_num);
+		$("#qna_num1").attr("value", qna_num1);
 		formObj.attr("action", "/client/qna/download.do");
 		formObj.submit();
 	}
@@ -44,7 +44,7 @@
 </head>
 <body>
 	<form name="downForm" id="downForm">
-			<input type="hidden" name="qna_num" id="qna_num">
+			<input type="hidden" name="qna_num" id="qna_num1">
 		</form>
 	<h1>1:1 문의 상세보기</h1>
 	<div class="mainContainer">
