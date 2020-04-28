@@ -42,9 +42,11 @@ public class LoginController {
 		
 		MemberVO vo = service.login(lvo);
 		
+		
 		if(vo != null) {
 			session.setAttribute("login", vo);
 			mav.setViewName("client/main/main");
+			System.out.println(vo.getM_id() + "<< 로그인시 세션에 객체를저장. 저장한 객체의 아이디를 불러옴");
 			return mav;
 		}else{
 			mav.addObject("msg","아이디와 비밀번호를 정확하게 입력 해주시길 바랍니다.");
