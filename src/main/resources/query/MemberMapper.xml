@@ -13,11 +13,18 @@
 			VALUES(#{m_id},#{m_num},#{m_pwd},#{m_name},#{m_gender},#{m_phone},#{m_email},#{m_memo})
 	</insert>
 	
-	<!-- 아이디 중복체크 -->
+	<!-- 회원가입 아이디 중복체크 -->
 	<select id="idChk" resultType="int">
 		SELECT COUNT(*)
 		FROM MEMBER
 		WHERE m_id = #{m_id}
+	</select>
+	
+	<!-- 회원가입 이메일 중복체크 -->
+	<select id="mailChk" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE m_email = #{m_email}
 	</select>
 	
 	<!-- 로그인 -->
@@ -25,27 +32,40 @@
 		SELECT *
 		FROM MEMBER
 		WHERE m_id = #{m_id}
-		AND m_pwd = #{m_pwd}
 	</select>
 	
-	<!-- 마이페이지 접속 본인확인 -->
+	<!-- 마이페이지 본인확인 -->
 	<select id="mypage" resultType="daily.client.member.vo.MemberVO">
 		SELECT *
 		FROM MEMBER
 		WHERE m_pwd = #{m_pwd}
 	</select>
 	
-	<!-- <select id="memberUpdate" parameterType="int" resultType="daily.client.member.vo.MemberVO">
-		SELECT *
-		FROM MEMBER
+	<!-- 마이페이지 회원정보 수정 -->
+	<update id="memberUpdateDo" parameterType="member">
+		UPDATE member 
+		SET m_phone = #{m_phone}, m_memo = #{m_memo}
 		WHERE m_num = #{m_num}
-	</select> -->
+	</update>
 	
-	<!-- 회원정보 select -->
-	<select id="memberSelect" parameterType="String" resultType="member">
-		SELECT m_id, m_num, m_name, m_pwd, m_gender, m_phone, m_email, m_memo, m_state, to_char(m_date,'YYYY-MM-DD') as m_date
-		FROM MEMBER
-		WHERE m_id = #{m_id}
+	
+	<!-- 회원 비활성화 -->
+	<update id="clientUpdate" parameterType="member">
+		UPDATE member
+		SET m_state = 0
+		WHERE m_num = #{m_num}
+	</update>
+	
+	
+	
+	
+	
+	
+	<!-- 회원 예약건수 -->
+	<select id="memberReservation" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM member
+		WHERE m_num = #{m_num} and rest_state = 1
 	</select>
 	
 	<!-- 아이디 찾기 -->
@@ -53,19 +73,6 @@
 		SELECT COUNT(*)
 		FROM MEMBER
 		WHERE m_email = #{m_email}
-	</select>
-	
-	<!-- 계정 비활성화 -->
-	<update id="deleteMember" parameterType="int">
-		UPDATE member
-		SET m_state = 0
-		WHERE m_num = #{m_num}
-	</update>
-	
-	<select id="memberDetail" parameterType="int" resultType="member">
-		SELECT * 
-		FROM member
-		where m_num = #{m_num}
 	</select>
 	
 </mapper>

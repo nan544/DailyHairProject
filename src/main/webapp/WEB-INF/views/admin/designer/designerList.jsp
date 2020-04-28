@@ -157,8 +157,7 @@ float: left;
 									<c:if test="${des.des_state == 1}">
 										<td>활성화</td>
 									</c:if>
-									<td><input type="button" id="modify" name="modify"
-										class="modify btn" value="[상세보기 / 수정]" /></td>
+									<td><input type="button" id="modify" name="modify" class="modify btn" value="[상세보기 / 수정]" /></td>
 								</tr>
 							</c:forEach>
 						</c:when>

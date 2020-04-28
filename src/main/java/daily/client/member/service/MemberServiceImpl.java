@@ -3,11 +3,13 @@ package daily.client.member.service;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import daily.client.member.dao.MemberDAO;
 import daily.client.member.vo.MemberVO;
 
 @Service
+@Transactional
 public class MemberServiceImpl implements MemberService {
 	
 	@Inject
@@ -26,6 +28,13 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 	
+	//이메일 중복체크
+	@Override
+	public int mailChk(MemberVO vo) throws Exception {
+		int result = dao.mailChk(vo);
+		return result;
+	}
+	
 	//로그인
 	@Override
 	public MemberVO login(MemberVO lvo) {
@@ -38,34 +47,34 @@ public class MemberServiceImpl implements MemberService {
 		return dao.mypage(lvo);
 	}
 	
-	/*@Override
-	public MemberVO memberUpdate(int m_num) {
-		return dao.memberUpdate(m_num);
-	}*/
-	
-	//회원정보 select
+	//회원정보 수정
 	@Override
-	public MemberVO memberSelect(String m_id) {
-		MemberVO vo = dao.memberSelect(m_id);
-		return vo;
+	public void memberUpdateDo(MemberVO vo) throws Exception {
+		dao.memberUpdateDo(vo);
+	}
+	
+	
+	
+	
+
+
+
+	//회원 비활성화
+	@Override
+	public int clientUpdate(MemberVO mvo) {
+		return dao.clientUpdate(mvo);
+	}
+	
+	@Override
+	public int memberReservation(int m_num) {
+		return dao.memberReservation(m_num);
 	}
 
 	//아이디 찾기
-	@Override
-	public int idFind(MemberVO vo) throws Exception {
-		int result = dao.idFind(vo);
-		return result;
-	}
-
-	//계정 비활성화
-	@Override
-	public int deleteMember(int m_num) {
-		return dao.deleteMember(m_num);
-	}
-
-	@Override
-	public MemberVO memberDetail(int m_num) {
-		return dao.memberDetail(m_num);
-	}
+		@Override
+		public int idFind(MemberVO vo) throws Exception {
+			int result = dao.idFind(vo);
+			return result;
+		}
 	
 }

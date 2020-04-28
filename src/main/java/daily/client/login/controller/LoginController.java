@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,9 @@ public class LoginController {
 	@Inject
 	private MemberService service;
 	
+	@Inject
+	private BCryptPasswordEncoder pwencoder;
+	
 	//로그인
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String getLogin() throws Exception {
@@ -33,26 +37,35 @@ public class LoginController {
 		return "member/login/login";
 	}
 	
-	//로그인 처리
-	@RequestMapping(value = "/login.do",method = RequestMethod.POST)
-	public ModelAndView postLogin(@ModelAttribute("MemberVO")MemberVO lvo, HttpSession session,HttpServletRequest request) {
-		logger.info("로그인 처리 성공");
-		
-		ModelAndView mav = new ModelAndView();
-		
-		MemberVO vo = service.login(lvo);
-		
-		if(vo != null) {
-			session.setAttribute("login", vo);
-			mav.setViewName("client/main/main");
-			return mav;
-		}else{
-			mav.addObject("msg","아이디와 비밀번호를 정확하게 입력 해주시길 바랍니다.");
-			mav.setViewName("member/login/login");
-			return mav;
-		}
-				
-	}
+	// 로그인 처리
+	   @RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	   public ModelAndView postLogin(@ModelAttribute("MemberVO") MemberVO lvo, HttpSession session,
+	         HttpServletRequest request) {
+	      logger.info("로그인 처리 성공");
+
+	      ModelAndView mav = new ModelAndView();
+
+	      MemberVO vo = service.login(lvo);
+
+	      if(vo == null) {
+	         mav.addObject("msg", "아이디를 정확하게 입력 해주시길 바랍니다.");
+	         mav.setViewName("member/login/login");
+	         return mav;
+	      }
+
+	      boolean passMatch = pwencoder.matches(lvo.getM_pwd(), vo.getM_pwd());
+
+	      if (vo != null && passMatch) {
+	         session.setAttribute("login", vo);
+	         mav.setViewName("client/main/main");
+	         return mav;
+	      }else {
+	         mav.addObject("msg", " 비밀번호를 정확하게 입력 해주시길 바랍니다.");
+	         mav.setViewName("member/login/login");
+	         return mav;
+	      }
+
+	   }
 	
 	//로그아웃 처리
 	@RequestMapping(value = "/logout.do")
@@ -101,6 +114,7 @@ public class LoginController {
 		return result;
 	}
 	
+	//찾은 아이디 창
 	@RequestMapping(value = "/idFindSuccess.do", method = RequestMethod.GET)
 	public String getIdFindS() throws Exception {
 		logger.info("아이디 찾기 성공");

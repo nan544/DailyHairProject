@@ -1,7 +1,5 @@
 package daily.client.mypage.controller;
 
-import java.io.IOException;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import daily.admin.designer.vo.DesignerVO;
 import daily.client.member.service.MemberService;
 import daily.client.member.vo.MemberVO;
 
@@ -26,7 +23,7 @@ public class MypageController {
 	private Logger log = LoggerFactory.getLogger(MypageController.class);
 	
 	@Inject
-	MemberService service;
+	private MemberService service;
 	
 	//마이페이지
 	@RequestMapping(value="/mypage.do", method = RequestMethod.GET)
@@ -53,91 +50,62 @@ public class MypageController {
 			mav.addObject("msg","비밀번호를 정확하게 입력 해주시길 바랍니다.");
 			mav.setViewName("mypage/mypage");
 			return mav;
-		}
-
+		}	
+		
+	}
+		
+	//마이페이지 회원정보 수정창
+	@RequestMapping(value = "/memberUpdate.do", method = RequestMethod.GET)
+	public String memberUpdate() throws Exception {
+		log.info("회원정보 수정창");
+		
+		return "mypage/memberUpdate";
 	}
 	
-	/*마이페이지 회원정보창
-	@RequestMapping(value="/memberUpdateView.do", method = RequestMethod.GET)
-	public ModelAndView memberUpdateView(@RequestParam int m_num) {
-		log.info("회원정보 호출 성공");
+	//마이페이지 회원정보 수정 처리
+	@RequestMapping(value = "/mymemberUpdate.do", method = RequestMethod.POST)
+	public String memberUpdate(@ModelAttribute MemberVO vo, HttpSession session) throws Exception {
+		log.info("회원정보 수정 성공");
 		
-		ModelAndView mav = new ModelAndView();
+		service.memberUpdateDo(vo);
 		
-		MemberVO member = service.memberUpdate(m_num);
+		session.invalidate();
 		
-		if(member != null) {
-			mav.addObject("member", member);
-			mav.setViewName("mypage/memberUpdate");
-		}
-		
-		return mav;
-	}*/
-	
-	@RequestMapping(value = "/memberSelect.do", method = RequestMethod.GET)
-	public ModelAndView memberModify(HttpSession session) {
-		log.info("modify.do 호출 성공");
-		ModelAndView mav = new ModelAndView();
-		
-		MemberVO member = (MemberVO)session.getAttribute("member");
-		
-		if(member == null) {
-			mav.setViewName("mypage/memberSelect");
-			return mav;
-		}
-		
-		MemberVO vo = service.memberSelect(member.getM_id());
-		mav.addObject("member", vo);
-		mav.setViewName("mypage/memberSelect");
-		return mav;
+		return "client/main/main";
 	}
 	
-	//계정 비활성화
-	/*@RequestMapping(value="/deactivation.do", method = RequestMethod.GET)
+	//계정 비활성화창
+	@RequestMapping(value="/deactivation.do", method = RequestMethod.GET)
 	public String getdeactivation() throws Exception{
-		log.info("deactivation 호출 성공");
+		log.info("deactivation.do 호출 성공");
 			
 		return "mypage/deactivation";
-	}*/
+	}
 	
-	@RequestMapping(value = "/deactivation.do", method = RequestMethod.GET)
-	public ModelAndView memberUpdateForm(@ModelAttribute MemberVO mvo) throws IOException {
-		log.info("memberUpdateForm 호출 성공" + mvo.getM_num());
+	
+	//계정 비활성화 처리
+	@RequestMapping(value = "/memberDelete.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String memberDelete(@ModelAttribute MemberVO mvo) {
+		log.info("계정 비활성화 성공");
 
-		ModelAndView mav = new ModelAndView();
-
-		MemberVO updateMember = new MemberVO();
-		updateMember = service.memberDetail(mvo.getM_num());
+		int count = service.clientUpdate(mvo);
 		
-		if (updateMember != null) {
-			mav.addObject("member", updateMember);
-			mav.setViewName("mypage/deactivation");
-			return mav;
-		} else {
-			mav.addObject("msg", "에러");
-			mav.setViewName("mypage/mypage");
-			return mav;
+		if(count == 1) {
+			return "0";
+		}else{
+			return "1";
 		}
 	}
 	
-	//계정 비활성화하기
-	/*@RequestMapping(value = "/designer/designerDelete.do", method = RequestMethod.POST)
-	@ResponseBody
-	public String designerDelete(@ModelAttribute DesignerVO dvo) {
-
-		
-		//비활성화 하기전에 현재 예약건이있는 디자이너인지 확인합니다
-		int count = reservationService.cofirmReservation(dvo.getDes_num());	 
-		
-		System.out.println(count);
-		
-		
-		if(count>0) {
-			return "0";
-		}else{
-			designerService.deleteDesigner(dvo.getDes_num());
-			return "1";
+	//예약 연황창
+		@RequestMapping(value="/reserveState.do", method = RequestMethod.GET)
+		public String reserveState() throws Exception{
+			log.info("reserveState.do 호출 성공");
+				
+			return "mypage/reserveState";
 		}
-	}*/
+
+	
 	
 }
