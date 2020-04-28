@@ -8,7 +8,7 @@
 	<!-- 처음 디자이너리스트 불러오기 -->
 	<select id="designerList" resultType="designer">
 		SELECT to_char(des_regdate,'YYYY-MM-DD')as des_regdate, des_job,
-		des_name, des_phone, des_file , des_num , des_state
+		des_name, des_phone, des_file , des_num , des_state , des_image
 		FROM designer
 		ORDER BY des_num 
 	</select>
@@ -36,7 +36,9 @@
 		FROM designer a
 		WHERE a.des_num not in(SELECT DISTINCT des_num
 							   FROM reservation
-							   WHERE rest_hairdate = #{rest_hairdate} and rest_time = #{rest_time})
+							   WHERE rest_hairdate = #{rest_hairdate} and rest_time = #{rest_time} and rest_state = 1)  
+							   and a.des_state = 1 and des_holyday != (select to_char(to_date(#{rest_hairdate},'yy-mm-dd'),'day')
+                                            							 from dual)
 	</select>
 	
 	
@@ -45,14 +47,14 @@
 		<selectKey keyProperty="des_num" resultType="int" order="BEFORE">
 			select designer_seq.nextval from dual
 		</selectKey>
-		INSERT INTO designer(des_num, des_name, des_job, des_phone, des_gender, des_holyday, des_file, des_memo)
-		VALUES(#{des_num},#{des_name},#{des_job},#{des_phone}, #{des_gender}, #{des_holyday},#{des_file,jdbcType=VARCHAR }, #{des_memo})
+		INSERT INTO designer(des_num, des_name, des_job, des_phone, des_gender, des_holyday, des_file, des_memo, des_image)
+		VALUES(#{des_num},#{des_name},#{des_job},#{des_phone}, #{des_gender}, #{des_holyday},#{des_file,jdbcType=VARCHAR }, #{des_memo} , #{des_image,jdbcType=VARCHAR})
 	</insert>
 	
 	<!-- 디자이너 수정하기 -->
 	<update id="updateDesigner" parameterType="designer">
 		UPDATE designer
-		SET des_job= #{des_job}, des_phone=#{des_phone}, des_gender=#{des_gender}, des_holyday=#{des_holyday}, des_file=#{des_file,jdbcType=VARCHAR}, des_memo=#{des_memo}
+		SET des_job= #{des_job}, des_phone=#{des_phone}, des_gender=#{des_gender}, des_holyday=#{des_holyday}, des_file=#{des_file,jdbcType=VARCHAR}, des_memo=#{des_memo},des_image = #{des_image,jdbcType=VARCHAR}
 		WHERE des_num = #{des_num}
 	</update>
 	

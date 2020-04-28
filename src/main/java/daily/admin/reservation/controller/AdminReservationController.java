@@ -128,9 +128,13 @@ public class AdminReservationController {
 		// 페이지세팅 - ReserveVO 는 CommonVO 를 상속하고있음
 		Paging.setPage(rvo);
 		
+		
+		rvo.setRest_state(2);
+		
 		// 전체 레코드수 구하기
 		int total = adminReservationService.searchListCnt(rvo);
 		log.info(total+"<<레코드수");
+		
 		
 		List<ReserveVo> resultList = adminReservationService.resultSearchList(rvo);
 		
@@ -139,5 +143,44 @@ public class AdminReservationController {
 		model.addAttribute("resultList",resultList);
 		
 		return "admin/reservation/adminReservationResultList";
+	}
+	
+	//시술완료 상세보기 출력
+	@RequestMapping(value = "/reservation/resultReservationDetail.do")
+	public String resultReservationDetail(int rest_num , String m_id , Model model) {
+		log.info("resultReservationDetail 호출완료");
+		
+		ReserveVo resultDetail = adminReservationService.reservationDetail(rest_num);
+		List<StyleVO> styleList = styleService.stylingnameList(rest_num);
+		MemberVO mvo = AdminmemberService.memberDetail(m_id);
+		model.addAttribute("reservation", resultDetail);
+		model.addAttribute("nameList",styleList);
+		model.addAttribute("member", mvo);
+		
+		return "admin/reservation/pop/resultReservationDetail_pop";
+	}
+	
+	//예약 취소내역 리스트 출력
+	@RequestMapping(value = "/reservation/reservationCancleList.do")
+	public String reservationCancleList(ReserveVo rvo , Model model) {
+		log.info("reservationCancleList 호출완료");
+		
+		// 페이지세팅 - ReserveVO 는 CommonVO 를 상속하고있음
+		Paging.setPage(rvo);
+		
+		rvo.setRest_state(0);
+		
+		// 전체 레코드수 구하기
+		int total = adminReservationService.searchListCnt(rvo);
+		log.info(total+"<<레코드수");
+		
+		
+		List<ReserveVo> cancleList = adminReservationService.reservationCancleList(rvo);
+		
+		model.addAttribute("data", rvo);
+		model.addAttribute("total", total);
+		model.addAttribute("cancleList",cancleList);
+		
+		return "admin/reservation/adminReservationCancleList";
 	}
 }

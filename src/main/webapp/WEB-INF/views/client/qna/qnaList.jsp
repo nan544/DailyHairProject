@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
-<title>HairGoods</title>
+<title>1:1 문의 게시판</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -45,24 +43,35 @@
 	<script src="/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 	<script src="/resources/assets/vendor/venobox/venobox.min.js"></script>
 	<script src="/resources/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-	
-	<script src="/resources/include/js/bootstrap-datepicker.js"></script>
-	<script src="/resources/include/js/bootstrap-datepicker.ko.min.js"></script>
-	
+
 	<!-- Template Main JS File -->
-	<script type="text/javascript" src="/resources/assets/js/main.js"></script>
-	
-<style type="text/css">
-	p > span { color: red; font: bold; }
-</style>
-
+	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		//문의하기 버튼클릭시 팝업창 띄우기
+		$("#writeBtn").click(function(){
+			
+			window.open("/client/qna/qnaWriteForm.do", "qnapop",
+					"width=800, height=600, left=600, top=100");			
+		});
+		
+		//상세보기
+		$(".qnaDetail").click(function(){
+			let qna_num = $(this).attr("data-num");
+			location.href="/client/qna/qnaDetail.do?qna_num="+qna_num;
+		});
+	});
+</script>
 </head>
-
 <body>
 	<!-- header 삽입 -->
 	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
 	
-	<!-- ======= HairGoods Section ======= -->
+	<!-- ======= 1:1 QnA Section ======= -->
 	<section id="about" class="about">
 	<div class="container-fluid" >
 		<div class="row">
@@ -70,71 +79,69 @@
 			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
 			</div>
 			
-			<!-- 상단 문구 -->
-			<div style="margin: 0 auto; text-align: center; width: 100%;">
-				<h1 style="margin-bottom: 35px;">HairGoods Gallery</h1>
-				<p style="margin-bottom: 50px;"><span>*</span> 실제 매장에서 고객님들의 시술에 사용되는 제품입니다. <span>*</span></p>
+			<h1 align="center">1:1 문의하기</h1>
+			
+			<!-- 구분선 -->
+			<div style="margin: 20px; width: 100%;">
+				<hr style="border: 1 solid black;" />				
 			</div>
-			
-			<!-- 상품 문구 -->
-			<div style="margin: 0 auto; max-width: 1020px;">
-				<div style="width: 100%;">
-					
-				</div>
+	
+			<div class="btnContainer">
+				<input type="button" name="writeBtn" id="writeBtn" value="문의하기"/>
 			</div>
-			
-			
-			
-			<!-- Test -->
-			<table class="table table-condensed table-hover">
-				<colgroup>
-					<col width="10%" />
-					<col width="30%" />
-					<col width="10%" />
-					<col width="22.5%" />
-					<col width="22.5%" />
-				</colgroup>
-				<tr class="active">
-					<th>글번호</th>
-					<th>스타일명</th>
-					<th>등록일</th>
-					<th>썸네일 이미지명</th>
-					<th>상세이미지</th>
-				</tr>
-				<!-- 데이터 출력 시작-->
-				<c:choose>
-					<c:when test="${not empty hgList }">
-						<c:forEach var="hgList" items="${hgList}" varStatus="status">
-						<c:set var="hg_thumb_" value="${fn:substringAfter(hgList.hg_thumb,'_') }" />
-						<c:set var="hg_thumb__" value="${fn:substringAfter(hg_thumb_,'_') }"/>
-						<c:set var="hg_img1_" value="${fn:substringAfter(hgList.hg_img1,'_') }"/>
-						<c:set var="hg_img1__" value="${fn:substringAfter(hg_img1_,'_') }"/>
-							<tr data-num="${hgList.hg_num}" >
-								<td class="goDetail">${hgList.hg_num }</td>
-								<td class="goDetail">${hgList.hg_title}</td>
-								<td>${hgList.hg_regdate}</td>
-								<td>${hg_thumb__}</td>
-								<td>${hg_img1__}</td>
-							</tr>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
+			<div style="width: 100%;">
+				<p>나의 문의 내역</p>
+				
+				
+				<table style="width: 100%">
+					<colgroup>
+						<col width="20%">
+						<col width="20%">
+						<col width="40%">
+						<col width="20%">
+					</colgroup>
+					<thead>
 						<tr>
-							<td colspan="8" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+							<th>작성자</th>
+							<th>문의일시</th>
+							<th>제목</th>
+							<th>답변상태</th>
 						</tr>
-					</c:otherwise>
-				</c:choose>
-				<!-- 데이터 출력 끝-->
-			</table>
-			
-			
+					</thead>
+					<tbody>
+						<c:choose>
+							<c:when test="${not empty qnaList }">
+								<c:forEach var="qna" items="${qnaList}">
+									<tr data-num = "${qna.qna_num}" class="qnaDetail">
+										<td>${qna.m_id}</td>
+										<td>${qna.qna_regdate}</td>
+										<td>${qna.qna_title}</td>
+										<td>
+										<c:if test="${qna.qna_state == 0}">
+											답변 미완료
+										</c:if>
+										<c:if test="${qna.qna_state == 1}">
+											답변 완료
+										</c:if>
+										</td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td colspan="4" align="center">문의한 내역이 존재하지 않습니다.</td>
+								</tr>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
+			</div>
 			
 		</div>
 	</div>
-	</section><!-- End HairGoods Section -->
+	</section><!-- End 1:1 QnA Section -->
 	
 	<!-- footer 삽입 -->
 	<jsp:include page="/WEB-INF/views/client/main/footer.jsp"></jsp:include>
 </body>
-
 </html>

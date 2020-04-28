@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>시술 완료 목록</title>
+<title>예약 취소 목록</title>
 <style type="text/css">
 span{
 color: red;
@@ -25,17 +25,6 @@ margin-right: 5px;
 <script type="text/javascript">
  $(function(){
 	
-	 
-	//상세보기 페이지 띄우기
-	$(".resultDetail").click(function(){
-	 let rest_num =	$(this).attr("data-num");
-	 let m_id = $(this).attr("data-name");
-	 window.open("/admin/reservation/resultReservationDetail.do?rest_num="
-				+ rest_num+"&m_id="+m_id,"resultDetail",
-				"width=800, height=700, left=600, top=100");
-	 
-	});
-	 
 	 
 	 
 	//검색 후 검색 대상과 검색 단어를 출력한다
@@ -82,16 +71,16 @@ margin-right: 5px;
 		}
 		$("#page").val(page);
 		$("#f_search").attr({
-			"method" : "get",
-			"action" : "/admin/reservation/resultReservationList.do"
+			"method" : "get",					
+			"action" : "/admin/reservation/reservationCancleList.do"
 		});
 		$("#f_search").submit();
 	}
 </script>
 </head>
 <body>
-	<h1>시술완료 목록</h1>
-	<p><span>*</span>클릭하여 상세보기</p>
+	<h1>예약취소 목록</h1>
+	
 	<div class="resultContainer">
 		<table class="table table-hover">
 			<colgroup>
@@ -114,8 +103,8 @@ margin-right: 5px;
 			</thead>
 			<tbody id="list">
 				<c:choose>
-					<c:when test="${not empty resultList}">
-						<c:forEach var="result" items="${resultList}">
+					<c:when test="${not empty cancleList}">
+						<c:forEach var="result" items="${cancleList}">
 							<tr data-num="${result.rest_num}" data-name="${result.m_id}" class="resultDetail">
 								<td>${result.rest_hairdate} / ${result.rest_time}</td>
 								<td class="name">${result.m_id}</td>
@@ -128,7 +117,7 @@ margin-right: 5px;
 					</c:when>	
 					<c:otherwise>
 						<tr>
-							<td colspan="7" align="center">완료된 시술이 없습니다</td>
+							<td colspan="7" align="center">취소된 예약이 없습니다</td>
 						</tr>
 					</c:otherwise>
 				</c:choose>	
