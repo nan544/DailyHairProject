@@ -51,9 +51,10 @@
 	<style type="text/css">
 		.reserveTable { display: inline; padding: 10px; font-size: 12px;}
 		.reserveTablehead { display: inline; padding: 10px; font: 15pt bold; color: #670000;}
-		.reserveBtn { width: 150px; height: 50px; background: #ffb03b; border: 0;	color: #fff;
-					padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;}
-		.reserveBtnNot { width: 150px; height: 50px; background: #BDBDBD; border: 0;	color: #fff;
+		.reserveBtn { width: 150px; height: 50px; background: #ffb03b; border: 0; color: #fff;
+					padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;
+					margin: 5px; }
+		.reserveBtnNot { width: 150px; height: 50px; background: #BDBDBD; border: 0; color: #fff;
 					padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px; }
 		.stylebox { border-spacing: 10px; border-collapse: inherit; margin: 0 auto; padding: 25px 0px 35px 0px; }
 		.style1 {  }

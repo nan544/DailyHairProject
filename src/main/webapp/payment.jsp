@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -52,21 +53,35 @@
 		.reserveTablehead { display: inline; padding: 10px; font: 15pt bold; color: #670000;}
 		.reserveBtn { width: 150px; height: 50px; background: #ffb03b; border: 0;	color: #fff;
 				padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;}
+		.paymentMini { display: inline; }
 		
-		.paymentOutBox { margin: 0 auto; width: 500px; height: 500px; 
-				background-color: #FFFFFF; padding-top: 30px;}
-		.paymentInBox { margin: 0 auto; width: 500px; height: 500px; text-align: center; }
+		.paymentTable { margin-top: 50px; }
+		.paymentBtn { font-size: 15px; letter-spacing: 1px; padding: 12px 30px;
+					text-transform: uppercase; display: inline-block; margin: 0 10px;
+					border-radius: 50px; transition: 0.5s; line-height: 1; color: black;
+					border: 2px solid #ffb03b; background-color: #fffaf3; }
+		.paymentBtn:hover { font-size: 15px; letter-spacing: 1px; padding: 12px 30px;
+					text-transform: uppercase; display: inline-block; margin: 0 10px;
+					border-radius: 50px; transition: 0.5s; line-height: 1; color: #fff;
+					border: 2px solid #ffb03b; background-color: #ffb03b;}
 	</style>
 	
-	<!-- 1초뒤 자동으로 결제 완료 알람 -->
-	<!-- 알람 확인 후 메인 페이지로 이동 -->
 	<script type="text/javascript">
-	setTimeout(function(){
-		alert("결제가 완료되었습니다.\n메인페이지로 이동합니다.");
-		location.replace("/client/main.do");
-	}, 1000);
-	</script>
+	// 이전 단계로 버튼 이벤트
+	function selectDesigner() {
+		let date = "${data.rest_hairdate}";
+		let time =	"${data.rest_time}";
+		
+		location.href="/reserve/reserveSelectDesigner.do?rest_hairdate="+date+"&rest_time="+time;
+	}
 	
+	// 예약 취소 버튼
+	function cancle() {
+		alert("예약을 취소합니다.\n메인페이지로 이동합니다.");
+		
+		location.href="/client/main.do"
+	}
+	</script>
 </head>
 
 <body>
@@ -94,13 +109,11 @@
 			<!-- 예약 정보 -->
 			<div style="margin: 0 auto;">
 				<div class="reserveTablehead">예약 정보　　</div>
-				<div class="reserveTable">(매장)입력 대기 중</div>
-				<div class="reserveTable">(시술 일시)입력 대기 중</div>
-				<div class="reserveTable">(디자이너)입력 대기 중</div>
-				<div class="reserveTable">(시술)입력 대기 중</div>
+				<div class="reserveTable">${place}</div>
+				<div class="reserveTable">${data.rest_hairdate}&nbsp;&nbsp;&nbsp;${data.rest_time}</div>
+				<div class="reserveTable">${desname.des_name }(${desname.des_job })</div>
 				<div></div>
-				<div class="reserveTablehead" style="float: left;">결제 금액　　</div>
-				<div class="reserveTable" style="float: right;">(금액)입력 대기 중</div>
+				<div class="reserveTablehead" style="float: left;">결제 금액  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${data.rest_totalprice }원　</div>
 			</div>
 			
 			<div style="width: 100%; margin: 0 auto;">
@@ -110,33 +123,34 @@
 			<!-- 결제 수단 선택 -->
 			<div style="margin: 0 auto;">
 				<div class="paymentTable">
-				<label>카드 제d</label>　
-				<input type="radio" checked="checked">
-				<label>　　</label>
-				<label>계좌이체</label>　
-				<input type="radio" disabled="disabled">
-				</div>
-			</div>
-			
-			<div style="width: 100%; margin: 0 auto;">
-				<hr style="border: 1 solid black; margin-top: 10px;" />
-			</div>
-			
-			<!-- 결제 상자 -->
-			<div class="paymentOutBox">
-				<div class="paymentInBox">
-					<p></p>
-					<h1>카드 결제</h1>
-					<h6>카드 결제 진행화면입니다.</h6>
-					<h6>결제를 진행해주세요.</h6>
-					<img width="400" height="300" src="/resources/assets/img/reserve/loading2.gif">
+				<form id="insertForm" name="insertForm">
+				<input type="hidden" id="rest_hairdate" name="rest_hairdate" value="${data.rest_hairdate}"/>
+				<input type="hidden" id="rest_time" name="rest_time" value="${data.rest_time }"/>
+				<input type="hidden" id="des_num" name="des_num" value="${data.des_num}"/>
+				<input type="hidden" id="rest_memo" name="rest_memo" value="${data.rest_memo}"/>
+				<input type="hidden" id="m_id" name="m_id" value="${login.m_id}"/>
+				<input type="hidden" id="style_number" name="style_number" value="${number}"/>
+				<input type="hidden" id="rest_totalprice" name="rest_totalprice" value="${data.rest_totalprice }"/>
+					<div class="paymentMini">
+						<input class="paymentBtn" type="button" name="rest_payoption" value="카드결제" onclick="paymentFinal()">
+					</div>
+					<div class="paymentMini">
+						<input class="paymentBtn" type="button" name="rest_payoption" value="계좌이체" onclick="paymentFinal()">
+					</div>
+					<input type="hidden" id="styling_num" name="styling_num" value="${data.styling_num}"/>
+				</form>
 				</div>
 			</div>
 			
 			<!-- 최하단 구분 -->
-			<div style="width: 100%; margin-top: 50px;">
+			<div style="width: 100%; margin-top: 500px;">
 			</div>
 			
+			<!-- 버튼 -->
+			<div style="margin: 0 auto; margin-top: 75px;">
+				<button class="reserveBtn" onclick="selectDesigner()">이전 단계</button>
+				<button class="reserveBtn" onclick="cancle()">예약 취소</button>
+			</div>
 		</div>
 	</div>
 	</section><!-- End Reserve Section -->

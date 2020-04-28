@@ -112,6 +112,7 @@
          <div style="width: 100%; height: 150px; margin-bottom: 50px;">
          </div><br>
          
+         <!-- ID 찾기 폼 -->
          <div style="margin: 0 auto;" align="center">
             <div style="margin-bottom: 30px; text-align: center;">
                <h1 style="font-size: 50px;">DailyHairShop</h1>
@@ -125,13 +126,13 @@
                   style="margin-right: 15px;">
                <input type="button" class="IDfind_btn" id="idFindBtn" name="idFindBtn" value="ID 찾기">
             </div><br>
+            </form>
             
-            <div>
+            <div><!-- 버튼 덩어리 -->
                <input type="button" class="other_btn" value="로그인" onclick="login()">
                <input type="button" class="other_btn" value="회원가입" onclick="join()">
                <input type="button" class="other_btn" value="PW 찾기" onclick="PWfind()">
             </div>
-            </form>
          </div>
          
          <!-- 하단 여백 -->

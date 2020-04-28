@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -48,7 +49,7 @@
 	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
 	
 	<style type="text/css">
-		.designer { width: 280px; height: 200px; }
+		.designer { width: 280px; height: 400px; }
 		.designerbox { float: left; padding: 10px; 
 						margin: 10px 20px 10px 20px;
 						transition: all ease-in-out 0.3s;
@@ -81,7 +82,35 @@
 						-moz-transform: scale(1.1);
 						-ms-transform: scale(1.1);
 						-o-transform: scale(1.1); }
+		p > span { color: red; font: bold; }
 	</style>
+	
+	<script type="text/javascript">
+	// 현재 프로필사진 보여주기
+	let image = "<c:out value='${des.des_image}'/>";
+	if(image!=""){
+		$("#fileImage").attr({
+			src: "/uploadStorage/designer/${des.des_image}",
+			width:"280px",
+			height:"400px"
+		});
+	}
+	
+	// 디자이너 클릭 시 시술가능 목록 노출
+	function clickDesigner(num) {
+		
+		$("#des_num").val(num);
+		var des_num = num;
+		
+		
+		var url = "/client/designerSergery.do?des_num="+des_num;
+		var name = "디자이너 시술 목록";
+		var option = "width=500px, height=500px, toolbars=no, scrollbars=yes, resizable=no";
+		
+		
+		window.open(url, name, option);
+	}
+	</script>
 </head>
 
 <body>
@@ -99,8 +128,9 @@
 			<!-- 상단 매장 소개문 -->
 			<div style="margin: 0 auto; text-align: center; width: 100%;">
 				<h1 style="margin-bottom: 50px;"><strong>DailyHairShop</strong> 왕십리 본점</h1>
-				<p style="margin: 0px;">서울특별시 성동구 무학로 2길 소혜빌딩 17층, 18층 (매장, 사무실)</p>
-				<p style="margin-bottom: 50px;">문의전화  02 – 001 – 0001(0002) | 문의 메일 dailyhair2020@naver.com</p>
+				<p style="margin: 5px; font-size: 15px;">서울특별시 성동구 무학로 2길 소혜빌딩 17층, 18층 (매장, 사무실)</p>
+				<p style="margin-bottom: 5px; font-size: 15px;">문의전화  02 – 001 – 0001(0002) | 문의 메일 dailyhair2020@naver.com</p>
+				<p style="margin-bottom: 50px; font-size: 12px;"><span>*</span> 디자이너를 클릭하면 시술 가능 목록을 보실 수 있습니다 <span>*</span></p>
 			</div>
 			
 			<!-- 상단 Shop 사진 2장 가운데 정렬 -->
@@ -115,30 +145,33 @@
 			</div>
 			
 			<!-- 디자이너 목록 -->
-			<div style="margin: 0 auto; text-align: center; max-width: 1500px">
+			<form id="desForm" name="desForm">
+				<input type="hidden" id="des_num" name="des_num" />
+			</form>
+			<div style="margin: 0 auto; text-align: center; max-width: 1020px">
 				<div>
-					<div class="designerbox">
-						<img class="designer" src="/resources/assets/img/shopIntro/Designer_KGY.png">
-						<p>김국영 원장</p>
-					</div>
-					<div class="designerbox">
-						<img class="designer" src="/resources/assets/img/shopIntro/Designer_JJY.png">
-						<p>전준영 실장</p>
-					</div>
-					<div class="designerbox">
-						<img class="designer" src="/resources/assets/img/shopIntro/Designer_SJY.png">
-						<p>신진영 디자이너</p>
-					</div>
-				</div>
-				<div>
-					<div class="designerbox">
-						<img class="designer" src="/resources/assets/img/shopIntro/Designer_SMH.png">
-						<p>심명현 디자이너</p>
-					</div>
-					<div class="designerbox">
-						<img class="designer" src="/resources/assets/img/shopIntro/Designer_PJS.png">
-						<p>박정서 디자이너</p>
-					</div>
+					<c:choose>
+						<c:when test="${not empty designerList }">
+							<c:forEach var="des" items="${designerList}">
+								<div class="designerbox" onclick="clickDesigner(${des.des_num})">
+									<c:if test="${not empty des.des_image }">
+										<!-- 로컬 저장소 사용 시 주석 해제하면 프로필 불러옴 -->
+										<%-- <input type="hidden" class="designer" name="des_image" id="des_image" value="${des.des_image}" /> --%>
+										<img class="designer" src="/resources/assets/img/slide/kimsoGIF19.gif">
+									</c:if>
+									<c:if test="${empty des.des_image }">
+										<img class="designer" src="/resources/assets/img/designerNoImg.png">
+									</c:if>
+									<p>${des.des_name} ${des.des_job}</p>
+								</div>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<div class="designerbox">
+								<p>등록된 디자이너가 존재하지 않습니다.</p>
+							</div>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 			
