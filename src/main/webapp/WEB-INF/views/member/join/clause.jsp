@@ -92,19 +92,16 @@
 		.clause_btnbox { margin: 0 auto; margin-top: 50px;
 					width: 500px; height: 50px; }
 		.other_btn { width: 100px; height: 35px;
-					text-align: center;
-					cursor: pointer;
-					display: inline-block;
-					font-size: 10px;
+					text-align: center; cursor: pointer;
+					display: inline-block; font-size: 10px;
 					padding: 8px 16px 10px 16px;
-					font-weight: 500;
-					line-height: 1;
-					color: #444444;
-					margin: 0 3px 10px 3px;
+					font-weight: 500; line-height: 1;
+					color: #444444; margin: 0 3px 10px 3px;
 					transition: all ease-in-out 0.3s;
-					background: white;
+					background: #fffaf3;
 					border: 2px dashed #ffb03b;
 					border-radius: 25px; }
+		.other_btn:hover { background: #FFE08C; }
 	</style>
 </head>
 

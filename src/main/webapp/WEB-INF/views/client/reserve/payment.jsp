@@ -119,8 +119,8 @@
 <body>
 	<c:if test="${empty login }">
 		<script type="text/javascript">
-			alert("로그인해주세요");
-			location.href="/";
+			alert("로그인이 필요합니다.");
+			location.href="/member/login/login.do";
 		</script>
 	</c:if>
 	<!-- header 삽입 -->

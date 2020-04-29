@@ -203,10 +203,11 @@
 	color: #444444;
 	margin: 0 3px 10px 3px;
 	transition: all ease-in-out 0.3s;
-	background: white;
+	background: #fffaf3;
 	border: 2px dashed #ffb03b;
 	border-radius: 25px;
 }
+.other_btn:hover { background: #FFE08C; }
 </style>
 </head>
 

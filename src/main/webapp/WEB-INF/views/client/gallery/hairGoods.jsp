@@ -52,10 +52,42 @@
 	<!-- Template Main JS File -->
 	<script type="text/javascript" src="/resources/assets/js/main.js"></script>
 	
-<style type="text/css">
-	p > span { color: red; font: bold; }
-</style>
-
+	<style type="text/css">
+		p > span { color: red; font: bold; }
+		.noHG { margin: 50px 0px 50px 0px; width: 750px; height: 500px;
+				box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
+				background-color: white; padding-top: 225px;}
+		.designer { width: 280px; height: 400px; }
+		.designerbox { float: left; padding: 10px; 
+						margin: 10px 20px 10px 20px;
+						transition: all ease-in-out 0.3s;
+						transform: scale(1);
+						-webkit-transform: scale(1);
+						-moz-transform: scale(1);
+						-ms-transform: scale(1);
+						-o-transform: scale(1); }
+		.designerbox:hover { box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
+							 transform: scale(1.1);
+							-webkit-transform: scale(1.1);
+							-moz-transform: scale(1.1);
+							-ms-transform: scale(1.1);
+							-o-transform: scale(1.1); }
+		.designerbox p { padding-top: 15px; }
+	</style>
+	<script type="text/javascript">
+	// 상품 이미지 클릭 시 상세 정보
+	function clickHairGoods(num) {
+		
+		$("#hg_num").val(num);
+		var hg_num = num;
+		
+		var url = "/client/hairGoodsDetail.do?hg_num="+hg_num;
+		var name = "상품 상세 정보";
+		var option = "width=500px, height=900px, toolbars=no, scrollbars=yes, resizable=no";
+		
+		window.open(url, name, option);
+	}
+	</script>
 </head>
 
 <body>
@@ -77,58 +109,34 @@
 			</div>
 			
 			<!-- 상품 문구 -->
-			<div style="margin: 0 auto; max-width: 1020px;">
-				<div style="width: 100%;">
-					
-				</div>
-			</div>
-			
-			
-			
-			<!-- Test -->
-			<table class="table table-condensed table-hover">
-				<colgroup>
-					<col width="10%" />
-					<col width="30%" />
-					<col width="10%" />
-					<col width="22.5%" />
-					<col width="22.5%" />
-				</colgroup>
-				<tr class="active">
-					<th>글번호</th>
-					<th>스타일명</th>
-					<th>등록일</th>
-					<th>썸네일 이미지명</th>
-					<th>상세이미지</th>
-				</tr>
-				<!-- 데이터 출력 시작-->
+			<!-- 데이터 출력 시작-->
+			<form id="desForm" name="desForm">
+				<input type="hidden" id="hg_num" name="hg_num" />
+			</form>
+			<div style="margin: 0 auto; text-align: center; max-width: 1020px">
+				<div>
 				<c:choose>
-					<c:when test="${not empty hgList }">
-						<c:forEach var="hgList" items="${hgList}" varStatus="status">
-						<c:set var="hg_thumb_" value="${fn:substringAfter(hgList.hg_thumb,'_') }" />
-						<c:set var="hg_thumb__" value="${fn:substringAfter(hg_thumb_,'_') }"/>
-						<c:set var="hg_img1_" value="${fn:substringAfter(hgList.hg_img1,'_') }"/>
-						<c:set var="hg_img1__" value="${fn:substringAfter(hg_img1_,'_') }"/>
-							<tr data-num="${hgList.hg_num}" >
-								<td class="goDetail">${hgList.hg_num }</td>
-								<td class="goDetail">${hgList.hg_title}</td>
-								<td>${hgList.hg_regdate}</td>
-								<td>${hg_thumb__}</td>
-								<td>${hg_img1__}</td>
-							</tr>
+					<c:when test="${not empty hairGoodsList }">
+						<c:forEach var="hgList" items="${hairGoodsList }">
+							<div class="designerbox" onclick="clickHairGoods(${hgList.hg_num})">
+								<c:if test="${not empty hgList.hg_thumb }">
+									<!-- 로컬 저장소 사용 시 주석 해제하면 썸네일 이미지 불러옴 -->
+									<%-- <input type="hidden" class="designer" name="hg_thumb" id="hg_thumb" value="${hgList.hg_thumb}" /> --%>
+									<img class="designer" src="/resources/assets/img/goodsNoImg.png">
+								</c:if>
+								<p>${hgList.hg_title}</p>
+							</div>
 						</c:forEach>
 					</c:when>
 					<c:otherwise>
-						<tr>
-							<td colspan="8" class="tac">등록된 게시물이 존재하지 않습니다.</td>
-						</tr>
+						<div>
+							<p class="noHG">등록된 게시물이 존재하지 않습니다.</p>
+						</div>
 					</c:otherwise>
 				</c:choose>
-				<!-- 데이터 출력 끝-->
-			</table>
-			
-			
-			
+				</div>
+			</div>
+			<!-- 데이터 출력 끝-->
 		</div>
 	</div>
 	</section><!-- End HairGoods Section -->

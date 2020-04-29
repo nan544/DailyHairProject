@@ -79,7 +79,7 @@
 						<p class="animated fadeInUp">A Newest Trendy Hair Style</p>
 						<!-- 사진 가운데 링크걸려있는 둥근 노란 테두리 버튼 -->
 						<div>
-							<a href="/client/hairStyle.do" class="btn-menu animated fadeIn">상세보기</a>
+							<a href="/client/hairStyleList.do" class="btn-menu animated fadeIn">상세보기</a>
 							<!-- <a href="#" class="btn-book animated fadeIn">입력</a> -->
 						</div>
 					</div>
@@ -94,7 +94,7 @@
 						<p class="animated fadeInUp">A Newest Trendy Hair Style</p>
 						<!-- 사진 가운데 링크걸려있는 둥근 노란 테두리 버튼 -->
 						<div>
-							<a href="/client/hairStyle.do" class="btn-menu animated fadeIn">상세보기</a>
+							<a href="/client/hairStyleList.do" class="btn-menu animated fadeIn">상세보기</a>
 							<!-- <a href="#" class="btn-book animated fadeIn">입력</a> -->
 						</div>
 					</div>
@@ -109,7 +109,7 @@
 						<p class="animated fadeInUp">The Best Of Best Premium Goods</p>
 						<!-- 사진 가운데 링크걸려있는 둥근 노란 테두리 버튼 -->
 						<div>
-							<a href="/client/hairGoods.do" class="btn-menu animated fadeIn">상세보기</a>
+							<a href="/client/hairGoodsList.do" class="btn-menu animated fadeIn">상세보기</a>
 							<!-- <a href="#" class="btn-book animated fadeIn">입력</a> -->
 						</div>
 					</div>

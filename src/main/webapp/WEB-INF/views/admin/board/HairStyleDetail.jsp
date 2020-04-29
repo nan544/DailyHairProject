@@ -43,6 +43,21 @@ input[type="file"] {
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
 	$(function() {
+		
+		
+		//수정창 띄울시에 DB에서 선택되어있는 디자이너의 직급을 가져와서 변수에 담음
+		var category = "${detail.hs_category}";
+
+		//수정창 띄울시에 DB에 저장되어있는 디자이너의 직급을 가져와서 셀렉트박스에 체크시킴
+	 	if (category == 1) {
+			$("#hs_category").val(1).prop("selected", true);
+		} else if (category == 2) {
+			$("#hs_category").val(2).prop("selected", true);
+		} else if (category == 3) {
+			$("#hs_category").val(3).prop("selected", true);
+		}
+		 
+		
 		$(".uploadFile").hide();
 		//목록으로 버튼 클릭 시
 		$("#ListBtn").click(function() {
@@ -113,6 +128,15 @@ input[type="file"] {
 			</div>
 			<hr>
 			<!--수정 및 상세보기 폼 출력 -->
+			<div class="formLine">
+				<span class="item"> <label class="required">*</label>카테고리</span> 
+				<select id="hs_category" name="hs_category">
+					<option value="1">남성</option>
+					<option value="2">여성</option>
+					<option value="3">컬러</option>
+				</select>
+			</div>
+			<hr>
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>제품명
 				</span> <input type="text" id="hs_title" name="hs_title"
