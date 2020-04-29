@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +21,12 @@ public class MemberController {
 	private Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	@Inject
-	MemberService service;
+	private MemberService service;
 	
-	//회원가입에 이용약관
+	@Inject
+	private BCryptPasswordEncoder pwencoder;
+	
+	//이용약관
 	@RequestMapping(value = "/clause.do", method = RequestMethod.GET)
 	public String getClause() throws Exception {
 		logger.info("clause.do 호출 성공");
@@ -39,23 +43,26 @@ public class MemberController {
 	}
 
 	//회원가입 처리
-	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
-	public String postJoin(@ModelAttribute MemberVO vo) throws Exception {
-		logger.info("회원가입 처리 성공");
-		
-		int result = service.idChk(vo);
-		try {
-			if(result == 1) {
-				return "member/join/join";
-			}else if(result == 0) {
-				service.join(vo);
-			}
-			//입력된 아이디가 존재한다면 다시 회원가입 페이지로 돌아간다
-		} catch(Exception e) {
-			throw new RuntimeException();
-		}
-		return "member/join/joinSuccess";
-	}
+	   @RequestMapping(value = "/join.do", method = RequestMethod.POST)
+	   public String postJoin(@ModelAttribute MemberVO vo) throws Exception {
+	      logger.info("회원가입 처리 성공");
+
+	      int result = service.idChk(vo);
+	      try {
+	         if(result == 1) {
+	            return "member/join/join";
+	         }else if(result == 0) {
+	            String secPwd = pwencoder.encode(vo.getM_pwd());
+	            vo.setM_pwd(secPwd);
+
+	            service.join(vo);
+	         }
+	         //입력된 아이디가 존재한다면 다시 회원가입 페이지로 돌아간다
+	      } catch(Exception e) {
+	         throw new RuntimeException();
+	      }
+	      return "member/join/joinSuccess";
+	   }
 	
 	//아이디 중복체크
 	@RequestMapping(value = "/idChk.do", method = RequestMethod.POST)
@@ -64,6 +71,17 @@ public class MemberController {
 		logger.info("아이디 중복체크 성공");
 		
 		int result = service.idChk(vo);
+		
+		return result;
+	}
+	
+	//이메일 중복체크
+	@RequestMapping(value = "/mailChk.do", method = RequestMethod.POST)
+	@ResponseBody
+	public int mailChk(MemberVO vo) throws Exception {
+		logger.info("이메일 중복체크 성공");
+		
+		int result = service.mailChk(vo);
 		
 		return result;
 	}

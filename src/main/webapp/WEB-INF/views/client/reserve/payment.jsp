@@ -51,20 +51,29 @@
 	<style type="text/css">
 		.reserveTable { display: inline; padding: 10px; font-size: 12px;}
 		.reserveTablehead { display: inline; padding: 10px; font: 15pt bold; color: #670000;}
-		.reserveBtn { width: 150px; height: 50px; background: #ffb03b; border: 0;	color: #fff;
-				padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;}
+		.reserveBtn { width: 150px; height: 50px; background: #ffb03b; border: 0; color: #fff;
+				padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;
+				margin: 5px; }
 		.paymentMini { display: inline; }
+		.paymentTable { margin-top: 50px; }
+		.paymentBtn { font-size: 15px; letter-spacing: 1px; padding: 12px 30px;
+					text-transform: uppercase; display: inline-block; margin: 0 10px;
+					border-radius: 50px; transition: 0.5s; line-height: 1; color: black;
+					border: 2px solid #ffb03b; background-color: #fffaf3; }
+		.paymentBtn:hover { font-size: 15px; letter-spacing: 1px; padding: 12px 30px;
+					text-transform: uppercase; display: inline-block; margin: 0 10px;
+					border-radius: 50px; transition: 0.5s; line-height: 1; color: #fff;
+					border: 2px solid #ffb03b; background-color: #ffb03b;}
+		.paymentHidden { display: none; }
 	</style>
 	
 	<!-- 결제 라디오 버튼 클릭 이벤트 -->
 	<script type="text/javascript">
-	$(function(){
+	// 카드 결제 버튼 클릭 시
+	function paymentFinalCard() {
+		alert("카드 결제를 진행하겠습니다.");
 		
-		
-	});
-	function paymentCard() {
-		alert("카드결제를 진행하겠습니다.");
-		
+		$("input:radio[id='card']:radio[value='카드결제']").prop('checked', true);
 		
 		$("#insertForm").attr({
 			"method":"post",
@@ -74,13 +83,34 @@
 		$("#insertForm").submit();
 	}
 	
-	function paymentAccount() {
-		alert("계좌이체를 진행하겠습니다.");
+	// 계좌 이체 버튼 클릭 시
+	function paymentFinalAccount() {
+		alert("계좌 이체를 진행하겠습니다.");
+		
+		$("input:radio[id='card']:radio[value='계좌이체']").prop('checked', true);
 		
 		$("#insertForm").attr({
 			"method":"post",
 			"action":"/reserve/reserveInsert.do"
-		});	
+		});
+		
+		$("#insertForm").submit();
+	}
+	
+	// 이전 단계로 버튼 이벤트
+	function selectDesigner() {
+		
+		let date = "${data.rest_hairdate}";
+		let time =	"${data.rest_time}";
+		
+		location.href="/reserve/reserveSelectDesigner.do?rest_hairdate="+date+"&rest_time="+time;
+	}
+	
+	// 예약 취소 버튼
+	function cancle() {
+		alert("예약을 취소합니다.\n메인페이지로 이동합니다.");
+		
+		location.href="/client/main.do"
 	}
 	</script>
 	
@@ -140,27 +170,27 @@
 				<input type="hidden" id="style_number" name="style_number" value="${number}"/>
 				<input type="hidden" id="rest_totalprice" name="rest_totalprice" value="${data.rest_totalprice }"/>
 					<div class="paymentMini">
-						<label>카드 결제</label>　
-						<input type="radio" name="rest_payoption" value="카드결제" onclick="paymentCard()">
+						<input class="paymentBtn" type="button" value="카드결제" onclick="paymentFinalCard()">
+						<input class="paymentHidden" type="radio" id="card" name="rest_payoption" value="카드결제" >
 					</div>
-					<label>　　</label>
 					<div class="paymentMini">
-						<label>계좌이체</label>　
-						<input type="radio" name="rest_payoption" value="계좌이체" onclick="paymentAccount()">
+						<input class="paymentBtn" type="button" value="계좌이체" onclick="paymentFinalAccount()">
+						<input class="paymentHidden" type="radio" id="card" name="rest_payoption" value="계좌이체" >
 					</div>
 					<input type="hidden" id="styling_num" name="styling_num" value="${data.styling_num}"/>
 				</form>
 				</div>
 			</div>
 			
-			<div style="width: 100%; margin: 0 auto;">
-				<hr style="border: 1 solid black; margin-top: 10px;" />
-			</div>
-			
 			<!-- 최하단 구분 -->
-			<div style="width: 100%; height: 550px; margin-top: 50px;">
+			<div style="width: 100%; margin-top: 400px;">
 			</div>
 			
+			<!-- 버튼 -->
+			<div style="margin: 0 auto; margin-top: 75px;">
+				<button class="reserveBtn" onclick="selectDesigner()">이전 단계</button>
+				<button class="reserveBtn" onclick="cancle()">예약 취소</button>
+			</div>
 		</div>
 	</div>
 	</section><!-- End Reserve Section -->

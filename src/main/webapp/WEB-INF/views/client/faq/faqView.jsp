@@ -131,7 +131,7 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<div class="designerbox">
+							<div>
 								<p>등록되어있는 자주하는 질문이 존재하지 않습니다.</p>
 							</div>
 						</c:otherwise>

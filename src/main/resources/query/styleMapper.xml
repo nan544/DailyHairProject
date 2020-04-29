@@ -32,6 +32,7 @@
 		select *
 		from styling
 		where des_num = #{des_num}
+		ORDER BY styling_option
 	</select>
 
 	<!-- 시술등록하기 -->

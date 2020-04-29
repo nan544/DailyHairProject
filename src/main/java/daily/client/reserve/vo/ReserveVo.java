@@ -8,16 +8,16 @@ public class ReserveVo extends CommonVO{
 	private String m_id;			// 회원 ID
 	private String rest_hairdate;	// 시술 일자
 	private String rest_regdate;	// 예약 등록 일자
-	private String rest_time;		//시술 시간
+	private String rest_time;		// 시술 시간
 	private int rest_state;			// 예약 상태
 	private String rest_payoption;	// 결제 방식
 	private String rest_memo;		// 디자이너 전달사항
 	private String rest_comment;	// 시술 특이사항
-	private int rest_totalprice;	//예약 총 금액
+	private int rest_totalprice;	// 예약 총 금액
 	
-	private String m_name;			//회원이름
-	private String m_gender;		//회원성별
-	private String m_phone;		    //회원전화번호
+	private String m_name;			// 회원이름
+	private String m_gender;		// 회원성별
+	private String m_phone;		    // 회원전화번호
 	
 	
 	private int styling_num;

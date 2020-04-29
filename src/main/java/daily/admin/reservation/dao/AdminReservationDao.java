@@ -14,4 +14,5 @@ public interface AdminReservationDao {
 	
 	public List<ReserveVo> resultSearchList(ReserveVo rvo); //시술완료 검색 리스트 출력
 	public int searchListCnt(ReserveVo rvo);		//검색조건마다 게시물 수 구하기
+	public List<ReserveVo> reservationCancleList(ReserveVo rvo);	//예약취소 리스트 출력
 }

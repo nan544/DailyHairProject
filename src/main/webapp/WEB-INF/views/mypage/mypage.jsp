@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,14 +84,23 @@ $(function() {
 	}
 	
 	$("#memberUpdate").click(function() {
-		location.href = "/mypage/memberUpdate.do";
-	})
+		location.href = "/mypage/memberUpdate.do"
+	});
+	
+	$("#deactivation").click(function() {
+		location.href = "/mypage/deactivation.do"
+	});
+	
+	$("#reserveState").click(function() {
+		location.href = "/mypage/reserveState.do"
+	});
 	
 });
 
 </script>
 </head>
 <body>
+
 	<c:if test="${empty login }">
 		<script type="text/javascript">
 			alert("로그인해주세요");
@@ -110,9 +120,54 @@ $(function() {
 			
 			<div>
 				<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
-				<input type="button" value="예약현황">
-				<input type="button" value="계정 비활성화">
+				<input type="button" id="reserveState" value="예약현황">
+				<input type="button" id="deactivation" name="deactivation" value="계정 비활성화">
 			</div>
+			
+			<c:if test="${mypage == '사용자' }">
+			<div>
+				<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
+				<input type="button" value="예약현황">
+				<input type="button" id="deactivation" name="deactivation" value="계정 비활성화">
+			</div>
+			
+			<div style="width: 100%; margin: 0 auto;">
+				<hr style="border: 1 solid black; margin-bottom: 10px;" />
+			</div>
+			
+			
+			<div>
+				<input type="hidden" name="m_num" id="m_num" value="${login.m_num}"/>
+				<div>
+					<label for="m_id">아이디<span style="color: red;"> * </span></label><br>
+					<input type="text" id="m_id" name="m_id" value="${login.m_id}" disabled="disabled"/><br>
+				</div>
+				<div>
+					<label for="m_pwd">패스워드<span style="color: red;"> * </span></label><br>
+					<input type="password" id="m_pwd" name="m_pwd" value="**********" disabled="disabled"/>
+				</div>
+				<div>
+					<label for="m_name">이 름<span style="color: red;"> * </span></label><br>
+					<input type="text" id="m_name" name="m_name" value="${login.m_name}" disabled="disabled"/><br>
+				</div>
+				<div>
+					<label for="m_gender">성 별<span style="color: red;"> * </span></label><br>
+					<input type="text" id="m_gender" name="m_gender" value="${login.m_gender}" disabled="disabled"/><br>
+				</div>
+				<div>
+					<label for="m_phone">전화번호<span style="color: red;"> * </span></label><br>
+					<input type="text" id="m_phone" name="m_phone" value="${login.m_phone}" readonly="readonly"/><br>
+				</div>
+				<div>
+					<label for="m_email">이메일<span style="color: red;"> * </span></label><br>
+					<input type="email" id="m_email" name="m_email" value="${login.m_email}" disabled="disabled"/><br>
+				</div>
+				<div>
+					<label for="m_memo">추가사항<span style="color: red;"> * </span></label><br>
+					<input type="text" id="m_memo" name="m_memo" value="${login.m_memo}" style="width: 400px;height: 150px;" readonly="readonly" /><br>
+				</div>
+			</div>
+			</c:if>
 			
 			<!-- 구분선 -->
 			<div style="margin: 20px; width: 100%;">

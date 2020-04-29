@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld" %>
 <!DOCTYPE html>
 <html>
 
@@ -59,9 +60,29 @@
    <![endif]-->
    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
    <script type="text/javascript">
-   
    $(function() {
-   });
+	
+});
+   
+   function fn_idFind() {
+	      
+	      var email = $("#m_email").val();
+	      
+	      $.ajax({
+	         url : "/member/login/idFind.do",
+	         type : "post",
+	         data : { "m_email" : email },
+	         success : function(data) {
+	            if(data == 1){
+	            	//alert("${member.m_num}");
+	            	location.href = "/member/login/idFindSuccess.do";
+	            }else if(data == 0){
+	               $("#idFind").attr("value", "Y");
+	               alert("이메일을 틀리게 입력 하셨거나 회원이 아닙니다.");
+	            }
+	         }
+	      });
+	   }
    
    // 로그인 버튼 이벤트
    function login() {
@@ -112,6 +133,7 @@
          <div style="width: 100%; height: 150px; margin-bottom: 50px;">
          </div><br>
          
+         <!-- ID 찾기 폼 -->
          <div style="margin: 0 auto;" align="center">
             <div style="margin-bottom: 30px; text-align: center;">
                <h1 style="font-size: 50px;">DailyHairShop</h1>
@@ -121,17 +143,16 @@
             <form role="form" id="idFindForm" name="idFindForm">
             <div>
                <label class="msgbox" for="m_email">Email</label>
-               <input type="text" id="m_email" name="m_email" placeholder=" Email"
-                  style="margin-right: 15px;">
-               <input type="button" class="IDfind_btn" id="idFindBtn" name="idFindBtn" value="ID 찾기">
+               <input type="text" id="m_email" name="m_email" placeholder=" Email" style="margin-right: 15px;"/><br>
+               <button type="button" class="IDfind_btn" id="idFind" name="idFind" onclick="fn_idFind();" value="N">아이디 찾기</button><br>
             </div><br>
+            </form>
             
-            <div>
+            <div><!-- 버튼 덩어리 -->
                <input type="button" class="other_btn" value="로그인" onclick="login()">
                <input type="button" class="other_btn" value="회원가입" onclick="join()">
                <input type="button" class="other_btn" value="PW 찾기" onclick="PWfind()">
             </div>
-            </form>
          </div>
          
          <!-- 하단 여백 -->

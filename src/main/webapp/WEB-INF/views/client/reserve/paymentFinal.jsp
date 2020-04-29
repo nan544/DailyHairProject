@@ -52,9 +52,9 @@
 		.reserveTablehead { display: inline; padding: 10px; font: 15pt bold; color: #670000;}
 		.reserveBtn { width: 150px; height: 50px; background: #ffb03b; border: 0;	color: #fff;
 				padding: 10px 24px; transition: 0.4s; border-radius: 50px; font-size: 15px;}
-		
-		.paymentOutBox { margin: 0 auto; width: 500px; height: 500px; 
-				background-color: #FFFFFF; padding-top: 30px;}
+		.paymentOutBox { margin: 0 auto; width: 750px; height: 500px; 
+						background-color: #FFFFFF; padding-top: 50px;
+						box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);}
 		.paymentInBox { margin: 0 auto; width: 500px; height: 500px; text-align: center; }
 	</style>
 	
@@ -83,52 +83,13 @@
 			
 			<!-- 상단 -->
 			<div style="margin: 0 auto; text-align: center; width: 100%;">
-				<h1 style="margin-bottom: 10px;">결제하기</h1>
-				<p style="margin-bottom: 10px;">결제 수단을 선택해주세요.</p>
-			</div>
-			
-			<div style="width: 100%; margin: 0 auto;">
-				<hr style="border: 1 solid black; margin-bottom: 10px;" />
-			</div>
-			
-			<!-- 예약 정보 -->
-			<div style="margin: 0 auto;">
-				<div class="reserveTablehead">예약 정보　　</div>
-				<div class="reserveTable">(매장)입력 대기 중</div>
-				<div class="reserveTable">(시술 일시)입력 대기 중</div>
-				<div class="reserveTable">(디자이너)입력 대기 중</div>
-				<div class="reserveTable">(시술)입력 대기 중</div>
-				<div></div>
-				<div class="reserveTablehead" style="float: left;">결제 금액　　</div>
-				<div class="reserveTable" style="float: right;">(금액)입력 대기 중</div>
-			</div>
-			
-			<div style="width: 100%; margin: 0 auto;">
-				<hr style="border: 1 solid black; margin-top: 10px;" />
-			</div>
-			
-			<!-- 결제 수단 선택 -->
-			<div style="margin: 0 auto;">
-				<div class="paymentTable">
-				<label>카드 결제</label>　
-				<input type="radio" disabled="disabled">
-				<label>　　</label>
-				<label>계좌이체</label>　
-				<input type="radio" checked="checked">
-				</div>
-			</div>
-			
-			<div style="width: 100%; margin: 0 auto;">
-				<hr style="border: 1 solid black; margin-top: 10px;" />
+				<h1 style="margin-bottom: 20px;"></h1>
 			</div>
 			
 			<!-- 결제 상자 -->
 			<div class="paymentOutBox">
 				<div class="paymentInBox">
-					<p></p>
-					<h1>계좌이체</h1>
-					<h6>계좌이체 진행화면입니다.</h6>
-					<h6>결제를 진행해주세요.</h6>
+					<h4 style="">Payment is in progress...</h4>
 					<img width="400" height="300" src="/resources/assets/img/reserve/loading2.gif">
 				</div>
 			</div>
