@@ -102,10 +102,10 @@
 							<li><a href="/faq/faqView.do">자주하는 질문</a></li>
 						</ul>
 					</li>
-					<li class="drop-down"><a href="/client/hairStyle.do">Gallery</a>
+					<li class="drop-down"><a href="/client/hairStyleList.do">Gallery</a>
 						<ul>
-							<li><a href="/client/hairStyle.do">HairStyle</a></li>
-							<li><a href="/client/hairGoods.do">HairGoods</a></li>
+							<li><a href="/client/hairStyleList.do">HairStyle</a></li>
+							<li><a href="/client/hairGoodsList.do">HairGoods</a></li>
 						</ul>
 					</li>
 					<!-- 마우스 올리면 노란색이 아닌, 처음부터 노란색이 되는 클래스 지정 -->

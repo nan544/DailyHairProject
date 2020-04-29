@@ -53,13 +53,24 @@
 				margin: 0 auto; background-color: #FFFFFF;
 				padding: 20px; }
 	.styleCell:hover { background-color: #D4F4FA; transition: 0.4s; }
+	.closeBox { padding-top: 75px; }
+	.closeBtn { margin: 0 auto; border: 0; padding: 15px 35px 5px 35px;
+				background-color: #fffaf3; }
 	</style>
+	<script type="text/javascript">
+	// 닫기 버튼
+	$(function(){
+        $("#close").click(function(){
+               window.close();
+        });
+	});
+	</script>
 </head>
 
 <body>
 <div style="margin: 25px;">
 	<div style="text-align: center; margin-top: 50px;">
-		<h1>시술 가능 목록</h1>
+		<h1>Designer Styling List</h1>
 	</div><br>
 	
 	<!-- 디자이너 시술 가능 목록 -->
@@ -91,6 +102,10 @@
 			</c:choose>
 			</div>
 		</div>
+	</div>
+	
+	<div class="closeBox" align="center">
+		<input type="button" id="close" class="closeBtn" onClick="close()" value="닫기">
 	</div>
 </div>
 </body>
