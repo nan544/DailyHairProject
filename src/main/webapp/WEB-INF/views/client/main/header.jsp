@@ -96,7 +96,7 @@
 					<li class="active"><a href="/client/main.do">Main</a></li>
 					<li><a href="/client/shopIntro.do">Shop소개</a></li>
 					<li><a href="/client/reservePage.do">예약하기</a></li>
-					<li class="drop-down"><a href="#">고객센터</a>
+					<li class="drop-down"><a href="/client/qna/qnaList.do">고객센터</a>
 						<ul>
 							<li><a href="/client/qna/qnaList.do">문의하기</a></li>
 							<li><a href="/faq/faqView.do">자주하는 질문</a></li>

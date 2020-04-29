@@ -187,7 +187,7 @@
 						$("#insertForm").submit();
 					}
 
-					//이메일이 중복되면 가입을 할 수 없음
+				/*	//이메일이 중복되면 가입을 할 수 없음
 				//  mail 변수 선언 = 받아온 m_email 변수로 가짐
 				//  변수 mail이랑 DB에 mail 풀 버전이랑 다름
 					var mail = $("#m_email").val($("#m_email").val() + "@" + $("#emailDomain").val());
@@ -212,7 +212,7 @@
 								
 							}
 						}
-					});
+					});*/
 					
 					//이메일의 앞 부분 텍스트와 뒷부분 주소를 합침
 					$("#m_email").val($("#m_email").val() + "@" + $("#emailDomain").val());
@@ -268,12 +268,19 @@
 }
 
 .checkbtn {
+	margin-left: 15px;
 	width: 100px;
 	height: 30px;
 	font-size: 13px;
-	border: 0;
+	border: 1px solid silver;
+	border-radius: 15px;
 	background-color: rgba(255, 250, 243, 1);
+	transition: all ease-in-out 0.3s;
 }
+.checkbtn:hover { 
+	border: 1px solid #FFE08C;
+	border-radius: 15px;
+	background-color: #FFE08C; }
 
 .join_input {
 	text-align: inherit;
@@ -292,10 +299,11 @@
 	color: #444444;
 	margin: 0 3px 10px 3px;
 	transition: all ease-in-out 0.3s;
-	background: white;
+	background: #fffaf3;
 	border: 2px dashed #ffb03b;
 	border-radius: 25px;
 }
+.other_btn:hover { background: #FFE08C; }
 </style>
 
 </head>
