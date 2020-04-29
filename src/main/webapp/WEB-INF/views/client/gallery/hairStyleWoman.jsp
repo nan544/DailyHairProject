@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>HairGoods</title>
+<title>HairStyle</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -53,10 +53,16 @@
 	<script type="text/javascript" src="/resources/assets/js/main.js"></script>
 	
 	<style type="text/css">
-		p > span { color: red; font: bold; }
-		.noHG { margin: 50px 0px 50px 0px; width: 750px; height: 500px;
-				box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
-				background-color: white; padding-top: 225px;}
+		.hairBtn { margin: 0 auto; border: 0; padding: 15px 35px 15px 35px;
+					background-color: #fffaf3; width: 150px; }
+		
+		
+		
+		.noBox { width: 750px; height: 500px; background-color: white;
+				box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+				margin-top: 50px; }
+		.noHS { padding-top: 200px; }
+		
 		.designer { width: 280px; height: 400px; }
 		.designerbox { float: left; padding: 10px; 
 						margin: 10px 20px 10px 20px;
@@ -75,14 +81,28 @@
 		.designerbox p { padding-top: 15px; }
 	</style>
 	<script type="text/javascript">
+	function womanClick() {
+		alert("Woman Click");
+	}
+	
+	function manClick() {
+		alert("Man Click");
+	}
+	
+	function colorClick() {
+		alert("Color Click");
+	}
+	
+	</script>
+	<script type="text/javascript">
 	// 상품 이미지 클릭 시 상세 정보
-	function clickHairGoods(num) {
+	function clickHairStyle(num) {
 		
-		$("#hg_num").val(num);
-		var hg_num = num;
+		$("#hs_num").val(num);
+		var hs_num = num;
 		
-		var url = "/client/hairGoodsDetail.do?hg_num="+hg_num;
-		var name = "상품 상세 정보";
+		var url = "/client/hairStyleDetail.do?hs_num="+hs_num;
+		var name = "헤어 스타일 상세 정보";
 		var option = "width=500px, height=900px, toolbars=no, scrollbars=yes, resizable=no";
 		
 		window.open(url, name, option);
@@ -104,8 +124,10 @@
 			
 			<!-- 상단 문구 -->
 			<div style="margin: 0 auto; text-align: center; width: 100%;">
-				<h1 style="margin-bottom: 35px;">HairGoods Gallery</h1>
-				<p style="margin-bottom: 50px;"><span>*</span> 실제 매장에서 고객님들의 시술에 사용되는 제품입니다. <span>*</span></p>
+				<h1 style="margin-bottom: 35px;">HairStyle Gallery</h1>
+				<button class="hairBtn" onclick="womanClick()">Woman</button>
+				<button class="hairBtn" onclick="manClick()">Man</button>
+				<button class="hairBtn" onclick="colorClick()">Color</button>
 			</div>
 			
 			<!-- 상품 문구 -->
@@ -115,25 +137,32 @@
 			</form>
 			<div style="margin: 0 auto; text-align: center; max-width: 1020px">
 				<div>
-				<c:choose>
+					<div class="noBox">
+						<p class="noHS">Woman HairStyle</p>
+						<p>등록된 게시물이 존재하지 않습니다.</p>
+					</div>
+					
+				<%-- <c:choose>
 					<c:when test="${not empty hairGoodsList }">
 						<c:forEach var="hgList" items="${hairGoodsList }">
 							<div class="designerbox" onclick="clickHairGoods(${hgList.hg_num})">
 								<c:if test="${not empty hgList.hg_thumb }">
 									<!-- 로컬 저장소 사용 시 주석 해제하면 썸네일 이미지 불러옴 -->
-									<%-- <input type="hidden" class="designer" name="hg_thumb" id="hg_thumb" value="${hgList.hg_thumb}" /> --%>
+									<input type="hidden" class="designer" name="hg_thumb" id="hg_thumb" value="${hgList.hg_thumb}" />
 									<img class="designer" src="/resources/assets/img/goodsNoImg.png">
 								</c:if>
 								<p>${hgList.hg_title}</p>
 							</div>
 						</c:forEach>
 					</c:when>
+					
 					<c:otherwise>
 						<div>
-							<p class="noHG">등록된 게시물이 존재하지 않습니다.</p>
+							<p class="noHS">등록된 게시물이 존재하지 않습니다.</p>
 						</div>
 					</c:otherwise>
-				</c:choose>
+				</c:choose> --%>
+					
 				</div>
 			</div>
 			<!-- 데이터 출력 끝-->

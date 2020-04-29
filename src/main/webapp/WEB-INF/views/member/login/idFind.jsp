@@ -115,9 +115,10 @@
                color: #444444;
                margin: 0 3px 10px 3px;
                transition: all ease-in-out 0.3s;
-               background: white;
-               border: 2px dashed #ffb03b;
-               border-radius: 25px; }
+               background: #fffaf3;
+				border: 2px dashed #ffb03b;
+				border-radius: 25px; }
+		.other_btn:hover { background: #FFE08C; }
    </style>
 </head>
 
@@ -143,7 +144,7 @@
             <form role="form" id="idFindForm" name="idFindForm">
             <div>
                <label class="msgbox" for="m_email">Email</label>
-               <input type="text" id="m_email" name="m_email" placeholder=" Email" style="margin-right: 15px;"/><br>
+               <input type="text" id="m_email" name="m_email" placeholder=" Email" style="margin-right: 15px;"/>
                <button type="button" class="IDfind_btn" id="idFind" name="idFind" onclick="fn_idFind();" value="N">아이디 찾기</button><br>
             </div><br>
             </form>
