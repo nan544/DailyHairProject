@@ -9,6 +9,15 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript">
+
+function chkImg(file){
+    var ext = file.val().split('.').pop().toLowerCase();
+    if(jQuery.inArray(ext,['gif','png','jpg'])== -1){
+       alert("파일 형식이 맞지않습니다 \n업로드 가능 파일[gif, png, jpg]");
+       return false;
+    }else return true;
+ }
+ 
 	$(function() {
 
 		//닫기버튼 클릭시 팝업창 닫기
@@ -32,7 +41,9 @@
 				alert("내용을 입력해주세요");
 				$("#qna_content").focus();
 				return false;
-			} else {
+			} else if (!chkImg($("#file"))){
+				return false;
+			}else {
 
 				var formData = new FormData($("#inForm")[0]);
 
@@ -62,19 +73,25 @@
 		});
 	});
 </script>
+<style type="text/css">
+.writeContainer{
+width : 80%;
+margin: 0 auto;	
+}
+</style>
 </head>
 <body>
 
 	<h1 align="center">1:1 문의하기</h1>
 
-	<div style="width: 100%">
+	<div class= "writeContainer">
 		<form name="inForm" id="inForm" enctype="multipart/form-data">
 			<input type="hidden" id="m_id" name="m_id" value="${login.m_id}" />
-			<p>제목</p>
-			<input type="text" name="qna_title" id="qna_title" value="" />
+			<label>제목</label>
+			<input type="text" name="qna_title" id="qna_title" value=""/><br>
+			<input type="file" name="file" id="file" style="margin-top: 10px;"/>
 			<p>내용</p>
-			<textarea rows="5" cols="20" name="qna_content" id="qna_content"></textarea>
-			<br> <input type="file" name="file" id="file" />
+			<textarea rows="15" cols="90" name="qna_content" id="qna_content" style="resize: none;"></textarea>
 		</form>
 	</div>
 	<div class="btnContainer" style="margin-top: 10px;">

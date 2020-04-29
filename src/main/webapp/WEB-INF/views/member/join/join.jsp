@@ -190,7 +190,7 @@
 					//이메일이 중복되면 가입을 할 수 없음
 				//  mail 변수 선언 = 받아온 m_email 변수로 가짐
 				//  변수 mail이랑 DB에 mail 풀 버전이랑 다름
-					var mail = $("#m_email").val($("#m_email").val() + "@" + $("#emailDomain").val());
+					/* var mail = $("#m_email").val($("#m_email").val() + "@" + $("#emailDomain").val());
 					
 					$.ajax({
 						url : "/member/mailChk.do",
@@ -212,7 +212,7 @@
 								
 							}
 						}
-					});
+					}); */
 					
 					//이메일의 앞 부분 텍스트와 뒷부분 주소를 합침
 					$("#m_email").val($("#m_email").val() + "@" + $("#emailDomain").val());
