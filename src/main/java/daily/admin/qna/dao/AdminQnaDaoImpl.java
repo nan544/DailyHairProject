@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import daily.admin.qna.vo.replyVO;
 import daily.client.qna.vo.QnaVO;
 @Repository
 @Transactional
@@ -20,8 +21,15 @@ public class AdminQnaDaoImpl implements AdminQnaDao {
 	}
 	@Override
 	public QnaVO detail(QnaVO qvo) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("detail", qvo);
+	}
+	@Override
+	public int insertReply(replyVO repVO) {
+		return sqlSession.insert("insertReply", repVO);
+	}
+	@Override
+	public int updateState(int qna_num) {
+		return sqlSession.update("updateState", qna_num);
 	}
 
 

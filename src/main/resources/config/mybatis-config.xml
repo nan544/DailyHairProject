@@ -15,6 +15,7 @@
 		<typeAlias type="daily.client.reserve.vo.ReserveVo" alias="reservation"></typeAlias>
 		<typeAlias type="daily.client.reservedetail.vo.ReserveDetailVO" alias="reservationDetail"></typeAlias>
 		<typeAlias type="daily.client.qna.vo.QnaVO" alias="qna"></typeAlias>
+		<typeAlias type="daily.admin.qna.vo.replyVO" alias="reply"></typeAlias>
 	</typeAliases>
 	
 	<!-- 필요시 추후 주석해제 합니다

@@ -29,40 +29,38 @@
 
 			location.href = "/client/qna/qnaUpdateForm.do?qna_num=" + qna_num;
 		});
-		
-		
-		
-		 //첨부파일 이미지 보여주기
+
+		//첨부파일 이미지 보여주기
 		let image = "<c:out value='${detail.qna_file}'/>";
-		if(image!=""){
+		if (image != "") {
 			$("#img").attr({
-				src: "/uploadStorage/qna/${detail.qna_file}",
-				width:"200px",
-				height:"250px"
+				src : "/uploadStorage/qna/${detail.qna_file}",
+				width : "200px",
+				height : "250px"
 			});
-		} 
+		}
 	});
-	
 </script>
 <style type="text/css">
-.mainContainer{
-width: 80%;
-margin:  auto;
-border: 1px solid;
-border-radius: 5px;
+.mainContainer {
+	width: 80%;
+	margin: auto;
+	border: 1px solid;
+	border-radius: 5px;
 }
-.replyContainer{
-width: 80%;
-margin: 10px auto;
-border: 1px solid;
-border-radius: 5px; 
+
+.replyContainer {
+	width: 80%;
+	margin: 10px auto;
+	border: 1px solid;
+	border-radius: 5px;
 }
 </style>
 </head>
 <body>
 	<h1>1:1 문의 상세보기</h1>
 	<div class="mainContainer">
-		<div class="titleContainer" style="margin: 5px 0 0 10px;" >${detail.qna_title}</div>
+		<div class="titleContainer" style="margin: 5px 0 0 10px;">${detail.qna_title}</div>
 		<hr>
 		<div class="contentContainer" style="margin-left: 10px;">${detail.qna_content}</div>
 		<hr>

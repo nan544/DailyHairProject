@@ -10,8 +10,10 @@
 <script type="text/javascript">
 	$(function() {
 		$(".qnaDetail").click(function(){
+			let qna_state = $(this).children(".state").attr("data-num");
+			alert(qna_state);
 			let qna_num = $(this).attr("data-num");
-			location.href="/client/qna/qnaDetail.do?qna_num="+qna_num;
+			location.href="/admin/qna/qnaDetail.do?qna_num="+qna_num+"&qna_state="+qna_state ;
 		});
 	});
 	
@@ -21,22 +23,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container-fluid">
+	<div >
 
 		<div class="row">
 			<!-- 최상단 구분 -->
 			<!-- <div style="width: 100%; height: 100px; margin-bottom: 50px;">
 			</div> -->
 
-			<h1 align="center">1:1 문의 관리</h1>
+			<h1 >1:1 문의 관리</h1>
 
 			<!-- 구분선 -->
-			<div style="margin: 20px; width: 100%;">
-				<hr style="border: 1 solid black;" />
+			<div >
+				<hr>
 			</div>
 
-			<div style="width: 100%;">
-				<table style="width: 100%">
+			<div >
+				<table >
 					<colgroup>
 						<col width="5%">
 						<col width="20%">
@@ -62,11 +64,11 @@
 										<td>${qna.m_id}</td>
 										<td class="goDetail">${qna.qna_title}</td>
 										<td>${qna.qna_regdate}</td>
-										<td><c:if test="${qna.qna_state == 0}">
-											답변 대기
+										<c:if test="${qna.qna_state == 0}">
+											<td class="state" data-num="${qna.qna_state}">답변 대기</td>
 										</c:if> <c:if test="${qna.qna_state == 1}">
-											답변 완료
-										</c:if></td>
+											<td class="state" data-num="${qna.qna_state}">답변 완료</td>
+										</c:if>
 									</tr>
 								</c:forEach>
 							</c:when>

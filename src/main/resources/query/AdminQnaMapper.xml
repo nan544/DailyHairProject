@@ -11,9 +11,30 @@
 	</select>
 
 	<select id="detail" parameterType="qna" resultType="qna">
-	select *
+	select qna_num, qna_title, m_id, to_char(qna_regdate,'YYYY-MM-DD') as qna_regdate, qna_content, qna_state
 	from qna
 	where qna_num = #{qna_num}
 	
 	</select>
+	
+	<!-- 댓글 입력 -->
+	<insert id="insertReply" parameterType="reply">
+	<selectKey keyProperty="rep_num" order="BEFORE" resultType="int">
+		select reply_seq.nextval
+		from dual
+	</selectKey>
+	INSERT INTO reply(rep_num, qna_num, rep_name, rep_content)
+	VALUES(
+		#{rep_num},#{qna_num},#{rep_name},#{rep_content}
+	)
+	</insert>
+	
+	<update id="updateState" parameterType="int">
+	UPDATE 
+		QNA 	
+	SET
+		qna_state = 1
+	WHERE 
+		qna_num =#{qna_num}
+	</update>
 </mapper>
