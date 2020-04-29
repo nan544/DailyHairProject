@@ -27,6 +27,13 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 	}
 	
+	//이메일 중복체크
+	@Override
+	public int mailChk(MemberVO vo) throws Exception {
+		int result = sql.selectOne("mailChk", vo);
+		return result;
+	}
+	
 	//로그인
 	@Override
 	public MemberVO login(MemberVO lvo) {
@@ -38,17 +45,33 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO mypage(MemberVO lvo) {
 		return (MemberVO)sql.selectOne("mypage", lvo);
 	}
-
-	//마이페이지 회원정보 상세보기
+	
+	//회원정보 수정
 	@Override
-	public MemberVO memberMypage(int m_num) {
-		return sql.selectOne("memberMypage", m_num);
+	public void memberUpdateDo(MemberVO vo) throws Exception {
+		sql.update("memberUpdateDo", vo);
+	}
+
+
+	
+	
+	
+
+	//회원 비활성화
+	@Override
+	public int clientUpdate(MemberVO mvo) {
+		return sql.update("clientUpdate", mvo);
+	}
+
+	@Override
+	public int memberReservation(int m_num) {
+		return sql.selectOne("memberReservation", m_num);
 	}
 	
 	//아이디 찾기
-	@Override
-	public int idFind(MemberVO vo) throws Exception {
-		int result = sql.selectOne("idFind", vo);
-		return result;
-	}
+		@Override
+		public int idFind(MemberVO vo) throws Exception {
+			int result = sql.selectOne("idFind", vo);
+			return result;
+		}
 }

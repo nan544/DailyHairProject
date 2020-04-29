@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지</title>
+<title>계정 비활성화</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -58,7 +58,11 @@
 
 <!-- Template Main JS File -->
 <script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
+<style type="text/css">
 
+.main{padding-left: 50px;}
+
+</style>
 <!-- 모바일 웹 페이지 설정 -->
 <link rel="shortcut icon" href="/resources/image/icon.png" />
 <link rel="apple-touch-icon" href="/resources/image/icon.png" />
@@ -70,19 +74,36 @@
 <script type="text/javascript">
 
 $(function() {
-	
-	$("#mypageBtn").click(function() {
-		$("#mypageForm").attr("method","post");
-		$("#mypageForm").attr("action","/mypage/mypage.do");
-		$("#mypageForm").submit();
-	});
-	
-	var msg = "<c:out value='${msg}'/>";
-	
-	if (msg != ""){
-		alert(msg);
-	}
-	
+
+	//계정 비활성화 버튼 클릭시 실행
+	$("#deleteBtn").click(function() {
+		var num = "${login.m_num}";
+		
+		if (confirm("비활성화 하시겠습니까?")) {
+			$.ajax({
+					
+				url : "/mypage/memberDelete.do",
+				type : "post",
+				data : { m_num : num },
+				success : function(data) {
+					if(data == 1){
+						alert("수정이 완료되었습니다.");
+						location.replace("/client/main/main.do");
+					}
+				}
+			});
+		}
+		
+		/*if(confirm("비활성화 하시겠습니까?")){
+			$("#deactivation").attr("method", "post");
+			$("#deactivation").attr("action", "/memberDelete.do");
+			$("#deactivation").submit();
+		}*/
+		
+		});
+		
+		
+
 	$("#memberUpdate").click(function() {
 		location.href = "/mypage/memberUpdate.do"
 	});
@@ -101,105 +122,53 @@ $(function() {
 </head>
 <body>
 
-	<c:if test="${empty login }">
-		<script type="text/javascript">
-			alert("로그인해주세요");
-			location.href="/";
-		</script>
-	</c:if>
 	<!-- header 삽입 -->
 	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
-	
-	<!-- ======= Reserve Section ======= -->
-	<section id="about" class="about">
-	<div class="container-fluid">
-		<div class="row">
-			<!-- 최상단 구분 -->
-			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
-			</div>
-			
-			<div>
-				<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
-				<input type="button" id="reserveState" value="예약현황">
-				<input type="button" id="deactivation" name="deactivation" value="계정 비활성화">
-			</div>
-			
-			<c:if test="${mypage == '사용자' }">
-			<div>
-				<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
-				<input type="button" value="예약현황">
-				<input type="button" id="deactivation" name="deactivation" value="계정 비활성화">
-			</div>
-			
-			<div style="width: 100%; margin: 0 auto;">
-				<hr style="border: 1 solid black; margin-bottom: 10px;" />
-			</div>
-			
-			
-			<div>
-				<input type="hidden" name="m_num" id="m_num" value="${login.m_num}"/>
-				<div>
-					<label for="m_id">아이디<span style="color: red;"> * </span></label><br>
-					<input type="text" id="m_id" name="m_id" value="${login.m_id}" disabled="disabled"/><br>
-				</div>
-				<div>
-					<label for="m_pwd">패스워드<span style="color: red;"> * </span></label><br>
-					<input type="password" id="m_pwd" name="m_pwd" value="**********" disabled="disabled"/>
-				</div>
-				<div>
-					<label for="m_name">이 름<span style="color: red;"> * </span></label><br>
-					<input type="text" id="m_name" name="m_name" value="${login.m_name}" disabled="disabled"/><br>
-				</div>
-				<div>
-					<label for="m_gender">성 별<span style="color: red;"> * </span></label><br>
-					<input type="text" id="m_gender" name="m_gender" value="${login.m_gender}" disabled="disabled"/><br>
-				</div>
-				<div>
-					<label for="m_phone">전화번호<span style="color: red;"> * </span></label><br>
-					<input type="text" id="m_phone" name="m_phone" value="${login.m_phone}" readonly="readonly"/><br>
-				</div>
-				<div>
-					<label for="m_email">이메일<span style="color: red;"> * </span></label><br>
-					<input type="email" id="m_email" name="m_email" value="${login.m_email}" disabled="disabled"/><br>
-				</div>
-				<div>
-					<label for="m_memo">추가사항<span style="color: red;"> * </span></label><br>
-					<input type="text" id="m_memo" name="m_memo" value="${login.m_memo}" style="width: 400px;height: 150px;" readonly="readonly" /><br>
-				</div>
-			</div>
-			</c:if>
-			
-			<!-- 구분선 -->
-			<div style="margin: 20px; width: 100%;">
-				<hr style="border: 1 solid black;" />				
-			</div>
-			
-			<c:if test="${mypage == null}">
-				<h1>본인확인</h1>
-				
-				<!-- 구분선 -->
-				<div style="margin: 20px; width: 100%;">
-					<br>				
-				</div>
-				
-				<form role="form" id="mypageForm" name="mypageForm">
-					<div>
-						<label for="m_pwd">패스워드</label>
-						<input type="password" id="m_pwd" name="m_pwd" placeholder="패스워드">
-						<input type="button" id="mypageBtn" name="mypageBtn" value="확인">
-					</div>
-				</form>
-			</c:if>
-			
-			<!-- 하단 여백 -->
-			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
-			</div>
+
+	<div>
+
+		<!-- 최상단 구분 -->
+		<div style="width: 100%; height: 100px; margin-bottom: 50px;">
 		</div>
+		
+		<div>
+			<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
+			<input type="button" id="reserveState" name="reserveState" value="예약현황">
+			<input type="button" id="deactivation" name="deactivation" value="계정 비활성화">
+		</div>
+	
+		<div style="width: 100%; margin: 0 auto;">
+		<hr style="border: 1 solid black; margin-bottom: 10px;" />
+		</div>
+
+	<form id="deactivation" name="deactivation">
+		<div class="main">
+			<h1>계정 비활성화</h1>
+	
+			<p><span style="color: red;"> * </span>비활성화 관련 주의 사항<span style="color: red;"> * </span></p>
+	
+			<p> 1. 계정이 비활성화 될 경우 로그인이 불가능합니다. </p>
+			<p> 2. 로그인을 통해 사용 가능한 모든 기능을 사용하실 수 없습니다. </p>
+			<p> 3. 예약현황이 존재할 경우 비활성화를 하실 수 없습니다. </p>
+			<p> 4. 비활성화를 해제하시려면 관리자에게 문의하셔야 합니다. </p><br><br>
+	
+			<p> 관리자 문의 전화 ☎ 02-001-0002 </p>
+	
+			<input type="hidden" name="m_num" id="m_num" value="${login.m_num}"/>
+			<input type="hidden" name="m_state" id="m_state" value="${login.m_state}"/>
+			
+			<input type="button" name="deleteBtn" id="deleteBtn" value="비활성화" class="btn"/>
+		</div>
+	</form>
+	
+		<!-- 하단 여백 -->
+		<div style="width: 100%; height: 100px; margin-bottom: 50px;">
+		</div>
+			
 	</div>
-	</section>
-	<!-- End Reserve Section -->
 
 	<!-- footer 삽입 -->
 	<jsp:include page="/WEB-INF/views/client/main/footer.jsp"></jsp:include>
+
 </body>
 </html>

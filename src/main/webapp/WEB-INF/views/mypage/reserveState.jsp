@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>정보수정</title>
+<title>예약현황</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -65,13 +65,6 @@
 
 $(function() {
 	
-	$("#memberSubmit").click(function() {
-		$("#submitForm").attr('method','post');
-		$("#submitForm").attr("action","/mypage/mymemberUpdate.do");
-		$("#submitForm").submit();
-		alert("회원정보가 수정 되었습니다.");
-	});
-	
 	$("#memberUpdate").click(function() {
 		location.href = "/mypage/memberUpdate.do"
 	});
@@ -89,86 +82,33 @@ $(function() {
 </script>
 </head>
 <body>
-	<!-- header 삽입 -->
-	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
 
-	<!-- ======= HairGoods Section ======= -->
-	<section id="about" class="about">
-	<div class="container-fluid" >
-		<div class="row">
-			<!-- 최상단 구분 -->
-			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
-			</div>
-			
-			<!-- 메뉴로 대체할 것 -->
-			<div>
-				<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
-				<input type="button" id="reserveState" name="reserveState" value="예약현황">
-				<input type="button" id="deactivation" name="deactivation" value="계정 비활성화">
-			</div>
-			
-			<div style="width: 100%; margin: 0 auto;">
-				<hr style="border: 1 solid black; margin-bottom: 10px;" />
-			</div>
-			
-			<!-- 개인정보 -->
-			<div>
-				<form id="submitForm" name="submitForm">
-				 <input type="hidden" name="m_num" id="m_num" value="${login.m_num}"/>
-					<div>
-						<label for="m_id">아이디<span style="color: red;"> * </span></label><br>
-						<input type="text" id="m_id" name="m_id" value="${login.m_id}" disabled="disabled"/><br>
-					</div>
-					<div>
-						<label for="m_pwd">패스워드<span style="color: red;"> * </span></label><br>
-						<input type="password" value="**********" disabled="disabled"/>
-						<input type="button" id="pwdModify" name="pwdModify" value="패스워드 변경"/><br>
-					</div>
-					<div>
-						<label for="m_name">이 름<span style="color: red;"> * </span></label><br>
-						<input type="text" id="m_name" name="m_name" value="${login.m_name}" disabled="disabled"/><br>
-					</div>
-					<div>
-						<label for="m_gender">성 별<span style="color: red;"> * </span></label><br>
-						<input type="text" id="m_gender" name="m_gender" value="${login.m_gender}" disabled="disabled"/><br>
-					</div>
-					<div>
-						<label for="m_phone">전화번호<span style="color: red;"> * </span></label><br>
-						<input type="text" id="m_phone" name="m_phone" value="${login.m_phone}" maxlength="11"/><br>
-					</div>
-					<div>
-						<label for="m_email">이메일<span style="color: red;"> * </span></label><br>
-						<input type="email" id="m_email" name="m_email" value="${login.m_email}" disabled="disabled"/><br>
-					</div>
-					<div>
-						<label for="m_memo">추가사항<span style="color: red;"> * </span></label><br>
-						<input type="text" id="m_memo" name="m_memo" value="${login.m_memo}" style="width: 400px;height: 150px;" /><br><br>
-					</div>
-					<div>
-						<input type="button" id="memberSubmit" name="memberSubmit" value="저장하기"/>
-					</div>
-				</form>
-			</div>
-			
-			<!-- 구분선 -->
-			<div style="margin: 20px; width: 100%;">
-				<hr style="border: 1 solid black;" />				
-			</div>
-			
-			<!-- 하단 여백 -->
-			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
-			</div>
-			
-			<!-- 최하단 구분 -->
-			<!-- <div style="width: 100%; height: 550px; margin-top: 50px;">
-			</div> -->
-			
-		</div>
+	<div>
+		<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
+		<input type="button" id="reserveState" name="reserveState" value="예약현황">
+		<input type="button" id="deactivation" name="deactivation" value="계정 비활성화">
 	</div>
-	</section><!-- End HairGoods Section -->
 
-	<!-- footer 삽입 -->
-	<jsp:include page="/WEB-INF/views/client/main/footer.jsp"></jsp:include>
+<div>
+<br>
+	<h1>예약현황</h1>
+	
+	<p><span style="color: red;"> * </span>예약 관련 주의 사항<span style="color: red;"> * </span></p>
+	<br>
+	<p> 1. 시술 전 날까지는 100% 환불 및 예약 취소가 가능합니다 </p>
+	<p> 2. 시술 당일에는 예약 취소는 가능하나 예약금 환불이 불가능합니다 </p>
+	
+	<table>
+		<tr>
+			<td> 매장위치&nbsp;&nbsp;</td>
+			<td> 예약한 날짜&nbsp;&nbsp;</td>
+			<td> 시술 일자&nbsp;&nbsp;</td>
+			<td> 시술 종류&nbsp;&nbsp;</td>
+			<td> 시술 가격&nbsp;&nbsp;</td>
+			<td> 총 결제금액 </td>
+		</tr>
+	</table>
+</div>
 
 </body>
 </html>

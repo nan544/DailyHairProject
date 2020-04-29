@@ -36,7 +36,9 @@
 		FROM designer a
 		WHERE a.des_num not in(SELECT DISTINCT des_num
 							   FROM reservation
-							   WHERE rest_hairdate = #{rest_hairdate} and rest_time = #{rest_time} and rest_state = 1)
+							   WHERE rest_hairdate = #{rest_hairdate} and rest_time = #{rest_time} and rest_state = 1)  
+							   and a.des_state = 1 and des_holyday != (select to_char(to_date(#{rest_hairdate},'yy-mm-dd'),'day')
+                                            							 from dual)
 	</select>
 	
 	

@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 	
-	<!-- 명현쓰 타일즈 쓰실거라면 참조하세요~ -->
+	명현쓰 타일즈 쓰실거라면 참조하세요~
 <tiles-definitions>
 	<definition name="intro"
 		template="/WEB-INF/views/template/client/mainLayout.jsp">
@@ -42,4 +42,4 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/member/{1}.jsp" />
 	</definition>
-</tiles-definitions>
+</tiles-definitions> -->
