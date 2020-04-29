@@ -1,4 +1,5 @@
 
+
 //입력값 체크후 디자이너 등록하기
 function insertDes() {
 	
@@ -16,7 +17,9 @@ function insertDes() {
 		return;
 	} else if (!chkSubmit($("#des_holyday"), "휴무일을")) {
 		return;
-	} else {
+	} else if(!chkImg($("#file2"))){
+		return false;
+	}else{
 		$.ajax({
 			url : "/admin/designer/designerJoin.do",
 			type : "post",

@@ -16,6 +16,7 @@ span {
 <script type="text/javascript" src="/resources/include/js/designer.js"></script>
 <script type="text/javascript" src="/resources/include/js/common.js"></script>
 <script type="text/javascript">
+
 	$(function() {
 
 		//닫기버튼 클릭시 팝업창 닫기

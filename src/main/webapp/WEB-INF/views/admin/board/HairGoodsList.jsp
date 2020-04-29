@@ -96,7 +96,7 @@ margin-right: 5px;
 		</colgroup>
 		<tr class="active">
 			<th>글번호</th>
-			<th>스타일명</th>
+			<th>제품명</th>
 			<th>등록일</th>
 			<th>썸네일 이미지명</th>
 			<th>상세이미지</th>

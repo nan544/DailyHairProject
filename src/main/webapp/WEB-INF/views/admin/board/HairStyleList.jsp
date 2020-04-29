@@ -55,7 +55,7 @@
 	<form name="f_search" id="f_search">
 	 <input
 			type="hidden" id="page" name="page" value="${data.page}">
-		<input type="text" id="keyword" name=keyword placeholder="제품이름(제목)" value="${data.keyword}">
+		<input type="text" id="keyword" name=keyword placeholder="스타일이름(제목)" value="${data.keyword}">
 		<input type="hidden" id="search" name="search" value="hs_title">
 		<input type="button" id="searchBtn" class="btnBoard" name="searchBtn" value="검색">
 		</form>
@@ -79,7 +79,7 @@
 		</colgroup>
 		<tr class="active">
 			<th>글번호</th>
-			<th>제품이름</th>
+			<th>스타일이름</th>
 			<th>등록일</th>
 			<th>썸네일 이미지명</th>
 			<th>상세이미지</th>
