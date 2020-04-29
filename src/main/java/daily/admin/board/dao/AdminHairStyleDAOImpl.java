@@ -46,6 +46,11 @@ public class AdminHairStyleDAOImpl implements AdminHairStyleDAO {
 	public int hairStyleCnt(AdminHairStyleVO hsvo) {
 		return sqlSession.selectOne("hsCnt", hsvo);
 	}
+
+	@Override
+	public List<AdminHairStyleVO> categoryList(int hs_category) {
+		return sqlSession.selectList("categoryList",hs_category);
+	}
 	
 
 }

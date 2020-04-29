@@ -11,5 +11,6 @@ public interface AdminHairStyleDAO {
 	public int hairStyleinsert(AdminHairStyleVO hsvo);//등록
 	public int hairStyledelete(int hs_num);//삭제
 	public int hairStyleCnt(AdminHairStyleVO hsvo);
+	public List<AdminHairStyleVO> categoryList(int hs_category); // 카테고리별 리스트 출력
 	
 }
