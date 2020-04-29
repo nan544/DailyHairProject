@@ -11,12 +11,16 @@
 <script type="text/javascript">
 
 function chkImg(file){
-    var ext = file.val().split('.').pop().toLowerCase();
-    if(jQuery.inArray(ext,['gif','png','jpg'])== -1){
-       alert("파일 형식이 맞지않습니다 \n업로드 가능 파일[gif, png, jpg]");
-       return false;
-    }else return true;
- }
+    if(file.val()!=""){
+   var ext = file.val().split('.').pop().toLowerCase();
+   if(jQuery.inArray(ext,['gif','png','jpg'])== -1){
+      alert("파일 형식이 맞지않습니다 \n업로드 가능 파일[gif, png, jpg]");
+      return false;
+   }else return true;
+}else{
+    return true;
+}
+}
  
 	$(function() {
 

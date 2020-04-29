@@ -150,13 +150,13 @@
 					</colgroup>
 					<thead class="qnaThead">
 						<tr>
-							<th class="thBottom">작성자</th>
+							<th class="thBottom" style="padding-left: 20px;">작성자</th>
 							<th class="thBottom">│</th>
 							<th class="thBottom">문의일시</th>
 							<th class="thBottom">│</th>
 							<th class="thBottom">제목</th>
 							<th class="thBottom">│</th>
-							<th class="thBottom">답변상태</th>
+							<th class="thBottom" style="padding-right: 20px;">답변상태</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -167,7 +167,7 @@
 				</table>
 				
 					<div class="tableBox2">
-					<table>
+					<table cellpadding="10px">
 						<colgroup>
 							<col width="9%">
 							<col width="2">
@@ -181,9 +181,6 @@
 							<c:choose>
 								<c:when test="${not empty qnaList }">
 									<c:forEach var="qna" items="${qnaList}">
-										<tr><!-- 여백 -->
-											<td colspan="7" class="blickSpaceIn"><td>
-										</tr>
 										<tr data-num = "${qna.qna_num}" class="qnaDetail">
 											<td>${qna.m_id}</td>
 											<td></td>
@@ -197,9 +194,6 @@
 												<c:if test="${qna.qna_state == 1}">
 													답변 완료
 												</c:if></td>
-										</tr>
-										<tr><!-- 여백 -->
-											<td colspan="7" class="blickSpaceIn"><td>
 										</tr>
 									</c:forEach>
 								</c:when>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>1:1문의 상세보기</title>
+<title>1:1 문의 상세보기</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -76,8 +76,8 @@
 		if(image!=""){
 			$("#img").attr({
 				src: "/uploadStorage/qna/${detail.qna_file}",
-				width:"200px",
-				height:"250px"
+				width:"235px",
+				height:"345px"
 			});
 		} 
 	});
@@ -106,17 +106,14 @@
 .tableBox2 { margin-bottom: 150px; padding: 15px 15px 5px 15px;
 			box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 			transition: all ease-in-out 0.3s;
-			background-color: #FFFAFA; }
-.tableBox2 > label { margin-top: 50px; }
-.tableBox2 > label > span { color: red; }
+			background-color: #FFFAFA; height: 375px; }
+.tableBox2 > div > label { margin-bottom: 25px; }
+.tableBox2 > div > label > span { color: red; }
 .miniDetail { font-size: 12px; display: inline; }
 
 </style>
 </head>
 <body>
-	<!-- header 삽입 -->
-	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
-	
 	<!-- header 삽입 -->
 	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
 	
@@ -145,28 +142,35 @@
 				<input type="hidden" name="qna_num" id="qna_num1">
 			</form>
 			
-			
 			<div class="qnaHeadBox">
-				<h4>“ ${detail.qna_title} ”</h4>
+				<h4>문의 제목 ： “ ${detail.qna_title} ”</h4>
 				<hr style="width: 100%">
 				
-				<div class="tableBox2">
-					<p>${detail.qna_content}</p>
-				
-					<label><span>*</span> 첨부파일 ： </label>
-					<c:if test="${empty detail.qna_file }">
-						<p class="miniDetail">( 첨부파일이 존재하지 않습니다. )</p>
-					</c:if> 
-					<c:if test="${not empty detail.qna_file }">
-						<a href="" onclick="fn_fileDown('${detail.qna_num}'); return false;">${detail.qna_file}</a>
-					</c:if>
+				<div style="width: 95%; margin: 0 auto;">
+					<div class="tableBox2">
+						<c:if test="${empty detail.qna_file }">
+							<div style="width: 80%; height: 350px; float: left;">
+								<label><span>*</span> 첨부파일 ： </label>
+								<p class="miniDetail">( 첨부파일이 존재하지 않습니다. )</p>
+								<p>${detail.qna_content}</p>
+							</div>
+							<div style="width: 20%; height: 350px; float: right;">
+								<img style="float: right;" src="/resources/assets/img/qnaNoImg.png">
+							</div>
+						</c:if> 
+						<c:if test="${not empty detail.qna_file }">
+							<div style="width: 80%; height: 350px; float: left;">
+								<label><span>*</span> 첨부파일 ： </label>
+								<label>${detail.qna_file}</label>
+								<p>${detail.qna_content}</p>
+							</div>
+							<div style="width: 20%; height: 350px; float: right;">
+								<img style="float: right;" id="img">
+							</div>
+						</c:if>
+					</div>
 				</div>
-				
-				
 			</div>
-			
-			
-			
 		</div>
 	</div>
 	</section><!-- End 1:1 QnA Detail Section -->
