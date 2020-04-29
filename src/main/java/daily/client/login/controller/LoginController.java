@@ -39,8 +39,7 @@ public class LoginController {
 	
 	// 로그인 처리
 	   @RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	   public ModelAndView postLogin(@ModelAttribute("MemberVO") MemberVO lvo, HttpSession session,
-	         HttpServletRequest request) {
+	   public ModelAndView postLogin(@ModelAttribute("MemberVO") MemberVO lvo, HttpSession session, HttpServletRequest request) {
 	      logger.info("로그인 처리 성공");
 
 	      ModelAndView mav = new ModelAndView();

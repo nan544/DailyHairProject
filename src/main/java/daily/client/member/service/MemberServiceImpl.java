@@ -52,18 +52,17 @@ public class MemberServiceImpl implements MemberService {
 	public void memberUpdateDo(MemberVO vo) throws Exception {
 		dao.memberUpdateDo(vo);
 	}
-	
-	
-	
-	
-
-
 
 	//회원 비활성화
 	@Override
 	public int clientUpdate(MemberVO mvo) {
 		return dao.clientUpdate(mvo);
 	}
+	
+	
+	
+	
+	
 	
 	@Override
 	public int memberReservation(int m_num) {

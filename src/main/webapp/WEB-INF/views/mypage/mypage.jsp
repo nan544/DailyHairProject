@@ -120,14 +120,14 @@ $(function() {
 			
 			<div>
 				<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
-				<input type="button" id="reserveState" value="예약현황">
+				<input type="button" id="reserveState" name="reserveState" value="예약현황">
 				<input type="button" id="deactivation" name="deactivation" value="계정 비활성화">
 			</div>
 			
 			<c:if test="${mypage == '사용자' }">
 			<div>
 				<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
-				<input type="button" value="예약현황">
+				<input type="button" id="reserveState" name="reserveState" value="예약현황">
 				<input type="button" id="deactivation" name="deactivation" value="계정 비활성화">
 			</div>
 			

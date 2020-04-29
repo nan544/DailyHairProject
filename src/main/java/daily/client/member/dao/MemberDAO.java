@@ -22,12 +22,12 @@ public interface MemberDAO {
 	//회원정보 수정
 	public void memberUpdateDo(MemberVO vo) throws Exception;
 	
-	
-	
-	
-	
 	//회원 비활성화
 	public int clientUpdate(MemberVO mvo);
+	
+	
+	
+	
 	
 	//회원 예약(있을시에 비활성화 안되게 하기 위한)
 	public int memberReservation(int m_num);

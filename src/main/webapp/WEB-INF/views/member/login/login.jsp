@@ -93,6 +93,7 @@
 	src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+		
 		$("#loginBtn").click(function() {
 			$("#loginForm").attr("method", "post");
 			$("#loginForm").attr("action", "/member/login/login.do");
@@ -105,7 +106,19 @@
 			alert(msg);
 		}
 	});
-
+	
+	function enterkey() {
+        if (window.event.keyCode == 13) {
+ 
+             // 엔터키가 눌렸을 때 실행할 내용
+        	
+    			$("#loginForm").attr("method", "post");
+    			$("#loginForm").attr("action", "/member/login/login.do");
+    			$("#loginForm").submit();
+    		
+        }
+	}
+	
 	// 회원가입 버튼 이벤트
 	function join() {
 		location.replace("/member/clause.do");
@@ -227,7 +240,7 @@
 									<!-- 줄 바꿈 효과 -->
 									<label for="m_pwd" class="msgbox">PW </label> <input
 										type="password" id="m_pwd" name="m_pwd"
-										placeholder=" PassWord" style="width: 200px; height: 35px;">
+										placeholder=" PassWord" style="width: 200px; height: 35px;" onkeyup="enterkey();">
 								</div>
 								<div class="login_idpw2">
 									<input type="button" class="login_btn" id="loginBtn"

@@ -86,6 +86,7 @@
 	var phoneJ = /^[0-9]{11,11}$/;
 
 	$(function() {
+		//아이디 중복체크를 하기 전까지는 가입 버튼을 잠금
 		$("#insertBtn").attr("disabled", true);
 
 		//아이디 정규식
@@ -142,43 +143,75 @@
 				return false;
 			}
 		});
+		
+		//이메일 중복확인
+		 $("#emailChk").click(function() {
+			
+			
+			if (mailJ.test($("#m_email").val())) {
+				$("#email_check").text("");
+			} else {
+				$("#email_check").text("20자리 영문 대소문자와 숫자만 입력 해주시길 바랍니다.")
+				$("#email_check").css("color", "red");
+				return false;
+			} 
+			
+		 let email = $("#m_email").val()+"@"+$("#emailDomain").val();
+		 
+		$.ajax({
+				url : "/member/mailChk.do",
+				type : "post",
+				data : { "m_email" : email },
+				success : function(data) {
+					if (data == 1) {
+						alert("사용 불가능한 이메일입니다.");
+					} else if (data == 0) {
+						alert("사용 가능한 이메일입니다.");
+						$("#insertBtn").attr("disabled",false);
+					}
+				}
+			}); 
+		
+		
+		}); 
 
 		$("#insertBtn").click(function() {
 					//필수 입력 요소들을 입력하지 않고 가입 버튼을 눌렀을 때 못넘어가게 함
 					if ($("#m_id").val() == "") {
-						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");
+						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//아이디
 						$("#m_id").focus();
 						return false;
 					}
 					if ($("#m_pwd").val() == "") {
-						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");
+						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//패스워드
 						$("#m_pwd").focus();
 						return false;
 					}
 					if ($("#m_pwd2").val() == "") {
-						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");
+						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//패스워드 확인
 						$("#m_pwd2").focus();
 						return false;
 					}
-					if ($("#m_pwd").val() != $("#m_pwd2").val()) { //비밀번호와 비밀번호 확인이 일치하는지 확인
+					if ($("#m_pwd").val() != $("#m_pwd2").val()) {	//비밀번호와 비밀번호 확인이 일치하는지 확인
 						alert("비밀번호가 일치하지 않습니다.");
 						return false;
 					}
 					if ($("#m_name").val() == "") {
-						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");
+						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//이름
 						$("#m_name").focus();
 						return false;
 					}
 					if ($("#m_phone").val() == "") {
-						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");
+						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//전화번호
 						$("#m_phone").focus();
 						return false;
 					}
 					if ($("#m_email").val() == "") {
-						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");
+						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//이메일
 						$("#m_email").focus();
 						return false;
 					}
+					//아이디 중복체크를 하면 가입 버튼 잠금이 풀림
 					var idChkVal = $("#idChk").val();
 					if (idChkVal == "N") {
 						alert("중복체크를 해주시길 바랍니다.");
@@ -186,33 +219,7 @@
 					} else if (idChkVal == "Y") {
 						$("#insertForm").submit();
 					}
-
-					//이메일이 중복되면 가입을 할 수 없음
-				//  mail 변수 선언 = 받아온 m_email 변수로 가짐
-				//  변수 mail이랑 DB에 mail 풀 버전이랑 다름
-					var mail = $("#m_email").val($("#m_email").val() + "@" + $("#emailDomain").val());
 					
-					$.ajax({
-						url : "/member/mailChk.do",
-						type : "post",
-						data : { "m_email" : mail },
-						success : function(data) {
-							if(data == 1){
-								alert("이미 가입된 이메일을 입력하셨습니다.");
-								//새로고침 막기
-								function doNotReload(){
-								    if( (event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) || (event.keyCode == 116) ) {
-								        event.keyCode = 0;
-								        event.cancelBubble = true;
-								        event.returnValue = false;
-								    } 
-								}
-								document.onkeydown = doNotReload;
-							} else if (data == 0) {
-								
-							}
-						}
-					});
 					
 					//이메일의 앞 부분 텍스트와 뒷부분 주소를 합침
 					$("#m_email").val($("#m_email").val() + "@" + $("#emailDomain").val());
@@ -221,8 +228,11 @@
 					$("#insertForm").attr("method", "post");
 					$("#insertForm").attr("action", "/member/join.do");
 					$("#insertForm").submit();
+					
+					
+				
 				});
-			
+		
 	});
 
 	function fn_idChk() {
@@ -248,7 +258,6 @@
 				} else if (data == 0) {
 					$("#idChk").attr("value", "Y");
 					alert("사용 가능한 아이디입니다.");
-					$("#insertBtn").attr("disabled", false);
 				}
 			}
 		});
@@ -363,7 +372,9 @@
 								<option value="naver.com">Naver</option>
 								<option value="daum.com">Daum</option>
 								<option value="nate.com">Nate</option>
-							</select><br>
+							</select>
+							<button type="button" class="checkbtn" id="emailChk" name="emailChk" >중복체크</button>
+							<br>
 							<div id="email_check" style="font-size: 11px;"></div>
 						</div>
 						<div>
@@ -373,9 +384,8 @@
 						</div>
 						<div style="margin-top: 50px;">
 							<center>
-								<input type="button" class="other_btn" id="insertBtn"
-									name="insertBtn" value="가입" /> <input type="button"
-									class="other_btn" onclick="joinCancle()" value="취소" />
+								<input type="button" class="other_btn" id="insertBtn" name="insertBtn" value="가입"/>
+								<input type="button" class="other_btn" onclick="joinCancle()" value="취소" />
 							</center>
 						</div>
 					</form>

@@ -1,20 +1,29 @@
 package daily.client.mypage.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import daily.admin.member.service.AdminMemberService;
+import daily.admin.style.service.StyleService;
+import daily.admin.style.vo.StyleVO;
 import daily.client.member.service.MemberService;
 import daily.client.member.vo.MemberVO;
+import daily.client.reserve.service.ReserveService;
+import daily.client.reserve.vo.ReserveVo;
 
 @Controller
 @RequestMapping(value = "/mypage")
@@ -24,6 +33,12 @@ public class MypageController {
 	
 	@Inject
 	private MemberService service;
+	
+	@Autowired
+	private ReserveService reserveService;
+	
+	@Autowired
+	private StyleService styleService;
 	
 	//마이페이지
 	@RequestMapping(value="/mypage.do", method = RequestMethod.GET)
@@ -82,30 +97,55 @@ public class MypageController {
 		return "mypage/deactivation";
 	}
 	
-	
 	//계정 비활성화 처리
 	@RequestMapping(value = "/memberDelete.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String memberDelete(@ModelAttribute MemberVO mvo) {
+	public int memberDelete(@ModelAttribute MemberVO mvo, HttpSession session) {
 		log.info("계정 비활성화 성공");
 
-		int count = service.clientUpdate(mvo);
+	
 		
-		if(count == 1) {
-			return "0";
-		}else{
-			return "1";
+		int reservationCnt = reserveService.confirmReservationCnt(mvo.getM_id());
+		
+		if(reservationCnt>0) {
+			return 0;
+		}else {
+			 service.clientUpdate(mvo);
+			 session.invalidate();
+			 return 1;
 		}
+		
 	}
 	
 	//예약 연황창
 		@RequestMapping(value="/reserveState.do", method = RequestMethod.GET)
-		public String reserveState() throws Exception{
+		public String reserveState(HttpSession session , Model model) throws Exception{
 			log.info("reserveState.do 호출 성공");
-				
+			
+			MemberVO mvo = (MemberVO) session.getAttribute("login");
+			String m_id = mvo.getM_id();
+			
+			List<ReserveVo> List = reserveService.myreservationList(m_id);
+			
+			model.addAttribute("myList", List);
+			
 			return "mypage/reserveState";
 		}
 
-	
+	//예약현황 상세
+		@RequestMapping(value = "/reservDetail.do", method = RequestMethod.GET)
+		public String reservDetail(int rest_num , Model model, HttpSession session) {
+			
+		MemberVO mvo = (MemberVO) session.getAttribute("login");
+		String m_id = mvo.getM_id();	
+		
+		List<ReserveVo> List = reserveService.myreservationList(m_id);
+		List<StyleVO> styleList = styleService.stylingnameList(rest_num);
+			
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("myList", List);
+			
+			return "mypage/reservDetail";
+		}
 	
 }

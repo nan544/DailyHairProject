@@ -32,6 +32,7 @@
 		SELECT *
 		FROM MEMBER
 		WHERE m_id = #{m_id}
+		AND m_state = 1
 	</select>
 	
 	<!-- 마이페이지 본인확인 -->
@@ -48,12 +49,11 @@
 		WHERE m_num = #{m_num}
 	</update>
 	
-	
 	<!-- 회원 비활성화 -->
-	<update id="clientUpdate" parameterType="member">
+	<update id="clientUpdate" parameterType="String">
 		UPDATE member
 		SET m_state = 0
-		WHERE m_num = #{m_num}
+		WHERE m_id = #{m_id}
 	</update>
 	
 	

@@ -52,17 +52,17 @@ public class MemberDAOImpl implements MemberDAO {
 		sql.update("memberUpdateDo", vo);
 	}
 
-
-	
-	
-	
-
 	//회원 비활성화
 	@Override
 	public int clientUpdate(MemberVO mvo) {
 		return sql.update("clientUpdate", mvo);
 	}
 
+	
+	
+	
+	
+	
 	@Override
 	public int memberReservation(int m_num) {
 		return sql.selectOne("memberReservation", m_num);

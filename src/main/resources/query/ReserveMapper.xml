@@ -21,6 +21,20 @@
 	</insert>
 	
 	
+	<select id="myreservationList" parameterType="String" resultType="reservation"> 
+		SELECT a.rest_state as rest_state,  a.rest_num as rest_num, to_char(a.rest_hairdate,'yyyy-mm-dd') as rest_hairdate, a.rest_time as rest_time, to_char(a.rest_regdate,'yyyy-mm-dd') as rest_regdate, b.des_name as des_name , a.rest_totalprice as rest_totalprice , a.rest_memo as rest_memo   
+		FROM reservation a inner join designer b
+		on a.des_num = b.des_num 
+		WHERE m_id = #{m_id}
+	</select>
+	
+	<!-- 예약이 있는지 확인하는 쿼리 -->
+	<select id="confirmReservationCnt" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM reservation
+		WHERE m_id = #{m_id} and rest_state = 1
+	</select>
+	
 <!-- 	<select id="getAll" resultMap="YourResultSet">
 		SELECT * FROM tablename1
 	</select>

@@ -22,12 +22,13 @@ public interface MemberService {
 	//회원정보 수정
 	public void memberUpdateDo(MemberVO vo) throws Exception;
 	
-
-	
-	
-	
 	//회원 비활성화
 	public int clientUpdate(MemberVO mvo);
+	
+	
+	
+	
+	
 	
 	public int memberReservation(int m_num);
 	

@@ -52,6 +52,8 @@
 	<script type="text/javascript" src="/resources/assets/js/main.js"></script>
 <style type="text/css">
 
+.main{padding-left: 50px;}
+
 </style>
 <!-- 모바일 웹 페이지 설정 -->
 <link rel="shortcut icon" href="/resources/image/icon.png" />
@@ -77,11 +79,28 @@ $(function() {
 		location.href = "/mypage/reserveState.do"
 	});
 	
+	//상세보기.
+	$(".detailreservation").click(function(){
+		let rest_num = $(this).parents("tr").attr("data-num");
+		
+		
+		window.open("reservDetail.do?rest_num="+rest_num, "mypagePop",
+		"width=800, height=600, left=600, top=100");
+		
+	});
+	
 });
 
 </script>
 </head>
 <body>
+
+	<!-- header 삽입 -->
+	<jsp:include page="/WEB-INF/views/client/main/header.jsp"></jsp:include>
+
+	<!-- 최상단 구분 -->
+	<div style="width: 100%; height: 100px; margin-bottom: 50px;">
+	</div>
 
 	<div>
 		<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
@@ -89,26 +108,70 @@ $(function() {
 		<input type="button" id="deactivation" name="deactivation" value="계정 비활성화">
 	</div>
 
-<div>
+	<div style="width: 100%; margin: 0 auto;">
+		<hr style="border: 1 solid black; margin-bottom: 10px;" />
+	</div>
+
+<div class="main">
 <br>
+
 	<h1>예약현황</h1>
 	
 	<p><span style="color: red;"> * </span>예약 관련 주의 사항<span style="color: red;"> * </span></p>
 	<br>
 	<p> 1. 시술 전 날까지는 100% 환불 및 예약 취소가 가능합니다 </p>
 	<p> 2. 시술 당일에는 예약 취소는 가능하나 예약금 환불이 불가능합니다 </p>
-	
-	<table>
+	<table border="1">
+	<thead>
 		<tr>
 			<td> 매장위치&nbsp;&nbsp;</td>
 			<td> 예약한 날짜&nbsp;&nbsp;</td>
 			<td> 시술 일자&nbsp;&nbsp;</td>
-			<td> 시술 종류&nbsp;&nbsp;</td>
-			<td> 시술 가격&nbsp;&nbsp;</td>
+			<td> 디자이너&nbsp;&nbsp;</td>
 			<td> 총 결제금액 </td>
+			<td>상태</td>
 		</tr>
+	</thead>
+	<tbody>
+		<c:choose>
+			<c:when test="${not empty myList}">
+				<c:forEach var="list" items="${myList}">
+					<tr data-num = "${list.rest_num}">
+						<td>왕십리점</td>
+						<td class="detailreservation">${list.rest_regdate}</td>
+						<td>${list.rest_hairdate} / ${list.rest_time}</td>
+						<td>${list.des_name}</td>
+						<td>${list.rest_totalprice}</td>
+						<td>
+						<c:if test="${list.rest_state == 1 }">
+							예약중 <input type="button" name="cancleBtn" id="cancleBtn" value="예약취소"/>
+						</c:if>
+							<c:if test="${list.rest_state == 2 }">
+							시술완료
+						</c:if>
+							<c:if test="${list.rest_state == 0}">
+							예약취소
+						</c:if>
+						</td>
+					</tr>
+				</c:forEach>				
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<td colspan = "6" align="center">예약 내역이없습니다</td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
+	</tbody>
 	</table>
 </div>
+
+	<!-- 하단 여백 -->
+	<div style="width: 100%; height: 100px; margin-bottom: 50px;">
+	</div>
+
+	<!-- footer 삽입 -->
+	<jsp:include page="/WEB-INF/views/client/main/footer.jsp"></jsp:include>
 
 </body>
 </html>

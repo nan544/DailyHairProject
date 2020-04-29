@@ -52,6 +52,8 @@
 	<script type="text/javascript" src="/resources/assets/js/main.js"></script>
 <style type="text/css">
 
+.main{padding-left: 50px;}
+
 </style>
 <!-- 모바일 웹 페이지 설정 -->
 <link rel="shortcut icon" href="/resources/image/icon.png" />
@@ -73,15 +75,15 @@ $(function() {
 	});
 	
 	$("#memberUpdate").click(function() {
-		location.href = "/mypage/memberUpdate.do"
+		location.href = "/mypage/memberUpdate.do"		//회원정보 수정
 	});
 	
 	$("#deactivation").click(function() {
-		location.href = "/mypage/deactivation.do"
+		location.href = "/mypage/deactivation.do"		//계정 비활성화
 	});
 	
 	$("#reserveState").click(function() {
-		location.href = "/mypage/reserveState.do"
+		location.href = "/mypage/reserveState.do"		//예약현황
 	});
 	
 });
@@ -110,7 +112,7 @@ $(function() {
 			<div style="width: 100%; margin: 0 auto;">
 				<hr style="border: 1 solid black; margin-bottom: 10px;" />
 			</div>
-			
+			<div class="main">
 			<!-- 개인정보 -->
 			<div>
 				<form id="submitForm" name="submitForm">
@@ -148,6 +150,7 @@ $(function() {
 						<input type="button" id="memberSubmit" name="memberSubmit" value="저장하기"/>
 					</div>
 				</form>
+			</div>
 			</div>
 			
 			<!-- 구분선 -->

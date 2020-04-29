@@ -77,19 +77,22 @@ $(function() {
 
 	//계정 비활성화 버튼 클릭시 실행
 	$("#deleteBtn").click(function() {
-		var num = "${login.m_num}";
+		let m_id = "${login.m_id}";
 		
 		if (confirm("비활성화 하시겠습니까?")) {
 			$.ajax({
 					
 				url : "/mypage/memberDelete.do",
 				type : "post",
-				data : { m_num : num },
+				data : { m_id : m_id },
 				success : function(data) {
-					if(data == 1){
-						alert("수정이 완료되었습니다.");
-						location.replace("/client/main/main.do");
-					}
+						if(data == 1){
+							alert("수정이 완료되었습니다.");
+							location.href = "/client/main.do";
+						}else{
+							alert("예약이 있어서 비활성화 못해여");
+						}
+						
 				}
 			});
 		}
@@ -155,6 +158,7 @@ $(function() {
 			<p> 관리자 문의 전화 ☎ 02-001-0002 </p>
 	
 			<input type="hidden" name="m_num" id="m_num" value="${login.m_num}"/>
+			<input type="hidden" name="m_id" id="m_id" value="${login.m_id}"/>
 			<input type="hidden" name="m_state" id="m_state" value="${login.m_state}"/>
 			
 			<input type="button" name="deleteBtn" id="deleteBtn" value="비활성화" class="btn"/>

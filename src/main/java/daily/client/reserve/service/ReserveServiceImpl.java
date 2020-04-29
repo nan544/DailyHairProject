@@ -29,5 +29,17 @@ public class ReserveServiceImpl implements ReserveService {
 	}
 
 
+	@Override
+	public List<ReserveVo> myreservationList(String m_id) {
+		return reserveDao.myreservationList(m_id);
+	}
+
+
+	@Override
+	public int confirmReservationCnt(String m_id) {
+		return reserveDao.confirmReservationCnt(m_id);
+	}
+
+
 
 }
