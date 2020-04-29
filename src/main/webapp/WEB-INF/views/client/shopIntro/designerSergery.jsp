@@ -49,7 +49,7 @@
 	
 	<style type="text/css">
 	body { background-color: #fffaf3; }
-	.stylingBox { box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
+	.stylingBox { box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 				margin: 0 auto; background-color: #FFFFFF;
 				padding: 20px; }
 	.styleCell:hover { background-color: #D4F4FA; transition: 0.4s; }

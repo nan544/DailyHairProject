@@ -130,7 +130,7 @@
 			
 			<!-- 상단 -->
 			<div style="margin: 0 auto; text-align: center; width: 100%;">
-				<h1 style="margin-bottom: 50px;">1 : 1 문의 상세보기</h1>
+				<h1 style="margin-bottom: 50px;">1：1 문의 상세보기</h1>
 			</div>
 			
 			<!-- 버튼 -->
