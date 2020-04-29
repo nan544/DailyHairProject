@@ -16,7 +16,7 @@
 
 
 	<select id="hsList" resultType="hairstyle">
-		SELECT hs_num, hs_title,
+		SELECT hs_num, hs_title, hs_category,
 		hs_thumb, hs_img1, hs_content,
 		to_char(hs_regdate,'YYYY-MM-DD') as hs_regdate
 		FROM(
@@ -33,6 +33,24 @@
 			</if>
 		</where>
 	</select>
+	
+	<!-- 카테고리별 리스트 출력하기 -->
+	<select id="categoryList" parameterType="int" resultType="hairstyle">
+		SELECT *
+		FROM hairstyle
+		<where>
+			<if test="hs_category == 1">
+				hs_category = 1
+			</if>
+			<if test="hs_category == 2">
+				hs_category = 2
+			</if>
+			<if test="hs_category == 3">
+				hs_category = 3
+			</if>
+		</where>
+	</select>
+	
 
 	<insert id="hsInsert" parameterType="hairstyle">
 		<!-- HairGoods 게시글 등록 -->
@@ -48,7 +66,8 @@
 		hs_num,
 		hs_title,
 		hs_content,
-		hs_thumb
+		hs_thumb,
+		hs_category
 		<if test="hs_img1!='400'">
 			,hs_img1
 		</if>
@@ -57,7 +76,8 @@
 		#{hs_num},
 		#{hs_title},
 		#{hs_content},
-		#{hs_thumb}
+		#{hs_thumb},
+		#{hs_category}
 		<if test="hs_img1!='400'">
 			,#{hs_img1}
 		</if>
@@ -67,7 +87,7 @@
 
 		update hairstyle
 		set hs_title=#{hs_title},
-		hs_content=#{hs_content}
+		hs_content=#{hs_content},hs_category = #{hs_category}
 		<if test="hs_thumb != '400'">
 			,hs_thumb=#{hs_thumb}
 		</if>
@@ -75,9 +95,8 @@
 			,hs_img1=#{hs_img1}
 		</if>
 		where hs_num = #{hs_num}
-
-
 	</update>
+	
 	<select id="hsDetail" resultType="hairstyle" parameterType="int">
 		select *
 		from hairstyle
@@ -99,7 +118,6 @@
 		<include refid="List" />
 		ORDER BY hs_num desc) 
 		list)
-
 	</select>
 
 </mapper>

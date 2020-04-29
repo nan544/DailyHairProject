@@ -13,6 +13,16 @@ function chkSubmit(item, msg) {
 	}
 }
 
+//이미지체크
+function chkImg(file){
+    var ext = file.val().split('.').pop().toLowerCase();
+    if(jQuery.inArray(ext,['gif','png','jpg'])== -1){
+       alert("파일 형식이 맞지않습니다 \n업로드 가능 파일[gif, png, jpg]");
+       return false;
+    }else return true;
+ }
+
+
 /* 함수명: checkForm(유효성 체크 대상, 메시지 내용) 
  * 출력영역: placeholder 속성을 이용.
  * 예시 : if(!chkSubmit($('#keyword'),"검색어를")) return;

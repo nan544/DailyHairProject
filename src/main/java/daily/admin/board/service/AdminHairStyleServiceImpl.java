@@ -44,4 +44,9 @@ public class AdminHairStyleServiceImpl implements AdminHairStyleService {
 		return hairStyleDao.hairStyleCnt(hsvo);
 	}
 
+	@Override
+	public List<AdminHairStyleVO> categoryList(int hs_category) {
+		return hairStyleDao.categoryList(hs_category);
+	}
+
 }

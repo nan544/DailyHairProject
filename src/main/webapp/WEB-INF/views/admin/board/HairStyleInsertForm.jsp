@@ -89,7 +89,16 @@ input[type="file"] {
 			<p align="right">* 항목은 필수 입력 값입니다.</p>
 			<hr>
 			<div class="formLine">
-				<span class="item"> <label class="required">*</label>제품명
+				<span class="item"> <label class="required">*</label>카테고리</span> 
+				<select id="hs_category" name="hs_category">
+					<option value="1">남성</option>
+					<option value="2">여성</option>
+					<option value="3">컬러</option>
+				</select>
+			</div>
+			<hr>
+			<div class="formLine">
+				<span class="item"> <label class="required">*</label>스타일명
 				</span> <input type="text" id="hs_title" name="hs_title">
 			</div>
 			<hr>

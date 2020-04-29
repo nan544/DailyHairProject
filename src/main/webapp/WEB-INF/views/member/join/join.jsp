@@ -40,7 +40,6 @@
 	href="/resources/assets/css/style.css">
 
 <!-- =======================================================
->>>>>>> master
    * Template Name: Delicious - v2.0.0
    * Template URL: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/
    * Author: BootstrapMade.com
@@ -190,7 +189,7 @@
 				/*	//이메일이 중복되면 가입을 할 수 없음
 				//  mail 변수 선언 = 받아온 m_email 변수로 가짐
 				//  변수 mail이랑 DB에 mail 풀 버전이랑 다름
-					var mail = $("#m_email").val($("#m_email").val() + "@" + $("#emailDomain").val());
+					/* var mail = $("#m_email").val($("#m_email").val() + "@" + $("#emailDomain").val());
 					
 					$.ajax({
 						url : "/member/mailChk.do",
@@ -222,7 +221,6 @@
 					$("#insertForm").attr("action", "/member/join.do");
 					$("#insertForm").submit();
 				});
-			
 	});
 
 	function fn_idChk() {
