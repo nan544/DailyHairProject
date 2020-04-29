@@ -14,7 +14,7 @@
             </ul></li>
             <li class="dropdown" ><a href="#">고객센터 관리</a>
            		<ul>
-            		<li><a href="#">1:1문의 관리[미구현]</a></li>
+            		<li><a href="/admin/qna/qnaList.do">1:1문의 관리</a></li>
             		<li><a href="/admin/adminFaqList.do">FAQ</a></li>
             	</ul>
             	</li>

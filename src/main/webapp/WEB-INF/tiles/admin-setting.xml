@@ -43,8 +43,14 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/admin/reservation/{1}.jsp" />
 	</definition>
-<definition name="admin/bi/*" extends="basic">
+	
+	<definition name="admin/bi/*" extends="basic">
 		<put-attribute name="main"
 			value="/WEB-INF/views/admin/bi/{1}.jsp" />
+	</definition>
+	
+	<definition name="admin/qna/*" extends="basic">
+		<put-attribute name="main"
+			value="/WEB-INF/views/admin/qna/{1}.jsp" />
 	</definition>
 </tiles-definitions>
