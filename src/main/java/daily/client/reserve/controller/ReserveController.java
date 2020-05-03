@@ -137,12 +137,12 @@ public class ReserveController {
 	
 	// 00. 결제하기로 이동
 	@RequestMapping(value = "/reservePayment.do", method = RequestMethod.POST)
-	public String reservePayment(@ModelAttribute ReserveVo rvo, Model model, @RequestParam("holy")String holy) {
+	public String reservePayment(@ModelAttribute ReserveVo rvo, Model model, @RequestParam("holy")String style_number) {
 		
 		List<StyleVO> styleList = styleService.stylingList(rvo.getDes_num());
 		DesignerVO dvo = designerService.designerDetail(rvo.getDes_num());
 		
-		model.addAttribute("number",holy);
+		model.addAttribute("number",style_number);
 		model.addAttribute("desname",dvo);
 		model.addAttribute("styleList",styleList);
 		model.addAttribute("data",rvo);
@@ -152,14 +152,14 @@ public class ReserveController {
 	
 	// 최종단계 결제하기 -> DB에 인서트
 	@RequestMapping(value = "/reserveInsert.do",method = RequestMethod.POST)
-	public String insertReservation(@ModelAttribute ReserveVo rvo,@RequestParam("style_number")List<String> holy){
+	public String insertReservation(@ModelAttribute ReserveVo rvo,@RequestParam("style_number")List<String> style_number){
 			
 		//예약테이블에 인서트
 		int result = reserveService.insertReservation(rvo);
 		
 		//예약테이블에 인서트가 성공하면 예약상세테이블에 인서트
 		if(result == 1 ) {
-			for(String i : holy) {
+			for(String i : style_number) {
 				reserveDetailService.insertReservationDetail(Integer.parseInt(i));
 			}
 			return "client/reserve/paymentFinal";
