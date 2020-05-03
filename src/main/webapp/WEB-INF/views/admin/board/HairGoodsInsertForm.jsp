@@ -66,6 +66,7 @@ input[type="file"] {
 							alert("등록 완료");
 							location.href = "/admin/board/HairGoodsList.do";
 						} else {
+							alert(data);
 							alert("등록 실패");
 
 						}
