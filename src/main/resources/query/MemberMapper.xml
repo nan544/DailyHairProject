@@ -69,8 +69,8 @@
 	</select>
 	
 	<!-- 아이디 찾기 -->
-	<select id="idFind" resultType="int">
-		SELECT COUNT(*)
+	<select id="idFind" resultType="member">
+		SELECT *
 		FROM MEMBER
 		WHERE m_email = #{m_email}
 	</select>

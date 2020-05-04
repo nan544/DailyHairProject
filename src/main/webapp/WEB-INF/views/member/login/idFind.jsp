@@ -61,19 +61,29 @@
    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
    <script type="text/javascript">
    $(function() {
-	
+	   
+	   
+	   var msg = "<c:out value='${msg}'/>";
+	   
+	   if(msg != ''){
+		alert(msg);		   
+	   }
 });
    
    function fn_idFind() {
 	      
 	      var email = $("#m_email").val();
 	      
-	      $.ajax({
+	      $("#idFindForm").attr("method","post");
+	      $("#idFindForm").attr("action","/member/login/idFind.do");
+	      $("#idFindForm").submit();
+	  /*     $.ajax({
 	         url : "/member/login/idFind.do",
 	         type : "post",
 	         data : { "m_email" : email },
 	         success : function(data) {
-	            if(data == 1){
+	            if(data != 0){
+	            	alert (data);
 	            	//alert("${member.m_num}");
 	            	location.href = "/member/login/idFindSuccess.do";
 	            }else if(data == 0){
@@ -81,7 +91,7 @@
 	               alert("이메일을 틀리게 입력 하셨거나 회원이 아닙니다.");
 	            }
 	         }
-	      });
+	      }); */
 	   }
    
    // 로그인 버튼 이벤트

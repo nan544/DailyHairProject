@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -104,21 +105,26 @@ public class LoginController {
 	
 	//아이디 찾기
 	@RequestMapping(value = "/idFind.do", method = RequestMethod.POST)
-	@ResponseBody
-	public int idFind(MemberVO vo) throws Exception {
+	public String idFind(MemberVO vo, Model model) throws Exception {
 		logger.info("아이디 찾기 호출");
 			
-		int result = service.idFind(vo);
-			
-		return result;
+		MemberVO mvo  = service.idFind(vo);
+		
+		if(mvo != null) {
+			model.addAttribute("mem",mvo);
+			return "member/login/idFindSuccess";
+		}else {
+			model.addAttribute("msg","이메일을 틀리게 입력 하셨거나 회원이 아닙니다");
+			return "member/login/idFind";
+		}
 	}
 	
 	//찾은 아이디 창
-	@RequestMapping(value = "/idFindSuccess.do", method = RequestMethod.GET)
-	public String getIdFindS() throws Exception {
-		logger.info("아이디 찾기 성공");
-		
-		return "member/login/idFindSuccess";
-	}
+	/*
+	 * @RequestMapping(value = "/idFindSuccess.do", method = RequestMethod.GET)
+	 * public String getIdFindS() throws Exception { logger.info("아이디 찾기 성공");
+	 * 
+	 * return "member/login/idFindSuccess"; }
+	 */
 	
 }
