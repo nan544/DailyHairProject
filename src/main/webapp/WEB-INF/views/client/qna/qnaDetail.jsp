@@ -158,7 +158,7 @@ p > span { color: red; font: bold; }
 			box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 			background-color: #FFFAFA; height: 375px; }
 .tableBox2 > div > label { margin-bottom: 25px; }
-.tableBox2 > div > label > span { color: red; }
+.redSpan { color: red; }
 .miniDetail { font-size: 12px; display: inline; }
 
 
@@ -168,7 +168,7 @@ p > span { color: red; font: bold; }
 			box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 			background-color: #FFFAFA; height: 375px; }
 .replyBox > div > label { margin-bottom: 25px; }
-.replyBox > div > label > span { color: red; }
+.replyBox > div > div > label > span { color: red; }
 
 .contentBox { border: 0px; resize: none;
 			background-color: white; }
@@ -219,8 +219,10 @@ p > span { color: red; font: bold; }
 					<div class="tableBox2">
 						<c:if test="${empty detail.qna_file }">
 							<div style="width: 80%; height: 350px; float: left;">
-								<label><span>*</span> 첨부파일 ： </label>
-								<p class="miniDetail">( 첨부파일이 존재하지 않습니다. )</p>
+								<div style="width: 100%">
+									<label><span class="redSpan">*</span> 첨부파일 ： </label>
+									<p class="miniDetail">( 첨부파일이 존재하지 않습니다. )</p>
+								</div>
 								<textarea rows="12" cols="120" class="contentBox" disabled="disabled"><c:out value="${detail.qna_content}"/></textarea>
 							</div>
 							<div style="width: 20%; height: 350px; float: right;">
@@ -229,8 +231,10 @@ p > span { color: red; font: bold; }
 						</c:if> 
 						<c:if test="${not empty detail.qna_file }">
 							<div style="width: 80%; height: 350px; float: left;">
-								<label><span>*</span> 첨부파일 ： </label>
-								<label>${detail.qna_file}</label>
+								<div style="width: 100%">
+									<label><span class="redSpan">*</span> 첨부파일 ： </label>
+									<label>${detail.qna_file}</label>
+								</div>
 								<textarea rows="12" cols="120" class="contentBox" disabled="disabled"><c:out value="${detail.qna_content}"/></textarea>
 							</div>
 							<div style="width: 20%; height: 350px; float: right;">
@@ -249,9 +253,11 @@ p > span { color: red; font: bold; }
 								<div class="replyBox">
 									<c:if test="${empty reply.rep_file }">
 										<div style="width: 80%; height: 350px; float: left;">
-											<label><span>*</span> 첨부파일 ： </label>
-											<p class="miniDetail">( 첨부파일이 존재하지 않습니다. )</p>
-											<p>${reply.rep_content}</p>
+											<div style="width: 100%">
+												<label><span class="redSpan">*</span> 첨부파일 ： </label>
+												<p class="miniDetail">( 첨부파일이 존재하지 않습니다. )</p>
+											</div>
+											<textarea rows="12" cols="110" class="contentBox" disabled="disabled"><c:out value="${reply.rep_content}"/></textarea>
 										</div>
 										<div style="width: 20%; height: 350px; float: right;">
 											<img style="float: right;" src="/resources/assets/img/qnaNoImg.png">
@@ -259,9 +265,11 @@ p > span { color: red; font: bold; }
 									</c:if> 
 									<c:if test="${not empty reply.rep_file }">
 										<div style="width: 77%; height: 350px; float: left;">
-											<label><span>*</span> 첨부파일 ： </label>
-											<label>${reply.rep_file}</label>
-											<p>${reply.rep_content}</p>
+											<div style="width: 100%">
+												<label><span class="redSpan">*</span> 첨부파일 ： </label>
+												<label>${reply.rep_file}</label>
+											</div>
+											<textarea rows="12" cols="110" class="contentBox" disabled="disabled"><c:out value="${reply.rep_content}"/></textarea>
 										</div>
 										<div style="width: 23%; height: 350px; float: right;">
 											<img style="float: right;" id="imgR">
