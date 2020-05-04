@@ -39,7 +39,7 @@ function showSlides(n) {
 </script>
 <style type="text/css">
 * {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin:0}
+body {font-family: Verdana, sans-serif; margin:0 auto; min-width: 900px; max-width: 1600px; size: 900px;}
 .mySlides {display: none}
 img {vertical-align: middle;}
 

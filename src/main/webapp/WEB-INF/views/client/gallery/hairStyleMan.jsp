@@ -65,7 +65,7 @@
 		
 		.designer { width: 280px; height: 400px; }
 		.designerbox { float: left; padding: 10px; 
-						margin: 10px 20px 10px 20px;
+						margin: 15px 35px 15px 35px;
 						transition: all ease-in-out 0.3s;
 						transform: scale(1);
 						-webkit-transform: scale(1);
@@ -135,6 +135,8 @@
 			<form id="desForm" name="desForm">
 				<input type="hidden" id="hg_num" name="hg_num" />
 			</form>
+			
+			<div style="margin: 0 auto; text-align: center; max-width: 1020px">
 				 <c:choose>
 					<c:when test="${not empty manStyleList }">
 						<c:forEach var="hsList" items="${manStyleList }">
@@ -156,10 +158,10 @@
 						</div>
 					</c:otherwise>
 				</c:choose> 
-					
-				</div>
 			</div>
-			<!-- 데이터 출력 끝-->
+		</div>
+	</div>
+	<!-- 데이터 출력 끝-->
 	</section><!-- End HairGoods Section -->
 	
 	<!-- footer 삽입 -->

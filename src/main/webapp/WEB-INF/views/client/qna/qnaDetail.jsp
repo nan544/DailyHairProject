@@ -150,13 +150,14 @@ p > span { color: red; font: bold; }
 			border: 2px dashed #BDBDBD;
 			border-radius: 25px; }
 .qnaBtn:hover { background: #FFE08C; }
-.qnaHeadBox { width: 95%; margin: 0 auto; }
+.qnaHeadBox { width: 95%; max-width: 1600px; margin: 0 auto; }
 .qnaHeadBox > h4 { padding-left: 20px; padding-top: 50px; }
 
 
 .tableBox2 { margin-bottom: 50px; padding: 15px 15px 5px 15px;
 			box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-			background-color: #FFFAFA; height: 375px; }
+			background-color: #FFFAFA;
+			min-height: 375px; height: auto; }
 .tableBox2 > div > label { margin-bottom: 25px; }
 .redSpan { color: red; }
 .miniDetail { font-size: 12px; display: inline; }
@@ -171,7 +172,10 @@ p > span { color: red; font: bold; }
 .replyBox > div > div > label > span { color: red; }
 
 .contentBox { border: 0px; resize: none;
+			width: 100%;
 			background-color: white; }
+.ctBoxL { width: 80%; min-width: 940px; height: 350px; float: left; }
+.ctBoxR { width: 20%; min-width: 235px; height: 350px; float: right; }
 </style>
 </head>
 <body>
@@ -218,26 +222,26 @@ p > span { color: red; font: bold; }
 				<div style="width: 95%; margin: 0 auto;">
 					<div class="tableBox2">
 						<c:if test="${empty detail.qna_file }">
-							<div style="width: 80%; height: 350px; float: left;">
-								<div style="width: 100%">
+							<div class="ctBoxL">
+								<div style="width: 100%; margin-bottom: 15px;">
 									<label><span class="redSpan">*</span> 첨부파일 ： </label>
 									<p class="miniDetail">( 첨부파일이 존재하지 않습니다. )</p>
 								</div>
-								<textarea rows="12" cols="120" class="contentBox" disabled="disabled"><c:out value="${detail.qna_content}"/></textarea>
+								<textarea rows="12" class="contentBox" disabled="disabled"><c:out value="${detail.qna_content}"/></textarea>
 							</div>
-							<div style="width: 20%; height: 350px; float: right;">
+							<div class="ctBoxR">
 								<img style="float: right;" src="/resources/assets/img/qnaNoImg.png">
 							</div>
 						</c:if> 
 						<c:if test="${not empty detail.qna_file }">
-							<div style="width: 80%; height: 350px; float: left;">
-								<div style="width: 100%">
+							<div class="ctBoxL">
+								<div style="width: 100%; margin-bottom: 15px;">
 									<label><span class="redSpan">*</span> 첨부파일 ： </label>
 									<label>${detail.qna_file}</label>
 								</div>
-								<textarea rows="12" cols="120" class="contentBox" disabled="disabled"><c:out value="${detail.qna_content}"/></textarea>
+								<textarea rows="12" class="contentBox" disabled="disabled"><c:out value="${detail.qna_content}"/></textarea>
 							</div>
-							<div style="width: 20%; height: 350px; float: right;">
+							<div class="ctBoxR">
 								<img style="float: right;" id="img">
 							</div>
 						</c:if>
@@ -253,7 +257,7 @@ p > span { color: red; font: bold; }
 								<div class="replyBox">
 									<c:if test="${empty reply.rep_file }">
 										<div style="width: 80%; height: 350px; float: left;">
-											<div style="width: 100%">
+											<div style="width: 100%; margin-bottom: 15px;">
 												<label><span class="redSpan">*</span> 첨부파일 ： </label>
 												<p class="miniDetail">( 첨부파일이 존재하지 않습니다. )</p>
 											</div>
@@ -265,7 +269,7 @@ p > span { color: red; font: bold; }
 									</c:if> 
 									<c:if test="${not empty reply.rep_file }">
 										<div style="width: 77%; height: 350px; float: left;">
-											<div style="width: 100%">
+											<div style="width: 100%; margin-bottom: 15px;">
 												<label><span class="redSpan">*</span> 첨부파일 ： </label>
 												<label>${reply.rep_file}</label>
 											</div>

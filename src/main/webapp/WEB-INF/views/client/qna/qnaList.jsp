@@ -85,7 +85,7 @@
 			border: 2px dashed #ffb03b;
 			border-radius: 25px; }
 	.qnaBtn:hover { background: #FFE08C; }
-	.qnaHeadBox { width: 95%; margin: 0 auto; }
+	.qnaHeadBox { width: 95%; max-width: 1600px; margin: 0 auto; }
 	.qnaHeadBox > h4 { padding-left: 20px; padding-top: 50px; }
 	
 	.tableBox1 { width: 95%; margin: 0 auto; }
@@ -123,7 +123,7 @@
 			<!-- 상단 -->
 			<div style="margin: 0 auto; text-align: center; width: 100%;">
 				<h1 style="margin-bottom: 20px;">1：1 문의하기</h1>
-				<p style="margin-bottom: 60px;"><span>*</span> 답변이 달린 경우에는 수정 및 삭제가 불가능합니다. <span>*</span></p>
+				<p><span style="color: red;">*</span> 답변이 완료된 문의는 수정 및 삭제가 불가능합니다. <span style="color: red;">*</span></p>
 			</div>
 			
 			<!-- 문의하기 버튼 -->
@@ -134,8 +134,7 @@
 			<!-- 문의 내역 -->
 			<div class="qnaHeadBox">
 				<h4>나의 문의 내역</h4>
-				<hr style="width: 100%">
-				<p><span style="color: red;">*</span>답변이 완료된 문의는 수정 및 삭제가 불가능합니다.</p>
+				<hr style="width: 100%; margin-bottom: 30px;">
 				<div class="tableBox1">
 				<table>
 					<colgroup>
