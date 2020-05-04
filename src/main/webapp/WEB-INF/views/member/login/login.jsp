@@ -111,10 +111,9 @@
         if (window.event.keyCode == 13) {
  
              // 엔터키가 눌렸을 때 실행할 내용
-        	
-    			$("#loginForm").attr("method", "post");
-    			$("#loginForm").attr("action", "/member/login/login.do");
-    			$("#loginForm").submit();
+    		$("#loginForm").attr("method", "post");
+    		$("#loginForm").attr("action", "/member/login/login.do");
+    		$("#loginForm").submit();
     		
         }
 	}
@@ -239,13 +238,12 @@
 										id="m_id" name="m_id" placeholder=" ID"
 										style="width: 200px; height: 35px;"> <br>
 									<!-- 줄 바꿈 효과 -->
-									<label for="m_pwd" class="msgbox">PW </label> <input
-										type="password" id="m_pwd" name="m_pwd"
-										placeholder=" PassWord" style="width: 200px; height: 35px;" onkeyup="enterkey();">
+									<label for="m_pwd" class="msgbox">PW </label> 
+									<input type="password" id="m_pwd" name="m_pwd" placeholder=" PassWord" 
+											style="width: 200px; height: 35px;" onkeyup="enterkey();">
 								</div>
 								<div class="login_idpw2">
-									<input type="button" class="login_btn" id="loginBtn"
-										name="loginBtn" value="Login">
+									<input type="button" class="login_btn" id="loginBtn" name="loginBtn" value="Login">
 								</div>
 							</div>
 							<br>
@@ -253,10 +251,9 @@
 
 							<!-- 회원가입, ID 찾기, PW 찾기 버튼 -->
 							<div>
-								<input type="button" class="other_btn" onclick="join()"
-									value="회원가입"> <input type="button" class="other_btn"
-									onclick="IDfind()" value="ID 찾기"> <input type="button"
-									class="other_btn" onclick="PWfind()" value="PW 찾기">
+								<input type="button" class="other_btn" onclick="join()" value="회원가입">
+								<input type="button" class="other_btn" onclick="IDfind()" value="ID 찾기"> 
+								<input type="button" class="other_btn" onclick="PWfind()" value="PW 찾기">
 							</div>
 						</form>
 					</div>

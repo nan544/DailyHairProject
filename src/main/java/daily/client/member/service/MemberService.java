@@ -25,14 +25,10 @@ public interface MemberService {
 	//회원 비활성화
 	public int clientUpdate(MemberVO mvo);
 	
-	
-	
-	
-	
-	
-	public int memberReservation(int m_num);
+	//예약 취소
+	public int cancleReservation(MemberVO mvo);
 	
 	//아이디 찾기
-		public int idFind(MemberVO vo) throws Exception;
+	public int idFind(MemberVO vo) throws Exception;
 	
 }

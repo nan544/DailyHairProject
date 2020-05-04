@@ -25,7 +25,7 @@
 <body>
 
 
-<p>${m_name}의 아이디는 ${m_id} 입니다.</p>
+<p>${result.m_name}의 아이디는 ${result.m_id} 입니다.</p>
 
 </body>
 </html>

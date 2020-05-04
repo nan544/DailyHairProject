@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>예약현황 상세</title>
 <style type="text/css">
-
+.main{text-align:center;}
 </style>
 <!-- 모바일 웹 페이지 설정 -->
 <link rel="shortcut icon" href="/resources/image/icon.png" />
@@ -21,29 +21,31 @@
 <script type="text/javascript">
 
 $(function() {
+	
 	$("#closeBtn").click(function() {
 		window.close();
-	});	
+	});
+	
 });
 
 </script>
 </head>
 <body>
 
-<div>
+<div class="main">
 	<h3>예약현황 상세</h3>
 	
 	<table border="1">
 		<thead>
 			<tr>
-				<td>시술 종류</td>
-				<td>시술 가격</td>
+				<th width="150">시술 종류</th>
+				<th width="150">시술 가격</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:choose>
 				<c:when test="${not empty styleList}">
-						<c:forEach var="style" items="${styleList }">
+						<c:forEach var="style" items="${styleList}">
 							<tr>
 								<td>${style.styling_name}</td>
 								<td>${style.styling_price}</td>
@@ -53,6 +55,8 @@ $(function() {
 			</c:choose>
 		</tbody>
 	</table>
+	<br><br><br>
+	<div><input type="button" id="closeBtn" name="closeBtn" value="닫기"/></div>
 </div>
 
 </body>

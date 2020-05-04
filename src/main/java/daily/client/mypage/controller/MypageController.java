@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,6 +41,9 @@ public class MypageController {
 	@Autowired
 	private StyleService styleService;
 	
+	@Inject
+	private BCryptPasswordEncoder pwencoder;
+	
 	//마이페이지
 	@RequestMapping(value="/mypage.do", method = RequestMethod.GET)
 	public String getMypage() throws Exception{
@@ -50,19 +54,21 @@ public class MypageController {
 	
 	//마이페이지 본인확인
 	@RequestMapping(value = "/mypage.do",method = RequestMethod.POST)
-	public ModelAndView postMypage(@ModelAttribute("MemberVO")MemberVO lvo, HttpSession session,HttpServletRequest request) {
+	public ModelAndView postMypage(@ModelAttribute("MemberVO") MemberVO lvo, HttpSession session, HttpServletRequest request) {
 		log.info("마이페이지 본인확인 처리 성공");
 		
 		ModelAndView mav = new ModelAndView();
 			
 		MemberVO vo = service.mypage(lvo);
-	
-		if(vo != null) {
+		
+		boolean passMatch = pwencoder.matches(lvo.getM_pwd(), vo.getM_pwd());
+		
+		if(vo != null && passMatch) {
 			session.setAttribute("mypage", "사용자");
 			mav.setViewName("mypage/mypage");
 			return mav;
 		}else{
-			mav.addObject("msg","비밀번호를 정확하게 입력 해주시길 바랍니다.");
+			mav.addObject("msg","패스워드를 정확하게 입력 해주시길 바랍니다.");
 			mav.setViewName("mypage/mypage");
 			return mav;
 		}	
@@ -86,7 +92,7 @@ public class MypageController {
 		
 		session.invalidate();
 		
-		return "client/main/main";
+		return "mypage/memberUpdate";
 	}
 	
 	//계정 비활성화창
@@ -103,8 +109,6 @@ public class MypageController {
 	public int memberDelete(@ModelAttribute MemberVO mvo, HttpSession session) {
 		log.info("계정 비활성화 성공");
 
-	
-		
 		int reservationCnt = reserveService.confirmReservationCnt(mvo.getM_id());
 		
 		if(reservationCnt>0) {
@@ -146,6 +150,22 @@ public class MypageController {
 		model.addAttribute("myList", List);
 			
 			return "mypage/reservDetail";
+		}
+		
+	//에약 취소
+		@RequestMapping(value = "/cancleReservation.do", method = RequestMethod.POST)
+		@ResponseBody
+		public int cancleReservation(@ModelAttribute MemberVO mvo) {
+			log.info("에약 취소 성공");
+
+			int result = service.cancleReservation(mvo);
+
+			if (result == 1) {
+				return 0;
+			} else {
+				return 1;
+			}
+			
 		}
 	
 }

@@ -58,22 +58,19 @@ public class MemberServiceImpl implements MemberService {
 	public int clientUpdate(MemberVO mvo) {
 		return dao.clientUpdate(mvo);
 	}
-	
-	
-	
-	
-	
-	
+
+	//예약 취소
 	@Override
-	public int memberReservation(int m_num) {
-		return dao.memberReservation(m_num);
+	public int cancleReservation(MemberVO mvo) {
+		return dao.cancleReservation(mvo);
 	}
 
 	//아이디 찾기
-		@Override
-		public int idFind(MemberVO vo) throws Exception {
-			int result = dao.idFind(vo);
-			return result;
-		}
+	@Override
+	public int idFind(MemberVO vo) throws Exception {
+		int result = dao.idFind(vo);
+		return result;
+	}
+	
 	
 }

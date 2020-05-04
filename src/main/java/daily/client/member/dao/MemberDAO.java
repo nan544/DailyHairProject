@@ -25,14 +25,11 @@ public interface MemberDAO {
 	//회원 비활성화
 	public int clientUpdate(MemberVO mvo);
 	
-	
-	
-	
-	
-	//회원 예약(있을시에 비활성화 안되게 하기 위한)
-	public int memberReservation(int m_num);
+	//에약 취소
+	public int cancleReservation(MemberVO mvo);
 	
 	//아이디 찾기
 	public int idFind(MemberVO vo) throws Exception;
+	
 	
 }

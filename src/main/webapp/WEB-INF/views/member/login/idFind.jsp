@@ -61,29 +61,29 @@
    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
    <script type="text/javascript">
    $(function() {
+	   
+	   $("#idFind").click(function() {
+		
+		   let email = $("#m_email").val();
+		      
+		      $.ajax({
+		         url : "/member/login/idFind.do",
+		         type : "post",
+		         data : { "m_email" : email },
+		         success : function(data) {
+		            if(data == 1){
+		            	location.href = "/member/login/idFindSuccess.do";
+		            }else if(data == 0){
+		            	location.href = "/member/login/idFindSuccess.do";
+		               $("#idFind").attr("value", "Y");
+		               alert("이메일을 틀리게 입력 하셨거나 회원이 아니십니다.");
+		            }
+		         }
+		      });
+	});
 	
-});
-   
-   function fn_idFind() {
-	      
-	      var email = $("#m_email").val();
-	      
-	      $.ajax({
-	         url : "/member/login/idFind.do",
-	         type : "post",
-	         data : { "m_email" : email },
-	         success : function(data) {
-	            if(data == 1){
-	            	//alert("${member.m_num}");
-	            	location.href = "/member/login/idFindSuccess.do";
-	            }else if(data == 0){
-	               $("#idFind").attr("value", "Y");
-	               alert("이메일을 틀리게 입력 하셨거나 회원이 아닙니다.");
-	            }
-	         }
-	      });
-	   }
-   
+   });
+      
    // 로그인 버튼 이벤트
    function login() {
       location.replace("/member/login/login.do"); }
@@ -145,7 +145,7 @@
             <div>
                <label class="msgbox" for="m_email">Email</label>
                <input type="text" id="m_email" name="m_email" placeholder=" Email" style="margin-right: 15px;"/>
-               <button type="button" class="IDfind_btn" id="idFind" name="idFind" onclick="fn_idFind();" value="N">아이디 찾기</button><br>
+               <button type="button" class="IDfind_btn" id="idFind" name="idFind">아이디 찾기</button><br>
             </div><br>
             </form>
             

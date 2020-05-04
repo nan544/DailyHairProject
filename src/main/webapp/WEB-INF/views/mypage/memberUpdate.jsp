@@ -86,6 +86,10 @@ $(function() {
 		location.href = "/mypage/reserveState.do"		//예약현황
 	});
 	
+	$("#pwdModify").click(function() {
+		location.href = "#.do"
+	});
+	
 });
 
 </script>

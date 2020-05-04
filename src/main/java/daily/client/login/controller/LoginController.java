@@ -45,7 +45,7 @@ public class LoginController {
 	      ModelAndView mav = new ModelAndView();
 
 	      MemberVO vo = service.login(lvo);
-
+	      
 	      if(vo == null) {
 	         mav.addObject("msg", "아이디를 정확하게 입력 해주시길 바랍니다.");
 	         mav.setViewName("member/login/login");
@@ -59,7 +59,7 @@ public class LoginController {
 	         mav.setViewName("client/main/main");
 	         return mav;
 	      }else {
-	         mav.addObject("msg", " 비밀번호를 정확하게 입력 해주시길 바랍니다.");
+	         mav.addObject("msg", "패스워드를 정확하게 입력 해주시길 바랍니다.");
 	         mav.setViewName("member/login/login");
 	         return mav;
 	      }
@@ -78,12 +78,23 @@ public class LoginController {
 		return "client/main/main";
 	}
 	
-	//아이디 찾기
+	//아이디 찾기 창
 	@RequestMapping(value = "/idFind.do", method = RequestMethod.GET)
 	public String getIdFind() throws Exception {
-		logger.info("get idFind");
+		logger.info("idFind.do 호출 성공");
 		
 		return "member/login/idFind";
+	}
+	
+	//아이디 찾기 처리
+	@RequestMapping(value = "/idFind.do", method = RequestMethod.POST)
+	@ResponseBody
+	public int idChk(MemberVO vo) throws Exception {
+		logger.info("아이디 찾기 성공");
+		
+		int result = service.idFind(vo);
+		
+		return result;
 	}
 	
 	//패스워드 찾기
@@ -100,17 +111,6 @@ public class LoginController {
 		logger.info("get pwModify");
 		
 		return "member/login/pwModify";
-	}
-	
-	//아이디 찾기
-	@RequestMapping(value = "/idFind.do", method = RequestMethod.POST)
-	@ResponseBody
-	public int idFind(MemberVO vo) throws Exception {
-		logger.info("아이디 찾기 호출");
-			
-		int result = service.idFind(vo);
-			
-		return result;
 	}
 	
 	//찾은 아이디 창
