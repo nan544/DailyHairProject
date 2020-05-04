@@ -107,6 +107,8 @@ function chkImg(file){
 			}
 
 		});
+		
+		
 	});
 
 	//이미지 다운로드
@@ -119,6 +121,7 @@ function chkImg(file){
 </script>
 <style type="text/css">
 .btnContainer { width: 90%; margin: 0 auto; }
+p > span { color: red; font: bold; }
 .qnaBtn { float: right; margin: 0px 5px 0px 5px;
 			width: 100px; height: 35px;
 			text-align: center;
@@ -171,7 +174,8 @@ function chkImg(file){
 			
 			<!-- 상단 -->
 			<div style="margin: 0 auto; text-align: center; width: 100%;">
-				<h1 style="margin-bottom: 50px;">1：1 문의 수정하기</h1>
+				<h1 style="margin-bottom: 20px;">1：1 문의 수정하기</h1>
+				<p style="margin-bottom: 60px;"><span>*</span> 답변이 달린 경우에는 수정 및 삭제가 불가능합니다. <span>*</span></p>
 			</div>
 			
 			<!-- 버튼 -->

@@ -69,6 +69,12 @@
 			location.href = "/client/qna/qnaUpdateForm.do?qna_num=" + qna_num;
 		});
 		
+		//삭제버튼 클릭시 실행
+		$("#deleteBtn").click(function() {
+			let qna_num = "${detail.qna_num}";
+			location.href = "/client/qna/qnaDelete.do?qna_num=" + qna_num;
+		});
+		
 		// 문의사항 첨부파일 이미지 보여주기
 		let image = "<c:out value='${detail.qna_file}'/>";
 		if (image != "") {
@@ -92,6 +98,7 @@
 </script>
 <style type="text/css">
 .btnContainer { width: 90%; margin: 0 auto; }
+p > span { color: red; font: bold; }
 .qnaBtn { float: right; margin: 0px 5px 0px 5px;
 			width: 100px; height: 35px;
 			text-align: center;
@@ -106,6 +113,20 @@
 			background: #fffaf3;
 			border: 2px dashed #ffb03b;
 			border-radius: 25px; }
+.closeBtn { float: right; margin: 0px 5px 0px 5px;
+			width: 100px; height: 35px;
+			text-align: center;
+			cursor: pointer;
+			display: inline-block;
+			font-size: 10px;
+			padding: 8px 16px 10px 16px;
+			font-weight: 500;
+			line-height: 1;
+			color: #444444;
+			transition: all ease-in-out 0.3s;
+			background: #EAEAEA;
+			border: 2px dashed #BDBDBD;
+			border-radius: 25px; }
 .qnaBtn:hover { background: #FFE08C; }
 .qnaHeadBox { width: 95%; margin: 0 auto; }
 .qnaHeadBox > h4 { padding-left: 20px; padding-top: 50px; }
@@ -119,7 +140,7 @@
 .miniDetail { font-size: 12px; display: inline; }
 
 
-.replyBigBox { width: 90%; float: right; margin: 0 auto;
+.replyBigBox { float: right; margin: 0 auto;
 				padding-bottom: 100px; }
 .replyBigBox > h4 { padding-left: 20px; }
 .replyBox { width: 95%; margin: 0 auto; padding: 15px;
@@ -144,14 +165,22 @@
 			
 			<!-- 상단 -->
 			<div style="margin: 0 auto; text-align: center; width: 100%;">
-				<h1 style="margin-bottom: 50px;">1：1 문의 상세보기</h1>
+				<h1 style="margin-bottom: 20px;">1：1 문의 상세보기</h1>
+				<p style="margin-bottom: 60px;"><span>*</span> 답변이 달린 경우에는 수정 및 삭제가 불가능합니다. <span>*</span></p>
 			</div>
 			
 			<!-- 버튼 -->
 			<div class="btnContainer">
 				<input class="qnaBtn" type="button" name="listBtn" id="listBtn" value="목록으로"/>
-				<input class="qnaBtn" type="button" name="deleteBtn" id="deleteBtn" value="삭제"/>
-				<input class="qnaBtn" type="button" name="updateBtn" id="updateBtn" value="수정"/>
+				<c:if test="${detail.qna_state eq 0}">
+					<input class="qnaBtn" type="button" name="deleteBtn" id="deleteBtn" value="삭제"/>
+					<input class="qnaBtn" type="button" name="updateBtn" id="updateBtn" value="수정"/>
+				</c:if>
+				<c:if test="${detail.qna_state eq 1}">
+					<input class="closeBtn" type="button" name="deleteBtn" id="deleteBtn" value="삭제" disabled="disabled"/>
+					<input class="closeBtn" type="button" name="updateBtn" id="updateBtn" value="수정" disabled="disabled"/>
+				</c:if>
+				
 			</div>
 			
 			<!-- 문의 답변 -->

@@ -173,4 +173,14 @@ public class QnaController {
 		 response.getOutputStream().flush();
 		 response.getOutputStream().close();
 		 }
+
+	//문의글 삭제하기
+	@RequestMapping(value = "/qna/qnaDelete.do")
+	public String qnaDelete(QnaVO qvo) {
+		
+		
+		
+		return "client/qna/qnaDelete";
+	}
+	
  }
