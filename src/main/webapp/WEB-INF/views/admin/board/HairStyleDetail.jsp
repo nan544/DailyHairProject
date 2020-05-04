@@ -96,8 +96,10 @@ input[type="file"] {
 		});
 		//파일선택시 기존 파일명 숨기기
 		$(".uploadFile").on("change keyup paste", function() {
-			$("label[for='img']").hide();
+			$(this).parents("span").children("label").hide();
 		});
+		
+		$("")
 	});
 </script>
 <title>Insert title here</title>
@@ -107,8 +109,18 @@ input[type="file"] {
 	<c:set var="hs_thumb_"
 		value="${fn:substringAfter(detail.hs_thumb,'_') }" />
 	<c:set var="hs_thumb__" value="${fn:substringAfter(hs_thumb_,'_') }" />
+	
 	<c:set var="hs_img1_" value="${fn:substringAfter(detail.hs_img1,'_') }" />
 	<c:set var="hs_img1__" value="${fn:substringAfter(hs_img1_,'_') }" />
+	
+	<c:set var="hs_img2" value="${fn:substringAfter(detail.hs_img2,'_') }"/>
+	<c:set var="hs_img2" value="${fn:substringAfter(hs_img2,'_') }"/>
+	
+	<c:set var="hs_img3" value="${fn:substringAfter(detail.hs_img3,'_') }"/>
+	<c:set var="hs_img3" value="${fn:substringAfter(hs_img3,'_') }"/>
+	
+	<c:set var="hs_img4" value="${fn:substringAfter(detail.hs_img4,'_') }"/>
+	<c:set var="hs_img4" value="${fn:substringAfter(hs_img4,'_') }"/>
 	<div id="contents">
 		<form id="updateForm" enctype="multipart/form-data" method="POST">
 
@@ -118,6 +130,12 @@ input[type="file"] {
 				value="${detail.hs_num}"> <input type="hidden"
 				name="hs_thumb" id="hs_thumb" value="${detail.hs_thumb}"> <input
 				type="hidden" name="hs_img1" id="hs_img1" value="${detail.hs_img1}">
+				 <input
+				type="hidden" name="hs_img2" id="hs_img2" value="${detail.hs_img2}">
+				 <input
+				type="hidden" name="hs_img3" id="hs_img3" value="${detail.hs_img3}">
+				 <input
+				type="hidden" name="hs_img4" id="hs_img4" value="${detail.hs_img4}">
 			<h3>HairStyle 게시판 관리 - 상세보기 및 수정</h3>
 			<p align="right">* 항목은 필수 입력 값입니다.</p>
 			<!-- 목록으로 버튼 -->
@@ -157,10 +175,31 @@ input[type="file"] {
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> <label class="required"></label>상세이미지
+				<span class="item"> 상세이미지1
 				</span> <span class="imgBtn"><label for="img">${hs_img1__}</label> <input
 					type="button" class="imgUpdateBtn" value="이미지수정"><input
 					type="file" name="uploadFile2" id="uploadFile2" class="uploadFile"></span>
+			</div>
+			<hr>
+			<div class="formLine">
+				<span class="item">상세이미지2
+				</span> <span class="imgBtn"><label for="img">${hs_img2}</label> <input
+					type="button" class="imgUpdateBtn" value="이미지수정"><input
+					type="file" name="uploadFile3" id="uploadFile3" class="uploadFile"></span>
+			</div>
+			<hr>
+			<div class="formLine">
+				<span class="item"> 상세이미지3
+				</span> <span class="imgBtn"><label for="img">${hs_img3}</label> <input
+					type="button" class="imgUpdateBtn" value="이미지수정"><input
+					type="file" name="uploadFile4" id="uploadFile4" class="uploadFile"></span>
+			</div>
+			<hr>
+			<div class="formLine">
+				<span class="item"> 상세이미지4
+				</span> <span class="imgBtn"><label for="img">${hs_img4}</label> <input
+					type="button" class="imgUpdateBtn" value="이미지수정"><input
+					type="file" name="uploadFile5" id="uploadFile5" class="uploadFile"></span>
 			</div>
 			<hr>
 		</form>

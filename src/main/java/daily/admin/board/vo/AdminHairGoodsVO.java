@@ -10,13 +10,56 @@ public class AdminHairGoodsVO extends CommonVO{
 	private String hg_title;	//글제목
 	private String hg_thumb;	//썸네일이미지
 	private String hg_img1;		//이미지1
+	private String hg_img2;		//이미지2
+	private String hg_img3;		//이미지3
+	private String hg_img4;		//이미지4
 	private String hg_content;	//내용
 	private String hg_regdate;	//작성일
 	
 	//파일업로드를 위한 속성
 	private MultipartFile uploadFile; //썸네일 첨부파일
 	private MultipartFile uploadFile2; //상세첨부파일
+	private MultipartFile uploadFile3; //상세첨부파일
+	private MultipartFile uploadFile4; //상세첨부파일
+	private MultipartFile uploadFile5; //상세첨부파일
 	
+	
+	public String getHg_img2() {
+		return hg_img2;
+	}
+	public void setHg_img2(String hg_img2) {
+		this.hg_img2 = hg_img2;
+	}
+	public String getHg_img3() {
+		return hg_img3;
+	}
+	public void setHg_img3(String hg_img3) {
+		this.hg_img3 = hg_img3;
+	}
+	public String getHg_img4() {
+		return hg_img4;
+	}
+	public void setHg_img4(String hg_img4) {
+		this.hg_img4 = hg_img4;
+	}
+	public MultipartFile getUploadFile3() {
+		return uploadFile3;
+	}
+	public void setUploadFile3(MultipartFile uploadFile3) {
+		this.uploadFile3 = uploadFile3;
+	}
+	public MultipartFile getUploadFile4() {
+		return uploadFile4;
+	}
+	public void setUploadFile4(MultipartFile uploadFile4) {
+		this.uploadFile4 = uploadFile4;
+	}
+	public MultipartFile getUploadFile5() {
+		return uploadFile5;
+	}
+	public void setUploadFile5(MultipartFile uploadFile5) {
+		this.uploadFile5 = uploadFile5;
+	}
 	public int getHg_num() {
 		return hg_num;
 	}

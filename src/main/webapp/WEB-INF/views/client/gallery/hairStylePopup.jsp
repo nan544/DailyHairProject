@@ -195,7 +195,7 @@ img {vertical-align: middle;}
 <body>
 <div style="margin: 25px;">
 	<div style="text-align: center; margin-top: 50px;">
-		<h1>DailyHair / Goods</h1>
+		<h1>DailyHair / Style</h1>
 	</div><br>
 	
 	<!-- 상품 상세 정보 -->
@@ -204,37 +204,37 @@ img {vertical-align: middle;}
 		<div class="row">
 			<div class="stylingBox" >
 			<c:choose>
-				<c:when test="${not empty hgDetail }">
+				<c:when test="${not empty hsDetail }">
 					<div>
-						<p>${hgDetail.hg_title }</p>
+						<p>${hsDetail.hs_title }</p>
 						
 						<div class="slideshow-container">
 							<!-- 썸네일 이미지 / 1번 함수  ------------>
 							<div class="mySlides fade">
-								<img class="designer" src="/uploadStorage/HairGoods/<c:out value='${hgDetail.hg_thumb}'/>" style="width: 350px; height: 450px;">
+								<img class="designer" src="/uploadStorage/HairStyle/<c:out value='${hsDetail.hs_thumb}'/>" style="width: 350px; height: 450px;">
 							</div>
 							
 							<!-- 이미지 1 / 2번 함수 ------------>
 							<div class="mySlides fade">
-								<c:if test="${not empty hgDetail.hg_img1 }">
-									<img  style="width: 350px; height: 450px;" src="/uploadStorage/HairGoods/<c:out value='${hgDetail.hg_img1}'/>"> 
+								<c:if test="${not empty hsDetail.hs_img1 }">
+									<img  style="width: 350px; height: 450px;" src="/uploadStorage/HairStyle/<c:out value='${hsDetail.hs_img1}'/>"> 
 								</c:if>
-								<c:if test="${empty hgDetail.hg_img1 }">
+								<c:if test="${empty hsDetail.hs_img1 }">
 									<img src="/resources/assets/img/goodsDetailNoImg.png" style="width: 350px; height: 450px;">
 								</c:if>
 							</div>
 							
-							<%-- <!-- 이미지 2 / 3번 함수 ------------>
+						<%--  <!-- 이미지 2 / 3번 함수 ------------>
 							<div class="mySlides fade">
-								<c:if test="${not empty hgDetail.hg_img2 }">
-									<img src="${hgDetail.hg_img2 }" style="width: 350px; height: 450px;">
+								<c:if test="${not empty hsDetail.hs_img2 }">
+								<img  style="width: 350px; height: 450px;" src="/uploadStorage/HairStyle/<c:out value='${hsDetail.hs_img2}'/>"> 
 								</c:if>
-								<c:if test="${empty hgDetail.hg_img2 }">
+								<c:if test="${empty hsDetail.h_img2 }">
 									<img src="/resources/assets/img/goodsDetailNoImg.png" style="width: 350px; height: 450px;">
 								</c:if>
 							</div>
-							
-							<!-- 이미지 3 / 4번 함수 ------------>
+							 --%>
+								<%--<!-- 이미지 3 / 4번 함수 ------------>
 							<div class="mySlides fade">
 								<c:if test="${not empty hgDetail.hg_img3 }">
 									<img src="${hgDetail.hg_img3 }" style="width: 350px; height: 450px;">
@@ -267,7 +267,7 @@ img {vertical-align: middle;}
 							<span class="dot" onclick="currentSlide(5)"></span> -->
 						</div>
 						
-						<p style="margin-top: 30px;">${hgDetail.hg_content }</p>
+						<p style="margin-top: 30px;">${hsDetail.hs_content }</p>
 					</div>
 				</c:when>
 				

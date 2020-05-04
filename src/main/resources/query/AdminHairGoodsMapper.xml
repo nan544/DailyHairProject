@@ -66,6 +66,15 @@
 		<if test="hg_img1 != '400'">
 			,hg_img1
 		</if>
+		<if test="hg_img2 != '400'">
+			,hg_img2
+		</if>
+		<if test="hg_img3 != '400'">
+			,hg_img3
+		</if>
+		<if test="hg_img4 != '400'">
+			,hg_img4
+		</if>
 		)
 		VALUES(
 		#{hg_num},
@@ -74,6 +83,15 @@
 		#{hg_thumb}
 		<if test="hg_img1 != '400'">
 			,#{hg_img1}
+		</if>
+		<if test="hg_img2 != '400'">
+			,#{hg_img2}
+		</if>
+		<if test="hg_img2 != '400'">
+			,#{hg_img3}
+		</if>
+		<if test="hg_img2 != '400'">
+			,#{hg_img4}
 		</if>
 		)
 	</insert>
@@ -87,6 +105,15 @@
 		</if>
 		<if test="hg_img1 !='400'">
 			, hg_img1 = #{hg_img1}
+		</if>
+		<if test="hg_img2 !='400'">
+			, hg_img2 = #{hg_img2}
+		</if>
+		<if test="hg_img3 !='400'">
+			, hg_img3 = #{hg_img3}
+		</if>
+		<if test="hg_img4 !='400'">
+			, hg_img4 = #{hg_img4}
 		</if>
 		where hg_num = #{hg_num}
 

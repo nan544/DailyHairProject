@@ -95,7 +95,7 @@
 	
 	</script>
 	<script type="text/javascript">
-// 스타일 이미지 클릭 시 상세 정보
+	// 스타일 이미지 클릭 시 상세 정보
 	function clickHairStyle(num) {
 		
 		$("#hs_num").val(num);
@@ -136,12 +136,12 @@
 				<input type="hidden" id="hg_num" name="hg_num" />
 			</form>
 				 <c:choose>
-					<c:when test="${not empty hairStyleList }">
-						<c:forEach var="hsList" items="${hairStyleList }">
+					<c:when test="${not empty colorStyleList }">
+						<c:forEach var="hsList" items="${colorStyleList }">
 							<div class="designerbox" onclick="clickHairStyle(${hsList.hs_num})">
 								<c:if test="${not empty hsList.hs_thumb }">
 									<!-- 로컬 저장소 사용 시 주석 해제하면 썸네일 이미지 불러옴 -->
-									<%-- <input type="hidden" class="designer" name="hg_thumb" id="hg_thumb" value="${hsList.hs_thumb}" /> --%>
+									 <%-- <input type="hidden" class="designer" name="hs_thumb" id="h_thumb" value="${hsList.hs_thumb}" /> --%>
 									<img src="/uploadStorage/HairStyle/<c:out value='${hsList.hs_thumb}'/>" style="width: 250px; height: 350px;">
 								<!-- 	<img class="designer" src="/resources/assets/img/goodsNoImg.png"> -->
 								</c:if>

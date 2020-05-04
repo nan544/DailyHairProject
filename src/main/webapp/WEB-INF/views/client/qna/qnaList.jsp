@@ -135,7 +135,7 @@
 			<div class="qnaHeadBox">
 				<h4>나의 문의 내역</h4>
 				<hr style="width: 100%">
-				
+				<p><span style="color: red;">*</span>답변이 완료된 문의는 수정 및 삭제가 불가능합니다.</p>
 				<div class="tableBox1">
 				<table>
 					<colgroup>
