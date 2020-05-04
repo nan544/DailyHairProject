@@ -12,9 +12,9 @@ public interface AdminHairGoodsService {
 	public List<AdminHairGoodsVO> hairGoodslist(AdminHairGoodsVO hgvo); //전체리스트출력
 	public AdminHairGoodsVO hairGoodsdetail(int hg_num); 				//상세보기
 	public int hairGoodsupdate(AdminHairGoodsVO hgvo, HttpServletRequest request) throws IOException;//수정
-	public int hairGoodsinsert(AdminHairGoodsVO hgvo);//등록
-	public int hairGoodsdelete(int hg_num);//삭제
 	public int boardListCnt(AdminHairGoodsVO hgvo);
+	int hairGoodsinsert(AdminHairGoodsVO hgvo, HttpServletRequest request) throws IOException;//등록
+	int hairGoodsdelete(AdminHairGoodsVO hgvo, HttpServletRequest request) throws IOException;//삭제
 	
 	
 }

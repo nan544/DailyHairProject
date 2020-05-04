@@ -29,6 +29,8 @@ public interface MemberService {
 	public int cancleReservation(MemberVO mvo);
 	
 	//아이디 찾기
-	public int idFind(MemberVO vo) throws Exception;
+	/*public int idFind(MemberVO vo) throws Exception;*/
+	
+	public MemberVO idFind(MemberVO vo) throws Exception;
 	
 }

@@ -36,12 +36,10 @@ public class AdminHairGoodsController {
 
 		// 페이징 세팅
 		Paging.setPage(hgvo);
-		log.info(hgvo.getPage());
 
 		// 전체 레코드 수 구현
 		int total = HairGoodsService.boardListCnt(hgvo);
 
-		System.out.println(total);
 		List<AdminHairGoodsVO> hgList = HairGoodsService.hairGoodslist(hgvo);
 		mav.addObject("hgList", hgList);
 		mav.addObject("total", total);
@@ -60,25 +58,11 @@ public class AdminHairGoodsController {
 
 	@RequestMapping(value = "/board/HGInsert.do")
 	@ResponseBody
-	public int hairGoodsInsert(@ModelAttribute AdminHairGoodsVO hgvo, Model model, HttpServletRequest request)
+	public int hairGoodsInsert(@ModelAttribute AdminHairGoodsVO hgvo, HttpServletRequest request)
 			throws IOException {
 		log.info("입력 로직 메소드 성공");
 
-		String hg_thumb = FileUploadUtil.fileUpload(hgvo.getUploadFile(), request, "HairGoods");
-		hgvo.setHg_thumb(hg_thumb);
-
-		String hg_img1 = FileUploadUtil.fileUpload(hgvo.getUploadFile2(), request, "HairGoods");
-		hgvo.setHg_img1(hg_img1);
-
-		if (hgvo.getHg_img1() == null) {
-			hgvo.setHg_img1("400");
-		}
-
-		System.out.println(hgvo.getHg_thumb());
-		System.out.println(hgvo.getHg_img1());
-		System.out.println(hgvo.getHg_title());
-
-		int result = HairGoodsService.hairGoodsinsert(hgvo);
+		int result = HairGoodsService.hairGoodsinsert(hgvo, request);
 
 		return result;
 	}
@@ -97,19 +81,13 @@ public class AdminHairGoodsController {
 	}
 
 	@RequestMapping(value = "/board/HGDelete.do")
-	public String delete(@ModelAttribute AdminHairGoodsVO hgvo, Model model, HttpServletRequest request)
+	public String delete(@ModelAttribute AdminHairGoodsVO hgvo, HttpServletRequest request)
 			throws IOException {
 		log.info("글삭제 메소드 성공");
 		String url = "";
-		log.info(hgvo.getHg_num() + "");
-		int delete = HairGoodsService.hairGoodsdelete(hgvo.getHg_num());
+		int delete = HairGoodsService.hairGoodsdelete(hgvo, request);
 
-		FileUploadUtil.fileDelete(hgvo.getHg_thumb(), request);
-		if (hgvo.getHg_img1() != null) {
-			FileUploadUtil.fileDelete(hgvo.getHg_img1(), request);
-		}
-		log.info(request.getSession().getServletContext().getRealPath("/uploadStorage/"));
-
+	
 		if (delete == 1) {
 			url = "HairGoodsList.do";
 		} else {
@@ -122,7 +100,7 @@ public class AdminHairGoodsController {
 
 	// 게시글 수정
 	@RequestMapping(value = "/board/HGUpdate.do")
-	public String update(@ModelAttribute AdminHairGoodsVO hgvo, Model model, HttpServletRequest request)
+	public String update(@ModelAttribute AdminHairGoodsVO hgvo, HttpServletRequest request)
 			throws IOException {
 		log.info("글수정 메소드 성공");
 

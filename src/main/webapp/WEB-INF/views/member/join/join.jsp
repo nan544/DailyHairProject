@@ -146,7 +146,12 @@
 		//이메일 중복확인
 		 $("#emailChk").click(function() {
 			
-			
+			if($("#m_email").val()==''){
+				alert("이메일을 입력해주세요");
+				return;
+			}
+			 
+			 
 			if (mailJ.test($("#m_email").val())) {
 				$("#email_check").text("");
 			} else {

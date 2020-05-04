@@ -17,8 +17,6 @@ function insertDes() {
 		return;
 	} else if (!chkSubmit($("#des_holyday"), "휴무일을")) {
 		return;
-	} else if(!chkImg($("#file2"))){
-		return false;
 	}else{
 		$.ajax({
 			url : "/admin/designer/designerJoin.do",
@@ -26,13 +24,6 @@ function insertDes() {
 			processData : false,
 			contentType : false,
 			data : formData,
-			/*data : "des_name=" + $("#des_name").val() + "&des_job="
-					+ $("#des_job").val() + "&des_phone="
-					+ $("#des_phone").val() + "&des_holyday="
-					+ $("#des_holyday").val() + "&des_gender="
-					+ $("input[name='des_gender']:checked").val()
-					+ "&des_memo=" + $("#des_memo").val() + "&des_file="
-					+ $("#des_file").val(),*/
 			success : function(data) {
 				if (data == 1) {
 					alert("디자이너 등록에 성공하였습니다.");
@@ -72,13 +63,6 @@ function updateDes() {
 			processData : false,
 			contentType : false,
 			data : formData,
-			/*data : "des_num=" + $("#des_num").val() + "&des_job="
-					+ $("#des_job").val() + "&des_phone="
-					+ $("#des_phone").val() + "&des_holyday="
-					+ $("#des_holyday").val() + "&des_gender="
-					+ $("input[name='des_gender']:checked").val()
-					+ "&des_memo=" + $("#des_memo").val() + "&des_file="
-					+ $("#des_file").val(),*/
 			success : function(data) {
 
 				if (data == 1) {

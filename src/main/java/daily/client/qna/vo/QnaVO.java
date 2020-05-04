@@ -2,6 +2,8 @@ package daily.client.qna.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import daily.common.util.CommonVO;
+
 /*qna_num number primary key
 m_id varchar2(30)
 qna_title varchar2(500) not null
@@ -11,7 +13,7 @@ qna_regdate date default sysdate
 qna_file varchar2(100) null*/
 
 
-public class QnaVO {
+public class QnaVO extends CommonVO{
 	
 	private int qna_num;			//글 번호
 	private String m_id;			//회원 아이디

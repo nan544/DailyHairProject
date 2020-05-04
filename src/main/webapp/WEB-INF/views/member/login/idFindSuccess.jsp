@@ -25,7 +25,8 @@
 <body>
 
 
-<p>${result.m_name}의 아이디는 ${result.m_id} 입니다.</p>
+<!-- <p>${result.m_name}의 아이디는 ${result.m_id} 입니다.</p> -->
+<p>${mem.m_name}의 아이디는 ${mem.m_id} 입니다.</p>
 
 </body>
 </html>

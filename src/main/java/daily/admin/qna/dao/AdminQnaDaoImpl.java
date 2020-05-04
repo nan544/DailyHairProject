@@ -10,15 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import daily.admin.qna.vo.replyVO;
 import daily.client.qna.vo.QnaVO;
 @Repository
-@Transactional
 public class AdminQnaDaoImpl implements AdminQnaDao {
 
 	@Autowired
 	SqlSession sqlSession;
-	@Override
-	public List<QnaVO> List() {
-		return sqlSession.selectList("List");
-	}
 	@Override
 	public QnaVO detail(QnaVO qvo) {
 		return sqlSession.selectOne("detail", qvo);
@@ -28,8 +23,31 @@ public class AdminQnaDaoImpl implements AdminQnaDao {
 		return sqlSession.insert("insertReply", repVO);
 	}
 	@Override
-	public int updateState(int qna_num) {
-		return sqlSession.update("updateState", qna_num);
+	public int updateState(replyVO repVO) {
+		return sqlSession.update("updateState", repVO);
+	}
+	@Override
+	public replyVO selectReply(int qna_num) {
+		return sqlSession.selectOne("selectReply",qna_num);
+	}
+	@Override
+	public int boardListCnt(QnaVO qvo) {
+		return sqlSession.selectOne("ListCnt",qvo);
+	}
+	@Override
+	public List<QnaVO> List(QnaVO qvo) {
+		return sqlSession.selectList("List",qvo);
+	}
+	@Override
+	public int Delete(replyVO repVO) {
+		return sqlSession.delete("Delete", repVO);
+	}
+	@Override
+	public void updateStateDel(replyVO repVO) {
+		int result = sqlSession.update("updateStateDel", repVO);
+		if(result==1) {
+			System.out.println("답변여부 상태변경 완료 0 -> 1");
+		}
 	}
 
 

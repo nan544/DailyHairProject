@@ -64,9 +64,15 @@
 	</update>
 	
 	<!-- 아이디 찾기 -->
-	<select id="idFind" resultType="int">
+	<!-- <select id="idFind" resultType="int">
 		SELECT *
 		FROM member
+		WHERE m_email = #{m_email}
+	</select>-->
+		
+	<select id="idFind" resultType="member">
+		SELECT *
+		FROM MEMBER
 		WHERE m_email = #{m_email}
 	</select>
 	

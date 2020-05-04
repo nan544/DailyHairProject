@@ -71,6 +71,15 @@
 		<if test="hs_img1!='400'">
 			,hs_img1
 		</if>
+		<if test="hs_img2!='400'">
+			,hs_img2
+		</if>
+		<if test="hs_img3!='400'">
+			,hs_img3
+		</if>
+		<if test="hs_img4!='400'">
+			,hs_img4
+		</if>
 		)
 		VALUES(
 		#{hs_num},
@@ -80,6 +89,15 @@
 		#{hs_category}
 		<if test="hs_img1!='400'">
 			,#{hs_img1}
+		</if>
+		<if test="hs_img2!='400'">
+			,#{hs_img2}
+		</if>
+		<if test="hs_img3!='400'">
+			,#{hs_img3}
+		</if>
+		<if test="hs_img4!='400'">
+			,#{hs_img4}
 		</if>
 		)
 	</insert>
@@ -93,6 +111,15 @@
 		</if>
 		<if test="hs_img1 != '400'">
 			,hs_img1=#{hs_img1}
+		</if>
+		<if test="hs_img2 != '400'">
+			,hs_img2=#{hs_img2}
+		</if>
+		<if test="hs_img3 != '400'">
+			,hs_img3=#{hs_img3}
+		</if>
+		<if test="hs_img4 != '400'">
+			,hs_img4=#{hs_img4}
 		</if>
 		where hs_num = #{hs_num}
 	</update>

@@ -66,11 +66,15 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	//아이디 찾기
-	@Override
+	/*@Override
 	public int idFind(MemberVO vo) throws Exception {
 		int result = dao.idFind(vo);
 		return result;
-	}
+	}*/
 	
+	@Override
+	public MemberVO idFind(MemberVO vo) throws Exception {
+		return  dao.idFind(vo);
+	}
 	
 }
