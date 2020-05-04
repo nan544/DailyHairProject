@@ -9,15 +9,21 @@
 <style type="text/css">
 .formLine {
 	display: inline-block;
-	height: 40px;
+	height: auto;
 	margin: 5px;
 	padding: 0px;
 }
 
 .item {
-	display: inline-block;
 	width: 120px;
 	margin: 10px;
+	display: table-cell;
+}
+
+.formLine > textarea {
+	height: 105px;
+	width: 590px;
+	resize: none;
 }
 
 hr {
@@ -36,6 +42,10 @@ input[type="file"] {
 
 #bottomMenu button {
 	float: right;
+}
+
+label[for='img']{
+font-size: 12px;
 }
 </style>
 <script type="text/javascript"
@@ -106,13 +116,13 @@ input[type="file"] {
 	<div id="contents">
 		<form id="updateForm" enctype="multipart/form-data" method="POST">
 			<h3>HairGoods 게시판 관리 - 상세보기 및 수정</h3>
-			<p align="right">* 항목은 필수 입력 값입니다.</p>
 			<!-- 목록으로 버튼 -->
 			<div id="listMenu">
-				<p>
-					<input type="button" value="목록으로" class="but" id="ListBtn">
+				<p align="right">
+					<input type="button" value="목록으로" class="btn" id="ListBtn">
 				</p>
 			</div>
+			<p align="right"><b><label class="required">*</label> 항목은 필수 입력 값입니다.</b></p>
 			<hr>
 			<!-- 수정 및 삭제를 위한 값 -->
 			<input type="hidden" id="hg_num" name="hg_num"
@@ -130,12 +140,12 @@ input[type="file"] {
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>제품명
 				</span> <input type="text" id="hg_title" name="hg_title"
-					value="${detail.hg_title}">
+					value="${detail.hg_title}" class="form-control">
 			</div>
 			<hr>
 			<div class="formLine">
 				<span class="item"> <label class="required">*</label>특징
-				</span> <input type="text" id="hg_content" name="hg_content" size="50"
+				</span> <input type="text" id="hg_content" name="hg_content" size="50" class="form-control"
 					placeholder="간략한 설명을 입력하세요." value="${detail.hg_content}">
 			</div>
 			<hr>
@@ -176,12 +186,12 @@ input[type="file"] {
 			</div>
 			<hr>
 		</form>
-	</div>
 	<!-- 수정 및 삭제 버튼  -->
-	<div id="btnMenu">
-		<input type="button" value="수정완료" class="but" id="UpdateBtn">
-		<input type="button" value="게시글 삭제" class="but" id="DeleteBtn">
+	<div id="btnMenu" align="right">
+		<input type="button" value="수정완료" class="btn" id="UpdateBtn">
+		<input type="button" value="게시글 삭제" class="btn" id="DeleteBtn">
 
+	</div>
 	</div>
 </body>
 </html>

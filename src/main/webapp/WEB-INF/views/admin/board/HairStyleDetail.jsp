@@ -9,15 +9,21 @@
 <style type="text/css">
 .formLine {
 	display: inline-block;
-	height: 40px;
+	height: auto;
 	margin: 5px;
 	padding: 0px;
 }
 
 .item {
-	display: inline-block;
 	width: 120px;
 	margin: 10px;
+	display: table-cell;
+}
+
+.formLine > textarea {
+	height: 105px;
+	width: 590px;
+	resize: none;
 }
 
 hr {
@@ -36,6 +42,10 @@ input[type="file"] {
 
 #bottomMenu button {
 	float: right;
+}
+
+label[for='img']{
+font-size: 12px;
 }
 </style>
 <script type="text/javascript"
@@ -137,18 +147,18 @@ input[type="file"] {
 				 <input
 				type="hidden" name="hs_img4" id="hs_img4" value="${detail.hs_img4}">
 			<h3>HairStyle 게시판 관리 - 상세보기 및 수정</h3>
-			<p align="right">* 항목은 필수 입력 값입니다.</p>
+			<p align="right"><b><label class="required">*</label> 항목은 필수 입력 값입니다.</b></p>
 			<!-- 목록으로 버튼 -->
-			<div id="listMenu">
+			<div id="listMenu" align="right">
 				<p>
-					<input type="button" value="목록으로" class="but" id="ListBtn">
+					<input type="button" value="목록으로" class="btn" id="ListBtn">
 				</p>
 			</div>
 			<hr>
 			<!--수정 및 상세보기 폼 출력 -->
 			<div class="formLine">
-				<span class="item"> <label class="required">*</label>카테고리</span> 
-				<select id="hs_category" name="hs_category">
+				<span class="item"> <b><label class="required">*</label>카테고리</b></span>
+				<select id="hs_category" name="hs_category" class="form-control">
 					<option value="1">남성</option>
 					<option value="2">여성</option>
 					<option value="3">컬러</option>
@@ -156,59 +166,59 @@ input[type="file"] {
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> <label class="required">*</label>제품명
-				</span> <input type="text" id="hs_title" name="hs_title"
+				<span class="item"> <b><label class="required">*</label>제품명</b>
+				</span> <input type="text" id="hs_title" name="hs_title"class="form-control"
 					value="${detail.hs_title}">
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> <label class="required">*</label>특징
-				</span> <input type="text" id="hs_content" name="hs_content" size="50"
-					placeholder="간략한 설명을 입력하세요." value="${detail.hs_content}">
+				<span class="item"> <b><label class="required">*</label>특징</b>
+				</span> <textarea rows="20" cols="5" id="hs_content" name="hs_content" size="50"
+					placeholder="간략한 설명을 입력하세요." class="form-control">${detail.hs_content}</textarea>
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> <label class="required">*</label>썸네일이미지
+				<span class="item"> <b><label class="required">*</label>썸네일이미지</b>
 				</span> <span class="imgBtn"><label for="img">${hs_thumb__}</label>
 					<input type="button" class="imgUpdateBtn" value="이미지수정"><input
 					type="file" name="uploadFile" id="uploadFile" class="uploadFile"></span>
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> 상세이미지1
+				<span class="item"> <b>상세이미지1</b>
 				</span> <span class="imgBtn"><label for="img">${hs_img1__}</label> <input
 					type="button" class="imgUpdateBtn" value="이미지수정"><input
 					type="file" name="uploadFile2" id="uploadFile2" class="uploadFile"></span>
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item">상세이미지2
+				<span class="item"><b>상세이미지2</b>
 				</span> <span class="imgBtn"><label for="img">${hs_img2}</label> <input
 					type="button" class="imgUpdateBtn" value="이미지수정"><input
 					type="file" name="uploadFile3" id="uploadFile3" class="uploadFile"></span>
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> 상세이미지3
+				<span class="item"> <b>상세이미지3</b>
 				</span> <span class="imgBtn"><label for="img">${hs_img3}</label> <input
 					type="button" class="imgUpdateBtn" value="이미지수정"><input
 					type="file" name="uploadFile4" id="uploadFile4" class="uploadFile"></span>
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> 상세이미지4
+				<span class="item"> <b>상세이미지4</b>
 				</span> <span class="imgBtn"><label for="img">${hs_img4}</label> <input
 					type="button" class="imgUpdateBtn" value="이미지수정"><input
 					type="file" name="uploadFile5" id="uploadFile5" class="uploadFile"></span>
 			</div>
 			<hr>
 		</form>
-	</div>
-	<!-- 수정 및 삭제 버튼  -->
-	<div>
-		<input type="button" value="수정완료" class="but" id="UpdateBtn">
-		<input type="button" value="게시글 삭제" class="but" id="DeleteBtn">
+	<div align="right">
+		<input type="button" value="수정완료" class="btn" id="UpdateBtn">
+		<input type="button" value="게시글 삭제" class="btn" id="DeleteBtn">
 
 	</div>
+	</div>
+	<!-- 수정 및 삭제 버튼  -->
 </body>
 </html>
