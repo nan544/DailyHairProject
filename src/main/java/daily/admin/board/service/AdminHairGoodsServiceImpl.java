@@ -23,7 +23,6 @@ public class AdminHairGoodsServiceImpl implements AdminHairGoodsService {
 	@Override
 	public List<AdminHairGoodsVO> hairGoodslist(AdminHairGoodsVO hgvo) {
 		List<AdminHairGoodsVO> list = hairgoodsdao.hairGoodslist(hgvo);
-		System.out.println(list);
 		return list;
 	}
 
