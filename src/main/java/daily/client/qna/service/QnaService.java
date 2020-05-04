@@ -18,4 +18,6 @@ public interface QnaService {
 	public int qnaUpdate(QnaVO qvo);
 	//답글 상세보기
 	public replyVO selectReply(int qna_num);
+	//문의글 삭제하기
+	public int qnaDelete(QnaVO qvo);
 }

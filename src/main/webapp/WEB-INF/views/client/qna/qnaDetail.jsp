@@ -58,21 +58,43 @@
 			$("#updateBtn").attr("disabled", true);
 			$("#deleteBtn").attr("disabled", true);
 		}
-		//목록으로 버튼 클릭시 실행
+		//목록으로 버튼 클릭 시 실행
 		$("#listBtn").click(function() {
 			location.href = "/client/qna/qnaList.do";
 		});
 
-		//수정버튼 클릭시 실행
+		//수정버튼 클릭 시 실행
 		$("#updateBtn").click(function() {
 			let qna_num = "${detail.qna_num}";
 			location.href = "/client/qna/qnaUpdateForm.do?qna_num=" + qna_num;
 		});
 		
-		//삭제버튼 클릭시 실행
+		//삭제버튼 클릭 시 실행
 		$("#deleteBtn").click(function() {
-			let qna_num = "${detail.qna_num}";
-			location.href = "/client/qna/qnaDelete.do?qna_num=" + qna_num;
+			if (confirm("문의를 삭제하시겠습니까?")) {
+
+				var form = $("form[id=downForm]").serialize();
+
+				$.ajax({
+					type : 'POST',
+					url : 'qnaDelete.do',
+					data : form,
+					dataType : 'JSON',
+					success : function(data) {
+						if (data == 1) {
+							alert("문의글을 삭제했습니다.");
+							location.href = "/client/qna/qnaList.do";
+						} else {
+							alert(data);
+							alert("문의글을 삭제하는데 실패하였습니다.");
+						}
+					},
+					error : function() {
+						alert("서버 오류");
+					}
+
+				});
+			}
 		});
 		
 		// 문의사항 첨부파일 이미지 보여주기
@@ -89,7 +111,7 @@
 		let imageRe = "<c:out value='${reply.rep_file}'/>";
 		if (imageRe != "") {
 			$("#imgR").attr({
-				src: "/uploadStorage/qna/${reply.rep_file}",
+				src: "/uploadStorage/reply/${reply.rep_file}",
 				width:"235px",
 				height:"345px"
 			});
@@ -140,15 +162,16 @@ p > span { color: red; font: bold; }
 .miniDetail { font-size: 12px; display: inline; }
 
 
-.replyBigBox { float: right; margin: 0 auto;
-				padding-bottom: 100px; }
+.replyBigBox { margin: 0 auto; padding-bottom: 100px; }
 .replyBigBox > h4 { padding-left: 20px; }
 .replyBox { width: 95%; margin: 0 auto; padding: 15px;
 			box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 			background-color: #FFFAFA; height: 375px; }
 .replyBox > div > label { margin-bottom: 25px; }
 .replyBox > div > label > span { color: red; }
-			
+
+.contentBox { border: 0px; resize: none;
+			background-color: white; }
 </style>
 </head>
 <body>
@@ -185,7 +208,7 @@ p > span { color: red; font: bold; }
 			
 			<!-- 문의 답변 -->
 			<form name="downForm" id="downForm">
-				<input type="hidden" name="qna_num" id="qna_num1">
+				<input type="hidden" name="qna_num" id="qna_num" value="${detail.qna_num}">
 			</form>
 			
 			<div class="qnaHeadBox">
@@ -198,7 +221,7 @@ p > span { color: red; font: bold; }
 							<div style="width: 80%; height: 350px; float: left;">
 								<label><span>*</span> 첨부파일 ： </label>
 								<p class="miniDetail">( 첨부파일이 존재하지 않습니다. )</p>
-								<p>${detail.qna_content}</p>
+								<textarea rows="12" cols="120" class="contentBox" disabled="disabled"><c:out value="${detail.qna_content}"/></textarea>
 							</div>
 							<div style="width: 20%; height: 350px; float: right;">
 								<img style="float: right;" src="/resources/assets/img/qnaNoImg.png">
@@ -208,7 +231,7 @@ p > span { color: red; font: bold; }
 							<div style="width: 80%; height: 350px; float: left;">
 								<label><span>*</span> 첨부파일 ： </label>
 								<label>${detail.qna_file}</label>
-								<p>${detail.qna_content}</p>
+								<textarea rows="12" cols="120" class="contentBox" disabled="disabled"><c:out value="${detail.qna_content}"/></textarea>
 							</div>
 							<div style="width: 20%; height: 350px; float: right;">
 								<img style="float: right;" id="img">

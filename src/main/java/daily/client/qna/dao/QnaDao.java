@@ -22,4 +22,7 @@ public interface QnaDao {
 	
 	//답글 존재 시 상세보기
 	public replyVO selectReply(int qna_num);
+	
+	//문의글 삭제하기
+	public int qnaDelete(QnaVO qvo);
 }

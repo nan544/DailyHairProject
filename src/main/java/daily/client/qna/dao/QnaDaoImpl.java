@@ -50,4 +50,10 @@ public class QnaDaoImpl implements QnaDao {
 		return sqlSession.selectOne("selectReply",qna_num);
 	}
 
+
+	@Override
+	public int qnaDelete(QnaVO qvo) {
+		return sqlSession.delete("qnaDelete",qvo);
+	}
+
 }

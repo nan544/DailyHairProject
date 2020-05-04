@@ -61,7 +61,7 @@
 	<style type="text/css">
 		ul { list-style:none; }
 		.faq_box { width: 1020px; }
-		.faq_answer { margin-right: 15px; margin-left: 35px;
+		.faq_answer { margin: 0px 20px 0px 30px;
 					color: #F15F5F; font-weight: 700; }
 		.accordion_head { padding: 15px 0px 5px 25px;
 						box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
@@ -79,6 +79,8 @@
 				box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
 				background-color: white; padding-top: 225px;
 				text-align: center; }
+		.contentBox { border: 0px; resize: none;
+					background: unset; }
 	</style>
 </head>
 
@@ -121,7 +123,8 @@
 										</div>
 										<div>
 											<ul>
-												<li><p>${faq.faq_answer}</p></li>
+												<%-- <li><p>${faq.faq_answer}</p></li> --%>
+												<li><textarea cols="110" class="contentBox" disabled="disabled"><c:out value="${faq.faq_answer}"/></textarea></li>
 											</ul>
 										</div>
 									</div>

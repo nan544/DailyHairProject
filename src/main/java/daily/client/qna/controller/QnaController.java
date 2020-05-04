@@ -38,8 +38,6 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
-	
-	
 	//내가 질문한 게시글리스트 불러오기
 	@RequestMapping(value = "/qna/qnaList.do" , method = RequestMethod.GET)
 	public String qnaList(Model model , HttpSession session , HttpServletRequest request) {
@@ -67,7 +65,6 @@ public class QnaController {
 		
 		return "client/qna/qnaWriteForm";
 	}
-	
 	
 		//문의글 등록하기
 		@RequestMapping(value = "/qna/qnaInsert.do" , method = RequestMethod.POST)
@@ -176,11 +173,21 @@ public class QnaController {
 
 	//문의글 삭제하기
 	@RequestMapping(value = "/qna/qnaDelete.do")
-	public String qnaDelete(QnaVO qvo) {
-		
-		
-		
-		return "client/qna/qnaDelete";
+	@ResponseBody
+	public int qnaDelete(@ModelAttribute QnaVO qvo, HttpServletRequest request) throws IOException {
+		System.out.println(qvo.getQna_num()+"가 들어감");
+		int result = qnaService.qnaDelete(qvo);
+		System.out.println( result +"가 리턴됨");
+		if (result == 1) {
+			// 첨부파일이 있으면 파일 삭제
+			/* if (!qvo.getQna_file().isEmpty()) {
+				FileUploadUtil.fileDelete(qvo.getQna_file(), request);
+			} */
+			qnaService.qnaDelete(qvo);
+			System.out.println( result +"가 리턴됨");
+			return result;
+		} else {
+			return 0;
+		}
 	}
-	
  }

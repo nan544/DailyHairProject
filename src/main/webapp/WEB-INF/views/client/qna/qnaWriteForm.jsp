@@ -181,7 +181,8 @@ function chkImg(file){
 					<h4>문의 제목 </h4>
 				</div>
 				<div style="float: left; margin-left: 15px;">
-					<input class="insertTitle" type="text" name="qna_title" id="qna_title" value=""/>
+					<input class="insertTitle" type="text" name="qna_title" id="qna_title" value=""
+						placeholder="제목을 입력해주세요."/>
 				</div>
 			</div>
 			<hr style="width: 100%; margin-top: 45px;">

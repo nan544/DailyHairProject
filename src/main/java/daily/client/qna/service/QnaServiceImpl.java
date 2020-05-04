@@ -45,4 +45,9 @@ public class QnaServiceImpl implements QnaService {
 		return qnaDao.selectReply(qna_num);
 	}
 
+	@Override
+	public int qnaDelete(QnaVO qvo) {
+		return qnaDao.qnaDelete(qvo);
+	}
+
 }
