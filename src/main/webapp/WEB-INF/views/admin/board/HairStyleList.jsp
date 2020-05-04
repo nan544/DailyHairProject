@@ -9,6 +9,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="/resources/include/css/board.css">
+<style type="text/css">
+.btnBoard{
+width : 70px;
+float: left;
+margin-right: 5px;
+}
+.keyword{
+width : 200px;
+float: left;
+margin-right: 5px;
+}
+</style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
@@ -55,9 +67,9 @@
 	<form name="f_search" id="f_search">
 	 <input
 			type="hidden" id="page" name="page" value="${data.page}">
-		<input type="text" id="keyword" name=keyword placeholder="스타일이름(제목)" value="${data.keyword}">
+		<input type="text" id="keyword" name=keyword class="keyword form-control" placeholder="스타일이름(제목)" value="${data.keyword}">
 		<input type="hidden" id="search" name="search" value="hs_title">
-		<input type="button" id="searchBtn" class="btnBoard" name="searchBtn" value="검색">
+		<input type="button" id="searchBtn" class="btn btnBoard" name="searchBtn" value="검색">
 		</form>
 	<p>
 
@@ -110,7 +122,7 @@
 		<!-- 데이터 출력 끝-->
 	</table>
 
-	<input type="button"  class="btnBoard" id="insertFormBtn" name="insertFormBtn" value="등록">
+	<input type="button"  class="btn btnBoard" id="insertFormBtn" name="insertFormBtn" value="등록">
 
 	<!-- 페이지 네비게이션 -->
 	<div id="boardPage">

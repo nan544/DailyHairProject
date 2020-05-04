@@ -36,12 +36,10 @@ public class AdminHairGoodsController {
 
 		// 페이징 세팅
 		Paging.setPage(hgvo);
-		log.info(hgvo.getPage());
 
 		// 전체 레코드 수 구현
 		int total = HairGoodsService.boardListCnt(hgvo);
 
-		System.out.println(total);
 		List<AdminHairGoodsVO> hgList = HairGoodsService.hairGoodslist(hgvo);
 		mav.addObject("hgList", hgList);
 		mav.addObject("total", total);
