@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import daily.admin.designer.vo.DesignerVO;
+import daily.admin.qna.vo.replyVO;
 import daily.client.member.vo.MemberVO;
 import daily.client.qna.service.QnaService;
 import daily.client.qna.vo.QnaVO;
@@ -91,14 +93,22 @@ public class QnaController {
 		
 		//문의글 상세보기
 		@RequestMapping(value = "/qna/qnaDetail.do")
-		public String qnaDetail(QnaVO qvo , Model model) {
+		public ModelAndView qnaDetail(@ModelAttribute QnaVO qvo) {
 			logger.info("qnaDetail 호출");
 			
+			ModelAndView mav = new ModelAndView();
 			QnaVO detail = qnaService.qnaDetail(qvo);
 			
-			model.addAttribute("detail",detail);
+			// 답변 존재 시 답변 글 띄우는 메소드
+			if (detail.getQna_state() == 1) {
+				replyVO reply = qnaService.selectReply(detail.getQna_num());
+				mav.addObject("reply", reply);
+			}
 			
-			return "client/qna/qnaDetail";
+			mav.addObject("detail", detail);
+			mav.setViewName("client/qna/qnaDetail");
+			
+			return mav;
 					
 		}
 		

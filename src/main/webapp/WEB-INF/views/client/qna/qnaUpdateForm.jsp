@@ -134,6 +134,8 @@ function chkImg(file){
 			border: 2px dashed #ffb03b;
 			border-radius: 25px; }
 .qnaBtn:hover { background: #FFE08C; }
+
+
 .qnaHeadBox { width: 95%; margin: 0 auto; }
 .qnaHeadBox > form > div > div > h4 { padding-left: 20px; }
 .updateTitle { display: inline; margin-left: 10px;

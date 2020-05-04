@@ -6,11 +6,14 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import daily.admin.qna.vo.replyVO;
 import daily.client.member.vo.MemberVO;
 import daily.client.qna.vo.QnaVO;
 
 @Repository
+@Transactional
 public class QnaDaoImpl implements QnaDao {
 	
 	
@@ -39,6 +42,12 @@ public class QnaDaoImpl implements QnaDao {
 	@Override
 	public int qnaUpdate(QnaVO qvo) {
 		return sqlSession.update("qnaUpdate",qvo);
+	}
+
+
+	@Override
+	public replyVO selectReply(int qna_num) {
+		return sqlSession.selectOne("selectReply",qna_num);
 	}
 
 }

@@ -65,16 +65,25 @@
 
 		//수정버튼 클릭시 실행
 		$("#updateBtn").click(function() {
-
 			let qna_num = "${detail.qna_num}";
-
 			location.href = "/client/qna/qnaUpdateForm.do?qna_num=" + qna_num;
 		});
-		 //첨부파일 이미지 보여주기
+		
+		// 문의사항 첨부파일 이미지 보여주기
 		let image = "<c:out value='${detail.qna_file}'/>";
 		if (image != "") {
 			$("#img").attr({
 				src: "/uploadStorage/qna/${detail.qna_file}",
+				width:"235px",
+				height:"345px"
+			});
+		}
+		
+		// 답글 첨부파일 이미지 보여주기
+		let imageRe = "<c:out value='${reply.rep_file}'/>";
+		if (imageRe != "") {
+			$("#imgR").attr({
+				src: "/uploadStorage/qna/${reply.rep_file}",
 				width:"235px",
 				height:"345px"
 			});
@@ -104,12 +113,21 @@
 
 .tableBox2 { margin-bottom: 50px; padding: 15px 15px 5px 15px;
 			box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-			transition: all ease-in-out 0.3s;
 			background-color: #FFFAFA; height: 375px; }
 .tableBox2 > div > label { margin-bottom: 25px; }
 .tableBox2 > div > label > span { color: red; }
 .miniDetail { font-size: 12px; display: inline; }
 
+
+.replyBigBox { width: 90%; float: right; margin: 0 auto;
+				padding-bottom: 100px; }
+.replyBigBox > h4 { padding-left: 20px; }
+.replyBox { width: 95%; margin: 0 auto; padding: 15px;
+			box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+			background-color: #FFFAFA; height: 375px; }
+.replyBox > div > label { margin-bottom: 25px; }
+.replyBox > div > label > span { color: red; }
+			
 </style>
 </head>
 <body>
@@ -172,10 +190,36 @@
 					<!-- 답변 존재 유무에 따른 view 적용 -->
 					<c:choose>
 						<c:when test="${detail.qna_state eq 1}">
-							<p>답변 등록 존재</p>
+							<div class="replyBigBox">
+								<h4>답글 제목 ： “ ${reply.rep_name} ”</h4>
+								<hr style="width: 100%">
+								
+								<div class="replyBox">
+									<c:if test="${empty reply.rep_file }">
+										<div style="width: 80%; height: 350px; float: left;">
+											<label><span>*</span> 첨부파일 ： </label>
+											<p class="miniDetail">( 첨부파일이 존재하지 않습니다. )</p>
+											<p>${reply.rep_content}</p>
+										</div>
+										<div style="width: 20%; height: 350px; float: right;">
+											<img style="float: right;" src="/resources/assets/img/qnaNoImg.png">
+										</div>
+									</c:if> 
+									<c:if test="${not empty reply.rep_file }">
+										<div style="width: 77%; height: 350px; float: left;">
+											<label><span>*</span> 첨부파일 ： </label>
+											<label>${reply.rep_file}</label>
+											<p>${reply.rep_content}</p>
+										</div>
+										<div style="width: 23%; height: 350px; float: right;">
+											<img style="float: right;" id="imgR">
+										</div>
+									</c:if>
+								</div>
+							</div>
 						</c:when>
 						<c:otherwise>
-							<div style="height: 100px;"></div>
+							<div style="height: 150px;"></div>
 						</c:otherwise>
 					</c:choose>
 				</div>

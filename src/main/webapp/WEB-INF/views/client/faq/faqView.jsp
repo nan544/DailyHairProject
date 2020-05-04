@@ -74,6 +74,11 @@
 		.accordion_head span { font-size: 35px; font-weight: 700;
 								color: #ffcf88; margin-right: 25px; }
 		.menu1 { padding-top: 25px; }
+		
+		.noHG { margin: 50px 0px 50px 0px; width: 750px; height: 500px;
+				box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
+				background-color: white; padding-top: 225px;
+				text-align: center; }
 	</style>
 </head>
 
@@ -91,8 +96,7 @@
 			
 			<!-- 상단  -->
 			<div style="margin: 0 auto; text-align: center; width: 100%;">
-				<h1 style="margin-bottom: 15px;"><strong>DailyHairShop</strong></h1>
-				<p style="margin-bottom: 85px;">자주하는 질문</p>
+				<h1 style="margin-bottom: 125px;">자주하는 질문</h1>
 			</div>
 			
 			<!-- 자주하는 질문 목록 -->
@@ -132,7 +136,7 @@
 						</c:when>
 						<c:otherwise>
 							<div>
-								<p>등록되어있는 자주하는 질문이 존재하지 않습니다.</p>
+								<p class="noHG">등록되어있는 자주하는 질문이 존재하지 않습니다.</p>
 							</div>
 						</c:otherwise>
 					</c:choose>

@@ -56,7 +56,7 @@
 		$("#writeBtn").click(function(){
 			
 			window.open("/client/qna/qnaWriteForm.do", "qnapop",
-					"width=800, height=600, left=600, top=100");			
+					"width=1020, height=750, left=75, top=75");			
 		});
 		
 		//상세보기
@@ -94,12 +94,9 @@
 				transition: all ease-in-out 0.3s;
 				background-color: #FFFAFA; }
 	.thBottom { padding: 15px 0px 15px 0px; }
+	.thBottom2 { padding: 15px 0px 15px 0px; color: #BDBDBD; }
 	.blickSpace { padding: 15px; }
 	.tableBox1 > table > tbody { padding: 15px; }
-	.qnaTbody { box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-				transition: all ease-in-out 0.3s;
-				background-color: #FFFAFA; 
-				margin-top: 50px; }
 	.tdBottom { padding: 50px 0px 50px 0px; }
 	.tableBox2 { margin-bottom: 150px; padding: 15px;
 				box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
@@ -151,11 +148,11 @@
 					<thead class="qnaThead">
 						<tr>
 							<th class="thBottom" style="padding-left: 20px;">작성자</th>
-							<th class="thBottom">│</th>
+							<th class="thBottom2">│</th>
 							<th class="thBottom">문의일시</th>
-							<th class="thBottom">│</th>
+							<th class="thBottom2">│</th>
 							<th class="thBottom">제목</th>
-							<th class="thBottom">│</th>
+							<th class="thBottom2">│</th>
 							<th class="thBottom" style="padding-right: 20px;">답변상태</th>
 						</tr>
 					</thead>
