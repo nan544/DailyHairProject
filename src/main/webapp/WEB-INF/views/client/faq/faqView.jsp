@@ -61,7 +61,7 @@
 	<style type="text/css">
 		ul { list-style:none; }
 		.faq_box { width: 1020px; }
-		.faq_answer { margin-right: 15px; margin-left: 35px;
+		.faq_answer { margin: 0px 20px 0px 30px;
 					color: #F15F5F; font-weight: 700; }
 		.accordion_head { padding: 15px 0px 5px 25px;
 						box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
@@ -74,6 +74,13 @@
 		.accordion_head span { font-size: 35px; font-weight: 700;
 								color: #ffcf88; margin-right: 25px; }
 		.menu1 { padding-top: 25px; }
+		
+		.noHG { margin: 50px 0px 50px 0px; width: 750px; height: 500px;
+				box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
+				background-color: white; padding-top: 225px;
+				text-align: center; }
+		.contentBox { border: 0px; resize: none;
+					background: unset; }
 	</style>
 </head>
 
@@ -91,8 +98,7 @@
 			
 			<!-- 상단  -->
 			<div style="margin: 0 auto; text-align: center; width: 100%;">
-				<h1 style="margin-bottom: 15px;"><strong>DailyHairShop</strong></h1>
-				<p style="margin-bottom: 85px;">자주하는 질문</p>
+				<h1 style="margin-bottom: 125px;">자주하는 질문</h1>
 			</div>
 			
 			<!-- 자주하는 질문 목록 -->
@@ -117,7 +123,8 @@
 										</div>
 										<div>
 											<ul>
-												<li><p>${faq.faq_answer}</p></li>
+												<%-- <li><p>${faq.faq_answer}</p></li> --%>
+												<li><textarea cols="110" class="contentBox" disabled="disabled"><c:out value="${faq.faq_answer}"/></textarea></li>
 											</ul>
 										</div>
 									</div>
@@ -132,7 +139,7 @@
 						</c:when>
 						<c:otherwise>
 							<div>
-								<p>등록되어있는 자주하는 질문이 존재하지 않습니다.</p>
+								<p class="noHG">등록되어있는 자주하는 질문이 존재하지 않습니다.</p>
 							</div>
 						</c:otherwise>
 					</c:choose>
