@@ -87,10 +87,10 @@
 		<if test="hg_img2 != '400'">
 			,#{hg_img2}
 		</if>
-		<if test="hg_img2 != '400'">
+		<if test="hg_img3 != '400'">
 			,#{hg_img3}
 		</if>
-		<if test="hg_img2 != '400'">
+		<if test="hg_img4 != '400'">
 			,#{hg_img4}
 		</if>
 		)
