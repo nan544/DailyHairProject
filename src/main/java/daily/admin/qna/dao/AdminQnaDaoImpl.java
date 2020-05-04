@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import daily.admin.qna.vo.replyVO;
 import daily.client.qna.vo.QnaVO;
 @Repository
-@Transactional
 public class AdminQnaDaoImpl implements AdminQnaDao {
 
 	@Autowired

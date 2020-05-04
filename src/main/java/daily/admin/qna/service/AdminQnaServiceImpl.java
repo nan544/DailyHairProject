@@ -2,6 +2,7 @@ package daily.admin.qna.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import daily.admin.qna.dao.AdminQnaDao;
@@ -9,6 +10,7 @@ import daily.admin.qna.vo.replyVO;
 import daily.client.qna.vo.QnaVO;
 
 @Service
+@Transactional
 public class AdminQnaServiceImpl implements AdminQnaService {
 
 	@Autowired

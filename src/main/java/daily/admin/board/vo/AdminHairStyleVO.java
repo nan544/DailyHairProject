@@ -14,7 +14,7 @@ public class AdminHairStyleVO extends CommonVO {
 	private String hs_img4;
 	private String hs_content;
 	private String hs_regdate;
-	private String hs_category;
+	private int hs_category;
 	
 	private MultipartFile uploadFile;
 	private MultipartFile uploadFile2;
@@ -60,10 +60,10 @@ public class AdminHairStyleVO extends CommonVO {
 	public void setUploadFile4(MultipartFile uploadFile4) {
 		this.uploadFile4 = uploadFile4;
 	}
-	public String getHs_category() {
+	public int getHs_category() {
 		return hs_category;
 	}
-	public void setHs_category(String hs_category) {
+	public void setHs_category(int hs_category) {
 		this.hs_category = hs_category;
 	}
 	public MultipartFile getUploadFile() {
