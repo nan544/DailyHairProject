@@ -102,7 +102,7 @@
 .qnaHeadBox > h4 { padding-left: 20px; padding-top: 50px; }
 
 
-.tableBox2 { margin-bottom: 150px; padding: 15px 15px 5px 15px;
+.tableBox2 { margin-bottom: 50px; padding: 15px 15px 5px 15px;
 			box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 			transition: all ease-in-out 0.3s;
 			background-color: #FFFAFA; height: 375px; }
@@ -168,6 +168,16 @@
 							</div>
 						</c:if>
 					</div>
+					
+					<!-- 답변 존재 유무에 따른 view 적용 -->
+					<c:choose>
+						<c:when test="${detail.qna_state eq 1}">
+							<p>답변 등록 존재</p>
+						</c:when>
+						<c:otherwise>
+							<div style="height: 100px;"></div>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>
