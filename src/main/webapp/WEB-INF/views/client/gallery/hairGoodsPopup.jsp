@@ -211,13 +211,13 @@ img {vertical-align: middle;}
 						<div class="slideshow-container">
 							<!-- 썸네일 이미지 / 1번 함수  ------------>
 							<div class="mySlides fade">
-								<img src="${hgDetail.hg_thumb }" style="width: 350px; height: 450px;">
+								<img class="designer" src="/uploadStorage/HairGoods/<c:out value='${hgDetail.hg_thumb}'/>" style="width: 350px; height: 450px;">
 							</div>
 							
 							<!-- 이미지 1 / 2번 함수 ------------>
 							<div class="mySlides fade">
 								<c:if test="${not empty hgDetail.hg_img1 }">
-									<img src="${hgDetail.hg_img1 }" style="width: 350px; height: 450px;">
+									<img  style="width: 350px; height: 450px;" src="/uploadStorage/HairGoods/<c:out value='${hgDetail.hg_img1}'/>"> 
 								</c:if>
 								<c:if test="${empty hgDetail.hg_img1 }">
 									<img src="/resources/assets/img/goodsDetailNoImg.png" style="width: 350px; height: 450px;">
