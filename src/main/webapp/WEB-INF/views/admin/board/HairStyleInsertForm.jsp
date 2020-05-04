@@ -114,44 +114,25 @@ input[type="file"] {
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> 상세이미지
+				<span class="item"> 상세이미지1
 				</span><input type="file" id="uploadFile2" name="uploadFile2" value="이미지 등록">
 			</div>
 			<hr>
-			<!-- <div class="formLine">
-				<span class="item"> 이미지1 </span> <span class="imgBtn"> <input
-					type="file" id="uploadFile" name="uploadFile" value="이미지 등록">
-					<input type="button" id="img1Delete" name="img1Delete"
-					value="이미지 삭제">
-				</span>
-			</div>
-			<hr> -->
-			<!-- 
 			<div class="formLine">
-				<span class="item"> 미구현 </span> <span class="1imgBtn"> <input
-					type="button" id="img2Insert" name="img2Insert" value="이미지 등록">
-					<input type="button" id="img2Delete" name="img2Delete"
-					value="이미지 삭제">
-				</span>
+				<span class="item"> 상세이미지2
+				</span><input type="file" id="uploadFile3" name="uploadFile3" value="이미지 등록">
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> 미구현 </span> <span class="1imgBtn"> <input
-					type="button" id="img3Insert" name="img3Insert" value="이미지 등록">
-					<input type="button" id="img3Delete" name="img3Delete"
-					value="이미지 삭제">
-				</span>
+				<span class="item"> 상세이미지3
+				</span><input type="file" id="uploadFile4" name="uploadFile4" value="이미지 등록">
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> 미구현 </span> <span class="1imgBtn"> <input
-					type="button" id="img4Insert" name="img4Insert" value="이미지 등록">
-					<input type="button" id="img24elete" name="img4Delete"
-					value="이미지 삭제">
-
-				</span>
-
-			</div> -->
+				<span class="item"> 상세이미지4
+				</span><input type="file" id="uploadFile5" name="uploadFile5" value="이미지 등록">
+			</div>
+			<hr>
 		</form>
 	</div>
 	<!-- 글 등록 버튼 시작-->

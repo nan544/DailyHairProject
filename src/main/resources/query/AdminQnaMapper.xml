@@ -106,4 +106,11 @@
 		=#{qna_num}
 
 	</delete>
+	
+	<!-- 회원 상세보기 -->
+	 <select id="memberDetail" parameterType="reservation" resultType="member">
+		SELECT m_id, m_num, m_name, m_pwd, m_gender, m_phone, m_email, m_memo, m_state, to_char(m_date,'YYYY-MM-DD') as m_date
+		FROM member
+		WHERE m_id = #{m_id}
+	</select>
 </mapper>
