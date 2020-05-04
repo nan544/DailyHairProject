@@ -87,17 +87,6 @@ public class LoginController {
 		return "member/login/idFind";
 	}
 	
-	//아이디 찾기 처리
-	/*@RequestMapping(value = "/idFind.do", method = RequestMethod.POST)
-	@ResponseBody
-	public int idChk(MemberVO vo) throws Exception {
-		logger.info("아이디 찾기 성공");
-		
-		int result = service.idFind(vo);
-		
-		return result;
-	}*/
-	
 	//패스워드 찾기
 	@RequestMapping(value = "/pwFind.do", method = RequestMethod.GET)
 	public String getPwFind() throws Exception {
@@ -129,6 +118,8 @@ public class LoginController {
 			return "member/login/idFind";
 		}
 	}
+	
+	
 	
 	//찾은 아이디 창
 	/*

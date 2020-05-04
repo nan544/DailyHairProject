@@ -64,16 +64,10 @@ public class MemberDAOImpl implements MemberDAO {
 		return sql.update("cancleReservation", mvo);
 	}
 
-	/*@Override
-	public int idFind(MemberVO vo) throws Exception {
-		int result = sql.selectOne("idFind", vo);
-		return result;
-	}*/
-
 	//아이디 찾기
 	@Override
 	public MemberVO idFind(MemberVO vo) throws Exception {
-	return sql.selectOne("idFind", vo);
+		return sql.selectOne("idFind", vo);
 	}
 	
 }

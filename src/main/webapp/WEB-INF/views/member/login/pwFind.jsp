@@ -59,8 +59,8 @@
    
    <script type="text/javascript">
    // PW 찾기 버튼 이벤트 (임시)
-   function IDmodify(){
-      location.replace("/member/login/pwModify.do"); }
+  /* function IDmodify(){
+      location.replace("/member/login/pwModify.do"); }*/
    
    
    // 로그인 버튼 이벤트
@@ -74,7 +74,12 @@
    // ID 찾기 버튼 이벤트
    function IDfind(){
       location.replace("/member/login/idFind.do"); }
-   </script>
+   
+   $(function() {
+	   
+	});
+
+</script>
    
    <style type="text/css">
       .msgbox { width: 75px; }

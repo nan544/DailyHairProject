@@ -234,9 +234,8 @@
 							<!-- ID, PW 입력 및 로그인 버튼 -->
 							<div class="login_form">
 								<div class="login_idpw1">
-									<label for="m_id" class="msgbox">ID </label> <input type="text"
-										id="m_id" name="m_id" placeholder=" ID"
-										style="width: 200px; height: 35px;"> <br>
+									<label for="m_id" class="msgbox">ID </label> 
+									<input type="text" id="m_id" name="m_id" placeholder=" ID" style="width: 200px; height: 35px;"> <br>
 									<!-- 줄 바꿈 효과 -->
 									<label for="m_pwd" class="msgbox">PW </label> 
 									<input type="password" id="m_pwd" name="m_pwd" placeholder=" PassWord" 
