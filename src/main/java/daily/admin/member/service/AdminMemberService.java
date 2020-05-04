@@ -7,7 +7,7 @@ import daily.client.member.vo.MemberVO;
 public interface AdminMemberService {
 	
 	public List<MemberVO> memberList(MemberVO mvo);
-	public MemberVO memberDetail(String m_id);
+	public MemberVO memberDetailForm(String m_id);
 	public int memberUpdate(MemberVO mvo);
 	public int memberListCnt(MemberVO mvo);
 }

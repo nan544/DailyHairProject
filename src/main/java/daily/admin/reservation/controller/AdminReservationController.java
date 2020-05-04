@@ -65,7 +65,7 @@ public class AdminReservationController {
 		log.info("reservationDeatilForm 호출");
 
 		ModelAndView mav = new ModelAndView();
-		MemberVO mvo = AdminmemberService.memberDetail(rvo1.getM_id());
+		MemberVO mvo = AdminmemberService.memberDetailForm(rvo1.getM_id());
 		ReserveVo rvo = adminReservationService.reservationDetail(rvo1.getRest_num());
 		List<StyleVO> svoList = styleService.stylingnameList(rvo1.getRest_num());
 		
@@ -152,7 +152,7 @@ public class AdminReservationController {
 		
 		ReserveVo resultDetail = adminReservationService.reservationDetail(rest_num);
 		List<StyleVO> styleList = styleService.stylingnameList(rest_num);
-		MemberVO mvo = AdminmemberService.memberDetail(m_id);
+		MemberVO mvo = AdminmemberService.memberDetailForm(m_id);
 		model.addAttribute("reservation", resultDetail);
 		model.addAttribute("nameList",styleList);
 		model.addAttribute("member", mvo);

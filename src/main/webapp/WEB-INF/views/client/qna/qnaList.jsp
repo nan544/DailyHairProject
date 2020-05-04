@@ -56,7 +56,7 @@
 		$("#writeBtn").click(function(){
 			
 			window.open("/client/qna/qnaWriteForm.do", "qnapop",
-					"width=800, height=600, left=600, top=100");			
+					"width=1020, height=750, left=75, top=75");			
 		});
 		
 		//상세보기
@@ -69,6 +69,7 @@
 
 <style type="text/css">
 	.btnContainer { width: 90%; margin: 0 auto; }
+	p > span { color: red; font: bold; }
 	.qnaBtn { float: right; margin: 0px 5px 0px 5px;
 			width: 100px; height: 35px;
 			text-align: center;
@@ -84,7 +85,7 @@
 			border: 2px dashed #ffb03b;
 			border-radius: 25px; }
 	.qnaBtn:hover { background: #FFE08C; }
-	.qnaHeadBox { width: 95%; margin: 0 auto; }
+	.qnaHeadBox { width: 95%; max-width: 1600px; margin: 0 auto; }
 	.qnaHeadBox > h4 { padding-left: 20px; padding-top: 50px; }
 	
 	.tableBox1 { width: 95%; margin: 0 auto; }
@@ -94,12 +95,9 @@
 				transition: all ease-in-out 0.3s;
 				background-color: #FFFAFA; }
 	.thBottom { padding: 15px 0px 15px 0px; }
+	.thBottom2 { padding: 15px 0px 15px 0px; color: #BDBDBD; }
 	.blickSpace { padding: 15px; }
 	.tableBox1 > table > tbody { padding: 15px; }
-	.qnaTbody { box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-				transition: all ease-in-out 0.3s;
-				background-color: #FFFAFA; 
-				margin-top: 50px; }
 	.tdBottom { padding: 50px 0px 50px 0px; }
 	.tableBox2 { margin-bottom: 150px; padding: 15px;
 				box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
@@ -124,7 +122,8 @@
 			
 			<!-- 상단 -->
 			<div style="margin: 0 auto; text-align: center; width: 100%;">
-				<h1 style="margin-bottom: 50px;">1：1 문의하기</h1>
+				<h1 style="margin-bottom: 20px;">1：1 문의하기</h1>
+				<p><span style="color: red;">*</span> 답변이 완료된 문의는 수정 및 삭제가 불가능합니다. <span style="color: red;">*</span></p>
 			</div>
 			
 			<!-- 문의하기 버튼 -->
@@ -135,8 +134,7 @@
 			<!-- 문의 내역 -->
 			<div class="qnaHeadBox">
 				<h4>나의 문의 내역</h4>
-				<hr style="width: 100%">
-				<p><span style="color: red;">*</span>답변이 완료된 문의는 수정 및 삭제가 불가능합니다.</p>
+				<hr style="width: 100%; margin-bottom: 30px;">
 				<div class="tableBox1">
 				<table>
 					<colgroup>
@@ -151,11 +149,11 @@
 					<thead class="qnaThead">
 						<tr>
 							<th class="thBottom" style="padding-left: 20px;">작성자</th>
-							<th class="thBottom">│</th>
+							<th class="thBottom2">│</th>
 							<th class="thBottom">문의일시</th>
-							<th class="thBottom">│</th>
+							<th class="thBottom2">│</th>
 							<th class="thBottom">제목</th>
-							<th class="thBottom">│</th>
+							<th class="thBottom2">│</th>
 							<th class="thBottom" style="padding-right: 20px;">답변상태</th>
 						</tr>
 					</thead>

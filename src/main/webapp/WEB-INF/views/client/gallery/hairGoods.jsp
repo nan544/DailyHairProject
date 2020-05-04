@@ -57,9 +57,9 @@
 		.noHG { margin: 50px 0px 50px 0px; width: 750px; height: 500px;
 				box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
 				background-color: white; padding-top: 225px;}
-		.designer { width: 280px; height: 400px; }
+		.designer { width: 250px; height: 350px; }
 		.designerbox { float: left; padding: 10px; 
-						margin: 10px 20px 10px 20px;
+						margin: 15px 35px 15px 35px;
 						transition: all ease-in-out 0.3s;
 						transform: scale(1);
 						-webkit-transform: scale(1);

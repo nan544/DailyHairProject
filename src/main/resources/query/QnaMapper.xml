@@ -29,9 +29,11 @@
 		WHERE qna_num = #{qna_num}
 	</update>
 
-<!-- 	<delete id="deleteSomething" parameterType="int">
-		DELETE FROM tablename1 WHERE
-		columnname1 = #{param1}
-	</delete>  -->
+	<delete id="qnaDelete" parameterType="qna">
+		DELETE
+		FROM qna 
+		WHERE qna_num
+		= #{qna_num}
+	</delete>
 
 </mapper>

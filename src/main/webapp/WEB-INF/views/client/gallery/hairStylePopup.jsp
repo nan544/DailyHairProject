@@ -224,35 +224,35 @@ img {vertical-align: middle;}
 								</c:if>
 							</div>
 							
-						<%--  <!-- 이미지 2 / 3번 함수 ------------>
+						 <!-- 이미지 2 / 3번 함수 ------------>
 							<div class="mySlides fade">
 								<c:if test="${not empty hsDetail.hs_img2 }">
 								<img  style="width: 350px; height: 450px;" src="/uploadStorage/HairStyle/<c:out value='${hsDetail.hs_img2}'/>"> 
 								</c:if>
-								<c:if test="${empty hsDetail.h_img2 }">
+								<c:if test="${empty hsDetail.hs_img2 }">
 									<img src="/resources/assets/img/goodsDetailNoImg.png" style="width: 350px; height: 450px;">
 								</c:if>
 							</div>
-							 --%>
-								<%--<!-- 이미지 3 / 4번 함수 ------------>
+							 
+							<!-- 이미지 3 / 4번 함수 ------------>
 							<div class="mySlides fade">
-								<c:if test="${not empty hgDetail.hg_img3 }">
-									<img src="${hgDetail.hg_img3 }" style="width: 350px; height: 450px;">
+								<c:if test="${not empty hsDetail.hs_img3 }">
+										<img  style="width: 350px; height: 450px;" src="/uploadStorage/HairStyle/<c:out value='${hsDetail.hs_img3}'/>"> 
 								</c:if>
-								<c:if test="${empty hgDetail.hg_img3 }">
+								<c:if test="${empty hsDetail.hs_img3 }">
 									<img src="/resources/assets/img/goodsDetailNoImg.png" style="width: 350px; height: 450px;">
 								</c:if>
 							</div>
 							
 							<!-- 이미지 4 / 5번 함수 ------------>
 							<div class="mySlides fade">
-								<c:if test="${not empty hgDetail.hg_img4 }">
-									<img src="${hgDetail.hg_img4 }" style="width: 350px; height: 450px;">
+								<c:if test="${not empty hsDetail.hs_img4 }">
+										<img  style="width: 350px; height: 450px;" src="/uploadStorage/HairStyle/<c:out value='${hsDetail.hs_img4}'/>"> 
 								</c:if>
-								<c:if test="${empty hgDetail.hg_img4 }">
+								<c:if test="${empty hsDetail.hs_img4 }">
 									<img src="/resources/assets/img/goodsDetailNoImg.png" style="width: 350px; height: 450px;">
 								</c:if>
-							</div> --%>
+							</div> 
 							
 							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 							<a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -262,9 +262,9 @@ img {vertical-align: middle;}
 						<div style="text-align:center">
 							<span class="dot" onclick="currentSlide(1)"></span> 
 							<span class="dot" onclick="currentSlide(2)"></span> 
-							<!-- <span class="dot" onclick="currentSlide(3)"></span> 
+							<span class="dot" onclick="currentSlide(3)"></span> 
 							<span class="dot" onclick="currentSlide(4)"></span>
-							<span class="dot" onclick="currentSlide(5)"></span> -->
+							<span class="dot" onclick="currentSlide(5)"></span>
 						</div>
 						
 						<p style="margin-top: 30px;">${hsDetail.hs_content }</p>

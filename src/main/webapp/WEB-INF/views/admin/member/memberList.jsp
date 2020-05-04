@@ -36,7 +36,6 @@ margin-right: 5px;
 		$(".detail").click(
 				function() {
 					var m_id = $(this).parents("tr").attr("data-num");
-					alert(m_id);
 					window.open("/admin/member/memberDetailForm.do?m_id="
 							+ m_id, "memberpop",
 							"width=800, height=700, left=600, top=100");
@@ -276,7 +275,7 @@ margin-right: 5px;
 					<td><select id="search" name="search" class="form-control">
 							<option value="all">전체</option>
 							<option value="m_name">이름</option>
-							<option value="m_phone">전화번호</option>
+							<option value="m_phone">휴대폰뒷번호</option>
 						</select>
 						<input type="text" id="hidden">
 						<input type="text" name="keyword" id="keyword" class="form-control"/>

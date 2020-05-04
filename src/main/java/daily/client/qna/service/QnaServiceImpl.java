@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import daily.admin.qna.vo.replyVO;
 import daily.client.member.vo.MemberVO;
 import daily.client.qna.dao.QnaDao;
 import daily.client.qna.vo.QnaVO;
@@ -37,6 +38,16 @@ public class QnaServiceImpl implements QnaService {
 	@Override
 	public int qnaUpdate(QnaVO qvo) {
 		return qnaDao.qnaUpdate(qvo);
+	}
+
+	@Override
+	public replyVO selectReply(int qna_num) {
+		return qnaDao.selectReply(qna_num);
+	}
+
+	@Override
+	public int qnaDelete(QnaVO qvo) {
+		return qnaDao.qnaDelete(qvo);
 	}
 
 }
