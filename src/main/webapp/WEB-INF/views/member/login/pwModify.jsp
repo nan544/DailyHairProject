@@ -118,6 +118,17 @@
 	   
 	});
 
+   function enterkey() {
+       if (window.event.keyCode == 13) {
+
+            // 엔터키가 눌렸을 때 실행할 내용
+    	   $("#pwModifyForm").attr('method','post');
+			$("#pwModifyForm").attr("action","/member/login/pwModify.do");
+			$("#pwModifyForm").submit();
+			alert("패스워드가 변경 되었습니다.");
+   		
+       }
+	}
    
    </script>
    
@@ -182,7 +193,7 @@
                      <input type="password" id="m_pwd" name="m_pwd" placeholder=" PassWord">
                      <div id="pwd_check" style="font-size: 11px;"></div>
                      <label class="msgbox" for="m_email">PW 재입력</label>
-                     <input type="password" id="m_pwd2" name="m_pwd2" placeholder=" PassWord">
+                     <input type="password" id="m_pwd2" name="m_pwd2" placeholder=" PassWord" onkeyup="enterkey();">
                      </form>
                   </div>
                   <div class="PW_find2">
