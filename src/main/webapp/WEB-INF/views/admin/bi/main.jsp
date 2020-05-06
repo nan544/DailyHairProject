@@ -5,13 +5,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+#contents{
+width: 1000px;
+}
 
+.chart{
+float: left;
+}
+</style>
 <script type="text/javascript">
 	
 </script>
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
+	<script type="text/javascript">
 	google.charts.load('current', {
 		'packages' : [ 'corechart' ]
 	});
@@ -20,16 +28,44 @@
 		var data = google.visualization.arrayToDataTable([
 				[ '날짜', '매출(단위:원)' ],
 
-				[ "${result[0]}", 100032 ], [ '${result[1]}', 233333 ],
-				[ '${result[2]}', 627960 ], [ '${result[3]}', 186630 ],
-				[ '${curDate[4]}', 144230 ], [ '${curDate[5]}', 112450 ],
-				[ '${curDate[6]}', 524230 ],
+				[ "${result[0].rest_hairdate}", parseInt('${result[0].rest_totalprice}') ], [ "${result[1].rest_hairdate}", parseInt('${result[1].rest_totalprice}')],
+				[ "${result[2].rest_hairdate}", parseInt('${result[2].rest_totalprice}')], ["${result[3].rest_hairdate}", parseInt('${result[3].rest_totalprice}')],
+				[ "${result[4].rest_hairdate}", parseInt('${result[4].rest_totalprice}') ], ["${result[5].rest_hairdate}", parseInt('${result[5].rest_totalprice}') ],
+				[ "${result[6].rest_hairdate}", parseInt('${result[6].rest_totalprice}')],
 
 		]);
 
 		var options = {
-			title : '일일 매출 현황',
-			curveType : 'function',
+			title : '최근 일주일 매출 현황',
+			legend : {
+				position : 'bottom'
+			}
+		};
+
+		var chart = new google.visualization.LineChart(document
+				.getElementById('curve_chart2'));
+
+		chart.draw(data, options);
+	}
+</script>
+<!-- <script type="text/javascript">
+	google.charts.load('current', {
+		'packages' : [ 'corechart' ]
+	});
+	google.charts.setOnLoadCallback(drawChart);
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+				[ '날짜', '예약 수' ],
+
+				[ "${result[0].rest_hairdate}", parseInt('${result[0].rest_totalprice}') ], [ "${result[1].rest_hairdate}", parseInt('${result[1].rest_totalprice}')],
+				[ "${result[2].rest_hairdate}", parseInt('${result[2].rest_totalprice}')], ["${result[3].rest_hairdate}", parseInt('${result[3].rest_totalprice}')],
+				[ "${result[4].rest_hairdate}", parseInt('${result[4].rest_totalprice}') ], ["${result[5].rest_hairdate}", parseInt('${result[5].rest_totalprice}') ],
+				[ "${result[6].rest_hairdate}", parseInt('${result[6].rest_totalprice}')],
+
+		]);
+
+		var options = {
+			title : '최근 일주일 예약 현황',
 			legend : {
 				position : 'bottom'
 			}
@@ -40,37 +76,37 @@
 
 		chart.draw(data, options);
 	}
-</script>
+</script> -->
 </head>
 <body>
-	<div id="curve_chart" style="width: 900px; height: 500px"></div>
-
-	<table>
+<c:set var="totalPrice" value="0"/>
+<div>
+	<div id="curve_chart2" class="chart" style="width: 500px; height: 400px"></div>
+	<!-- <div id="curve_chart2" class="chart" style="width: 500px; height: 400px"></div> -->
+</div>
+<div id="contents">
+	<table class="table table-striped">
 	
+	<thead class="active">
 			<tr>
 				<th>날짜</th>
 				<th>매출액</th>
 			</tr>
+	</thead>
 	
-	
-	
-		<c:choose>
-			<c:when test="${not empty result}">
 				<tbody>
 					<c:forEach var="salesList" items="${result}" varStatus="status">
 						<tr>
 							<td>${salesList.rest_hairdate }</td>
-							<td >시바</td>
+							<td >${salesList.rest_totalprice }</td>
 						</tr>
+						<c:set var="totalPrice" value="${totalPrice + salesList.rest_totalprice }"></c:set>
 					</c:forEach>
+					<tr class="success">
+						<td> <b>총액</b></td>
+						<td>${totalPrice}</td> 
+					</tr>
 				</tbody>
-			</c:when>
-			<c:otherwise>
-			<tr>
-				<td colspan="2">데이터 없음.</td>
-				</tr>
-			</c:otherwise>
-		</c:choose>
-	</table>
+	</table></div>
 </body>
 </html>

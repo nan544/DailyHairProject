@@ -23,4 +23,10 @@ public class AdminBiServiceImpl implements AdminBiService{
 		return result;
 	}
 
+
+	@Override
+	public List<Integer> reservationCnt() {
+		return biDao.reservationCnt();
+	}
+
 }
