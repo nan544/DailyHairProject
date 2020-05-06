@@ -56,10 +56,10 @@
 	</update>
 	
 	<!-- 예약 취소 -->
-	<update id="cancleReservation" parameterType="String">
+	<update id="cancleReservation" parameterType="int">
 		UPDATE reservation
 		SET rest_state = 0
-		WHERE m_id = #{m_id}
+		WHERE rest_num = #{rest_num}
 	</update>
 	
 	<!-- 아이디 찾기 -->

@@ -26,7 +26,7 @@ public interface MemberDAO {
 	public int clientUpdate(MemberVO mvo);
 	
 	//에약 취소
-	public int cancleReservation(MemberVO mvo);
+	public int cancleReservation(int rest_num);
 	
 	//아이디 찾기
 	public MemberVO idFind(MemberVO vo) throws Exception;

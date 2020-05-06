@@ -75,6 +75,22 @@ $(function() {
 div > p > span { font-weight: 600; font-size: 18px; }
 .ID_Find_Head { text-align: center; margin-bottom: 100px; }
 .ID_Find_Body { text-align: center; }
+
+.other_btn { width: 125px; height: 35px;
+			text-align: center;
+			cursor: pointer;
+			display: inline-block;
+			font-size: 12px;
+			padding: 8px 16px 10px 16px;
+			font-weight: 500;
+			line-height: 1;
+			color: #444444;
+			margin: 0 10px 10px 10px;
+			transition: all ease-in-out 0.3s;
+			background: #fffaf3;
+			border: 2px dashed #ffb03b;
+			border-radius: 25px; }
+.other_btn:hover { background: #FFE08C; }
 </style>
 </head>
 
@@ -100,12 +116,13 @@ div > p > span { font-weight: 600; font-size: 18px; }
 				<!-- 찾은 ID 정보 -->
 				<div class="ID_Find_Body">
 					<p style="font-size: 18px;"><span>"${mem.m_name}"</span>회원님의 아이디는 <span>"${mem.m_id}"</span>입니다.</p>
+				</div> <br>
+				<div>
+					<center>
+					<input type="button" class="other_btn" id="loginBtn" name="loginBtn" value="로그인">
+					<input type="button" class="other_btn" id="pwFind" name="pwFind" value="PW 찾기">
+					</center>
 				</div>
-				<br><br>
-				<center>
-				<input type="button" class="button" id="loginBtn" name="loginBtn" value="로그인">
-				<input type="button" id="pwFind" name="pwFind" value="패스워드 찾기">
-				</center>
 			</div>
 			
 			<!-- 하단 여백 -->

@@ -61,8 +61,8 @@ public class MemberServiceImpl implements MemberService {
 
 	//예약 취소
 	@Override
-	public int cancleReservation(MemberVO mvo) {
-		return dao.cancleReservation(mvo);
+	public int cancleReservation(int rest_num) {
+		return dao.cancleReservation(rest_num);
 	}
 
 	//아이디 찾기
