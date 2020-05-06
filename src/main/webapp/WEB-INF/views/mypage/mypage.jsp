@@ -234,6 +234,7 @@ function enterkey() {
 				<form role="form" id="mypageForm" name="mypageForm">
 					<input type="hidden" id="m_id" name="m_id" value="${login.m_id}"/>
 					<div>
+						<input type="text" style="display: none;"/>
 						<label class="msgboxCheck" for="m_pwd">Password</label>
 						<input type="password" id="m_pwd" name="m_pwd" placeholder=" Password" style="margin-right: 15px;" onkeyup="enterkey()">
 						<input type="button" class="check_btn" id="mypageBtn" name="mypageBtn" value="확인">
