@@ -59,10 +59,10 @@
    
    <script type="text/javascript">
    // PW 수정 확인 버튼 이벤트 (임시)
-   function ModifyEnd(){
+   /*function ModifyEnd(){
       alert("임시로 작동하는 알람창입니다.\n기능을 구현해주세요.")
       alert("비밀번호가 정상적으로 수정되었습니다.\n로그인 화면으로 이동합니다.")
-      location.replace("/member/login/login.do"); }
+      location.replace("/member/login/login.do"); }*/
    
    // 로그인 버튼 이벤트
    function login() {
@@ -75,6 +75,61 @@
    // ID 찾기 버튼 이벤트
    function IDfind(){
       location.replace("/member/login/idFind.do"); }
+   
+	//비밀번호 정규식
+	var pwJ = /^[a-z0-9]{10,18}$/;
+   
+   $(function() {
+
+		//비밀번호 정규식
+		$("#m_pwd").blur(function() {
+			if (pwJ.test($("#m_pwd").val())) {
+				$("#pwd_check").text("");
+			} else {
+				$("#pwd_check").text("10~18자리 영문 소문자와 숫자만 입력 해주시길 바랍니다.")
+				$("#pwd_check").css("color", "red");
+				return false;
+			}
+		});
+		
+		$("#pwModifyBtn").click(function() {
+			//필수 입력 요소들을 입력하지 않고 가입 버튼을 눌렀을 때 못넘어가게 함
+			if ($("#m_pwd").val() == "") {
+				alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//패스워드
+				$("#m_pwd").focus();
+				return false;
+			}
+			if ($("#m_pwd2").val() == "") {
+				alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//패스워드 확인
+				$("#m_pwd2").focus();
+				return false;
+			}
+			if ($("#m_pwd").val() != $("#m_pwd2").val()) {	//비밀번호와 비밀번호 확인이 일치하는지 확인
+				alert("비밀번호가 일치하지 않습니다.");
+				return false;
+			}
+			
+			$("#pwModifyForm").attr('method','post');
+			$("#pwModifyForm").attr("action","/member/login/pwModify.do");
+			$("#pwModifyForm").submit();
+			alert("패스워드가 변경 되었습니다.");
+			
+		});
+	   
+	});
+
+   function enterkey() {
+       if (window.event.keyCode == 13) {
+
+            // 엔터키가 눌렸을 때 실행할 내용
+    	   $("#pwModifyForm").attr('method','post');
+			$("#pwModifyForm").attr("action","/member/login/pwModify.do");
+			$("#pwModifyForm").submit();
+			alert("패스워드가 변경 되었습니다.");
+   		
+       }
+	}
+   
    </script>
    
    <style type="text/css">
@@ -130,17 +185,19 @@
             </div><br>
             
             <div class="PWfind_main" align="center">
-               <form role="form" id="pwModifyForm" name="pwModifyForm">
                <div class="PW_form">
                   <div class="PW_find1">
+                  <form role="form" id="pwModifyForm" name="pwModifyForm">
+                  <input type="hidden" id="m_num" name="m_num" value="${pwFind.m_num}"/>
                      <label class="msgbox" for="m_id">변경할 PW</label>
                      <input type="password" id="m_pwd" name="m_pwd" placeholder=" PassWord">
+                     <div id="pwd_check" style="font-size: 11px;"></div>
                      <label class="msgbox" for="m_email">PW 재입력</label>
-                     <input type="password" id="m_pwd2" name="m_pwd2" placeholder=" PassWord">
+                     <input type="password" id="m_pwd2" name="m_pwd2" placeholder=" PassWord" onkeyup="enterkey();">
+                     </form>
                   </div>
                   <div class="PW_find2">
-                     <input type="button" class="PWfind_btn" id="pwModifyBtn" name="pwModifyBtn" value="확인"
-                        onclick="ModifyEnd()">
+                     <input type="button" class="PWfind_btn" id="pwModifyBtn" name="pwModifyBtn" value="확인" onclick="ModifyEnd()">
                   </div>
                </div><br> <!-- 줄 바꿈 효과 -->
                
@@ -150,7 +207,7 @@
                   <input type="button" class="other_btn" value="회원가입" onclick="join()">
                   <input type="button" class="other_btn" value="ID 찾기" onclick="IDfind()">
                </div>
-               </form>
+               
             </div>
          </div>
          

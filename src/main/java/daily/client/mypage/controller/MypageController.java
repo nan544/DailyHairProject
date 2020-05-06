@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -58,7 +59,7 @@ public class MypageController {
 		log.info("마이페이지 본인확인 처리 성공");
 		
 		ModelAndView mav = new ModelAndView();
-			
+		
 		MemberVO vo = service.mypage(lvo);
 		
 		boolean passMatch = pwencoder.matches(lvo.getM_pwd(), vo.getM_pwd());
@@ -90,9 +91,10 @@ public class MypageController {
 		
 		service.memberUpdateDo(vo);
 		
+		// 세션 초기화
 		session.invalidate();
 		
-		return "mypage/memberUpdate";
+		return "client/main/main";
 	}
 	
 	//계정 비활성화창
@@ -155,15 +157,15 @@ public class MypageController {
 	//에약 취소
 		@RequestMapping(value = "/cancleReservation.do", method = RequestMethod.POST)
 		@ResponseBody
-		public int cancleReservation(@ModelAttribute MemberVO mvo) {
+		public int cancleReservation(@RequestParam int rest_num) {
 			log.info("에약 취소 성공");
 
-			int result = service.cancleReservation(mvo);
+			int result = service.cancleReservation(rest_num);
 
 			if (result == 1) {
-				return 0;
-			} else {
 				return 1;
+			} else {
+				return 0;
 			}
 			
 		}

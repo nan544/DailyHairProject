@@ -95,15 +95,28 @@
 	$(function() {
 		
 		$("#loginBtn").click(function() {
+			//필수 입력 요소들을 입력하지 않고 가입 버튼을 눌렀을 때 못넘어가게 함
+			if ($("#m_id").val() == "") {
+				alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//아이디
+				$("#m_id").focus();
+				return false;
+			}
+			if ($("#m_pwd").val() == "") {
+				alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//패스워드
+				$("#m_pwd").focus();
+				return false;
+			}
+			
 			$("#loginForm").attr("method", "post");
 			$("#loginForm").attr("action", "/member/login/login.do");
 			$("#loginForm").submit();
 		});
 
 		var msg = "<c:out value='${msg}'/>";
-
+		let msz = "<c:out value='${msz}'/>";
+		
 		if (msg != "") {
-			alert(msg);
+			alert(msg+"\n"+msz);
 		}
 	});
 	

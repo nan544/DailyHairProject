@@ -353,13 +353,14 @@
 							<label for="m_Pwd" class="msgbox"><span style="color: red;">* </span>PW</label> 
 							<input type="password" id="m_pwd" name="m_pwd" placeholder=" PassWord" /><br>
 							<div id="pwd_check" style="font-size: 11px;"></div>
-							
-							<label for="m_Pwd" class="msgbox"><span style="color: red;">* </span>PW 재입력</label> 
-							<input type="password" id="m_pwd2" placeholder=" PassWord" />
+							<label for="m_Pwd" class="msgbox"><span
+								style="color: red;">* </span>PW 재입력</label> <input type="password"
+								id="m_pwd2" placeholder=" PassWord" />
 						</div>
 						<div class="join_input">
-							<label for="m_Name" class="msgbox"><span style="color: red;">* </span>이 름</label>
-							<input type="text" id="m_name" name="m_name" placeholder=" 이름" />
+							<label for="m_Name" class="msgbox"><span
+								style="color: red;">* </span>이 름</label> <input type="text" id="m_name"
+								name="m_name" placeholder=" 이름" />
 							<div id="name_check" style="font-size: 11px;"></div>
 						</div>
 						<div class="join_input">
@@ -370,8 +371,9 @@
 							<label for="m_Gender2">여</label>
 						</div>
 						<div class="join_input">
-							<label for="m_Phone" class="msgbox"><span style="color: red;">* </span>Phone</label>
-							<input type="text" id="m_phone" name="m_phone" placeholder=" 전화번호" maxlength="11"/>
+							<label for="m_Phone" class="msgbox"><span
+								style="color: red;">* </span>Phone</label> <input type="text"
+								id="m_phone" name="m_phone" placeholder=" 전화번호" maxlength="11"/>
 							<div id="phone_check" style="font-size: 11px;"></div>
 						</div>
 						<div class="join_input">
@@ -390,7 +392,7 @@
 						</div>
 						<div>
 							<label for="m_Memo" class="msgbox">추가사항</label><br>
-							<textarea rows="6" cols="55" id="m_memo" name="m_memo" style="resize: none;"
+							<textarea rows="6" cols="55" id="m_memo" name="m_memo"
 								placeholder=" DailyHair에 알리고 싶은 개인사항"></textarea>
 						</div>
 						<div style="margin-top: 50px;">
