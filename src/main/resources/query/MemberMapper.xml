@@ -32,7 +32,6 @@
 		SELECT *
 		FROM MEMBER
 		WHERE m_id = #{m_id}
-		AND m_state = 1
 	</select>
 	
 	<!-- 마이페이지 본인확인 -->
@@ -57,10 +56,10 @@
 	</update>
 	
 	<!-- 예약 취소 -->
-	<update id="cancleReservation" parameterType="String">
+	<update id="cancleReservation" parameterType="int">
 		UPDATE reservation
 		SET rest_state = 0
-		WHERE m_id = #{m_id}
+		WHERE rest_num = #{rest_num}
 	</update>
 	
 	<!-- 아이디 찾기 -->
@@ -69,5 +68,20 @@
 		FROM MEMBER
 		WHERE m_email = #{m_email}
 	</select>
+	
+	<!-- 패스워드 찾기 -->
+	<select id="pwFind" resultType="member">
+		SELECT *
+		FROM member
+		WHERE m_id = #{m_id}
+		AND m_email = #{m_email}
+	</select>
+	
+	<!-- 패스워드 수정 -->
+	<update id="pwModify" parameterType="member">
+		UPDATE member
+		SET m_pwd = #{m_pwd}
+		WHERE m_num = #{m_num}
+	</update>
 	
 </mapper>

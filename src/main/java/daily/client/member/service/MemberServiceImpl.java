@@ -61,14 +61,25 @@ public class MemberServiceImpl implements MemberService {
 
 	//예약 취소
 	@Override
-	public int cancleReservation(MemberVO mvo) {
-		return dao.cancleReservation(mvo);
+	public int cancleReservation(int rest_num) {
+		return dao.cancleReservation(rest_num);
 	}
 
 	//아이디 찾기
 	@Override
 	public MemberVO idFind(MemberVO vo) throws Exception {
 		return  dao.idFind(vo);
+	}
+
+	//패스워드 찾기
+	@Override
+	public MemberVO pwFind(MemberVO pvo) {
+		return dao.pwFind(pvo);
+	}
+
+	@Override
+	public void pwModify(MemberVO vo) throws Exception {
+		dao.pwModify(vo);
 	}
 	
 }

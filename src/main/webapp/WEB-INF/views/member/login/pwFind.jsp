@@ -77,7 +77,30 @@
    
    $(function() {
 	   
+	   var msg = "<c:out value='${msg}'/>";
+
+		if (msg != "") {
+			alert(msg);
+		}
+	   
+	   $("#pwFindBtn").click(function() {
+		   $("#pwFindForm").attr("method", "post");
+		   $("#pwFindForm").attr("action", "/member/login/pwFind.do");
+		   $("#pwFindForm").submit();
+		});
+	   
 	});
+   
+   function enterkey() {
+       if (window.event.keyCode == 13) {
+
+            // 엔터키가 눌렸을 때 실행할 내용
+    	   $("#pwFindForm").attr("method", "post");
+		   $("#pwFindForm").attr("action", "/member/login/pwFind.do");
+		   $("#pwFindForm").submit();
+   		
+       }
+	}
 
 </script>
    
@@ -140,11 +163,10 @@
                      <label class="msgbox" for="m_id">ID</label>
                      <input type="text" id="m_id" name="m_id" placeholder=" ID">
                      <label class="msgbox" for="m_email">Email</label>
-                     <input type="email" id="m_email" name="m_email" placeholder=" Email">
+                     <input type="email" id="m_email" name="m_email" placeholder=" Email" onkeyup="enterkey();">
                   </div>
                   <div class="PW_find2">
-                     <input type="button" class="PWfind_btn" id="pwFindBtn" name="pwFindBtn" value="PW 찾기"
-                        onclick="IDmodify()">
+                     <input type="button" class="PWfind_btn" id="pwFindBtn" name="pwFindBtn" value="PW 찾기" onclick="IDmodify()">
                   </div>
                </div><br> <!-- 줄 바꿈 효과 -->
                
