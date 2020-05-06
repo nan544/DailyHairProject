@@ -99,11 +99,13 @@ div > p > span { font-weight: 600; font-size: 18px; }
 				
 				<!-- 찾은 ID 정보 -->
 				<div class="ID_Find_Body">
-					<p><span>"${mem.m_name}"</span>회원님의 아이디는 <span>"${mem.m_id}"</span>입니다.</p>
+					<p style="font-size: 18px;"><span>"${mem.m_name}"</span>회원님의 아이디는 <span>"${mem.m_id}"</span>입니다.</p>
 				</div>
-				
+				<br><br>
+				<center>
 				<input type="button" class="button" id="loginBtn" name="loginBtn" value="로그인">
 				<input type="button" id="pwFind" name="pwFind" value="패스워드 찾기">
+				</center>
 			</div>
 			
 			<!-- 하단 여백 -->

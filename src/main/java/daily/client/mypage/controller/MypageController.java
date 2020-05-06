@@ -59,7 +59,7 @@ public class MypageController {
 		log.info("마이페이지 본인확인 처리 성공");
 		
 		ModelAndView mav = new ModelAndView();
-			
+		
 		MemberVO vo = service.mypage(lvo);
 		
 		boolean passMatch = pwencoder.matches(lvo.getM_pwd(), vo.getM_pwd());

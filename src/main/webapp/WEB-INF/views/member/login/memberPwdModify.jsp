@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld" %>
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="UTF-8">
-<title>ID 찾기</title>
+<title>PassWord 수정</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -48,9 +47,7 @@
 
    <!-- Template Main JS File -->
    <script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
-   <style type="text/css">
    
-   </style>
    <!-- 모바일 웹 페이지 설정 -->
    <link rel="shortcut icon" href="/resources/image/icon.png" />
    <link rel="apple-touch-icon" href="/resources/image/icon.png" />
@@ -59,58 +56,85 @@
    <script src="/resources/include/js/html5shiv.js"></script>
    <![endif]-->
    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-   <script type="text/javascript">
-   $(function() {
-	   
-	      var msg = "<c:out value='${msg}'/>";
-		   
-		  if(msg != ""){
-			alert(msg);		   
-		  }
-		  
-   });
-      
-   function fn_idFind() {
-	      
-	      var email = $("#m_email").val();
-	      
-	      $("#idFindForm").attr("method","post");
-	      $("#idFindForm").attr("action","/member/login/idFind.do");
-	      $("#idFindForm").submit();
-	      
-	}
    
+   <script type="text/javascript">
+   // PW 수정 확인 버튼 이벤트 (임시)
+   /*function ModifyEnd(){
+      alert("임시로 작동하는 알람창입니다.\n기능을 구현해주세요.")
+      alert("비밀번호가 정상적으로 수정되었습니다.\n로그인 화면으로 이동합니다.")
+      location.replace("/member/login/login.do"); }*/
+   
+	//비밀번호 정규식
+	var pwJ = /^[a-z0-9]{10,18}$/;
+   
+   $(function() {
+
+		//비밀번호 정규식
+		$("#m_pwd").blur(function() {
+			if (pwJ.test($("#m_pwd").val())) {
+				$("#pwd_check").text("");
+			} else {
+				$("#pwd_check").text("10~18자리 영문 소문자와 숫자만 입력 해주시길 바랍니다.")
+				$("#pwd_check").css("color", "red");
+				return false;
+			}
+		});
+		
+		$("#pwModifyBtn").click(function() {
+			//필수 입력 요소들을 입력하지 않고 가입 버튼을 눌렀을 때 못넘어가게 함
+			if ($("#m_pwd").val() == "") {
+				alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//패스워드
+				$("#m_pwd").focus();
+				return false;
+			}
+			if ($("#m_pwd2").val() == "") {
+				alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//패스워드 확인
+				$("#m_pwd2").focus();
+				return false;
+			}
+			if ($("#m_pwd").val() != $("#m_pwd2").val()) {	//비밀번호와 비밀번호 확인이 일치하는지 확인
+				alert("비밀번호가 일치하지 않습니다.");
+				return false;
+			}
+			
+			$("#pwModifyForm").attr('method','post');
+			$("#pwModifyForm").attr("action","/member/login/pwModify.do");
+			$("#pwModifyForm").submit();
+			alert("패스워드가 변경 되었습니다.");
+			
+		});
+	   
+	});
+
    function enterkey() {
        if (window.event.keyCode == 13) {
 
-        // 엔터키가 눌렸을 때 실행할 내용
-    	$("#idFindForm").attr("method","post");
- 	    $("#idFindForm").attr("action","/member/login/idFind.do");
- 	    $("#idFindForm").submit();
+            // 엔터키가 눌렸을 때 실행할 내용
+    	   $("#pwModifyForm").attr('method','post');
+			$("#pwModifyForm").attr("action","/member/login/pwModify.do");
+			$("#pwModifyForm").submit();
+			alert("패스워드가 변경 되었습니다.");
    		
        }
 	}
    
-   // 로그인 버튼 이벤트
-   function login() {
-      location.replace("/member/login/login.do"); }
-   
-   // 회원가입 버튼 이벤트
-   function join(){
-      location.replace("/member/clause.do"); }
-   
-   // PW 찾기 버튼 이벤트
-   function PWfind(){
-      location.replace("/member/login/pwFind.do"); }
    </script>
    
    <style type="text/css">
-      .msgbox { width: 75px; padding: 10px; }
-      .IDfind_btn { width: 125px; height: 35px;
+      .msgbox { width: 135px; }
+      .PWfind_main { margin: 0 auto; margin-top: 15px;
+               width: 500px; }
+      .PW_form { width: 500px; }
+      .PW_find1 { float: left;
+               width: 350px; height: 100px; }
+      .PW_find2 { float: right;
+               width: 150px; height: 100px; }
+               
+      .PWfind_btn { width: 125px; height: 65px;
                background: #ffb03b; color: #fff;
                border: 0; border-radius: 25px;
-               transition: 0.4s;
                text-align: center; font-size: 15px; }
+               
       .other_btn { width: 100px; height: 35px;
                text-align: center;
                cursor: pointer;
@@ -141,25 +165,30 @@
          <div style="width: 100%; height: 150px; margin-bottom: 50px;">
          </div><br>
          
-         <!-- ID 찾기 폼 -->
+         <!-- PW 찾기 -->
          <div style="margin: 0 auto;" align="center">
             <div style="margin-bottom: 30px; text-align: center;">
                <h1 style="font-size: 50px;">DailyHairShop</h1>
-               <h4>가입시 입력한 Email로 ID를 간편하게 찾으세요.</h4>
+               <h4>변경할 PassWord를 입력해주세요.</h4>
             </div><br>
             
-            <form role="form" id="idFindForm" name="idFindForm">
-            <div>
-               <label class="msgbox" for="m_email">Email</label>
-               <input type="text" id="m_email" name="m_email" placeholder=" Email" style="margin-right: 15px;" onkeyup="enterkey()"/>
-               <button type="button" class="IDfind_btn" id="idFind" name="idFind" onclick="fn_idFind()">아이디 찾기</button><br>
-            </div><br>
-            </form>
-            
-            <div><!-- 버튼 덩어리 -->
-               <input type="button" class="other_btn" value="로그인" onclick="login()">
-               <input type="button" class="other_btn" value="회원가입" onclick="join()">
-               <input type="button" class="other_btn" value="PW 찾기" onclick="PWfind()">
+            <div class="PWfind_main" align="center">
+               <div class="PW_form">
+                  <div class="PW_find1">
+                  <form role="form" id="pwModifyForm" name="pwModifyForm">
+                  <input type="hidden" id="m_num" name="m_num" value="${login.m_num}"/>
+                     <label class="msgbox" for="m_id">변경할 PW</label>
+                     <input type="password" id="m_pwd" name="m_pwd" placeholder=" PassWord">
+                     <div id="pwd_check" style="font-size: 11px;"></div>
+                     <label class="msgbox" for="m_email">PW 재입력</label>
+                     <input type="password" id="m_pwd2" name="m_pwd2" placeholder=" PassWord" onkeyup="enterkey();">
+                     </form>
+                  </div>
+                  <div class="PW_find2">
+                     <input type="button" class="PWfind_btn" id="pwModifyBtn" name="pwModifyBtn" value="확인" onclick="ModifyEnd()">
+                  </div>
+               </div><br> <!-- 줄 바꿈 효과 -->
+               
             </div>
          </div>
          

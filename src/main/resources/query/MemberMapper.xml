@@ -70,4 +70,19 @@
 		WHERE m_email = #{m_email}
 	</select>
 	
+	<!-- 패스워드 찾기 -->
+	<select id="pwFind" resultType="member">
+		SELECT *
+		FROM member
+		WHERE m_id = #{m_id}
+		AND m_email = #{m_email}
+	</select>
+	
+	<!-- 패스워드 수정 -->
+	<update id="pwModify" parameterType="member">
+		UPDATE member
+		SET m_pwd = #{m_pwd}
+		WHERE m_num = #{m_num}
+	</update>
+	
 </mapper>

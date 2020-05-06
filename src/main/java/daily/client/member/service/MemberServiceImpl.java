@@ -70,5 +70,16 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO idFind(MemberVO vo) throws Exception {
 		return  dao.idFind(vo);
 	}
+
+	//패스워드 찾기
+	@Override
+	public MemberVO pwFind(MemberVO pvo) {
+		return dao.pwFind(pvo);
+	}
+
+	@Override
+	public void pwModify(MemberVO vo) throws Exception {
+		dao.pwModify(vo);
+	}
 	
 }

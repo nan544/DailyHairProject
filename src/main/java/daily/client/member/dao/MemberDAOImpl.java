@@ -69,5 +69,17 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO idFind(MemberVO vo) throws Exception {
 		return sql.selectOne("idFind", vo);
 	}
+
+	//패스워드 찾기
+	@Override
+	public MemberVO pwFind(MemberVO pvo) {
+		return (MemberVO)sql.selectOne("pwFind", pvo);
+	}
+
+	//패스워드 수정
+	@Override
+	public void pwModify(MemberVO vo) throws Exception {
+		sql.update("pwModify", vo);
+	}
 	
 }

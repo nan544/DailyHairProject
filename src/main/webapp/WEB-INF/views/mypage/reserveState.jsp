@@ -79,7 +79,7 @@ $(function() {
 		
 		
 		window.open("reservDetail.do?rest_num="+rest_num, "mypagePop",
-		"width=600, height=300, left=600, top=100");
+		"width=900, height=400, left=600, top=100");
 		
 	});
 	
