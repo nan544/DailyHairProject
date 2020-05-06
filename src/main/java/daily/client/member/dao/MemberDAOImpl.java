@@ -60,8 +60,8 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	//예약 취소
 	@Override
-	public int cancleReservation(MemberVO mvo) {
-		return sql.update("cancleReservation", mvo);
+	public int cancleReservation(int  rest_num) {
+		return sql.update("cancleReservation", rest_num);
 	}
 
 	//아이디 찾기

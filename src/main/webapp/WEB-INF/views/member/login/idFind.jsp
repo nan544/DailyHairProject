@@ -62,6 +62,12 @@
    <script type="text/javascript">
    $(function() {
 	   
+	      var msg = "<c:out value='${msg}'/>";
+		   
+		  if(msg != ""){
+			alert(msg);		   
+		  }
+		  
    });
       
    function fn_idFind() {
@@ -72,11 +78,6 @@
 	      $("#idFindForm").attr("action","/member/login/idFind.do");
 	      $("#idFindForm").submit();
 	      
-	      var msg = "<c:out value='${msg}'/>";
-		   
-		  if(msg != ""){
-			alert(msg);		   
-		  }
 	}
    
    function enterkey() {

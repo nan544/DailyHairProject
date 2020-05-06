@@ -7,9 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>예약현황 상세</title>
-<style type="text/css">
-.main{text-align:center;}
-</style>
 <!-- 모바일 웹 페이지 설정 -->
 <link rel="shortcut icon" href="/resources/image/icon.png" />
 <link rel="apple-touch-icon" href="/resources/image/icon.png" />
@@ -19,7 +16,6 @@
 <![endif]-->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-
 $(function() {
 	
 	$("#closeBtn").click(function() {
@@ -27,9 +23,12 @@ $(function() {
 	});
 	
 });
-
 </script>
+<style type="text/css">
+
+</style>
 </head>
+
 <body>
 
 <div class="main">
@@ -45,12 +44,12 @@ $(function() {
 		<tbody>
 			<c:choose>
 				<c:when test="${not empty styleList}">
-						<c:forEach var="style" items="${styleList}">
-							<tr>
-								<td>${style.styling_name}</td>
-								<td>${style.styling_price}</td>
-							</tr>
-						</c:forEach>
+					<c:forEach var="style" items="${styleList}">
+						<tr>
+							<td>${style.styling_name}</td>
+							<td>${style.styling_price}</td>
+						</tr>
+					</c:forEach>
 				</c:when>
 			</c:choose>
 		</tbody>
