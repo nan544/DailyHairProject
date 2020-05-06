@@ -26,7 +26,7 @@ public class AdminBiController {
 	public ModelAndView main() throws Exception{
 		
 	ModelAndView mav = new ModelAndView();
-	
+		/* List<Integer> reservation = biService.reservationCnt(); */
 	List<AdminBiVO> result = biService.list();
 		mav.addObject("result",result);
 		mav.setViewName("admin/bi/main");

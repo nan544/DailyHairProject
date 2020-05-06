@@ -121,9 +121,9 @@ margin-right: 5px;
 		</c:choose>
 		<!-- 데이터 출력 끝-->
 	</table>
-
+	<div align="right">
 	<input type="button"  class="btn btnBoard" id="insertFormBtn" name="insertFormBtn" value="등록">
-
+</div>
 	<!-- 페이지 네비게이션 -->
 	<div id="boardPage">
 		<tag:paging page="${param.page}" total="${total}"

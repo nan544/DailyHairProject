@@ -8,15 +8,21 @@
 <style type="text/css">
 .formLine {
 	display: inline-block;
-	height: 40px;
+	height: auto;
 	margin: 5px;
 	padding: 0px;
 }
 
 .item {
-	display: inline-block;
 	width: 120px;
 	margin: 10px;
+	display: table-cell;
+}
+
+.formLine > textarea {
+	height: 105px;
+	width: 590px;
+	resize: none;
 }
 
 hr {
@@ -33,6 +39,9 @@ input[type="file"] {
 	width: 800px;
 }
 
+#bottomMenu{
+
+}
 #bottomMenu button {
 	float: right;
 }
@@ -86,11 +95,11 @@ input[type="file"] {
 	<div id="contents">
 		<form id="insertForm" enctype="multipart/form-data" method="POST">
 			<h3>HairStyle 게시판 관리 - 등록</h3>
-			<p align="right">* 항목은 필수 입력 값입니다.</p>
+			<p align="right"><b><label class="required">*</label> 항목은 필수 입력 값입니다.</b></p>
 			<hr>
 			<div class="formLine">
-				<span class="item"> <label class="required">*</label>카테고리</span> 
-				<select id="hs_category" name="hs_category">
+				<span class="item"> <b><label class="required">*</label>카테고리</b></span> 
+				<select id="hs_category" name="hs_category" class="form-control">
 					<option value="1">남성</option>
 					<option value="2">여성</option>
 					<option value="3">컬러</option>
@@ -98,48 +107,50 @@ input[type="file"] {
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> <label class="required">*</label>스타일명
-				</span> <input type="text" id="hs_title" name="hs_title">
+				<span class="item"> <b><label class="required">*</label>스타일명
+				</b></span> <input type="text" id="hs_title" name="hs_title"  class="form-control">
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> <label class="required">*</label>특징
-				</span> <input type="text" id="hs_content" name="hs_content" size="50"
-					placeholder="간략한 설명을 입력하세요.">
+				<span class="item"><b> <label class="required">*</label>특징
+				</b></span> 	<textarea id="hs_content" name="hs_content" cols="20" rows="5"
+					placeholder="간략한 설명을 입력하세요."  class="form-control"></textarea>
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> <label class="required">*</label>썸네일이미지
-				</span><input type="file" id="uploadFile" name="uploadFile" value="이미지 등록">
+				<span class="item"><b> <label class="required">*</label>썸네일이미지
+				</b></span><input type="file" id="uploadFile" name="uploadFile" value="이미지 등록" >
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> 상세이미지1
-				</span><input type="file" id="uploadFile2" name="uploadFile2" value="이미지 등록">
+				<span class="item"> <b>상세이미지1
+				</b></span><input type="file" id="uploadFile2" name="uploadFile2" value="이미지 등록">
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> 상세이미지2
-				</span><input type="file" id="uploadFile3" name="uploadFile3" value="이미지 등록">
+				<span class="item"> <b>상세이미지2
+				</b></span><input type="file" id="uploadFile3" name="uploadFile3" value="이미지 등록">
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> 상세이미지3
-				</span><input type="file" id="uploadFile4" name="uploadFile4" value="이미지 등록">
+				<span class="item"> <b>상세이미지3
+				</b></span><input type="file" id="uploadFile4" name="uploadFile4" value="이미지 등록">
 			</div>
 			<hr>
 			<div class="formLine">
-				<span class="item"> 상세이미지4
-				</span><input type="file" id="uploadFile5" name="uploadFile5" value="이미지 등록">
+				<span class="item"> <b>상세이미지4
+				</b></span><input type="file" id="uploadFile5" name="uploadFile5" value="이미지 등록">
 			</div>
 			<hr>
 		</form>
-	</div>
 	<!-- 글 등록 버튼 시작-->
-	<div id="bottomMenu">
-		<input type="button" value="등록완료" class="but" id="hairGoodsInsertBtn">
-		<input type="button" value="취 소" class="but" id="cancel">
+		<div id="bottomMenu" align="right">
+		<input type="button" value="등록완료" class="btn" id="hairGoodsInsertBtn">
+		<input type="button" value="취 소" class="btn" id="cancel">
+			<!-- 글 등록 버튼 끝-->
+		</div>
 	</div>
-	<!-- 글 등록 버튼 끝-->
+	
+	
 </body>
 </html>

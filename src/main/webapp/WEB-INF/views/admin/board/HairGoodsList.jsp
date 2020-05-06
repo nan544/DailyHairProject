@@ -2,22 +2,30 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-.btnBoard{
-width : 70px;
-float: left;
-margin-right: 5px;
+.btnBoard {
+	width: 70px;
+	float: left;
+	margin-right: 5px;
 }
-.keyword{
-width : 200px;
-float: left;
-margin-right: 5px;
+
+.keyword {
+	width: 200px;
+	float: left;
+	margin-right: 5px;
+	}
+#insertFormBtn{
+	float: right;
+	margin-top: -35px;
+}
+#contents {
+	width: 1000px;
 }
 </style>
 <script type="text/javascript"
@@ -28,13 +36,12 @@ margin-right: 5px;
 		if ("<c:out value='${data.pageSize}'/>" != "") {
 			$("#pageSize").val("<c:out value='${data.pageSize}'/>");
 		}
-		
-		
+
 		//등록 버튼 클릭시 등록폼 호출
 		$("#insertFormBtn").click(function() {
 			location.href = "/admin/board/HGInsertForm.do";
 		});
-		
+
 		//글번호, 글제목 클릭시 상세페이지로 이동
 		$(".goDetail").click(function() {
 			var hg_num = $(this).parents("tr").attr("data-num");
@@ -51,12 +58,11 @@ margin-right: 5px;
 		$("#searchBtn").click(function() {
 			goPage(1);
 		});
-		
-		
+
 	});
-	
+
 	/* 페이징을 위한 메소드 */
-	function goPage(page){
+	function goPage(page) {
 		$("#page").val(page);
 		$("#f_search").attr({
 			"method" : "get",
@@ -67,73 +73,79 @@ margin-right: 5px;
 </script>
 </head>
 <body>
-	<h3>HairGoods 게시판 관리</h3>
-	<!-- 검색 및 페이징을 위한 form -->
-	<div>
-	<form id="f_search">
-	<input type="hidden" id="page" name="page" value="${data.page}">
-	<input type="text" id="keyword" class="keyword form-control" name="keyword" placeholder="제품이름(제목)" value="${data.keyword }" >
-	<input type="hidden" id="search" name="search" value="hg_title">
-	<input type="button" id="searchBtn" class="btn btnBoard"  name="searchBtn" value="검색" >
-	</form>
-	</div>
-	<!-- 검색 및 페이징을 위한 form -->
-	
+	<div id="contents">
+		<h3>HairGoods 게시판 관리</h3>
+		<!-- 검색 및 페이징을 위한 form -->
+		<div>
+			<form id="f_search">
+				<input type="hidden" id="page" name="page" value="${data.page}">
+				<input type="text" id="keyword" class="keyword form-control"
+					name="keyword" placeholder="제품이름(제목)" value="${data.keyword }">
+				<input type="hidden" id="search" name="search" value="hg_title">
+				<input type="button" id="searchBtn" class="btn btnBoard"
+					name="searchBtn" value="검색">
+			</form>
+		</div>
+		<!-- 검색 및 페이징을 위한 form -->
+
 
 		<%--====================상세 페이지 이동을 위한 Form =============== --%>
-	<form name="detailForm" id="detailForm">
-		<input type="hidden" name="hg_num" id="hg_num"> 
-	</form>
-	<%--====================상세 페이지 이동을 위한 Form =============== --%>
-	<table class="table table-condensed table-hover">
-		<colgroup>
-			<col width="10%" />
-			<col width="30%" />
-			<col width="10%" />
-			<col width="22.5%" />
-			<col width="22.5%" />
+		<form name="detailForm" id="detailForm">
+			<input type="hidden" name="hg_num" id="hg_num">
+		</form>
+		<%--====================상세 페이지 이동을 위한 Form =============== --%>
+		<table class="table table-condensed table-hover">
+			<colgroup>
+				<col width="10%" />
+				<col width="30%" />
+				<col width="10%" />
+				<col width="22.5%" />
+				<col width="22.5%" />
 
-		</colgroup>
-		<tr class="active">
-			<th>글번호</th>
-			<th>제품명</th>
-			<th>등록일</th>
-			<th>썸네일 이미지명</th>
-			<th>상세이미지</th>
-		</tr>
-		<!-- 데이터 출력 시작-->
-		<c:choose>
-			<c:when test="${not empty hgList }">
-				<c:forEach var="hgList" items="${hgList}" varStatus="status">
-				<c:set var="hg_thumb_" value="${fn:substringAfter(hgList.hg_thumb,'_') }" />
-				<c:set var="hg_thumb__" value="${fn:substringAfter(hg_thumb_,'_') }"/>
-				<c:set var="hg_img1_" value="${fn:substringAfter(hgList.hg_img1,'_') }"/>
-				<c:set var="hg_img1__" value="${fn:substringAfter(hg_img1_,'_') }"/>
-					<tr data-num="${hgList.hg_num}" >
-						<td class="goDetail">${hgList.hg_num }</td>
-						<td class="goDetail">${hgList.hg_title}</td>
-						<td>${hgList.hg_regdate}</td>
-						<td>${hg_thumb__}</td>
-						<td>${hg_img1__}</td>
+			</colgroup>
+			<tr class="active">
+				<th>글번호</th>
+				<th>제품명</th>
+				<th>등록일</th>
+				<th>썸네일 이미지명</th>
+				<th>상세이미지</th>
+			</tr>
+			<!-- 데이터 출력 시작-->
+			<c:choose>
+				<c:when test="${not empty hgList }">
+					<c:forEach var="hgList" items="${hgList}" varStatus="status">
+						<c:set var="hg_thumb_"
+							value="${fn:substringAfter(hgList.hg_thumb,'_') }" />
+						<c:set var="hg_thumb__"
+							value="${fn:substringAfter(hg_thumb_,'_') }" />
+						<c:set var="hg_img1_"
+							value="${fn:substringAfter(hgList.hg_img1,'_') }" />
+						<c:set var="hg_img1__" value="${fn:substringAfter(hg_img1_,'_') }" />
+						<tr data-num="${hgList.hg_num}">
+							<td class="goDetail">${hgList.hg_num }</td>
+							<td class="goDetail">${hgList.hg_title}</td>
+							<td>${hgList.hg_regdate}</td>
+							<td>${hg_thumb__}</td>
+							<td>${hg_img1__}</td>
+						</tr>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<tr>
+						<td colspan="5" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 					</tr>
-				</c:forEach>
-			</c:when>
-			<c:otherwise>
-				<tr>
-					<td colspan="5" class="tac">등록된 게시물이 존재하지 않습니다.</td>
-				</tr>
-			</c:otherwise>
-		</c:choose>
-		<!-- 데이터 출력 끝-->
-	</table>
-	<!-- BtnMenu -->
-	<input type="button" class="btn btnBoard" id="insertFormBtn" name="insertFormBtn" value="등록">
-
-	<!-- 페이지 네비게이션 -->
-	<div id="boardPage">
-		<tag:paging page="${param.page}" total="${total}"
-			list_size="${data.pageSize}"></tag:paging>
-
+				</c:otherwise>
+			</c:choose>
+			<!-- 데이터 출력 끝-->
+		</table>
+		<!-- BtnMenu -->
+		<div>
+		<!-- 페이지 네비게이션 -->
+			<tag:paging page="${param.page}" total="${total}"
+				list_size="${data.pageSize}"></tag:paging>
+			<input type="button" class="btn" id="insertFormBtn"
+				name="insertFormBtn" value="등록">
+		</div>
 	</div>
 </body>
 </html>

@@ -9,5 +9,7 @@ import daily.admin.bi.vo.AdminBiVO;
 
 public interface AdminBiService {
 	public List<AdminBiVO> list() throws ParseException;
+
+	public List<Integer> reservationCnt();
 	
 }

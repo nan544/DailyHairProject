@@ -6,4 +6,6 @@ import daily.admin.bi.vo.AdminBiVO;
 
 public interface AdminBiDao {
 	public List<AdminBiVO> list();
+
+	public List<Integer> reservationCnt();
 }
