@@ -147,13 +147,13 @@ font-size: 12px;
 				 <input
 				type="hidden" name="hs_img4" id="hs_img4" value="${detail.hs_img4}">
 			<h3>HairStyle 게시판 관리 - 상세보기 및 수정</h3>
-			<p align="right"><b><label class="required">*</label> 항목은 필수 입력 값입니다.</b></p>
 			<!-- 목록으로 버튼 -->
 			<div id="listMenu" align="right">
 				<p>
 					<input type="button" value="목록으로" class="btn" id="ListBtn">
 				</p>
 			</div>
+			<p align="right"><b><label class="required">*</label> 항목은 필수 입력 값입니다.</b></p>
 			<hr>
 			<!--수정 및 상세보기 폼 출력 -->
 			<div class="formLine">

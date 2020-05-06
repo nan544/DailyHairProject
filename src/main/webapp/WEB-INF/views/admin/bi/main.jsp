@@ -60,7 +60,7 @@
 					<c:forEach var="salesList" items="${result}" varStatus="status">
 						<tr>
 							<td>${salesList.rest_hairdate }</td>
-							<td id="">시바</td>
+							<td >시바</td>
 						</tr>
 					</c:forEach>
 				</tbody>

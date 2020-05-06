@@ -25,7 +25,7 @@
 	margin-top: -35px;
 }
 #contents {
-	width: 800px;
+	width: 1000px;
 }
 </style>
 <script type="text/javascript"
@@ -73,10 +73,10 @@
 </script>
 </head>
 <body>
-	<div>
+	<div id="contents">
 		<h3>HairGoods 게시판 관리</h3>
 		<!-- 검색 및 페이징을 위한 form -->
-		<div id="contents">
+		<div>
 			<form id="f_search">
 				<input type="hidden" id="page" name="page" value="${data.page}">
 				<input type="text" id="keyword" class="keyword form-control"
