@@ -92,7 +92,7 @@ public class MypageController {
 		
 		session.invalidate();
 		
-		return "mypage/memberUpdate";
+		return "client/main/main";
 	}
 	
 	//계정 비활성화창
