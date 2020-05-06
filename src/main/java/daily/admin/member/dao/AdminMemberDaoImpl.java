@@ -20,8 +20,8 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 	}
 
 	@Override
-	public MemberVO memberDetail(String m_id) {
-		return sqlsession.selectOne("memberDetail",m_id);
+	public MemberVO memberDetailForm(String m_id) {
+		return sqlsession.selectOne("memberDetailForm",m_id);
 	}
 
 	@Override

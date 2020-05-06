@@ -53,6 +53,7 @@
 <style type="text/css">
 
 .main{padding-left: 50px;}
+.th{text-align:center;}
 
 </style>
 <!-- 모바일 웹 페이지 설정 -->
@@ -79,13 +80,35 @@ $(function() {
 		location.href = "/mypage/reserveState.do"
 	});
 	
-	//상세보기.
+	//상세보기(시술내용, 시술가격)
 	$(".detailreservation").click(function(){
 		let rest_num = $(this).parents("tr").attr("data-num");
 		
 		
 		window.open("reservDetail.do?rest_num="+rest_num, "mypagePop",
-		"width=800, height=600, left=600, top=100");
+		"width=600, height=300, left=600, top=100");
+		
+	});
+	
+	//예약취소
+	$("#cancleBtn").click(function() {
+		let m_id = "${login.m_id}";
+		
+		if (confirm("예앾을 취소하시겠습니까?")) {
+			$.ajax({
+					
+				url : "/mypage/cancleReservation.do",
+				type : "post",
+				data : { m_id : m_id },
+				success : function(data) {
+						if(data == 1){
+							alert("예약이 취소되었습니다.");
+							location.href = "/mypage/reserveState.do";
+						}
+						
+				}
+			});
+		}
 		
 	});
 	
@@ -121,15 +144,17 @@ $(function() {
 	<br>
 	<p> 1. 시술 전 날까지는 100% 환불 및 예약 취소가 가능합니다 </p>
 	<p> 2. 시술 당일에는 예약 취소는 가능하나 예약금 환불이 불가능합니다 </p>
+	<p> 3. 현황 내용을 클릭해서 시술 상세정보를 볼 수 있습니다.</p>
 	<table border="1">
 	<thead>
 		<tr>
-			<td> 매장위치&nbsp;&nbsp;</td>
-			<td> 예약한 날짜&nbsp;&nbsp;</td>
-			<td> 시술 일자&nbsp;&nbsp;</td>
-			<td> 디자이너&nbsp;&nbsp;</td>
-			<td> 총 결제금액 </td>
-			<td>상태</td>
+			<th class="th"> 매장위치 </th>
+			<th class="th"> 예약한 날짜 </th>
+			<th class="th"> 시술 일자 </th>
+			<th class="th"> 디자이너 </th>
+			<th class="th"> 총 결제금액 </th>
+			<th class="th"> 요구사항 </th>
+			<th class="th"> 상태 </th>
 		</tr>
 	</thead>
 	<tbody>
@@ -137,11 +162,12 @@ $(function() {
 			<c:when test="${not empty myList}">
 				<c:forEach var="list" items="${myList}">
 					<tr data-num = "${list.rest_num}">
-						<td>왕십리점</td>
+						<td class="detailreservation">왕십리점</td>
 						<td class="detailreservation">${list.rest_regdate}</td>
-						<td>${list.rest_hairdate} / ${list.rest_time}</td>
-						<td>${list.des_name}</td>
-						<td>${list.rest_totalprice}</td>
+						<td class="detailreservation">${list.rest_hairdate} / ${list.rest_time}</td>
+						<td class="detailreservation">${list.des_name}</td>
+						<td class="detailreservation">${list.rest_totalprice}</td>
+						<td class="detailreservation">${list.rest_memo}</td>
 						<td>
 						<c:if test="${list.rest_state == 1 }">
 							예약중 <input type="button" name="cancleBtn" id="cancleBtn" value="예약취소"/>

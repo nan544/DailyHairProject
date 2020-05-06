@@ -58,7 +58,11 @@
 
 <!-- Template Main JS File -->
 <script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
+<style type="text/css">
 
+.main{padding-left: 50px;}
+
+</style>
 <!-- 모바일 웹 페이지 설정 -->
 <link rel="shortcut icon" href="/resources/image/icon.png" />
 <link rel="apple-touch-icon" href="/resources/image/icon.png" />
@@ -97,6 +101,17 @@ $(function() {
 	
 });
 
+function enterkey() {
+    if (window.event.keyCode == 13) {
+
+         // 엔터키가 눌렸을 때 실행할 내용
+    	$("#mypageForm").attr("method", "post");
+		$("#mypageForm").attr("action", "/mypage/mypage.do");
+		$("#mypageForm").submit();
+		
+    }
+}
+
 </script>
 </head>
 <body>
@@ -118,12 +133,6 @@ $(function() {
 			<div style="width: 100%; height: 100px; margin-bottom: 50px;">
 			</div>
 			
-			<div>
-				<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
-				<input type="button" id="reserveState" name="reserveState" value="예약현황">
-				<input type="button" id="deactivation" name="deactivation" value="계정 비활성화">
-			</div>
-			
 			<c:if test="${mypage == '사용자' }">
 			<div>
 				<input type="button" id="memberUpdate" name="memberUpdate" value="회원정보 수정">
@@ -136,7 +145,7 @@ $(function() {
 			</div>
 			
 			
-			<div>
+			<div class="main">
 				<input type="hidden" name="m_num" id="m_num" value="${login.m_num}"/>
 				<div>
 					<label for="m_id">아이디<span style="color: red;"> * </span></label><br>
@@ -151,6 +160,7 @@ $(function() {
 					<input type="text" id="m_name" name="m_name" value="${login.m_name}" disabled="disabled"/><br>
 				</div>
 				<div>
+				
 					<label for="m_gender">성 별<span style="color: red;"> * </span></label><br>
 					<input type="text" id="m_gender" name="m_gender" value="${login.m_gender}" disabled="disabled"/><br>
 				</div>
@@ -175,6 +185,7 @@ $(function() {
 			</div>
 			
 			<c:if test="${mypage == null}">
+			<div class="main">
 				<h1>본인확인</h1>
 				
 				<!-- 구분선 -->
@@ -183,12 +194,14 @@ $(function() {
 				</div>
 				
 				<form role="form" id="mypageForm" name="mypageForm">
+					<input type="hidden" id="m_id" name="m_id" value="${login.m_id}"/>
 					<div>
 						<label for="m_pwd">패스워드</label>
-						<input type="password" id="m_pwd" name="m_pwd" placeholder="패스워드">
+						<input type="password" id="m_pwd" name="m_pwd" placeholder="패스워드" onkeyup="enterkey();">
 						<input type="button" id="mypageBtn" name="mypageBtn" value="확인">
 					</div>
 				</form>
+			</div>
 			</c:if>
 			
 			<!-- 하단 여백 -->

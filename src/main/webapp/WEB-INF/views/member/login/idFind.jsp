@@ -62,14 +62,8 @@
    <script type="text/javascript">
    $(function() {
 	   
-	   
-	   var msg = "<c:out value='${msg}'/>";
-	   
-	   if(msg != ''){
-		alert(msg);		   
-	   }
-});
-   
+   });
+      
    function fn_idFind() {
 	      
 	      var email = $("#m_email").val();
@@ -77,22 +71,24 @@
 	      $("#idFindForm").attr("method","post");
 	      $("#idFindForm").attr("action","/member/login/idFind.do");
 	      $("#idFindForm").submit();
-	  /*     $.ajax({
-	         url : "/member/login/idFind.do",
-	         type : "post",
-	         data : { "m_email" : email },
-	         success : function(data) {
-	            if(data != 0){
-	            	alert (data);
-	            	//alert("${member.m_num}");
-	            	location.href = "/member/login/idFindSuccess.do";
-	            }else if(data == 0){
-	               $("#idFind").attr("value", "Y");
-	               alert("이메일을 틀리게 입력 하셨거나 회원이 아닙니다.");
-	            }
-	         }
-	      }); */
-	   }
+	      
+	      var msg = "<c:out value='${msg}'/>";
+		   
+		  if(msg != ""){
+			alert(msg);		   
+		  }
+	}
+   
+   function enterkey() {
+       if (window.event.keyCode == 13) {
+
+        // 엔터키가 눌렸을 때 실행할 내용
+    	$("#idFindForm").attr("method","post");
+ 	    $("#idFindForm").attr("action","/member/login/idFind.do");
+ 	    $("#idFindForm").submit();
+   		
+       }
+	}
    
    // 로그인 버튼 이벤트
    function login() {
@@ -154,8 +150,8 @@
             <form role="form" id="idFindForm" name="idFindForm">
             <div>
                <label class="msgbox" for="m_email">Email</label>
-               <input type="text" id="m_email" name="m_email" placeholder=" Email" style="margin-right: 15px;"/>
-               <button type="button" class="IDfind_btn" id="idFind" name="idFind" onclick="fn_idFind();" value="N">아이디 찾기</button><br>
+               <input type="text" id="m_email" name="m_email" placeholder=" Email" style="margin-right: 15px;" onkeyup="enterkey();"/>
+               <button type="button" class="IDfind_btn" id="idFind" name="idFind" onclick="fn_idFind()">아이디 찾기</button><br>
             </div><br>
             </form>
             

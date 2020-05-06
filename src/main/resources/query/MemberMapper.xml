@@ -39,7 +39,7 @@
 	<select id="mypage" resultType="daily.client.member.vo.MemberVO">
 		SELECT *
 		FROM MEMBER
-		WHERE m_pwd = #{m_pwd}
+		WHERE m_id = #{m_id}
 	</select>
 	
 	<!-- 마이페이지 회원정보 수정 -->
@@ -56,17 +56,12 @@
 		WHERE m_id = #{m_id}
 	</update>
 	
-	
-	
-	
-	
-	
-	<!-- 회원 예약건수 -->
-	<select id="memberReservation" parameterType="int" resultType="int">
-		SELECT count(*)
-		FROM member
-		WHERE m_num = #{m_num} and rest_state = 1
-	</select>
+	<!-- 예약 취소 -->
+	<update id="cancleReservation" parameterType="String">
+		UPDATE reservation
+		SET rest_state = 0
+		WHERE m_id = #{m_id}
+	</update>
 	
 	<!-- 아이디 찾기 -->
 	<select id="idFind" resultType="member">

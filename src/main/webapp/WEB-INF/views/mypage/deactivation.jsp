@@ -87,24 +87,17 @@ $(function() {
 				data : { m_id : m_id },
 				success : function(data) {
 						if(data == 1){
-							alert("수정이 완료되었습니다.");
+							alert("계정이 비활성화 되었습니다.");
 							location.href = "/client/main.do";
 						}else{
-							alert("예약이 있어서 비활성화 못해여");
+							alert("예약이 있는 회원은 비활성화가 안됩니다.");
 						}
 						
 				}
 			});
 		}
 		
-		/*if(confirm("비활성화 하시겠습니까?")){
-			$("#deactivation").attr("method", "post");
-			$("#deactivation").attr("action", "/memberDelete.do");
-			$("#deactivation").submit();
-		}*/
-		
 		});
-		
 		
 
 	$("#memberUpdate").click(function() {

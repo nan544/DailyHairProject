@@ -46,7 +46,7 @@ public class LoginController {
 	      ModelAndView mav = new ModelAndView();
 
 	      MemberVO vo = service.login(lvo);
-
+	      
 	      if(vo == null) {
 	         mav.addObject("msg", "아이디를 정확하게 입력 해주시길 바랍니다.");
 	         mav.setViewName("member/login/login");
@@ -60,7 +60,7 @@ public class LoginController {
 	         mav.setViewName("client/main/main");
 	         return mav;
 	      }else {
-	         mav.addObject("msg", " 비밀번호를 정확하게 입력 해주시길 바랍니다.");
+	         mav.addObject("msg", "패스워드를 정확하게 입력 해주시길 바랍니다.");
 	         mav.setViewName("member/login/login");
 	         return mav;
 	      }
@@ -79,10 +79,10 @@ public class LoginController {
 		return "client/main/main";
 	}
 	
-	//아이디 찾기
+	//아이디 찾기 창
 	@RequestMapping(value = "/idFind.do", method = RequestMethod.GET)
 	public String getIdFind() throws Exception {
-		logger.info("get idFind");
+		logger.info("idFind.do 호출 성공");
 		
 		return "member/login/idFind";
 	}
@@ -118,6 +118,8 @@ public class LoginController {
 			return "member/login/idFind";
 		}
 	}
+	
+	
 	
 	//찾은 아이디 창
 	/*

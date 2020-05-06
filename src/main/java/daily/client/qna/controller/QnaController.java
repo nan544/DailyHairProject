@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import daily.admin.designer.vo.DesignerVO;
+import daily.admin.qna.vo.replyVO;
 import daily.client.member.vo.MemberVO;
 import daily.client.qna.service.QnaService;
 import daily.client.qna.vo.QnaVO;
@@ -35,8 +37,6 @@ public class QnaController {
 	
 	@Autowired
 	private QnaService qnaService;
-	
-	
 	
 	//내가 질문한 게시글리스트 불러오기
 	@RequestMapping(value = "/qna/qnaList.do" , method = RequestMethod.GET)
@@ -66,7 +66,6 @@ public class QnaController {
 		return "client/qna/qnaWriteForm";
 	}
 	
-	
 		//문의글 등록하기
 		@RequestMapping(value = "/qna/qnaInsert.do" , method = RequestMethod.POST)
 		@ResponseBody
@@ -91,14 +90,22 @@ public class QnaController {
 		
 		//문의글 상세보기
 		@RequestMapping(value = "/qna/qnaDetail.do")
-		public String qnaDetail(QnaVO qvo , Model model) {
+		public ModelAndView qnaDetail(@ModelAttribute QnaVO qvo) {
 			logger.info("qnaDetail 호출");
 			
+			ModelAndView mav = new ModelAndView();
 			QnaVO detail = qnaService.qnaDetail(qvo);
 			
-			model.addAttribute("detail",detail);
+			// 답변 존재 시 답변 글 띄우는 메소드
+			if (detail.getQna_state() == 1) {
+				replyVO reply = qnaService.selectReply(detail.getQna_num());
+				mav.addObject("reply", reply);
+			}
 			
-			return "client/qna/qnaDetail";
+			mav.addObject("detail", detail);
+			mav.setViewName("client/qna/qnaDetail");
+			
+			return mav;
 					
 		}
 		
@@ -163,4 +170,24 @@ public class QnaController {
 		 response.getOutputStream().flush();
 		 response.getOutputStream().close();
 		 }
+
+	//문의글 삭제하기
+	@RequestMapping(value = "/qna/qnaDelete.do")
+	@ResponseBody
+	public int qnaDelete(@ModelAttribute QnaVO qvo, HttpServletRequest request) throws IOException {
+		System.out.println(qvo.getQna_num()+"가 들어감");
+		int result = qnaService.qnaDelete(qvo);
+		System.out.println( result +"가 리턴됨");
+		if (result == 1) {
+			// 첨부파일이 있으면 파일 삭제
+			/* if (!qvo.getQna_file().isEmpty()) {
+				FileUploadUtil.fileDelete(qvo.getQna_file(), request);
+			} */
+			qnaService.qnaDelete(qvo);
+			System.out.println( result +"가 리턴됨");
+			return result;
+		} else {
+			return 0;
+		}
+	}
  }
