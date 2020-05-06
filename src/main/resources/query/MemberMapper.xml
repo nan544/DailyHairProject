@@ -32,7 +32,6 @@
 		SELECT *
 		FROM MEMBER
 		WHERE m_id = #{m_id}
-		AND m_state = 1
 	</select>
 	
 	<!-- 마이페이지 본인확인 -->

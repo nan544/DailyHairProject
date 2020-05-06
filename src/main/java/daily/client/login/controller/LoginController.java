@@ -49,6 +49,7 @@ public class LoginController {
 
 	      MemberVO vo = service.login(lvo);
 	      
+	      
 	      if(vo == null) {
 	         mav.addObject("msg", "아이디를 정확하게 입력 해주시길 바랍니다.");
 	         mav.setViewName("member/login/login");
@@ -58,9 +59,16 @@ public class LoginController {
 	      boolean passMatch = pwencoder.matches(lvo.getM_pwd(), vo.getM_pwd());
 
 	      if (vo != null && passMatch) {
+	    	  if(vo.getM_state()==1) {
 	         session.setAttribute("login", vo);
 	         mav.setViewName("client/main/main");
 	         return mav;
+	    }else {
+	    	 mav.addObject("msg", "비활성화된 계정입니다.");
+	    	 mav.addObject("msz"," 관리자에게 문의하세요.");
+		     mav.setViewName("member/login/login");
+		     return mav;
+	    }
 	      }else {
 	         mav.addObject("msg", "패스워드를 정확하게 입력 해주시길 바랍니다.");
 	         mav.setViewName("member/login/login");
