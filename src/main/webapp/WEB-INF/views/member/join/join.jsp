@@ -353,9 +353,9 @@
 							<label for="m_Pwd" class="msgbox"><span style="color: red;">* </span>PW</label> 
 							<input type="password" id="m_pwd" name="m_pwd" placeholder=" PassWord" /><br>
 							<div id="pwd_check" style="font-size: 11px;"></div>
-							<label for="m_Pwd" class="msgbox"><span
-								style="color: red;">* </span>PW 재입력</label> <input type="password"
-								id="m_pwd2" placeholder=" PassWord" />
+							
+							<label for="m_Pwd" class="msgbox"><span style="color: red;">* </span>PW 재입력</label> 
+							<input type="password" id="m_pwd2" placeholder=" PassWord" />
 						</div>
 						<div class="join_input">
 							<label for="m_Name" class="msgbox"><span

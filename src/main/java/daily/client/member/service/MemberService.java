@@ -30,5 +30,11 @@ public interface MemberService {
 	
 	//아이디 찾기
 	public MemberVO idFind(MemberVO vo) throws Exception;
+
+	//패스워드 찾기
+	public MemberVO pwFind(MemberVO pvo);
+	
+	//패스워드 수정
+	public void pwModify(MemberVO vo) throws Exception;
 	
 }

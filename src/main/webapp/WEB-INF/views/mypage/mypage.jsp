@@ -197,7 +197,7 @@ function enterkey() {
 					<input type="hidden" id="m_id" name="m_id" value="${login.m_id}"/>
 					<div>
 						<label for="m_pwd">패스워드</label>
-						<input type="password" id="m_pwd" name="m_pwd" placeholder="패스워드" onkeyup="enterkey();">
+						<input type="password" id="m_pwd" name="m_pwd" placeholder="패스워드" onkeyup="enterkey()">
 						<input type="button" id="mypageBtn" name="mypageBtn" value="확인">
 					</div>
 				</form>

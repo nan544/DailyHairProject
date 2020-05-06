@@ -72,6 +72,7 @@ $(function() {
 		$("#submitForm").attr("action","/mypage/mymemberUpdate.do");
 		$("#submitForm").submit();
 		alert("회원정보가 수정 되었습니다.");
+		//location.reload();
 	});
 	
 	$("#memberUpdate").click(function() {
@@ -86,8 +87,9 @@ $(function() {
 		location.href = "/mypage/reserveState.do"		//예약현황
 	});
 	
-	$("#pwdModify").click(function() {
-		location.href = "#.do"
+	$("#pwdModify").click(function() {					//패스워드 수정
+		
+		location.href = "/member/login/memberPwdModify.do";
 	});
 	
 });
