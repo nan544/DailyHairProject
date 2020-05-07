@@ -19,7 +19,12 @@ public class AdminBiDaoImpl implements AdminBiDao {
 	
 	@Override
 	public List<AdminBiVO> list() {
-		return sqlsession.selectList("list");
+		return sqlsession.selectList("WeekList");
+	}
+
+	@Override
+	public List<Integer> reservationCnt() {
+		return sqlsession.selectList("reservationCnt");
 	}
 
 }

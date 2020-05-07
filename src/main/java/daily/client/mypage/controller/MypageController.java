@@ -138,22 +138,21 @@ public class MypageController {
 			return "mypage/reserveState";
 		}
 
+
 	//예약현황 상세
-		@RequestMapping(value = "/reservDetail.do", method = RequestMethod.GET)
-		public String reservDetail(int rest_num, Model model, HttpSession session) {
-			
-		MemberVO mvo = (MemberVO) session.getAttribute("login");
-		String m_id = mvo.getM_id();	
+	@RequestMapping(value = "/reservDetail.do", method = RequestMethod.GET)
+	public String reservDetail(@RequestParam int rest_num, Model model, HttpSession session) {
+	
+	// 수정할 곳
+	ReserveVo List = reserveService.myReservationDetail(rest_num);
+	List<StyleVO> styleList = styleService.stylingnameList(rest_num);
+	
+	model.addAttribute("detail", List);
+	model.addAttribute("styleList", styleList);
 		
-		List<ReserveVo> List = reserveService.myreservationList(m_id);
-		List<StyleVO> styleList = styleService.stylingnameList(rest_num);
-			
-		model.addAttribute("styleList", styleList);
-		model.addAttribute("myList", List);
-			
-			return "mypage/reservDetail";
-		}
-		
+	return "mypage/reservDetail";
+	}
+	
 	//에약 취소
 		@RequestMapping(value = "/cancleReservation.do", method = RequestMethod.POST)
 		@ResponseBody
