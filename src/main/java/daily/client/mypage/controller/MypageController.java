@@ -140,7 +140,7 @@ public class MypageController {
 
 	//예약현황 상세
 		@RequestMapping(value = "/reservDetail.do", method = RequestMethod.GET)
-		public String reservDetail(int rest_num , Model model, HttpSession session) {
+		public String reservDetail(int rest_num, Model model, HttpSession session) {
 			
 		MemberVO mvo = (MemberVO) session.getAttribute("login");
 		String m_id = mvo.getM_id();	

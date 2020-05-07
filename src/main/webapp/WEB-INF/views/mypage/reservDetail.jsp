@@ -49,7 +49,6 @@ $(function() {
 	<tbody>
 		<c:choose>
 			<c:when test="${not empty myList}">
-				<c:forEach var="list" items="${myList}">
 					<tr data-num = "${list.rest_num}">
 						<td class="detailreservation">왕십리점</td>
 						<td class="detailreservation">${list.rest_regdate}</td>
@@ -69,7 +68,6 @@ $(function() {
 						</c:if>
 						</td>
 					</tr>
-				</c:forEach>				
 			</c:when>
 			<c:otherwise>
 				<tr>
