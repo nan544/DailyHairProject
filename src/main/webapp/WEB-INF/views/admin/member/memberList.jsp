@@ -28,6 +28,7 @@ margin-right: 5px;
 <script type="text/javascript">
 
 	$(function() {
+		
 		$("#hidden").hide();
 		
 		//아이디 클릭시 상세보기 팝업창을 띄운다
