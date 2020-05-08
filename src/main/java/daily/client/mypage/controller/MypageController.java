@@ -123,20 +123,21 @@ public class MypageController {
 		
 	}
 	
-	//예약 현황창
-	@RequestMapping(value="/reserveState.do", method = RequestMethod.GET)
-	public String reserveState(HttpSession session , Model model) throws Exception{
-		log.info("reserveState.do 호출 성공");
-		
-		MemberVO mvo = (MemberVO) session.getAttribute("login");
-		String m_id = mvo.getM_id();
-		
-		List<ReserveVo> List = reserveService.myreservationList(m_id);
-		
-		model.addAttribute("myList", List);
-		
-		return "mypage/reserveState";
-	}
+	//예약 연황창
+		@RequestMapping(value="/reserveState.do", method = RequestMethod.GET)
+		public String reserveState(HttpSession session , Model model) throws Exception{
+			log.info("reserveState.do 호출 성공");
+			
+			MemberVO mvo = (MemberVO) session.getAttribute("login");
+			String m_id = mvo.getM_id();
+			
+			List<ReserveVo> List = reserveService.myreservationList(m_id);
+			
+			model.addAttribute("myList", List);
+			
+			return "mypage/reserveState";
+		}
+
 
 	//예약현황 상세
 	@RequestMapping(value = "/reservDetail.do", method = RequestMethod.GET)

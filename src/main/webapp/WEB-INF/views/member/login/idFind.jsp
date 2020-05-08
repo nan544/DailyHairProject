@@ -68,6 +68,16 @@
 			alert(msg);		   
 		  }
 		  
+		  $("#idFind").click(function() {
+			
+				//필수 입력 요소들을 입력하지 않고 가입 버튼을 눌렀을 때 못넘어가게 함
+				if ($("#m_email").val() == "") {
+					alert("필수 입력 항목입니다.");		//이메일
+					$("#m_email").focus();
+					return false;
+				}
+		});
+		  
    });
       
    function fn_idFind() {

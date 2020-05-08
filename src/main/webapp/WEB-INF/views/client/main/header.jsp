@@ -54,7 +54,7 @@
 	
 	<script type="text/javascript">
 		function logout(){
-			alert("로그아웃되셨습니다.");
+			alert("로그아웃되었습니다.");
 		}
 	</script>
 	
