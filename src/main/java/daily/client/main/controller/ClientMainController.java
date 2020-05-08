@@ -61,13 +61,13 @@ public class ClientMainController {
 		return "client/reserve/reserveSelectPlace";
 	}
 	
-	// (임시) Gallery - HairStyle로 이동
+	//Gallery - HairStyle로 이동
 	@RequestMapping(value = "/hairStyle.do")
 	public String clientHairStyle() {
 		return "client/gallery/hairStyle";
 	}
 	
-	// (임시) Gallery - HairGoods로 이동
+	//Gallery - HairGoods로 이동
 	@RequestMapping(value = "/hairGoods.do")
 	public String clientHairGoods() {
 		return "client/gallery/hairGoods";

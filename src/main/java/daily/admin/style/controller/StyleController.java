@@ -119,10 +119,12 @@ public class StyleController {
 
 		int cnt = reservationService.confirmStyle(styling_num);
 
-		if (cnt < 0) {
-			int result = styleService.deleteStyling(styling_num);
-			return result;
-		}else {
+		if (cnt == 0) {
+			styleService.deleteStyling(styling_num);
+			return 1;
+		} else if (cnt > 0) {
+			return 0;
+		} else {
 			return 0;
 		}
 	}

@@ -32,14 +32,14 @@ h5 {
 	text-align: right;
 }
 </style>
-
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script type="text/javascript">
+	
+
 	$(function() {
-		
 
 		$("#datepicker2").attr("disabled",true);
 		
@@ -79,7 +79,17 @@ h5 {
 		});
 		
 		$("#searchBtn").click(function() {
-
+			
+			if($("#datepicker1").val()==''){
+				alert("날짜를 선택해주세요");
+				$(this).focus();
+				return;
+			}else if ($("#datepicker2").val()==''){
+				alert("날짜를 선택해주세요");
+				$(this).focus();
+				return;
+			}
+			
 			
 			$("#searchForm").attr({
 				'method' : 'post',
