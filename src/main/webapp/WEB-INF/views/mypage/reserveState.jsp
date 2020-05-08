@@ -161,6 +161,14 @@ $(function() {
 	border: 1px solid #FFE08C;
 	border-radius: 15px;
 	background-color: #FFE08C; }
+	
+.ellipsis{
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+	-moz-binding: url('ellipsis.xml#ellipsis'); }
+	
 </style>
 </head>
 
@@ -247,7 +255,7 @@ $(function() {
 					</table>
 					
 						<div class="tableBox2">
-						<table cellpadding="5px">
+						<table cellpadding="5px" width="50%" style="table-layout: fixed;" cellspacing="5">
 							<colgroup>
 								<col width= "8%">
 								<col width= "1%">
@@ -278,7 +286,7 @@ $(function() {
 												<td></td>
 												<td class="detailreservation">${list.rest_totalprice}</td>
 												<td></td>
-												<td class="detailreservation">${list.rest_memo}</td>
+												<td class="detailreservation"><div class="ellipsis" style="width:100%;">${list.rest_memo}</div></td>
 												<td></td>
 												<td><c:if test="${list.rest_state == 1 }">예약 중<br>
 														<input type="button" name="cancleBtn" class="cancleBtn"
