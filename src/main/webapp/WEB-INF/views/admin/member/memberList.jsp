@@ -181,6 +181,9 @@ margin-right: 5px;
 							<c:if test="${member.m_state == 0}">
 								<td align="center">비활성화</td>
 							</c:if>
+							<c:if test="${member.m_state == 2}">
+								<td align="center">메일인증중</td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</c:when>
