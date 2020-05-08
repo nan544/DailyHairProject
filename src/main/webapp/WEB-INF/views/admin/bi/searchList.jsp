@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="false"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <style type="text/css">
 #contents {
 	width: 1000px;
@@ -40,14 +40,12 @@ h5 {
 
 <script type="text/javascript">
 	$(function() {
-		
 		$("#datepicker1").datepicker({
 			format : 'yyyy-mm-dd',
 		});
 
 		$("#datepicker2").datepicker({
-			format : 'yyyy-mm-dd'
-			/* ,endDate : new Date() */
+			format : 'yyyy-mm-dd',
 		}).on("changeDate", function() {
 			var fromDate = $("#datepicker1").val();
 			var toDate = $("#datepicker2").val();
@@ -83,38 +81,26 @@ h5 {
 	});
 </script>
 
-
+<title>Insert title here</title>
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+	let array = new Array();
+
+	array.push([ '날짜', '매출(단위:원)' ]);
+
+	<c:forEach items="${result}" var="item">
+	array.push([ "${item.rest_hairdate}",parseInt("${item.rest_totalprice}") ]);
+	</c:forEach>
+
+	console.log(array);
 	google.charts.load('current', {
 		'packages' : [ 'corechart' ]
 	});
 	google.charts.setOnLoadCallback(drawChart);
 	function drawChart() {
-		var data2 = new Array();
-		data2.push("[ '날짜', '매출(단위:원)' ]");
-		console.log(data2);
-		
-		var data = google.visualization.arrayToDataTable([
-				[ '날짜', '매출(단위:원)' ],
-			
-				[ "${result[0].rest_hairdate}",
-						parseInt('${result[0].rest_totalprice}') ],
-				[ "${result[1].rest_hairdate}",
-						parseInt('${result[1].rest_totalprice}') ],
-				[ "${result[2].rest_hairdate}",
-						parseInt('${result[2].rest_totalprice}') ],
-				[ "${result[3].rest_hairdate}",
-						parseInt('${result[3].rest_totalprice}') ],
-				[ "${result[4].rest_hairdate}",
-						parseInt('${result[4].rest_totalprice}') ],
-				[ "${result[5].rest_hairdate}",
-						parseInt('${result[5].rest_totalprice}') ],
-				[ "${result[6].rest_hairdate}",
-						parseInt('${result[6].rest_totalprice}') ]
 
-		]);
+		var data = google.visualization.arrayToDataTable(array);
 
 		var options = {
 			title : '매출 현황',
