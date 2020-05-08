@@ -37,11 +37,17 @@ h5 {
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-
 <script type="text/javascript">
 	$(function() {
+		
+		
+		$("#datepicker2").attr("disabled",true);
+		
+		
 		$("#datepicker1").datepicker({
 			format : 'yyyy-mm-dd',
+		}).on("changeDate",function(){
+			$("#datepicker2").attr("disabled",false);
 		});
 
 		$("#datepicker2").datepicker({
@@ -52,11 +58,14 @@ h5 {
 
 			let strDate1 = fromDate;
 			let strDate2 = toDate;
+			
+			
 			let arr1 = strDate1.split('-');
 			let arr2 = strDate2.split('-');
 
 			let dat1 = new Date(arr1[0], arr1[1], arr1[2]);
 			let dat2 = new Date(arr2[0], arr2[1], arr2[2]);
+			
 
 			let diff = dat2 - dat1;
 
@@ -64,11 +73,21 @@ h5 {
 
 			let minDate = parseInt(diff / currDay);
 
-			$("#minDate").val(minDate);
+			$("#minDate").val(minDate+1);
 
 		});
+		
 		$("#searchBtn").click(function() {
-
+			
+			if($("#datepicker1").val()==''){
+				alert("날짜를 선택해주세요");
+				return;
+			}else if ($("#datepicker2").val()==''){
+				alert("날짜를 선택해주세요");
+				return;
+			}
+			
+			
 			$("#searchForm").attr({
 				'method' : 'post',
 				'action' : 'search.do'
@@ -79,6 +98,7 @@ h5 {
 		});
 
 	});
+	
 </script>
 
 <title>Insert title here</title>
@@ -94,6 +114,7 @@ h5 {
 	</c:forEach>
 
 	console.log(array);
+	
 	google.charts.load('current', {
 		'packages' : [ 'corechart' ]
 	});
@@ -127,9 +148,9 @@ h5 {
 			</h5>
 			<p class="searchBar">
 				<input type="text" id="datepicker1" name="fromDate"
-					class="selectSearch form-control"><label>~</label> <input
+					class="selectSearch form-control" autocomplete=off><label>~</label> <input
 					type="text" id="datepicker2" name="toDate"
-					class="selectSearch form-control"> <input type="button"
+					class="selectSearch form-control" autocomplete=off> <input type="button"
 					id="searchBtn" value="조회"> <input type="hidden"
 					id="minDate" name="minDate">
 			</p>
@@ -152,14 +173,14 @@ h5 {
 					<c:forEach var="salesList" items="${result}" varStatus="status">
 						<tr>
 							<td>${salesList.rest_hairdate }</td>
-							<td>${salesList.rest_totalprice }</td>
+							<td>${salesList.rest_totalprice }원</td>
 						</tr>
 						<c:set var="totalPrice"
 							value="${totalPrice + salesList.rest_totalprice }"></c:set>
 					</c:forEach>
 					<tr class="success">
 						<td><b>총액</b></td>
-						<td>${totalPrice}</td>
+						<td>${totalPrice}원</td>
 					</tr>
 				</tbody>
 			</table>

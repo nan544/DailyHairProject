@@ -17,7 +17,6 @@ function numberChk(input) {
 	if($(input).val()!=""){
 		var num_regExp = new RegExp("[0-9]$","i");	//only number
 		var match = num_regExp.exec($(input).val());
-		//alert(match);
 		if(match==null){
 			alert("숫자를 입력해주세요");
 			$(input).val("");
@@ -208,8 +207,6 @@ var openDialog = function(uri, name, options, closeCallback) {
 			$(document).on("click",".deleteBtn",function(event){
 			var styling_num = $(this).parents("tr").attr("data-num");
 			var des_num = $(".num").val();
-			alert(styling_num);
-			
 			$.ajax({
 				url : "/admin/style/deleteStyling.do",
 				type : "post",
@@ -253,7 +250,7 @@ var openDialog = function(uri, name, options, closeCallback) {
 						
 						}
 					} else {
-						alert("시술 삭제에 실패하였습니다.");
+						alert("예약중인 시술은 삭제할수 없습니다.");
 					}
 				}
 			}); // ajax종료

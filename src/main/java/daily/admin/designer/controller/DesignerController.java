@@ -78,11 +78,13 @@ public class DesignerController {
 
 		String msg = "0";
 		
+		//첨부된파일이 있을경우 폴더생성후 저장
 		if(dvo.getFile()!=null) {
 			String des_file = FileUploadUtil.fileUpload(dvo.getFile(), request, "designer");
 			dvo.setDes_file(des_file);
 		}
 		
+		//첨부된파일이 있을경우 폴더생성후 저장
 		if(dvo.getFile2()!=null) {
 			String des_file2 = FileUploadUtil.fileUpload(dvo.getFile2(), request, "designer");
 			dvo.setDes_image(des_file2);
@@ -177,9 +179,6 @@ public class DesignerController {
 		
 		//비활성화 하기전에 현재 예약건이있는 디자이너인지 확인합니다
 		int count = reservationService.cofirmReservation(dvo.getDes_num());	 
-		
-		System.out.println(count);
-		
 		
 		if(count>0) {
 			return "0";
