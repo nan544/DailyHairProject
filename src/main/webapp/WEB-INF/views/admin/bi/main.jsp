@@ -37,23 +37,30 @@ h5 {
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-
 <script type="text/javascript">
 	$(function() {
 		
+
+		$("#datepicker2").attr("disabled",true);
+		
+		
 		$("#datepicker1").datepicker({
 			format : 'yyyy-mm-dd',
+		}).on("changeDate",function(){
+			$("#datepicker2").attr("disabled",false);
 		});
 
 		$("#datepicker2").datepicker({
 			format : 'yyyy-mm-dd'
 			/* ,endDate : new Date() */
 		}).on("changeDate", function() {
+			
 			var fromDate = $("#datepicker1").val();
 			var toDate = $("#datepicker2").val();
 
 			let strDate1 = fromDate;
 			let strDate2 = toDate;
+			
 			let arr1 = strDate1.split('-');
 			let arr2 = strDate2.split('-');
 
@@ -64,13 +71,16 @@ h5 {
 
 			let currDay = 24 * 60 * 60 * 1000;
 
-			let minDate = parseInt(diff / currDay);
+			let minDate = parseInt(diff/currDay);
 
-			$("#minDate").val(minDate);
+			$("#minDate").val(minDate+1);
+			
 
 		});
+		
 		$("#searchBtn").click(function() {
 
+			
 			$("#searchForm").attr({
 				'method' : 'post',
 				'action' : 'search.do'
@@ -141,11 +151,11 @@ h5 {
 			</h5>
 			<p class="searchBar">
 				<input type="text" id="datepicker1" name="fromDate"
-					class="selectSearch form-control"><label>~</label> <input
+					class="selectSearch form-control" autocomplete=off><label>~</label> <input
 					type="text" id="datepicker2" name="toDate"
-					class="selectSearch form-control"> <input type="button"
-					id="searchBtn" value="조회"> <input type="hidden"
-					id="minDate" name="minDate">
+					class="selectSearch form-control" autocomplete=off> <input type="button"
+					id="searchBtn" value="조회"> 
+					<input type="hidden" id="minDate" name="minDate" value="">
 			</p>
 		</form>
 		<div>
@@ -166,14 +176,14 @@ h5 {
 					<c:forEach var="salesList" items="${result}" varStatus="status">
 						<tr>
 							<td>${salesList.rest_hairdate }</td>
-							<td>${salesList.rest_totalprice }</td>
+							<td>${salesList.rest_totalprice }원</td>
 						</tr>
 						<c:set var="totalPrice"
 							value="${totalPrice + salesList.rest_totalprice }"></c:set>
 					</c:forEach>
 					<tr class="success">
 						<td><b>총액</b></td>
-						<td>${totalPrice}</td>
+						<td>${totalPrice}원</td>
 					</tr>
 				</tbody>
 			</table>

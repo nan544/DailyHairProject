@@ -11,4 +11,10 @@
 		VALUES(reservation_detail_seq.nextval,reservation_seq.currval, #{styling_num})
 	</insert>
 
+	<!-- 에약중인 시술확인하기 -->
+	<select id="confirmStyle" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM reservation_detail
+		WHERE styling_num = #{styling_num}
+	</select>
 </mapper>

@@ -12,6 +12,7 @@ import daily.admin.designer.service.DesignerService;
 import daily.admin.designer.vo.DesignerVO;
 import daily.admin.style.service.StyleService;
 import daily.admin.style.vo.StyleVO;
+import daily.client.reservedetail.service.ReserveDetailService;
 
 import java.util.List;
 
@@ -28,6 +29,9 @@ public class StyleController {
 
 	@Autowired
 	DesignerService designerService;
+
+	@Autowired
+	ReserveDetailService reservationService;
 
 	// 시술등록창 팝업 띄우기
 	@RequestMapping(value = "/style/styleSetting.do", method = RequestMethod.GET)
@@ -49,7 +53,7 @@ public class StyleController {
 	// 디자이너 선택시 선택된 디자이너 리스트 출력하기
 	@RequestMapping(value = "/style/styleAjax.do", method = RequestMethod.POST)
 	@ResponseBody
-	public List<StyleVO> stylingAjaxList(int des_num){
+	public List<StyleVO> stylingAjaxList(int des_num) {
 		log.info("styleAjaxList 호출완료");
 		return styleService.stylingAjaxList(des_num);
 	}
@@ -71,30 +75,30 @@ public class StyleController {
 			return msg;
 		}
 	}
-	
-	//시술 수정하기폼띄우기
+
+	// 시술 수정하기폼띄우기
 	@RequestMapping(value = "/style/styleUpdateForm.do", method = RequestMethod.GET)
 	public ModelAndView updateStylingForm(StyleVO svo) {
 		log.info("updateStylingForm 호출성공");
-		
+
 		ModelAndView mav = new ModelAndView();
-		
+
 		StyleVO detail = styleService.detailStyling(svo.getStyling_num());
-		
-		if(detail != null) {
-			mav.addObject("style",detail);
-			
+
+		if (detail != null) {
+			mav.addObject("style", detail);
+
 			mav.setViewName("admin/style/styleModify_pop");
 		}
 		return mav;
 	}
-	
-	//시술 수정하기
+
+	// 시술 수정하기
 	@RequestMapping(value = "/style/updateStyling.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String updateStyling(@ModelAttribute StyleVO svo) {
 		log.info("updateStyling 호출 성공");
-		
+
 		String msg = "0";
 		int result = styleService.updateStyling(svo);
 
@@ -106,15 +110,21 @@ public class StyleController {
 			return msg;
 		}
 	}
-	
-	//시술 삭제하기
+
+	// 시술 삭제하기
 	@RequestMapping(value = "/style/deleteStyling.do", method = RequestMethod.POST)
 	@ResponseBody
 	public int deleteStyling(int styling_num) {
-	log.info("deleteStyling 호출 성공");
-		
-		int result = styleService.deleteStyling(styling_num);
-		return result;
+		log.info("deleteStyling 호출 성공");
+
+		int cnt = reservationService.confirmStyle(styling_num);
+
+		if (cnt < 0) {
+			int result = styleService.deleteStyling(styling_num);
+			return result;
+		}else {
+			return 0;
+		}
 	}
-	
+
 }

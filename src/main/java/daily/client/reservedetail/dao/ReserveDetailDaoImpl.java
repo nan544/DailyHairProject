@@ -15,4 +15,9 @@ public class ReserveDetailDaoImpl implements ReserveDetailDao {
 		return sqlSession.insert("insertReservationDetail",styling_num);
 	}
 
+	@Override
+	public int confirmStyle(int styling_num) {
+		return sqlSession.selectOne("confirmStyle",styling_num);
+	}
+
 }
