@@ -81,9 +81,11 @@ h5 {
 			
 			if($("#datepicker1").val()==''){
 				alert("날짜를 선택해주세요");
+				$(this).focus();
 				return;
 			}else if ($("#datepicker2").val()==''){
 				alert("날짜를 선택해주세요");
+				$(this).focus();
 				return;
 			}
 			

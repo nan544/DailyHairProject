@@ -12,8 +12,8 @@
 <style type="text/css">
 .btnBoard{
 width : 70px;
-float: left;
-margin-right: 5px;
+float: right;
+margin-top: 5px;
 }
 .keyword{
 width : 200px;
@@ -121,7 +121,7 @@ margin-right: 5px;
 		</c:choose>
 		<!-- 데이터 출력 끝-->
 	</table>
-	<div align="right">
+	<div>
 	<input type="button"  class="btn btnBoard" id="insertFormBtn" name="insertFormBtn" value="등록">
 </div>
 	<!-- 페이지 네비게이션 -->

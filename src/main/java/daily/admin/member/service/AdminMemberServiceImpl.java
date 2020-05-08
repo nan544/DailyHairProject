@@ -17,6 +17,7 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	@Autowired
 	AdminMemberDao adminMemberDao;
 
+	//회원리스트 출력
 	@Override
 	public List<MemberVO> memberList(MemberVO mvo) {
 		
@@ -28,16 +29,19 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		
 	}
 
+	//회원 상세보기
 	@Override
 	public MemberVO memberDetailForm(String m_id) {
 		return adminMemberDao.memberDetailForm(m_id);
 	}
 
+	//회원상태값 수정
 	@Override
 	public int memberUpdate(MemberVO mvo) {
 		return adminMemberDao.memberUpdate(mvo);
 	}
 
+	//페이징용 카운트
 	@Override
 	public int memberListCnt(MemberVO mvo) {
 		return adminMemberDao.memberListCnt(mvo);

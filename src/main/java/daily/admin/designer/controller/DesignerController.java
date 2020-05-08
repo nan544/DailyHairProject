@@ -13,11 +13,9 @@ import daily.admin.designer.vo.DesignerVO;
 import daily.admin.reservation.service.AdminReservationService;
 import daily.common.util.FileUploadUtil;
 
-import org.apache.commons.fileupload.FileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
 import java.io.File;
 import java.io.IOException;

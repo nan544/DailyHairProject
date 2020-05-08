@@ -15,6 +15,6 @@
 	<select id="confirmStyle" parameterType="int" resultType="int">
 		SELECT count(*)
 		FROM reservation_detail
-		WHERE styling_num = #{styling_num}
+		WHERE styling_num = #{stying_num}
 	</select>
 </mapper>
