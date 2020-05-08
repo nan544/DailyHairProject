@@ -19,7 +19,7 @@ public interface DesignerService {
 		
 	public int openDesigner(int des_num);		//디자이너 활성화
 	
-	public List<DesignerVO> designerAjaxList(int des_state); //디자이너 리스트(활성화/비활성화체크)
+	public List<DesignerVO> designerAjaxList(int des_state); //동적으로 디자이너 리스트(활성화/비활성화체크)출력
 	
-	public List<DesignerVO> stylingDesigner(ReserveVo rvo);
+	public List<DesignerVO> stylingDesigner(ReserveVo rvo);		//예약가능한 디자이너 리스트 출력
 }

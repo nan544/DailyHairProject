@@ -207,6 +207,9 @@ var openDialog = function(uri, name, options, closeCallback) {
 			$(document).on("click",".deleteBtn",function(event){
 			var styling_num = $(this).parents("tr").attr("data-num");
 			var des_num = $(".num").val();
+			
+			if(confirm("삭제하시겠습니까?")){
+			
 			$.ajax({
 				url : "/admin/style/deleteStyling.do",
 				type : "post",
@@ -215,9 +218,6 @@ var openDialog = function(uri, name, options, closeCallback) {
 				},
 				success : function(data){
 					if (data == 1) {
-						if(confirm("삭제하시겠습니까?")){
-							alert("시술 삭제에 성공하였습니다.");
-							
 							//성공시 적용된 화면을 보여주기위해 비동기로 적용된 리스트 출력하기
 							$.ajax({
 								url : "/admin/style/styleAjax.do",
@@ -226,6 +226,7 @@ var openDialog = function(uri, name, options, closeCallback) {
 									"des_num" : des_num
 								},
 								success : function(data){
+									alert("삭제되었습니다");
 								$(".ajax").html("");
 								let html = "";
 								if(data.length == 0){
@@ -247,13 +248,15 @@ var openDialog = function(uri, name, options, closeCallback) {
 								$(".ajax").append(html);
 								}
 							}); //ajax 끝
-						
-						}
+							
 					} else {
-						alert("예약중인 시술은 삭제할수 없습니다.");
+						alert("예약중인 시술은 삭제할 수 없습니다.");
 					}
 				}
 			}); // ajax종료
+			
+			}
+			
 		});
 		
 	});
