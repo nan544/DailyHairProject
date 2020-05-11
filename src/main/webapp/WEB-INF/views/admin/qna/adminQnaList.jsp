@@ -38,6 +38,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
+
 	<div>
 
 		<div class="row">

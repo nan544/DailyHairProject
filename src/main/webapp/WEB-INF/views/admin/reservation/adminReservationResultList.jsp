@@ -90,6 +90,14 @@ margin-right: 5px;
 </script>
 </head>
 <body>
+
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
+
 	<h1>시술완료 목록</h1>
 	<p><span>*</span>클릭하여 상세보기</p>
 	<div class="resultContainer">

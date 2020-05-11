@@ -105,6 +105,14 @@ width : 110px;
 </style>
 </head>
 <body>
+
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
+
 	<h1 align="center">회원상세보기</h1>
 	<select name="m_state" id="m_state" class="form-control" style="margin-left: 20px;">
 		<option value="${detail.m_state}">

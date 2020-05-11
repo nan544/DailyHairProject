@@ -116,6 +116,14 @@ text-align: center;
 </script>
 </head>
 <body>
+
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
+
  <h1>예약 현황</h1>
  <form id="rest_search" name="rest_search">
 	<c:choose>

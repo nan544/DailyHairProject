@@ -73,6 +73,12 @@
 </script>
 </head>
 <body>
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
 	<div id="contents">
 		<h3>HairGoods 게시판 관리</h3>
 		<!-- 검색 및 페이징을 위한 form -->

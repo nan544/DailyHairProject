@@ -91,7 +91,12 @@ input[type="file"] {
 <title>글 작성</title>
 </head>
 <body>
-
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
 	<div id="contents">
 		<form id="insertForm" enctype="multipart/form-data" method="POST">
 			<h3>HairStyle 게시판 관리 - 등록</h3>
