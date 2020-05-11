@@ -110,6 +110,7 @@
 			$("#loginForm").attr("method", "post");
 			$("#loginForm").attr("action", "/member/login/login.do");
 			$("#loginForm").submit();
+			
 		});
 
 		var msg = "<c:out value='${msg}'/>";

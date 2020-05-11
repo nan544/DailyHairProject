@@ -123,7 +123,7 @@ public class MypageController {
 		
 	}
 	
-	//예약 연황창
+	//예약연황
 		@RequestMapping(value="/reserveState.do", method = RequestMethod.GET)
 		public String reserveState(HttpSession session , Model model) throws Exception{
 			log.info("reserveState.do 호출 성공");
