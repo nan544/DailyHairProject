@@ -50,20 +50,20 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 	
-<script type="text/javascript">
-
-//이미지체크
-function chkImg(file){
-    if(file.val()!=""){
-   var ext = file.val().split('.').pop().toLowerCase();
-   if(jQuery.inArray(ext,['gif','png','jpg'])== -1){
-      alert("파일 형식이 맞지않습니다 \n업로드 가능 파일[gif, png, jpg]");
-      return false;
-   }else return true;
-}else{
-    return true;
-}
-}
+	<script type="text/javascript">
+	//이미지체크
+	function chkImg(file){
+		if(file.val()!=""){
+			var ext = file.val().split('.').pop().toLowerCase();
+			
+			if(jQuery.inArray(ext,['gif','png','jpg'])== -1){
+			alert("파일 형식이 맞지않습니다 \n업로드 가능 파일[gif, png, jpg]");
+			return false;
+			}else return true;
+		}else{
+		return true;
+		}
+	}
 
 	$(function() {
 		//취소버튼 클릭시 전페이지로 가기
@@ -105,10 +105,7 @@ function chkImg(file){
 					}
 				}); //ajax 종료
 			}
-
 		});
-		
-		
 	});
 
 	//이미지 다운로드
@@ -118,7 +115,8 @@ function chkImg(file){
 		formObj.attr("action", "/client/qna/download.do");
 		formObj.submit();
 	}
-</script>
+	</script>
+	
 <style type="text/css">
 .btnContainer { width: 90%; margin: 0 auto; }
 p > span { color: red; font: bold; }
@@ -137,8 +135,6 @@ p > span { color: red; font: bold; }
 			border: 2px dashed #ffb03b;
 			border-radius: 25px; }
 .qnaBtn:hover { background: #FFE08C; }
-
-
 .qnaHeadBox { width: 95%; margin: 0 auto; }
 .qnaHeadBox > form > div > div > h4 { padding-left: 20px; }
 .updateTitle { display: inline; margin-left: 10px;

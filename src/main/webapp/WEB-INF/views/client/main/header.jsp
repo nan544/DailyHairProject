@@ -72,15 +72,6 @@
 </head>
 
 <body>
-	<!-- ======= Top Bar ======= -->
-	<!-- <section id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
-	<div class="container text-right">
-		<i class="icofont-phone"></i> 문의 전화 02 001 0001 ~ 2
-		<i class="icofont-clock-time icofont-rotate-180"></i> 영업시간 10:00 AM - 19:00 PM
-	</div>
-	</section> -->
-	
-	
 	<!-- ======= Header ======= -->
 	<header id="header" class="fixed-top d-flex align-items-center">
 		<!-- ======= MenuBar ======= -->
@@ -108,10 +99,6 @@
 							<li><a href="/client/hairGoodsList.do">HairGoods</a></li>
 						</ul>
 					</li>
-					<!-- 마우스 올리면 노란색이 아닌, 처음부터 노란색이 되는 클래스 지정 -->
-					<!-- <li class="active"><a href="#">로그인</a></li>
-					<li class="active"><a href="#">회원가입</a></li> -->
-					<!-- 둥근 노란색 테두리 메뉴 바 생성 클래스 지정 -->
 					<li class="book-a-table text-center">
 						<c:if test="${not empty login}"><a href="/member/login/logout.do">로그아웃</a></c:if>
 						<c:if test="${empty login}"><a href="/member/login/login.do">로그인</a></c:if>

@@ -123,7 +123,6 @@
 										</div>
 										<div>
 											<ul>
-												<%-- <li><p>${faq.faq_answer}</p></li> --%>
 												<li><textarea cols="110" class="contentBox" disabled="disabled"><c:out value="${faq.faq_answer}"/></textarea></li>
 											</ul>
 										</div>

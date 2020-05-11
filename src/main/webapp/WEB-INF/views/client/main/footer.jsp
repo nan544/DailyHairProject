@@ -67,46 +67,6 @@
 			
 			window.open(url, name, option);
 		}
-		
-		function sohyePop1() {
-			var url = "/resources/assets/img/slide/kimsoGIF15.gif";
-			var name = "김소혜 이뻐요";
-			var option = "width=641px, height=494px, toolbars=no, scrollbars=yes";
-			
-			window.open(url, name, option);
-		}
-		
-		function sohyePop2() {
-			var url = "/resources/assets/img/slide/kimsoGIF9.gif";
-			var name = "김소혜 이뻐요";
-			var option = "width=450px, height=528px, toolbars=no, scrollbars=yes";
-			
-			window.open(url, name, option);
-		}
-		
-		function sohyePop3() {
-			var url = "/resources/assets/img/slide/kimsoGIF16.gif";
-			var name = "김소혜 이뻐요";
-			var option = "width=306px, height=440px, toolbars=no, scrollbars=yes";
-			
-			window.open(url, name, option);
-		}
-		
-		function sohyePop4() {
-			var url = "/resources/assets/img/slide/kimsoGIF18.gif";
-			var name = "김소혜 이뻐요";
-			var option = "width=222px, height=396px, toolbars=no, scrollbars=yes";
-			
-			window.open(url, name, option);
-		}
-		
-		function sohyePop5() {
-			var url = "/resources/assets/img/slide/kimsoGIF6.gif";
-			var name = "김소혜 이뻐요";
-			var option = "width=480px, height=292px, toolbars=no, scrollbars=yes";
-			
-			window.open(url, name, option);
-		}
 	</script>
 	
 <!-- jQuery 사용 -->
@@ -136,28 +96,16 @@
 		</div>
 		
 		<div class="copyright">
-		(주) DailyHairShop　|　 대표 김국영　|　사업자 등록번호 001 - 01 - 00001　|　본점 위치 서울특별시 성동구 무학로 2길 <span
-			onclick="sohyePop1()">소혜빌딩</span> <span onclick="sohyePop2()">17층,</span> <span
-			onclick="sohyePop3()">18층</span> <span onclick="sohyePop4()">(매장,</span> <span
-			onclick="sohyePop5()">사무실)</span>
+		(주) DailyHairShop　|　 대표 김국영　|　사업자 등록번호 001 - 01 - 00001　|　본점 위치 서울특별시 성동구 무학로 2길 소혜빌딩 17층, 18층 (매장, 사무실)
 		</div>
 		<div class="copyright">
 		&copy; Copyright <strong><span>DailyHairShop</span></strong>. All Rights Reserved　|　Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>　|　
 		<a href="/admin/adminLoginForm.do">□</a>
 		</div>
-		
-		<!-- <div class="credits">
-        All the links in the footer should remain intact.
-        You can delete the links only if you purchased the pro version.
-        Licensing information: https://bootstrapmade.com/license/
-        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-		</div> -->
 	</div>
 	</footer><!-- End Footer -->
 	
 	  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
 </body>
 
 </html>

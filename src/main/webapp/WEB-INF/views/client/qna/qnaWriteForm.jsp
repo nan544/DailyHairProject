@@ -48,24 +48,22 @@
 	<script type="text/javascript" src="/resources/assets/js/main_main.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	
 <script type="text/javascript">
-
-function chkImg(file){
-    if(file.val()!=""){
-   var ext = file.val().split('.').pop().toLowerCase();
-   if(jQuery.inArray(ext,['gif','png','jpg'])== -1){
-      alert("파일 형식이 맞지않습니다 \n업로드 가능 파일[gif, png, jpg]");
-      return false;
-   }else return true;
-}else{
-    return true;
-}
-}
+	function chkImg(file){
+		if(file.val()!=""){
+		var ext = file.val().split('.').pop().toLowerCase();
+			if(jQuery.inArray(ext,['gif','png','jpg'])== -1){
+			alert("파일 형식이 맞지않습니다 \n업로드 가능 파일[gif, png, jpg]");
+			return false;
+			}else return true;
+		}else{
+		return true;
+		}
+	}
  
 	$(function() {
-
 		//닫기버튼 클릭시 팝업창 닫기
 		$("#closeBtn").click(function() {
 			window.close();
@@ -87,10 +85,9 @@ function chkImg(file){
 				alert("내용을 입력해주세요");
 				$("#qna_content").focus();
 				return false;
-			} else if (!chkImg($("#file"))){
+			}else if (!chkImg($("#file"))){
 				return false;
 			}else {
-
 				var formData = new FormData($("#inForm")[0]);
 
 				$.ajax({
@@ -112,9 +109,7 @@ function chkImg(file){
 							loaction.reload(true);
 						}
 					}
-
 				}); //ajax 종료 */
-
 			}
 		});
 	});
@@ -138,7 +133,6 @@ function chkImg(file){
 			border: 2px dashed #ffb03b;
 			border-radius: 25px; }
 	.qnaBtn:hover { background: #FFE08C; } 
-	
 	.writeContainer { width: 95%; margin: 0 auto; }
 	.writeContainer > form > div > div > h4 { padding-left: 12.5px; }
 	.insertTitle { display: inline; margin-left: 10px;

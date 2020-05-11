@@ -206,7 +206,6 @@ p > span { color: red; font: bold; }
 					<input class="closeBtn" type="button" name="deleteBtn" id="deleteBtn" value="삭제" disabled="disabled"/>
 					<input class="closeBtn" type="button" name="updateBtn" id="updateBtn" value="수정" disabled="disabled"/>
 				</c:if>
-				
 			</div>
 			
 			<!-- 문의 답변 -->

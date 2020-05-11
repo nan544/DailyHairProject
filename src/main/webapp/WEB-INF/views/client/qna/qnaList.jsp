@@ -51,7 +51,6 @@
 
 <script type="text/javascript">
 	$(function(){
-		
 		//문의하기 버튼클릭시 팝업창 띄우기
 		$("#writeBtn").click(function(){
 			

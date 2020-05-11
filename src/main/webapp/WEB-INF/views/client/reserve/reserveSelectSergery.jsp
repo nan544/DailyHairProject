@@ -121,17 +121,13 @@
 				checkArr.push($(this).val());
 		   });				
 		   
-		   
-		  
 		$("#holy").val(checkArr);
-		
 		   
 		  $("#stylingForm").attr({
 				"method":"post",
 				"action":"/reserve/reservePayment.do"});
 			$("#stylingForm").submit();  
 		   
-			
 		}
 	</script>
 </head>
@@ -218,7 +214,6 @@
 			<!-- 버튼 -->
 			<div style="margin: 0 auto; margin-top: 75px;">
 				<button class="reserveBtn" onclick="selectDesigner()">이전 단계</button>
-				<!-- <button class="reserveBtn" onclick="payment()">결제하기</button> -->
 				<c:if test="${not empty styleList}"><button class="reserveBtn" onclick="payment()">결제하기</button></c:if>
 				<c:if test="${empty styleList}"><button class="reserveBtnNot" onclick="payment()" disabled="disabled">결제하기</button></c:if>
 			</div>

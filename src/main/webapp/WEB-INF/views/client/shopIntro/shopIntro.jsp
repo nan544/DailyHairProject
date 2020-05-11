@@ -102,11 +102,9 @@
 		$("#des_num").val(num);
 		var des_num = num;
 		
-		
 		var url = "/client/designerSergery.do?des_num="+des_num;
 		var name = "디자이너 시술 목록";
 		var option = "width=500px, height=500px, toolbars=no, scrollbars=yes, resizable=no";
-		
 		
 		window.open(url, name, option);
 	}
