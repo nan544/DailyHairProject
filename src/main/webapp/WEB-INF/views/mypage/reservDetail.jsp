@@ -54,14 +54,9 @@
 <!-- 모바일 웹 페이지 설정 -->
 <link rel="shortcut icon" href="/resources/image/icon.png" />
 <link rel="apple-touch-icon" href="/resources/image/icon.png" />
-<!-- 모바일 웹 페이지 설정 끝 -->
-<!--[if lt IE 9]>
-<script src="/resources/include/js/html5shiv.js"></script>
-<![endif]-->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	
 	$("#closeBtn").click(function() {
 		window.close();
 	});
@@ -70,7 +65,6 @@ $(function() {
 </script>
 <style type="text/css">
 section { padding-bottom: 14px; }
-
 .qnaHeadBox { width: 95%; max-width: 1600px; margin: 0 auto; }
 .tableBox1 { width: 95%; margin: 0 auto; }
 .tableBox1 > table { width: 100%; text-align: center; }
@@ -98,8 +92,6 @@ section { padding-bottom: 14px; }
 	border: 1px solid #FFE08C;
 	border-radius: 15px;
 	background-color: #FFE08C; }
-
-
 .detailBox { margin: 0 auto; min-width: 1020px; width: 90%;
 			box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 			padding: 15px 5px 5px 5px;
@@ -108,8 +100,6 @@ section { padding-bottom: 14px; }
 .detailStyle { display: inline-block; width: 150px; font-size: 12px; }
 .detailStyleHead { display: inline-block; width: 150px;
 					font-weight: 600; font-size: 13px; }
-
-
 .closeBox { padding-top: 50px; }
 .closeBtn { margin: 0 auto; border: 0; padding: 15px 35px 5px 35px;
 			background-color: #fffaf3; }

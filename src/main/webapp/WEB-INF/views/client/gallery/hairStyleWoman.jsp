@@ -55,13 +55,10 @@
 	<style type="text/css">
 		.hairBtn { margin: 0 auto; border: 0; padding: 15px 35px 15px 35px;
 					background-color: #fffaf3; width: 150px; }
-		
-		
 		.noBox { width: 750px; height: 500px; background-color: white;
 				box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 				margin-top: 50px; }
 		.noHS { padding-top: 200px; }
-		
 		.designer { width: 280px; height: 400px; }
 		.designerbox { float: left; padding: 10px; 
 						margin: 15px 35px 15px 35px;
@@ -141,10 +138,7 @@
 						<c:forEach var="hsList" items="${hairStyleList }">
 							<div class="designerbox" onclick="clickHairStyle(${hsList.hs_num})">
 								<c:if test="${not empty hsList.hs_thumb }">
-									<!-- 로컬 저장소 사용 시 주석 해제하면 썸네일 이미지 불러옴 -->
-									<%-- <input type="hidden" class="designer" name="hg_thumb" id="hg_thumb" value="${hsList.hs_thumb}" /> --%>
 									<img src="/uploadStorage/HairStyle/<c:out value='${hsList.hs_thumb}'/>" style="width: 250px; height: 350px;">
-								<!-- 	<img class="designer" src="/resources/assets/img/goodsNoImg.png"> -->
 								</c:if>
 								<p>${hsList.hs_title}</p>
 							</div>

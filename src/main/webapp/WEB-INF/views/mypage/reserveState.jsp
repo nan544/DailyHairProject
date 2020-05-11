@@ -54,11 +54,8 @@
 <!-- 모바일 웹 페이지 설정 -->
 <link rel="shortcut icon" href="/resources/image/icon.png" />
 <link rel="apple-touch-icon" href="/resources/image/icon.png" />
-<!-- 모바일 웹 페이지 설정 끝 -->
-
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-
 $(function() {
 	
 	$("#memberUpdate").click(function() {
@@ -77,10 +74,8 @@ $(function() {
 	$(".detailreservation").click(function(){
 		let rest_num = $(this).parents("tr").attr("data-num");
 		
-		
 		window.open("reservDetail.do?rest_num="+rest_num, "mypagePop",
 		"width=1400, height=570, left=100, top=100");
-		
 	});
 	
 	//예약취소
@@ -100,11 +95,9 @@ $(function() {
 				}
 			});
 		}
-		
 	});
 	
 });
-
 </script>
 <style type="text/css">
 .other_btn { width: 125px; height: 35px;
@@ -122,14 +115,10 @@ $(function() {
 			border: 2px dashed #ffb03b;
 			border-radius: 25px; }
 .other_btn:hover { background: #FFE08C; }
-
-
 .qnaHeadBox { width: 95%; max-width: 1600px; margin: 0 auto; }
 .resBox { text-align: left; margin-bottom: 75px; }
 .p_ori { margin-bottom: 20px; text-align: center; }
 .p_set { margin-bottom: 0px; }
-
-
 .tableBox1 { width: 95%; margin: 0 auto; }
 .tableBox1 > table { width: 100%; text-align: center; }
 .tableBox2 > table { width: 100%; text-align: center; }
@@ -139,8 +128,6 @@ $(function() {
 .thBottom { padding: 15px 0px 15px 0px; }
 .thBottom2 { padding: 15px 0px 15px 0px; color: #BDBDBD; }
 .tdBottom { padding: 50px 0px 50px 0px; }
-
-
 .tableBox2 { margin-bottom: 150px; padding: 15px;
 			box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 			transition: all ease-in-out 0.3s;
@@ -168,7 +155,6 @@ $(function() {
 	-o-text-overflow: ellipsis;
 	overflow: hidden;
 	-moz-binding: url('ellipsis.xml#ellipsis'); }
-	
 </style>
 </head>
 

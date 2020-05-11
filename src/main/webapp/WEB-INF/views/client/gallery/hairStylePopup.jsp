@@ -55,8 +55,6 @@
 	.stylingBox > div > p { text-align: center; }
 	.notFound { text-align: center; margin: 0 auto; padding-top: 150px;
 				width: 300px; height: 450px; }
-	
-	
 	.closeBox { padding-top: 50px; }
 	.closeBtn { margin: 0 auto; border: 0; padding: 15px 35px 5px 35px;
 				background-color: #fffaf3; }
@@ -72,7 +70,7 @@
 	});
 	</script>
 	
-<!-- 이미지 슬라이드 필요 소스 -->
+<!--========== 이미지 슬라이드 필요 소스 ==========-->
 <!-- jQuery 사용 -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">

@@ -120,8 +120,6 @@
 						<c:forEach var="hgList" items="${hairGoodsList }">
 							<div class="designerbox" onclick="clickHairGoods(${hgList.hg_num})">
 								<c:if test="${hgList.hg_thumb != null }">
-									<!-- 로컬 저장소 사용 시 주석 해제하면 썸네일 이미지 불러옴 -->
-									<%-- <input type="hidden" class="designer" name="hg_thumb" id="hg_thumb" value="${hgList.hg_thumb}" /> --%>
 									<img class="designer" src="/uploadStorage/HairGoods/<c:out value='${hgList.hg_thumb}'/>">
 								</c:if>
 								<p>${hgList.hg_title}</p>

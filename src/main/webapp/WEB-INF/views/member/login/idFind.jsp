@@ -54,14 +54,9 @@
    <!-- 모바일 웹 페이지 설정 -->
    <link rel="shortcut icon" href="/resources/image/icon.png" />
    <link rel="apple-touch-icon" href="/resources/image/icon.png" />
-   <!-- 모바일 웹 페이지 설정 끝 -->
-   <!--[if lt IE 9]>
-   <script src="/resources/include/js/html5shiv.js"></script>
-   <![endif]-->
    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
    <script type="text/javascript">
    $(function() {
-	   
 	      var msg = "<c:out value='${msg}'/>";
 		   
 		  if(msg != ""){
@@ -69,7 +64,6 @@
 		  }
 		  
 		  $("#idFind").click(function() {
-			
 				//필수 입력 요소들을 입력하지 않고 가입 버튼을 눌렀을 때 못넘어가게 함
 				if ($("#m_email").val() == "") {
 					alert("필수 입력 항목입니다.");		//이메일
@@ -77,27 +71,22 @@
 					return false;
 				}
 		});
-		  
    });
       
    function fn_idFind() {
-	      
 	      var email = $("#m_email").val();
 	      
 	      $("#idFindForm").attr("method","post");
 	      $("#idFindForm").attr("action","/member/login/idFind.do");
 	      $("#idFindForm").submit();
-	      
 	}
    
    function enterkey() {
        if (window.event.keyCode == 13) {
-
         // 엔터키가 눌렸을 때 실행할 내용
     	$("#idFindForm").attr("method","post");
  	    $("#idFindForm").attr("action","/member/login/idFind.do");
  	    $("#idFindForm").submit();
-   		
        }
 	}
    
