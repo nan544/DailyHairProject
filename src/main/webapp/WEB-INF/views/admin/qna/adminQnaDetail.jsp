@@ -150,6 +150,14 @@ color: gray;
 
 </head>
 <body>
+
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
+
 	<form name="downForm" id="downForm"></form>
 	<h1>1:1 문의 상세보기</h1>
 	<input type="button" name="listBtn" id="listBtn" value="목록으로" class="btn"/>

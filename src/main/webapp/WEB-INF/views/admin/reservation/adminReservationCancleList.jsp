@@ -79,6 +79,14 @@ margin-right: 5px;
 </script>
 </head>
 <body>
+
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
+
 	<h1>예약취소 목록</h1>
 	
 	<div class="resultContainer">

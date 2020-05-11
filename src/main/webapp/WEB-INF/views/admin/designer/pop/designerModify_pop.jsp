@@ -43,7 +43,7 @@
 		//수정할 디자이너의 번호를 설정함
 		var des_num = "${des.des_num}";
 		$("#des_num").val(des_num);
-
+			
 		//선택된 디자이너의 성별값을 변수에 담음
 		var gender = "${des.des_gender}";
 		//수정창 띄울시 DB에 저장되어있는 디자이너의 성별을 가져와서 라디오버튼에 체크시킴.
@@ -196,6 +196,13 @@ height: 32px;
 </style>
 </head>
 <body>
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
+	
 	<h1 align="center">디자이너 정보</h1>
 	<hr>
 	<c:if test="${des.des_state == 0}">
@@ -279,10 +286,10 @@ height: 32px;
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;"><span>*&nbsp;</span>성별</td>
-					<td><label for="des_gender1">남성</label> <input type="radio"
-						name="des_gender" id="des_gender1" value="남성" /> <label
-						for="des_gender2">여성</label> <input type="radio" name="des_gender"
-						id="des_gender2" value="여성" /></td>
+					<td><label for="des_gender1">남성</label> 
+					<input type="radio" name="des_gender" id="des_gender1" value="남성" /> 
+					<label for="des_gender2">여성</label> 
+					<input type="radio" name="des_gender" id="des_gender2" value="여성" /></td>
 						<td></td>
 				</tr>
 				<tr>

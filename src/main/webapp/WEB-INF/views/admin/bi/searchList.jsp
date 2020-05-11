@@ -141,6 +141,12 @@ h5 {
 
 </head>
 <body>
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
 	<div id="contents">
 		<c:set var="totalPrice" value="0" />
 

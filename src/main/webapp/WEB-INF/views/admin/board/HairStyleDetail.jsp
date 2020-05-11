@@ -115,6 +115,12 @@ font-size: 12px;
 <title>Insert title here</title>
 </head>
 <body>
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
 	<!-- 이미지 파일명 표기를 위한 식 -->
 	<c:set var="hs_thumb_"
 		value="${fn:substringAfter(detail.hs_thumb,'_') }" />

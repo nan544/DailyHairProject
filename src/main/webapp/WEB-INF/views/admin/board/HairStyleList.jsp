@@ -62,6 +62,12 @@ margin-right: 5px;
 </script>
 </head>
 <body>
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
 	<p>
 	<h3>HairStyle 게시판 관리</h3>
 	<form name="f_search" id="f_search">

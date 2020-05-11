@@ -44,6 +44,12 @@ textarea {
 <title>자주 묻는 질문 작성</title>
 </head>
 <body>
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
 	<div>
 		<div>
 			<h2>자주하는 질문 관리-게시글 등록</h2>
