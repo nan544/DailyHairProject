@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="false"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <style type="text/css">
 #contents {
 	width: 1000px;
@@ -32,15 +32,15 @@ h5 {
 	text-align: right;
 }
 </style>
+
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script type="text/javascript">
-	
-
 	$(function() {
-
+		
+		
 		$("#datepicker2").attr("disabled",true);
 		
 		
@@ -51,30 +51,29 @@ h5 {
 		});
 
 		$("#datepicker2").datepicker({
-			format : 'yyyy-mm-dd'
-			/* ,endDate : new Date() */
+			format : 'yyyy-mm-dd',
 		}).on("changeDate", function() {
-			
 			var fromDate = $("#datepicker1").val();
 			var toDate = $("#datepicker2").val();
 
 			let strDate1 = fromDate;
 			let strDate2 = toDate;
 			
+			
 			let arr1 = strDate1.split('-');
 			let arr2 = strDate2.split('-');
 
 			let dat1 = new Date(arr1[0], arr1[1], arr1[2]);
 			let dat2 = new Date(arr2[0], arr2[1], arr2[2]);
+			
 
 			let diff = dat2 - dat1;
 
 			let currDay = 24 * 60 * 60 * 1000;
 
-			let minDate = parseInt(diff/currDay);
+			let minDate = parseInt(diff / currDay);
 
 			$("#minDate").val(minDate+1);
-			
 
 		});
 		
@@ -101,40 +100,30 @@ h5 {
 		});
 
 	});
+	
 </script>
 
-
+<title>Insert title here</title>
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+	let array = new Array();
+
+	array.push([ '날짜', '매출(단위:원)' ]);
+
+	<c:forEach items="${result}" var="item">
+	array.push([ "${item.rest_hairdate}",parseInt("${item.rest_totalprice}") ]);
+	</c:forEach>
+
+	console.log(array);
+	
 	google.charts.load('current', {
 		'packages' : [ 'corechart' ]
 	});
 	google.charts.setOnLoadCallback(drawChart);
 	function drawChart() {
-		var data2 = new Array();
-		data2.push("[ '날짜', '매출(단위:원)' ]");
-		console.log(data2);
-		
-		var data = google.visualization.arrayToDataTable([
-				[ '날짜', '매출(단위:원)' ],
-			
-				[ "${result[0].rest_hairdate}",
-						parseInt('${result[0].rest_totalprice}') ],
-				[ "${result[1].rest_hairdate}",
-						parseInt('${result[1].rest_totalprice}') ],
-				[ "${result[2].rest_hairdate}",
-						parseInt('${result[2].rest_totalprice}') ],
-				[ "${result[3].rest_hairdate}",
-						parseInt('${result[3].rest_totalprice}') ],
-				[ "${result[4].rest_hairdate}",
-						parseInt('${result[4].rest_totalprice}') ],
-				[ "${result[5].rest_hairdate}",
-						parseInt('${result[5].rest_totalprice}') ],
-				[ "${result[6].rest_hairdate}",
-						parseInt('${result[6].rest_totalprice}') ]
 
-		]);
+		var data = google.visualization.arrayToDataTable(array);
 
 		var options = {
 			title : '매출 현황',
@@ -164,8 +153,8 @@ h5 {
 					class="selectSearch form-control" autocomplete=off><label>~</label> <input
 					type="text" id="datepicker2" name="toDate"
 					class="selectSearch form-control" autocomplete=off> <input type="button"
-					id="searchBtn" value="조회"> 
-					<input type="hidden" id="minDate" name="minDate" value="">
+					id="searchBtn" value="조회"> <input type="hidden"
+					id="minDate" name="minDate">
 			</p>
 		</form>
 		<div>

@@ -210,7 +210,7 @@
 			<!-- 상단 -->
 			<div style="margin: 0 auto; text-align: center; width: 100%;">
 				<h1 style="margin-bottom: 10px;">결제하기</h1>
-				<p style="margin-bottom: 10px;">결제 수단을 선택해주세요.</p>
+				<p style="margin-bottom: 10px;">결제 수단을 선택해주세요. 예약금 5천원만 결제됩니다.</p>
 			</div>
 			
 			<div style="width: 100%; margin: 0 auto;">

@@ -54,7 +54,7 @@
 	
 	<script type="text/javascript">
 		function logout(){
-			alert("로그아웃되셨습니다.");
+			alert("로그아웃되었습니다.");
 		}
 	</script>
 	
@@ -100,7 +100,7 @@
 						</ul>
 					</li>
 					<li class="book-a-table text-center">
-						<c:if test="${not empty login}"><a href="/member/login/logout.do">로그아웃</a></c:if>
+						<c:if test="${not empty login}"><a href="/member/login/logout.do" onclick='logout()'>로그아웃</a></c:if>
 						<c:if test="${empty login}"><a href="/member/login/login.do">로그인</a></c:if>
 					</li>
 					<li class="book-a-table text-center">

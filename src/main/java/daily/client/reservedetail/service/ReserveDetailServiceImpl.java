@@ -17,4 +17,9 @@ public class ReserveDetailServiceImpl implements ReserveDetailService {
 	public int insertReservationDetail(int styling_num) {
 		return reserveDetailDao.insertReservationDetail(styling_num);
 	}
+
+	@Override
+	public int confirmStyle(int styling_num) {
+		return reserveDetailDao.confirmStyle(styling_num);
+	}
 }

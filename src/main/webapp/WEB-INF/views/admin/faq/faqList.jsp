@@ -14,6 +14,7 @@
 	width: 700px;
 	height: 200px;
 }
+
 </style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery.min.js"></script>

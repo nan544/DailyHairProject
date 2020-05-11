@@ -139,7 +139,7 @@
 			<!-- 데이터 출력 끝-->
 		</table>
 		<!-- BtnMenu -->
-		<div>
+		<div >
 		<!-- 페이지 네비게이션 -->
 			<tag:paging page="${param.page}" total="${total}"
 				list_size="${data.pageSize}"></tag:paging>
