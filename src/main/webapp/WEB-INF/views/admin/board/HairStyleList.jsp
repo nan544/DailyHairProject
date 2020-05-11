@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <%@ taglib prefix="tag" uri="/WEB-INF/tld/custom_tag.tld"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +10,26 @@
 <title>Insert title here</title>
 <link href="/resources/include/css/board.css">
 <style type="text/css">
-.btnBoard{
-width : 70px;
-float: right;
-margin-top: 5px;
+
+.keyword {
+	width: 200px;
+	float: left;
+	margin-right: 5px;
 }
-.keyword{
-width : 200px;
-float: left;
-margin-right: 5px;
+.btnBoard {
+	width: 70px;
+	float: right;
+}
+
+#contents {
+	width: 1200px;
+}
+#f_search{
+float: right;
+margin-bottom:5px; 
+}
+#insertFormBtn{
+margin-bottom: 
 }
 </style>
 <script type="text/javascript"
@@ -62,79 +73,85 @@ margin-right: 5px;
 </script>
 </head>
 <body>
-<c:if test="${empty login }">
-		<script type="text/javascript">
-			alert("로그인이 필요합니다.");
-			location.href="/admin/adminLoginForm.do";
-		</script>
-	</c:if>
-	<p>
-	<h3>HairStyle 게시판 관리</h3>
-	<form name="f_search" id="f_search">
-	 <input
-			type="hidden" id="page" name="page" value="${data.page}">
-		<input type="text" id="keyword" name=keyword class="keyword form-control" placeholder="스타일이름(제목)" value="${data.keyword}">
-		<input type="hidden" id="search" name="search" value="hs_title">
-		<input type="button" id="searchBtn" class="btn btnBoard" name="searchBtn" value="검색">
+		<c:if test="${empty login }">
+			<script type="text/javascript">
+				alert("로그인이 필요합니다.");
+				location.href = "/admin/adminLoginForm.do";
+			</script>
+		</c:if>
+	<div id="contents">
+		<h3>HairStyle 게시판 관리</h3>
+		<form name="f_search" id="f_search">
+			<input type="hidden" id="page" name="page" value="1">
+			<input type="text" id="keyword" name=keyword
+				class="keyword form-control" placeholder="스타일이름(제목)"
+				value="${data.keyword}"> <input type="hidden" id="search"
+				name="search" value="hs_title"> <input type="button"
+				id="searchBtn" class="btn btnBoard" name="searchBtn" value="검색">
 		</form>
-	<p>
+		
 
+			<%--====================상세 페이지 이동을 위한 Form =============== --%>
+		<form name="detailForm" id="detailForm">
+			<input type="hidden" name="hs_num" id="hs_num">
+		</form>
 		<%--====================상세 페이지 이동을 위한 Form =============== --%>
-	<form name="detailForm" id="detailForm">
-		<input type="hidden" name="hs_num" id="hs_num">
-	</form>
-	<%--====================상세 페이지 이동을 위한 Form =============== --%>
-	<!-- 페이징 -->
-	<!--  -->
-	<table class="table table-condensed table-hover">
-		<colgroup >
-			<col width="10%" />
-			<col width="20%" />
-			<col width="20%" />
-			<col width="25%" />
-			<col width="25%" />
+		<!-- 페이징 -->
+		<!--  -->
+		<table class="table table-condensed table-hover">
+			<colgroup>
+				<col width="10%" />
+				<col width="20%" />
+				<col width="20%" />
+				<col width="25%" />
+				<col width="25%" />
 
-		</colgroup>
-		<tr class="active">
-			<th>글번호</th>
-			<th>스타일이름</th>
-			<th>등록일</th>
-			<th>썸네일 이미지명</th>
-			<th>상세이미지</th>
-		</tr>
-		<!-- 데이터 출력 시작-->
-		<c:choose>
-			<c:when test="${not empty hsList }">
-				<c:forEach var="hsList" items="${hsList}" varStatus="status">
-				<c:set var="hs_thumb_" value="${fn:substringAfter(hsList.hs_thumb,'_') }" />
-				<c:set var="hs_thumb__" value="${fn:substringAfter(hs_thumb_,'_') }"/>
-				<c:set var="hs_img1_" value="${fn:substringAfter(hsList.hs_img1,'_') }"/>
-				<c:set var="hs_img1__" value="${fn:substringAfter(hs_img1_,'_') }"/>
-					<tr data-num="${hsList.hs_num}">
-						<td class="goDetail">${hsList.hs_num}</td>
-						<td class="goDetail">${hsList.hs_title}</td>
-						<td>${hsList.hs_regdate}</td>
-						<td>${hs_thumb__}</td>
-						<td>${hs_img1__}</td>
+			</colgroup>
+			<tr class="active">
+				<th>글번호</th>
+				<th>스타일이름</th>
+				<th>등록일</th>
+				<th>썸네일 이미지명</th>
+				<th>상세이미지</th>
+			</tr>
+			<!-- 데이터 출력 시작-->
+			<c:choose>
+				<c:when test="${not empty hsList }">
+					<c:forEach var="hsList" items="${hsList}" varStatus="status">
+						<c:set var="hs_thumb_"
+							value="${fn:substringAfter(hsList.hs_thumb,'_') }" />
+						<c:set var="hs_thumb__"
+							value="${fn:substringAfter(hs_thumb_,'_') }" />
+						<c:set var="hs_img1_"
+							value="${fn:substringAfter(hsList.hs_img1,'_') }" />
+						<c:set var="hs_img1__" value="${fn:substringAfter(hs_img1_,'_') }" />
+						<tr data-num="${hsList.hs_num}">
+							<td class="goDetail">${hsList.hs_num}</td>
+							<td class="goDetail">${hsList.hs_title}</td>
+							<td>${hsList.hs_regdate}</td>
+							<td>${hs_thumb__}</td>
+							<td>${hs_img1__}</td>
+						</tr>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<tr>
+						<td colspan="8" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 					</tr>
-				</c:forEach>
-			</c:when>
-			<c:otherwise>
-				<tr>
-					<td colspan="8" class="tac">등록된 게시물이 존재하지 않습니다.</td>
-				</tr>
-			</c:otherwise>
-		</c:choose>
-		<!-- 데이터 출력 끝-->
-	</table>
-	<div>
-	<input type="button"  class="btn btnBoard" id="insertFormBtn" name="insertFormBtn" value="등록">
-</div>
-	<!-- 페이지 네비게이션 -->
-	<div id="boardPage">
-		<tag:paging page="${param.page}" total="${total}"
-			list_size="${data.pageSize}"></tag:paging>
+				</c:otherwise>
+			</c:choose>
+			<!-- 데이터 출력 끝-->
+		</table>
+		<div>
+			<input type="button" class="btn btnBoard" id="insertFormBtn"
+				name="insertFormBtn" value="등록">
+		</div>
+		<!-- 페이지 네비게이션 -->
+		<div id="boardPage">
+			<tag:paging page="${param.page}" total="${total}"
+				list_size="${data.pageSize}"></tag:paging>
 
+		</div>
 	</div>
 </body>
 </html>

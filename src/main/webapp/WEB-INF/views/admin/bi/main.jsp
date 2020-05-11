@@ -181,8 +181,8 @@ h5 {
 		<div id="contents">
 			<table class="table table-striped">
 
-				<thead class="active">
-					<tr>
+				<thead >
+					<tr class="active">
 						<th>날짜</th>
 						<th>매출액</th>
 					</tr>
