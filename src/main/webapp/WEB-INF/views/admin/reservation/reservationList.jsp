@@ -129,7 +129,7 @@ text-align: center;
 	<c:choose>
 		<c:when test="${not empty desList}">
 			<select id="des_num" name="des_num" class="des_num form-control">
-				<option value="0">전체디자이너</option>
+				<option value="-1">전체디자이너</option>
 				<c:forEach var="des" items="${desList}">
 					<option value="${des.des_num}">${des.des_name}</option>
 				</c:forEach>

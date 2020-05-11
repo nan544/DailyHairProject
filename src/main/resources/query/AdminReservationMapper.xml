@@ -42,10 +42,10 @@
 		FROM reservation a inner join member b
 		ON a.m_id = b.m_id
 		<where>
-		<if test="des_num != 0">
+		<if test="des_num != -1">
 		 a.rest_state = 1 and a.rest_hairdate = #{rest_hairdate} and a.des_num = #{des_num}
 		 </if>
-		 <if test="des_num == 0">
+		 <if test="des_num == -1">
 		 a.rest_state = 1 and a.rest_hairdate = #{rest_hairdate}
 		 </if>
 		</where>
@@ -75,7 +75,7 @@
 				a.rest_state = 2
 			</if>
 		</where>
-	     	ORDER BY a.rest_time desc
+	     	ORDER BY a.rest_time desc, a.rest_hairdate 
 	</select> 
 	
 
