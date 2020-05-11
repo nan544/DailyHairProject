@@ -102,7 +102,7 @@
 				return false;
 			}
 			if ($("#m_pwd").val() == "") {
-				alert("PW가 일치하지 않습니다. ");		//패스워드
+				alert("PW를 입력해주세요. ");		//패스워드
 				$("#m_pwd").focus();
 				return false;
 			}

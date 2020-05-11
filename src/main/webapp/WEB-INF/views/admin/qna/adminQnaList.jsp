@@ -19,12 +19,10 @@
 						function() {
 							let qna_state = $(this).children(".state").attr(
 									"data-num");
-							alert(qna_state);
 							let qna_num = $(this).attr("data-num");
 							location.href = "/admin/qna/qnaDetail.do?qna_num="
 									+ qna_num;
 						});
-
 	})
 /* 페이징을 위한 메소드 */
 		function goPage(page){

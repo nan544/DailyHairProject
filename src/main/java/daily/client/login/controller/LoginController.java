@@ -67,7 +67,7 @@ public class LoginController {
 		     mav.setViewName("member/login/login");
 		     return mav;
 	    }else {
-	    	mav.addObject("msg","이메일 인증진행중인 계졍입니다.");
+	    	mav.addObject("msg","이메일 인증진행중인 계정입니다.");
 	    	mav.setViewName("member/login/login");
 	    	return mav;
 	    }

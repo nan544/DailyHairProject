@@ -40,7 +40,7 @@ float: left;
 						data : {
 							"des_state" : des_state
 						},
-						success : function(data) {
+						success : function(data) { //AJAX성공시 동저리스트 생성
 							$(".deslist").html("");
 							let html = "";
 							for (let i = 0; i < data.length; i++) {
@@ -54,8 +54,6 @@ float: left;
 										+ data[i].des_state + '</td>'
 										+ '<td>'+'<input type='+'button id='+'modify name='+'modify class="btn modify" value='+'[상세보기/수정]'+'>'+'</td>'
 										+'</tr>'
-										
-									
 							} 					
 							
 							$(".deslist").append(html);
