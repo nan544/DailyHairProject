@@ -119,7 +119,7 @@
 				</if>
 			</if>
 		</where>
-	    ORDER BY rest_hairdate, rest_time
+	    ORDER BY rest_hairdate desc, rest_time 
 	</select> 
 	
 	<!-- 검색 조건마다 레코드 총 개수구하기 -->

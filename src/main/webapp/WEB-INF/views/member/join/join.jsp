@@ -65,12 +65,8 @@
 <!-- 모바일 웹 페이지 설정 -->
 <link rel="shortcut icon" href="/resources/image/icon.png" />
 <link rel="apple-touch-icon" href="/resources/image/icon.png" />
-<!-- 모바일 웹 페이지 설정 끝 -->
-<!--[if lt IE 9]>
-   <script src="/resources/include/js/html5shiv.js"></script>
-   <![endif]-->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
 <!-- 정규식 적용 -->
 <script type="text/javascript">
 	//아이디 정규식
@@ -145,12 +141,10 @@
 		
 		//이메일 중복확인
 		 $("#emailChk").click(function() {
-			
 			if($("#m_email").val()==''){
 				alert("이메일을 입력해주세요");
 				return;
 			}
-			 
 			 
 			if (mailJ.test($("#m_email").val())) {
 				$("#email_check").text("");
@@ -160,8 +154,8 @@
 				return false;
 			} 
 			
-		 let email = $("#m_email").val()+"@"+$("#emailDomain").val();
-		 
+		let email = $("#m_email").val()+"@"+$("#emailDomain").val();
+		
 		$.ajax({
 				url : "/member/mailChk.do",
 				type : "post",
@@ -175,71 +169,73 @@
 					}
 				}
 			}); 
-		
-		
 		}); 
 
 		$("#insertBtn").click(function() {
-					//필수 입력 요소들을 입력하지 않고 가입 버튼을 눌렀을 때 못넘어가게 함
-					if ($("#m_id").val() == "") {
-						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//아이디
-						$("#m_id").focus();
-						return false;
-					}
-					if ($("#m_pwd").val() == "") {
-						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//패스워드
-						$("#m_pwd").focus();
-						return false;
-					}
-					if ($("#m_pwd2").val() == "") {
-						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//패스워드 확인
-						$("#m_pwd2").focus();
-						return false;
-					}
-					if ($("#m_pwd").val() != $("#m_pwd2").val()) {	//비밀번호와 비밀번호 확인이 일치하는지 확인
-						alert("비밀번호가 일치하지 않습니다.");
-						return false;
-					}
-					if ($("#m_name").val() == "") {
-						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//이름
-						$("#m_name").focus();
-						return false;
-					}
-					if ($("#m_phone").val() == "") {
-						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//전화번호
-						$("#m_phone").focus();
-						return false;
-					}
-					if ($("#m_email").val() == "") {
-						alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//이메일
-						$("#m_email").focus();
-						return false;
-					}
-					//아이디 중복체크를 하면 가입 버튼 잠금이 풀림
-					var idChkVal = $("#idChk").val();
-					if (idChkVal == "N") {
-						alert("중복체크를 해주시길 바랍니다.");
-						return false;
-					} else if (idChkVal == "Y") {
-						$("#insertForm").submit();
-					}
-
-					//이메일의 앞 부분 텍스트와 뒷부분 주소를 합침
-					$("#m_email").val($("#m_email").val() + "@" + $("#emailDomain").val());
-					//null 대신에 '없음'을 넣는다.
-					if($("#m_memo").val()==''){
-						$("#m_memo").val("-");	
-					}
-
-					//가입 버튼을 눌렀을 때 post형식으로 보냄시킴
-					$("#insertForm").attr("method", "post");
-					$("#insertForm").attr("action", "/member/join.do");
-					$("#insertForm").submit();
+			//필수 입력 요소들을 입력하지 않고 가입 버튼을 눌렀을 때 못넘어가게 함
+			if ($("#m_id").val() == "") {
+				alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//아이디
+				$("#m_id").focus();
+				return false;
+			}
 					
+			if ($("#m_pwd").val() == "") {
+				alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//패스워드
+				$("#m_pwd").focus();
+				return false;
+			}
 					
-				
-				});
+			if ($("#m_pwd2").val() == "") {
+				alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//패스워드 확인
+				$("#m_pwd2").focus();
+				return false;
+			}
+					
+			if ($("#m_pwd").val() != $("#m_pwd2").val()) {	//비밀번호와 비밀번호 확인이 일치하는지 확인
+				alert("비밀번호가 일치하지 않습니다.");
+				return false;
+			}
+					
+			if ($("#m_name").val() == "") {
+				alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//이름
+				$("#m_name").focus();
+				return false;
+			}
+					
+			if ($("#m_phone").val() == "") {
+				alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//전화번호
+				$("#m_phone").focus();
+				return false;
+			}
+					
+			if ($("#m_email").val() == "") {
+				alert("필수 입력 요소들을 모두 입력해주시기 바랍니다.");		//이메일
+				$("#m_email").focus();
+				return false;
+			}
+					
+			//아이디 중복체크를 하면 가입 버튼 잠금이 풀림
+			var idChkVal = $("#idChk").val();
+			if (idChkVal == "N") {
+				alert("중복체크를 해주시길 바랍니다.");
+				return false;
+			} else if (idChkVal == "Y") {
+				$("#insertForm").submit();
+			}
 
+			//이메일의 앞 부분 텍스트와 뒷부분 주소를 합침
+			$("#m_email").val($("#m_email").val() + "@" + $("#emailDomain").val());
+			
+			//null 대신에 '없음'을 넣는다.
+			if($("#m_memo").val()==''){
+				$("#m_memo").val("-");	
+			}
+					
+			//가입 버튼을 눌렀을 때 post형식으로 보냄시킴
+			$("#insertForm").attr("method", "post");
+			$("#insertForm").attr("action", "/member/join.do");
+			$("#insertForm").submit();
+		});
 	});
 
 	function fn_idChk() {
@@ -321,7 +317,6 @@
 }
 .other_btn:hover { background: #FFE08C; }
 </style>
-
 </head>
 
 <body>

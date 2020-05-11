@@ -54,42 +54,36 @@
 <!-- 모바일 웹 페이지 설정 -->
 <link rel="shortcut icon" href="/resources/image/icon.png" />
 <link rel="apple-touch-icon" href="/resources/image/icon.png" />
-<!-- 모바일 웹 페이지 설정 끝 -->
-<!--[if lt IE 9]>
-<script src="/resources/include/js/html5shiv.js"></script>
-<![endif]-->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-
 $(function() {
-	
 	$("#memberSubmit").click(function() {
 		$("#submitForm").attr('method','post');
 		$("#submitForm").attr("action","/mypage/mymemberUpdate.do");
 		$("#submitForm").submit();
 		alert("회원정보가 수정 되었습니다.\n로그아웃 상태로 메인페이지로 이동합니다.");
-		
 	});
 	
+	// 회원정보 수정
 	$("#memberUpdate").click(function() {
-		location.href = "/mypage/memberUpdate.do"		//회원정보 수정
+		location.href = "/mypage/memberUpdate.do"
 	});
 	
+	// 계정 비활성화
 	$("#deactivation").click(function() {
-		location.href = "/mypage/deactivation.do"		//계정 비활성화
+		location.href = "/mypage/deactivation.do"
 	});
 	
+	// 예약현황
 	$("#reserveState").click(function() {
-		location.href = "/mypage/reserveState.do"		//예약현황
+		location.href = "/mypage/reserveState.do"
 	});
 	
-	$("#pwdModify").click(function() {					//패스워드 수정
-		
+	// 패스워드 수정
+	$("#pwdModify").click(function() {
 		location.href = "/member/login/memberPwdModify.do";
 	});
-	
 });
-
 </script>
 <style type="text/css">
 .other_btn { width: 125px; height: 35px;
@@ -117,7 +111,6 @@ $(function() {
 .main > form > div > textarea { background-color: white;
 								border: 1px solid #BDBDBD;
 								resize: none; }
-						
 .join_input > input[type=button] {
 	margin-left: 15px;
 	width: 125px; height: 30px;

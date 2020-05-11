@@ -70,16 +70,13 @@
 		<!-- Slide Image List -->
 		<div class="carousel-inner" role="listbox">
 			<!-- Slide 1 -->
-			<!-- <div class="carousel-item active" style="background: url(/resources/assets/img/slide/ShopImage_002.jpg);"> -->
 			<div class="carousel-item active" style="background: url(/resources/assets/img/slide/ShopImage_002.jpg);">
 				<div class="carousel-container">
 					<div class="carousel-content">
 						<h2 class="animated fadeInDown"><span>DailyHair</span>Shop</h2>
 						<p class="animated fadeInUp">A Newest Trendy Hair Style</p>
-						<!-- 사진 가운데 링크걸려있는 둥근 노란 테두리 버튼 -->
 						<div>
 							<a href="/client/hairStyleList.do" class="btn-menu animated fadeIn">상세보기</a>
-							<!-- <a href="#" class="btn-book animated fadeIn">입력</a> -->
 						</div>
 					</div>
 				</div>
@@ -91,10 +88,8 @@
 					<div class="carousel-content">
 						<h2 class="animated fadeInDown"><span>DailyHair</span>Shop</h2>
 						<p class="animated fadeInUp">A Newest Trendy Hair Style</p>
-						<!-- 사진 가운데 링크걸려있는 둥근 노란 테두리 버튼 -->
 						<div>
 							<a href="/client/hairStyleList.do" class="btn-menu animated fadeIn">상세보기</a>
-							<!-- <a href="#" class="btn-book animated fadeIn">입력</a> -->
 						</div>
 					</div>
 				</div>
@@ -106,10 +101,8 @@
 					<div class="carousel-content">
 						<h2 class="animated fadeInDown"><span>DailyHair</span>Shop</h2>
 						<p class="animated fadeInUp">The Best Of Best Premium Goods</p>
-						<!-- 사진 가운데 링크걸려있는 둥근 노란 테두리 버튼 -->
 						<div>
 							<a href="/client/hairGoodsList.do" class="btn-menu animated fadeIn">상세보기</a>
-							<!-- <a href="#" class="btn-book animated fadeIn">입력</a> -->
 						</div>
 					</div>
 				</div>
@@ -121,28 +114,25 @@
 					<div class="carousel-content">
 						<h2 class="animated fadeInDown"><span>코로나 </span> 예방 수칙</h2>
 						<p class="animated fadeInUp"></p>
-						<!-- 사진 가운데 링크걸려있는 둥근 노란 테두리 버튼 -->
 						<div>
 							<a href="javascript:corona()" class="btn-menu animated fadeIn">예방 수칙 보기</a>
-							<!-- <a href="#" class="btn-book animated fadeIn">입력</a> -->
 						</div>
 					</div>
 				</div>
 			</div>
-			
 		</div>
 			
 		<!-- 왼쪽 이미지 선택 버튼 -->
 		<a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
 			<span class="carousel-control-prev-icon icofont-simple-left" aria-hidden="true"></span>
 			<span class="sr-only">Previous</span>
-			</a>
+		</a>
 			
 		<!-- 오른쪽 이미지 선택 버튼 -->
 		<a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
 			<span class="carousel-control-next-icon icofont-simple-right" aria-hidden="true"></span>
 			<span class="sr-only">Next</span>
-			</a>
+		</a>
 		
 		</div>
 	</div>

@@ -67,14 +67,12 @@
 <script type="text/javascript">
 
 $(function() {
-
 	//계정 비활성화 버튼 클릭시 실행
 	$("#deleteBtn").click(function() {
 		let m_id = "${login.m_id}";
 		
 		if (confirm("비활성화 하시겠습니까?")) {
 			$.ajax({
-					
 				url : "/mypage/memberDelete.do",
 				type : "post",
 				data : { m_id : m_id },
@@ -85,13 +83,10 @@ $(function() {
 						}else{
 							alert("예약이 있는 회원은 비활성화가 안됩니다.");
 						}
-						
 				}
 			});
 		}
-		
-		});
-		
+	});
 
 	$("#memberUpdate").click(function() {
 		location.href = "/mypage/memberUpdate.do"
@@ -106,7 +101,6 @@ $(function() {
 	});
 	
 });
-
 </script>
 <style type="text/css">
 .other_btn { width: 125px; height: 35px;
@@ -124,8 +118,6 @@ $(function() {
 			border: 2px dashed #ffb03b;
 			border-radius: 25px; }
 .other_btn:hover { background: #FFE08C; }
-
-
 .main { min-width: 1020px; max-width: 1600px; margin: 0 auto; }
 .resBox { text-align: left; margin-bottom: 75px; }
 .p_ori { margin-bottom: 20px; text-align: center; }
@@ -135,8 +127,6 @@ $(function() {
 .resBox_L > p { display: inline; }
 .resBox_R { display: inline-block; width: 500px; }
 .resBox_R > p { display: inline; }
-
-
 .deactiveBtn { width: 175px; height: 50px;
 			text-align: center;
 			cursor: pointer;

@@ -62,17 +62,10 @@
 <!-- 모바일 웹 페이지 설정 -->
 <link rel="shortcut icon" href="/resources/image/icon.png" />
 <link rel="apple-touch-icon" href="/resources/image/icon.png" />
-<!-- 모바일 웹 페이지 설정 끝 -->
-<!--[if lt IE 9]>
-<script src="/resources/include/js/html5shiv.js"></script>
-<![endif]-->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-
 $(function() {
-	
 	$("#mypageBtn").click(function() {
-		
 		//필수 입력 요소들을 입력하지 않고 가입 버튼을 눌렀을 때 못넘어가게 함
 		if ($("#m_pwd").val() == "") {
 			alert("필수 입력 항목입니다.");		//패스워드
@@ -102,12 +95,10 @@ $(function() {
 	$("#reserveState").click(function() {
 		location.href = "/mypage/reserveState.do"
 	});
-	
 });
 
 function enterkey() {
     if (window.event.keyCode == 13) {
-    	
          // 엔터키가 눌렸을 때 실행할 내용
     	$("#mypageForm").attr("method", "post");
 		$("#mypageForm").attr("action", "/mypage/mypage.do");
@@ -140,7 +131,6 @@ function enterkey() {
 .main > div > textarea { background-color: white;
 						border: 1px solid #BDBDBD;
 						resize: none; }
-
 .msgboxCheck { width: 100px; padding: 10px; }
 .check_btn { width: 125px; height: 35px;
 			background: #ffb03b; color: #fff;

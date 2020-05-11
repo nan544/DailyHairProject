@@ -50,15 +50,9 @@
 <!-- 모바일 웹 페이지 설정 -->
 <link rel="shortcut icon" href="/resources/image/icon.png" />
 <link rel="apple-touch-icon" href="/resources/image/icon.png" />
-<!-- 모바일 웹 페이지 설정 끝 -->
-<!--[if lt IE 9]>
-<script src="/resources/include/js/html5shiv.js"></script>
-<![endif]-->
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-
 $(function() {
-	
 	$("#loginBtn").click(function() {
 		location.href = "/member/login/login.do";
 	});
@@ -66,7 +60,6 @@ $(function() {
 	$("#pwFind").click(function() {
 		location.href = "/member/login/pwFind.do";
 	});
-	
 });
 
 </script>
@@ -131,7 +124,6 @@ div > p > span { font-weight: 600; font-size: 18px; }
 		</div>
 	</div>
 	</section><!-- End IDFind Success Section -->
-	
 	
    <!-- footer 삽입 -->
    <jsp:include page="/WEB-INF/views/client/main/footer.jsp"></jsp:include>

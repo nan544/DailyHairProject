@@ -51,19 +51,9 @@
    <!-- 모바일 웹 페이지 설정 -->
    <link rel="shortcut icon" href="/resources/image/icon.png" />
    <link rel="apple-touch-icon" href="/resources/image/icon.png" />
-   <!-- 모바일 웹 페이지 설정 끝 -->
-   <!--[if lt IE 9]>
-   <script src="/resources/include/js/html5shiv.js"></script>
-   <![endif]-->
    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
    
    <script type="text/javascript">
-   // PW 수정 확인 버튼 이벤트 (임시)
-   /*function ModifyEnd(){
-      alert("임시로 작동하는 알람창입니다.\n기능을 구현해주세요.")
-      alert("비밀번호가 정상적으로 수정되었습니다.\n로그인 화면으로 이동합니다.")
-      location.replace("/member/login/login.do"); }*/
-   
    // 로그인 버튼 이벤트
    function login() {
       location.replace("/member/login/login.do"); }
@@ -113,14 +103,11 @@
 			$("#pwModifyForm").attr("action","/member/login/pwModify.do");
 			$("#pwModifyForm").submit();
 			alert("비밀번호 수정이 완료되었습니다.\n로그인 화면으로 이동합니다.");
-			
 		});
-	   
 	});
 
    function enterkey() {
        if (window.event.keyCode == 13) {
-
             // 엔터키가 눌렸을 때 실행할 내용
     	   $("#pwModifyForm").attr('method','post');
 			$("#pwModifyForm").attr("action","/member/login/pwModify.do");
@@ -129,7 +116,6 @@
    		
        }
 	}
-   
    </script>
    
    <style type="text/css">

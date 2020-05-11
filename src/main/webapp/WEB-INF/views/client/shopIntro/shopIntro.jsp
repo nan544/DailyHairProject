@@ -102,11 +102,9 @@
 		$("#des_num").val(num);
 		var des_num = num;
 		
-		
 		var url = "/client/designerSergery.do?des_num="+des_num;
 		var name = "디자이너 시술 목록";
 		var option = "width=500px, height=500px, toolbars=no, scrollbars=yes, resizable=no";
-		
 		
 		window.open(url, name, option);
 	}
@@ -155,8 +153,6 @@
 							<c:forEach var="des" items="${designerList}">
 								<div class="designerbox" onclick="clickDesigner(${des.des_num})">
 									<c:if test="${not empty des.des_image }">
-										<!-- 로컬 저장소 사용 시 주석 해제하면 프로필 불러옴 -->
-										<%-- <input type="hidden" class="designer" name="des_image" id="des_image" value="${des.des_image}" /> --%>
 										<img class="designer" src="/uploadStorage/designer/${des.des_image}"><!-- /resources/assets/img/slide/kimsoGIF19.gif -->
 									</c:if>
 									<c:if test="${empty des.des_image }">

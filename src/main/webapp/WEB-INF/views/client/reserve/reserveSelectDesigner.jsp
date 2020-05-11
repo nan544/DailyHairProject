@@ -194,12 +194,6 @@
 			<div style="margin: 0 auto; margin-top: 75px;">
 				<button class="reserveBtn" onclick="selectDate()">이전 단계</button>
 			</div>
-			
-			<!-- 하단 여백 -->
-			<!-- 버튼이 필요없어 질 때, 버튼 삭제 후 주석 해제 -->
-			<!-- <div style="width: 100%; height: 100px; margin-bottom: 50px;">
-			</div> -->
-			
 		</div>
 	</div>
 	</section><!-- End Reserve Section -->

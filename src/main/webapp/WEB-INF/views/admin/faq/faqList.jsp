@@ -41,7 +41,12 @@
 <title>글보기</title>
 </head>
 <body>
-
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
 <div>
 <h2>자주하는 질문 관리</h2>
 </div>

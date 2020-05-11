@@ -45,7 +45,8 @@ float: left;
 							let html = "";
 							for (let i = 0; i < data.length; i++) {
 								let des_num = data[i].des_num;
-								html += '<tr class='+'tac data-num='+des_num+'>' + '<td>'
+								html += '<tr class='+'tac data-num='+des_num+'>'+'<td>'
+										+ data[i].des_num + '</td>'+ '<td>'
 										+ data[i].des_regdate + '</td>'
 										+ '<td>' + data[i].des_job + '</td>'
 										+ '<td>' + data[i].des_name + '</td>'
@@ -88,6 +89,12 @@ float: left;
 </script>
 </head>
 <body>
+<c:if test="${empty login }">
+		<script type="text/javascript">
+			alert("로그인이 필요합니다.");
+			location.href="/admin/adminLoginForm.do";
+		</script>
+	</c:if>
 	<div class="designerContainer">
 		<div class="desHeader">
 			<h1>디자이너 관리</h1>

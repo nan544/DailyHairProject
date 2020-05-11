@@ -21,25 +21,17 @@
 	rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/vendor/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/vendor/icofont/icofont.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/vendor/boxicons/css/boxicons.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/vendor/animate.css/animate.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/vendor/venobox/venobox.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/vendor/owl.carousel/assets/owl.carousel.min.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/icofont/icofont.min.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/boxicons/css/boxicons.min.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/animate.css/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/venobox/venobox.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/vendor/owl.carousel/assets/owl.carousel.min.css">
 
 <!-- Template Main CSS File -->
-<link rel="stylesheet" type="text/css"
-	href="/resources/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/resources/assets/css/style.css">
 
-<!-- =======================================================
-=======
+<!-- ============================================================== -->
 	<!-- Favicons -->
 	<link href="/resources/assets/img/DHS-icon.png" rel="icon">
 	<link href="/resources/assets/img/DHS-icon.png" rel="apple-touch-icon">
@@ -58,24 +50,13 @@
    <!-- Template Main CSS File -->
    <link rel="stylesheet" type="text/css" href="/resources/assets/css/style.css" >
    
-   <!-- =======================================================
->>>>>>> master
-   * Template Name: Delicious - v2.0.0
-   * Template URL: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/
-   * Author: BootstrapMade.com
-   * License: https://bootstrapmade.com/license/
-   ======================================================== -->
-
 <!-- Vendor JS Files -->
 <script src="/resources/assets/vendor/jquery/jquery.min.js"></script>
-<script
-	src="/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script
-	src="/resources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/resources/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 <script src="/resources/assets/vendor/php-email-form/validate.js"></script>
 <script src="/resources/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
-<script
-	src="/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 <script src="/resources/assets/vendor/venobox/venobox.min.js"></script>
 <script src="/resources/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
 
@@ -85,15 +66,9 @@
 <!-- 모바일 웹 페이지 설정 -->
 <link rel="shortcut icon" href="/resources/image/icon.png" />
 <link rel="apple-touch-icon" href="/resources/image/icon.png" />
-<!-- 모바일 웹 페이지 설정 끝 -->
-<!--[if lt IE 9]>
-   <script src="/resources/include/js/html5shiv.js"></script>
-   <![endif]-->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-		
 		$("#loginBtn").click(function() {
 			//필수 입력 요소들을 입력하지 않고 가입 버튼을 눌렀을 때 못넘어가게 함
 			if ($("#m_id").val() == "") {
@@ -123,12 +98,10 @@
 	
 	function enterkey() {
         if (window.event.keyCode == 13) {
- 
              // 엔터키가 눌렸을 때 실행할 내용
     		$("#loginForm").attr("method", "post");
     		$("#loginForm").attr("action", "/member/login/login.do");
     		$("#loginForm").submit();
-    		
         }
 	}
 	

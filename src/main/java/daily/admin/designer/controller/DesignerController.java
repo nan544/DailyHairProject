@@ -128,6 +128,7 @@ public class DesignerController {
 
 		String msg = "0";
 		
+			
 		//수정할떄 파일이 변경되면 기존 파일은 삭제되고 새로운파일로 등록됨
 		if(!dvo.getFile().isEmpty()) {
 			if(!dvo.getDes_file().isEmpty()) {
