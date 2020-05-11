@@ -4,18 +4,34 @@
 
 <mapper namespace="daily.admin.qna.dao.AdminQnaDao">
 
+	<sql id="commonList">
+		select a.qna_num qna_num ,a.m_id m_id ,a.qna_title qna_title , a.qna_regdate qna_regdate , a.qna_state qna_state, a.qna_file qna_file, a.qna_content qna_content  
+		from
+		qna a
+		inner join member b
+		on
+		a.m_id = b.m_id
+		<where>
+			<if test="search =='all'">
+				1=1
+			</if>
+			<if test="search =='m_id'">
+				a.m_id like '%'||#{keyword}||'%'
+			</if>
+			<if test="search =='m_phone'">
+				b.m_phone like '%'||#{keyword}||'%'
+			</if>
+		</where>
+	</sql>
+
 	<select id="List" resultType="qna" parameterType="qna">
 		SELECT
 		qna_num, qna_title, m_id, to_char(qna_regdate,'YYYY-MM-DD') as
 		qna_regdate,
 		qna_content, qna_state, qna_file
 		FROM(
-		Select list.*, Rownum
-		as RNUM
-		FROM (SELECT
-		*
-		FROM
-		qna
+		Select list.*, Rownum as RNUM
+		FROM (<include refid="commonList" />
 		ORDER BY
 		qna_state ASC,qna_regdate ASC )
 		list)
@@ -90,13 +106,7 @@
 		nvl(count(1),0)
 		FROM(
 		Select list.*, Rownum as rnum
-		FROM (SELECT
-		*
-		FROM
-		qna
-		ORDER BY
-		qna_state
-		ASC,qna_regdate ASC )
+		FROM (<include refid="commonList"></include> )
 		list)
 	</select>
 	<delete id="Delete" parameterType="reply">
@@ -106,11 +116,14 @@
 		=#{qna_num}
 
 	</delete>
-	
+
 	<!-- 회원 상세보기 -->
-	 <select id="memberDetail" parameterType="reservation" resultType="member">
-		SELECT m_id, m_num, m_name, m_pwd, m_gender, m_phone, m_email, m_memo, m_state, to_char(m_date,'YYYY-MM-DD') as m_date
-		FROM member
+	<select id="memberDetail" parameterType="reservation"
+		resultType="member">
+		SELECT m_id, m_num, m_name, m_pwd, m_gender, m_phone,
+		m_email, m_memo, m_state, to_char(m_date,'YYYY-MM-DD') as m_date
+		FROM
+		member
 		WHERE m_id = #{m_id}
 	</select>
 </mapper>

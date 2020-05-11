@@ -168,16 +168,18 @@ h5 {
 				style="width: 1000px; height: 400px"></div>
 		</div>
 		<div id="contents">
-			<table class="table table-striped">
-
-				<thead class="active">
-					<tr>
+			<table class="table">
+			<colgroup>
+				<col width="50%">
+				<col width="50%">
+			</colgroup>
+					<tr class="active">
 						<th>날짜</th>
 						<th>매출액</th>
 					</tr>
-				</thead>
-
-				<tbody>
+			</table>
+			<div style="width: 100%; height: 350px; overflow: auto">
+			<table class="table">
 					<c:forEach var="salesList" items="${result}" varStatus="status">
 						<tr>
 							<td>${salesList.rest_hairdate }</td>
@@ -190,8 +192,8 @@ h5 {
 						<td><b>총액</b></td>
 						<td>${totalPrice}원</td>
 					</tr>
-				</tbody>
 			</table>
+			</div>
 		</div>
 	</div>
 </body>

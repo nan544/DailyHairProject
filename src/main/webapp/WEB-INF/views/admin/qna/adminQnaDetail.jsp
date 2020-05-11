@@ -13,7 +13,7 @@
 }
 
 .mainContainer>table, #reply {
-	width: 800px;
+	width: 1000px;
 	margin: 5px;
 }
 
@@ -26,14 +26,9 @@ textarea {
 	display: inline;
 }
 
-#reply {
-	width: 800px;
-}
 
-#content {
-	width: 800px;
-	height: 300px;
-	border: 1px dashed;
+#contents {
+	width: 1000px;
 }
 
 
@@ -57,6 +52,10 @@ img {
 
 .tc{
 color: gray;
+}
+
+.btn-position{
+float: right;
 }
 </style>
 <script type="text/javascript"
@@ -137,14 +136,6 @@ color: gray;
 		$("#listBtn").click(function() {
 			history.go(-1);
 		});
-
-		/* 	//이미지 다운로드
-			function fn_fileDown(qna_num1) {
-				var formObj = $("#downForm");
-				$("#qna_num1").attr("value", qna_num1);
-				formObj.attr("action", "/client/qna/download.do");
-				formObj.submit();
-			} */
 	});
 </script>
 
@@ -157,12 +148,11 @@ color: gray;
 			location.href="/admin/adminLoginForm.do";
 		</script>
 	</c:if>
-
-	<form name="downForm" id="downForm"></form>
+<div id="contents">
 	<h1>1:1 문의 상세보기</h1>
-	<input type="button" name="listBtn" id="listBtn" value="목록으로" class="btn"/>
+	<input type="button" name="listBtn" id="listBtn" value="목록으로" class="btn btn-position" style="margin-bottom: 5px;"/>
 	<div class="mainContainer">
-		<table border="1" id="formTable">
+		<table  id="formTable" class="table">
 			<colgroup>
 				<col width="10%"/>
 				<col width="10%"/>
@@ -214,11 +204,12 @@ color: gray;
 	<c:choose>
 		<c:when test="${detail.qna_state==0}">
 			<div id="reply" style="margin-top: 30px;">
+			<h4><b>답변 입력</b></h4>
 				<form id="replyForm">
 					<input type="hidden" id="qna_num" name="qna_num"
 						value="${detail.qna_num}">
 
-					<table>
+					<table class="table">
 						<tr>
 							<td class="he">작성자</td>
 							<td colspan="7"><input class="inputArea" type="text"
@@ -242,22 +233,26 @@ color: gray;
 
 			<div class="btnContainer">
 				<input type="button" name="insertReply" id="insertReply"
-					value="답변입력" class="btn"/>
+					value="답변입력" class="btn btn-position"/>
 			</div>
 		</c:when>
 		<c:otherwise>
+		
+		
 			<div id="reply" style="margin-top: 30px;">
 				<form id="replyForm">
 					<input type="hidden" id="qna_num" name="qna_num"
 						value="${detail.qna_num}">
-					<table>
+					<table class="table">
 						<tr>
 							<td class="he">작성자</td>
 							<td class="tc" >${reply.rep_name}</td>
+							<td></td>
 						</tr>
 						<tr>
 							<td class="he">내용</td>
 							<td class="tc">${reply.rep_content}</td>
+							<td></td>
 						</tr>
 						<tr>
 
@@ -281,9 +276,10 @@ color: gray;
 
 			<div class="btnContainer">
 				<input type="button" name="deleteRepBtn" id="deleteRepBtn"
-					value="답글삭제" class="btn" />
+					value="답글삭제" class="btn btn-position" />
 			</div>
 		</c:otherwise>
 	</c:choose>
+	</div>
 </body>
 </html>
