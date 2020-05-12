@@ -7,14 +7,32 @@
 <head>
 <meta charset="UTF-8">
 <style type="text/css">
-textarea {
+#contents {
 	width: 700px;
-	height: 100px;
-	resize: none;
 }
 
-#listMenu>p {
-	float: letf;
+.txtArea {
+	width: 700px;
+	height: 125px;
+	resize: none;
+	display: block;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.control {
+	float: right;
+}
+
+.btnMenu{
+margin-top: 5px;
+
 }
 </style>
 <script type="text/javascript"
@@ -29,8 +47,10 @@ textarea {
 		});
 		//등록완료 버튼 클릭시
 		$("#faqInsertBtn").click(function() {
-			if(!chkData("#faq_question","질문을")) return;
-			if(!chkData("#faq_answer","답변을")) return;
+			if (!chkData("#faq_question", "질문을"))
+				return;
+			if (!chkData("#faq_answer", "답변을"))
+				return;
 			if (confirm("등록 하시겠습니까?")) {
 				$("#insertForm").attr("method", "post");
 				$("#insertForm").attr("action", "/admin/adminFaqInsert.do");
@@ -44,40 +64,48 @@ textarea {
 <title>자주 묻는 질문 작성</title>
 </head>
 <body>
-<c:if test="${empty login }">
-		<script type="text/javascript">
-			alert("로그인이 필요합니다.");
-			location.href="/admin/adminLoginForm.do";
-		</script>
-	</c:if>
-	<div>
+	<div id="contents">
+		<c:if test="${empty login }">
+			<script type="text/javascript">
+				alert("로그인이 필요합니다.");
+				location.href = "/admin/adminLoginForm.do";
+			</script>
+		</c:if>
 		<div>
-			<h2>자주하는 질문 관리-게시글 등록</h2>
+			<div>
+				<h2>자주하는 질문 관리-게시글 등록</h2>
+			</div>
+					<input type="button" value="목록으로" class="btn control"
+						id="faqListBtn">
+			<form id="insertForm" name="insertForm" >
+				<table>
+					<tr>
+						<td><span style="color: red;">*</span><b>질문</b></td>
+					</tr>
+					<tr>
+
+						<td><textarea id="faq_question" class="txtArea"
+								name="faq_question" cols="35" rows="15"
+								placeholder="질문을 입력해주세요."></textarea></td>
+					</tr>
+					<tr>
+						<td><span style="color: red;">*</span><b>답변</b></td>
+					</tr>
+					<tr>
+
+						<td><textarea id="faq_answer" name="faq_answer" class="txtArea"
+								cols="35" rows="15" placeholder="답변을 입력해주세요."></textarea></td>
+					<tr>
+				</table>
+			</form>
+			<!-- 글 등록 버튼 시작-->
+			<div class="btnMenu">
+				<input type="button" value="등록완료" class="btn control"
+					id="faqInsertBtn">
+			</div>
+			<!-- 글 등록 버튼 끝-->
+
 		</div>
-		<div id="listMenu">
-			<p>
-				<input type="button" value="목록으로" class="but btn" id="faqListBtn">
-			</p>
-		</div>
-		<form id="insertForm" name="insertForm">
-			<table>
-				<tr>
-					<td><span style="color: red;">*</span>질문</td>
-					<td>&nbsp;&nbsp;<textarea id="faq_question" name="faq_question" cols="35"
-							rows="15" placeholder="질문을 입력해주세요."></textarea></td>
-				</tr>
-				<tr>
-					<td><span style="color: red;">*</span>답변</td>
-					<td>&nbsp;&nbsp;<textarea id="faq_answer" name="faq_answer" cols="35"
-							rows="15" placeholder="답변을 입력해주세요."></textarea></td>
-				<tr>
-			</table>
-		</form>
-		<!-- 글 등록 버튼 시작-->
-		<div>
-			<input type="button" value="등록완료" class="but btn" id="faqInsertBtn">
-		</div>
-		<!-- 글 등록 버튼 끝-->
 	</div>
 </body>
 </html>

@@ -19,13 +19,20 @@
 	width: 200px;
 	float: left;
 	margin-right: 5px;
-	}
-#insertFormBtn{
+}
+
+#insertFormBtn {
 	float: right;
 	margin-top: -35px;
 }
+
 #contents {
 	width: 1000px;
+}
+
+#f_search {
+	float: right;
+	margin-bottom: 5px;
 }
 </style>
 <script type="text/javascript"
@@ -73,25 +80,23 @@
 </script>
 </head>
 <body>
-<c:if test="${empty login }">
+	<c:if test="${empty login }">
 		<script type="text/javascript">
 			alert("로그인이 필요합니다.");
-			location.href="/admin/adminLoginForm.do";
+			location.href = "/admin/adminLoginForm.do";
 		</script>
 	</c:if>
 	<div id="contents">
 		<h3>HairGoods 게시판 관리</h3>
 		<!-- 검색 및 페이징을 위한 form -->
-		<div>
-			<form id="f_search">
-				<input type="hidden" id="page" name="page" value="${data.page}">
-				<input type="text" id="keyword" class="keyword form-control"
-					name="keyword" placeholder="제품이름(제목)" value="${data.keyword }">
-				<input type="hidden" id="search" name="search" value="hg_title">
-				<input type="button" id="searchBtn" class="btn btnBoard"
-					name="searchBtn" value="검색">
-			</form>
-		</div>
+		<form id="f_search" name="f_search">
+			<input type="hidden" id="page" name="page" value="1"> <input
+				type="text" id="keyword" class="keyword form-control" name="keyword"
+				placeholder="제품이름(제목)" value="${data.keyword }"> <input
+				type="hidden" id="search" name="search" value="hg_title"> <input
+				type="button" id="searchBtn" class="btn btnBoard" name="searchBtn"
+				value="검색">
+		</form>
 		<!-- 검색 및 페이징을 위한 form -->
 
 
@@ -145,8 +150,8 @@
 			<!-- 데이터 출력 끝-->
 		</table>
 		<!-- BtnMenu -->
-		<div >
-		<!-- 페이지 네비게이션 -->
+		<div>
+			<!-- 페이지 네비게이션 -->
 			<tag:paging page="${param.page}" total="${total}"
 				list_size="${data.pageSize}"></tag:paging>
 			<input type="button" class="btn" id="insertFormBtn"

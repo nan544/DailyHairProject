@@ -41,7 +41,6 @@ text-align: center;
 		
 		
 		//달력
-		
 		$("#datePicker").datepicker({
 			format : "yyyy-mm-dd",
 			startDate : '-1y',
@@ -55,26 +54,19 @@ text-align: center;
 		}).on(
 				"changeDate",
 				function(e) {
-					
 					let rest_hairdate = $("#datePicker").val();
 					let des_num = $("#des_num").val();
-					
-					
 					 $.ajax({	
 						url : "/admin/reservation/dateList.do",
 						type : "post",
 						data : { "rest_hairdate" : rest_hairdate , "des_num" : des_num},
 						success : function(data){
-							
 						if(data.length == 0){
 							$(".ajaxList").html("");
 							$(".ajaxList").html("<tr><td colspan='6' align='center'>금일예약자가 없습니다</td></tr>");
 						}else{
-							
 							$(".ajaxList").html("");
-							
 							let html = "";
-							
 							for (let i = 0; i < data.length; i++) {
 								let rest_num = data[i].rest_num;
 								let m_id = data[i].m_id;
@@ -83,17 +75,13 @@ text-align: center;
 										+ '<td>' + data[i].rest_hairdate +" / "+ data[i].rest_time + '</td>'
 										+ '<td>' + data[i].m_gender + '</td>'
 										+ '<td>' + data[i].m_id + '</td>'
-										+ '<td>'
-										+ data[i].m_name + '</td>'
-										+ '<td>' + data[i].m_phone + '</td>'
-										+'</tr>';
+										+ '<td>' + data[i].m_name + '</td>'
+										+ '<td>' + data[i].m_phone + '</td>'+'</tr>';
 						}	
-					
 							$(".ajaxList").append(html);
 							}
 						}
 					}); //ajax 종료
-					
 					
 				});
 		
@@ -129,7 +117,7 @@ text-align: center;
 	<c:choose>
 		<c:when test="${not empty desList}">
 			<select id="des_num" name="des_num" class="des_num form-control">
-				<option value="0">전체디자이너</option>
+				<option value="-1">전체디자이너</option>
 				<c:forEach var="des" items="${desList}">
 					<option value="${des.des_num}">${des.des_name}</option>
 				</c:forEach>
